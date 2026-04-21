@@ -17,9 +17,9 @@ export const SlideDemo = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-6"
           >
-            La experiencia,
+            Así lo verá
             <br />
-            <span className="text-primary">nativa de WeChat</span>.
+            <span className="text-primary">el usuario chino</span>.
           </motion.h2>
 
           <motion.p
@@ -28,10 +28,10 @@ export const SlideDemo = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-base md:text-lg leading-relaxed text-muted-foreground mb-8"
           >
-            Mockup estático de la pantalla{" "}
-            <strong className="text-foreground font-medium">VIP 会员中心</strong> (Centro VIP).
-            Diseño nativo del ecosistema WeChat, en chino simplificado, con experiencia premium para
-            el público objetivo.
+            Esta es la pantalla del{" "}
+            <strong className="text-foreground font-medium">Centro VIP (会员中心)</strong>: tal
+            cual aparecería dentro de WeChat, en chino y con la estética que ese público espera de
+            una app premium.
           </motion.p>
 
           <motion.div
@@ -43,18 +43,18 @@ export const SlideDemo = () => {
             {[
               {
                 icon: "🤖",
-                title: "AI Player Performance",
-                body: "Modelos predictivos por jugador y partido, exclusivos para VIP.",
+                title: "Predicciones con IA",
+                body: "Análisis exclusivo para VIP que estima el rendimiento de cada jugador.",
               },
               {
                 icon: "📊",
-                title: "Real-Time Analytics",
-                body: "Datos avanzados durante el partido con latencia mínima.",
+                title: "Datos en directo",
+                body: "Estadísticas avanzadas durante el partido, casi sin retraso.",
               },
               {
                 icon: "🏆",
-                title: "Private Leagues",
-                body: "Herramientas para gestionar ligas privadas con amigos o colegas.",
+                title: "Ligas privadas",
+                body: "Crea torneos cerrados para competir con tu grupo de amigos o de oficina.",
               },
             ].map((f) => (
               <div key={f.title} className="flex items-start gap-4">
@@ -76,7 +76,7 @@ export const SlideDemo = () => {
             className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-4 py-2 text-xs text-muted-foreground"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            Mockup interactivo · pulsa el botón dorado para activar trial
+            Maqueta interactiva · pulsa el botón dorado para probarla
           </motion.div>
         </div>
 

@@ -24,20 +24,19 @@ export const SlideProblem = () => {
         transition={{ duration: 0.7, delay: 0.3 }}
         className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
       >
-        Aficionados al fútbol europeo y los eSports siguen su pasión con la misma intensidad que en
-        Occidente. Discuten alineaciones en grupos de WeChat, conocen estadísticas de memoria… pero{" "}
-        <strong className="text-foreground font-medium">no tienen ningún canal legal</strong> donde
-        expresar esa pasión competitivamente. No existe un FIFA Ultimate Team. No existe una fantasy
-        league oficial. <strong className="text-foreground font-medium">No existe nada.</strong>
+        Cientos de millones de chinos siguen LaLiga, la Champions o la NBA con la misma pasión que
+        en Europa. Pero <strong className="text-foreground font-medium">no tienen ninguna app legal</strong>{" "}
+        donde competir entre ellos como aficionados.{" "}
+        <strong className="text-foreground font-medium">El espacio está vacío.</strong>
       </motion.p>
 
       {/* Big stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { val: "700M+", label: "Aficionados al fútbol", sub: "Mercado potencial bruto", tone: "primary" },
-          { val: "500M+", label: "Jugadores de eSports", sub: "Crece +15% anual", tone: "primary" },
-          { val: "100%", label: "Apuestas ilegales", sub: "Marco legal vigente", tone: "danger" },
-          { val: "0", label: "Plataformas legales", sub: "Competencia directa", tone: "gold" },
+          { val: "700M+", label: "Aficionados al fútbol", sub: "Demanda enorme", tone: "primary" },
+          { val: "500M+", label: "Jugadores de eSports", sub: "Crece +15 % al año", tone: "primary" },
+          { val: "100%", label: "Apuestas prohibidas", sub: "Sin alternativa legal", tone: "danger" },
+          { val: "0", label: "Apps legales como ésta", sub: "No tenemos competencia", tone: "gold" },
         ].map((s, i) => (
           <motion.div
             key={s.label}
@@ -77,9 +76,8 @@ export const SlideProblem = () => {
           <div>
             <div className="eyebrow text-primary mb-2">La oportunidad</div>
             <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-              Un vacío de mercado de escala gigantesca. Ninguna plataforma de{" "}
-              <strong className="text-primary">fidelización competitiva legal</strong> existe hoy en
-              China. <strong className="text-foreground">Quien lo ocupe primero, define las reglas.</strong>
+              Hay una <strong className="text-primary">demanda enorme y ningún competidor legal</strong>.
+              <strong className="text-foreground"> Quien llegue primero, marca las reglas del juego.</strong>
             </p>
           </div>
         </div>

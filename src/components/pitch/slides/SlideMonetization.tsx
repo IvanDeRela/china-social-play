@@ -5,23 +5,23 @@ import { Eyebrow } from "../Eyebrow";
 const streams = [
   {
     pct: "55%",
-    title: "Publicidad In-App",
-    sub: "Modelo display + native",
-    desc: "Banners contextuales, contenido patrocinado dentro del feed deportivo y vídeos pre-partido. Targeting de altísima precisión gracias al perfil de fan.",
+    title: "Publicidad dentro de la app",
+    sub: "Anuncios y vídeos",
+    desc: "Anuncios y contenido patrocinado mientras el usuario consulta su equipo o ve el partido. Muy bien dirigidos, porque conocemos al fan.",
     color: "primary",
   },
   {
     pct: "25%",
-    title: "Patrocinios de marca",
-    sub: "Activaciones O2O",
-    desc: "Marcas como Meituan o JD.com aportan los cupones-premio a cambio de visibilidad y datos de comportamiento. Win-win sin coste de adquisición.",
+    title: "Marcas patrocinadoras",
+    sub: "Cupones y promociones",
+    desc: "Marcas como Meituan o JD.com pagan por aparecer y aportan los cupones que recibe el usuario. Ellos ganan visibilidad, nosotros ingresos.",
     color: "info",
   },
   {
     pct: "20%",
-    title: "VIP Data SaaS",
-    sub: "Suscripción premium",
-    desc: "Pro Analytics con IA predictiva: ¥29/mes, ¥79/trimestre, ¥199/año. Conversión target 3% — el motor de margen del negocio.",
+    title: "Suscripción VIP",
+    sub: "Estadísticas premium",
+    desc: "Quien quiere análisis avanzado paga ¥29 al mes. Esperamos que un 3 % de los usuarios se suscriba. Es donde más margen ganamos.",
     color: "gold",
   },
 ];
@@ -48,9 +48,9 @@ export const SlideMonetization = () => {
         transition={{ duration: 0.7, delay: 0.3 }}
         className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
       >
-        El usuario juega gratis. La monetización viene de un mix balanceado entre publicidad,
-        patrocinios de marca y un upsell premium SaaS. Esta diversificación reduce riesgo y nos hace
-        atractivos a marcas y fondos por igual.
+        El usuario nunca paga por jugar. Ingresamos por tres vías combinadas: anuncios, marcas
+        patrocinadoras y una suscripción premium opcional. Si una falla, las otras dos sostienen el
+        negocio.
       </motion.p>
 
       {/* Revenue split bar */}
@@ -102,10 +102,10 @@ export const SlideMonetization = () => {
         className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3"
       >
         {[
-          { label: "ARPU objetivo", val: "¥9,8" },
-          { label: "Conversión VIP", val: "3%" },
-          { label: "Patrocinadores Y1", val: "5–8" },
-          { label: "Margen bruto", val: "78%" },
+          { label: "Ingreso medio por usuario", val: "¥9,8" },
+          { label: "Usuarios que pagan VIP", val: "3%" },
+          { label: "Patrocinadores año 1", val: "5–8" },
+          { label: "Margen del negocio", val: "78%" },
         ].map((kpi) => (
           <div
             key={kpi.label}
