@@ -25,33 +25,34 @@ export const SlideSolution = () => {
         transition={{ duration: 0.7, delay: 0.3 }}
         className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
       >
-        Una <strong className="text-foreground font-medium">Liga Fantasy gratuita</strong> dentro de
-        WeChat. El usuario gestiona su equipo de fútbol o eSports, compite con amigos y gana puntos.
-        <strong className="text-foreground font-medium"> Nunca dinero.</strong> Nosotros monetizamos
-        mediante publicidad, marcas patrocinadoras y suscripciones VIP de datos avanzados.
+        El usuario crea su <strong className="text-foreground font-medium">equipo virtual</strong> de
+        fútbol o eSports y compite con amigos dentro de WeChat. Juega gratis y
+        <strong className="text-foreground font-medium"> nunca gana ni pierde dinero</strong>.
+        Nosotros ingresamos por publicidad, marcas patrocinadoras y una suscripción premium con
+        estadísticas avanzadas.
       </motion.p>
 
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-5">
         {[
           {
             icon: "🎮",
-            title: "Juego gratuito",
-            sub: "Free-to-play",
-            body: "El usuario nunca paga para jugar ni recibe dinero como premio. Toda la mecánica core es gratuita y social, integrada en sus comunidades de WeChat existentes.",
+            title: "Gratis para el usuario",
+            sub: "Sin pagar, sin apostar",
+            body: "Jugar no cuesta nada y no se gana dinero. Solo puntos y prestigio entre amigos, como un Trivial deportivo.",
             tone: "primary",
           },
           {
             icon: "📡",
-            title: "Mini-Programa WeChat",
-            sub: "1.300M usuarios potenciales",
-            body: "No descargamos otra app. Vivimos dentro de WeChat heredando su KYC, sus pagos y su distribución viral. Cero fricción de instalación.",
+            title: "Dentro de WeChat",
+            sub: "1.300 millones de usuarios",
+            body: "No hay que descargar nada. La app vive dentro de WeChat, la red social que casi todos los chinos usan a diario.",
             tone: "info",
           },
           {
             icon: "👑",
-            title: "VIP Data SaaS",
-            sub: "Modelo Bloomberg para deporte",
-            body: "Suscripción premium con estadísticas avanzadas e IA predictiva de jugadores. Vendemos conocimiento, no apuestas. ¥29/mes.",
+            title: "Suscripción VIP",
+            sub: "Estadísticas avanzadas",
+            body: "Quien quiera más datos y predicciones de jugadores con IA paga ¥29 al mes. Vendemos información deportiva, no apuestas.",
             tone: "gold",
           },
         ].map((p, i) => (

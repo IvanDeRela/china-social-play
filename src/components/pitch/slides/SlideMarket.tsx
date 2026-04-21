@@ -8,24 +8,24 @@ const segments = [
     val: "320M",
     bar: 100,
     color: "primary",
-    title: "Mercado total accesible",
-    desc: "Usuarios activos de WeChat de 18–35 años en ciudades Tier 1 y Tier 2.",
+    title: "Público total al que podríamos llegar",
+    desc: "Jóvenes chinos de 18 a 35 años en grandes ciudades que ya usan WeChat a diario.",
   },
   {
     label: "SAM",
     val: "48M",
     bar: 55,
     color: "info",
-    title: "Mercado servible",
-    desc: "Aficionados al fútbol europeo y eSports con comportamiento digital premium.",
+    title: "Público realmente interesado",
+    desc: "De ese total, los que siguen fútbol europeo o eSports y suelen pagar por servicios digitales.",
   },
   {
     label: "SOM",
     val: "1,2M",
     bar: 25,
     color: "gold",
-    title: "Mercado obtenible (24m)",
-    desc: "Target realista en mercados piloto: Shanghái, Pekín y Chengdu.",
+    title: "Lo que esperamos captar en 2 años",
+    desc: "Objetivo prudente arrancando solo en tres ciudades: Shanghái, Pekín y Chengdu.",
   },
 ];
 
@@ -55,11 +55,10 @@ export const SlideMarket = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-base md:text-lg leading-relaxed text-muted-foreground"
           >
-            China no es un mercado homogéneo. Nos centramos en{" "}
-            <strong className="text-foreground font-medium">jóvenes de 18–35 años</strong>, ya
-            organizados en comunidades digitales de WeChat, en ciudades{" "}
-            <strong className="text-foreground font-medium">Tier 1 y Tier 2</strong> con alta renta
-            disponible.
+            No vamos a por toda China. Apuntamos a{" "}
+            <strong className="text-foreground font-medium">jóvenes de 18 a 35 años</strong> en las{" "}
+            <strong className="text-foreground font-medium">grandes ciudades</strong>: el público con
+            mayor renta, fans del fútbol europeo y los eSports, y ya activos en WeChat.
           </motion.p>
 
           <motion.div

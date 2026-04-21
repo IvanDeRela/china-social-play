@@ -24,9 +24,9 @@ export const SlideLegal = () => {
         transition={{ duration: 0.7, delay: 0.3 }}
         className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
       >
-        El <strong className="text-foreground font-medium">Artículo 303 del Código Penal de la RPC</strong>{" "}
-        define el juego ilegal como "transferencia de valor monetario condicionada al azar". Nuestro
-        modelo <strong className="text-foreground font-medium">no cumple ninguno de los tres criterios</strong>.
+        La ley china considera apuesta ilegal cuando hay{" "}
+        <strong className="text-foreground font-medium">dinero de por medio y el resultado depende del azar</strong>.
+        Nuestro modelo evita las dos cosas a propósito.
       </motion.p>
 
       {/* Three pillars */}
@@ -35,20 +35,20 @@ export const SlideLegal = () => {
           {
             num: "I",
             icon: "🚫",
-            title: "Cero cash-out",
-            body: "Los premios son cupones O2O canjeables con marcas patrocinadoras (Meituan, JD.com). Nunca dinero, nunca transferencia bancaria.",
+            title: "Sin dinero como premio",
+            body: "El usuario nunca recibe dinero. Los premios son cupones de marcas como Meituan o JD.com, canjeables por productos o descuentos.",
           },
           {
             num: "II",
             icon: "📊",
-            title: "Monetización SaaS",
-            body: "Ingresos por suscripción Pro Data Analytics con IA predictiva. Vendemos conocimiento deportivo, no apuestas. Modelo Bloomberg.",
+            title: "Vendemos datos, no apuestas",
+            body: "Ingresamos por una suscripción con estadísticas avanzadas e IA. Es un modelo tipo Bloomberg aplicado al deporte.",
           },
           {
             num: "III",
             icon: "💬",
-            title: "Ecosistema WeChat",
-            body: "Mini-Programa nativo: heredamos automáticamente el KYC de Tencent, los límites de gasto para menores y las auditorías regulatorias.",
+            title: "Bajo el paraguas de WeChat",
+            body: "Al vivir dentro de WeChat (de Tencent), heredamos su control de identidad, sus límites para menores y sus auditorías oficiales.",
           },
         ].map((p, i) => (
           <motion.div
@@ -85,12 +85,11 @@ export const SlideLegal = () => {
           <div>
             <div className="eyebrow text-warn mb-1">Dictamen jurídico</div>
             <p className="text-sm md:text-base leading-relaxed text-foreground/90">
-              La analogía más clara para el Consejo:{" "}
+              En una frase:{" "}
               <strong className="text-warn">
-                "Es más parecido a un Trivial de fútbol con premio en vales de descuento que a un
-                casino"
+                "Se parece más a un Trivial de fútbol con vales de descuento que a un casino"
               </strong>
-              . Y nadie cierra un Trivial.
+              . Y nadie prohíbe un Trivial.
             </p>
           </div>
         </div>

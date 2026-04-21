@@ -51,9 +51,9 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 max-w-4xl mb-12"
         >
           {[
-            { val: "1.300M", sub: "Usuarios WeChat" },
-            { val: "1,2M", sub: "SOM en 24 meses" },
-            { val: "Mes 14", sub: "Break-even" },
+            { val: "1.300M", sub: "Usuarios en WeChat" },
+            { val: "1,2M", sub: "Objetivo a 24 meses" },
+            { val: "Mes 14", sub: "Cubrimos costes" },
             { val: "0%", sub: "Riesgo legal" },
           ].map((s) => (
             <div key={s.sub}>
@@ -75,11 +75,11 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
             onClick={onOpenDeepDive}
             className="group inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground transition-all hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] hover:-translate-y-0.5"
           >
-            Anexo · Análisis profundo
+            Ver anexo ampliado
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </button>
           <span className="text-xs text-muted-foreground">
-            Contexto histórico, legal y demográfico ampliado
+            Contexto histórico, legal y demográfico en detalle
           </span>
         </motion.div>
 

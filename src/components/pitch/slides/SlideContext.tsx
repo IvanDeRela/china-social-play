@@ -29,10 +29,11 @@ export const SlideContext = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-base md:text-lg leading-relaxed text-muted-foreground"
           >
-            En China <strong className="text-foreground font-medium">no existe un mercado legal de apuestas</strong>.
-            No es un retraso ni un accidente: es una decisión política e ideológica con
-            <strong className="text-foreground font-medium"> 75 años de historia comunista</strong> y
-            raíces de <strong className="text-foreground font-medium">2.000 años</strong> de tradición.
+            En China <strong className="text-foreground font-medium">apostar dinero es ilegal</strong>.
+            No es algo nuevo: es una norma con
+            <strong className="text-foreground font-medium"> 75 años de vigencia</strong> y
+            raíces culturales de <strong className="text-foreground font-medium">siglos</strong>.
+            Cualquier negocio que ignore este punto, fracasa.
           </motion.p>
 
           <motion.div
@@ -51,20 +52,20 @@ export const SlideContext = () => {
           {[
             {
               year: "1949",
-              title: "Prohibición total tras la Revolución",
-              body: "El Partido Comunista declara ilegal cualquier forma de juego en territorio continental. Esa política sigue vigente hoy, sin cambios sustanciales.",
+              title: "Apostar queda prohibido",
+              body: "Tras la Revolución, el Estado prohíbe cualquier forma de juego con dinero. La norma sigue intacta hoy.",
               color: "danger",
             },
             {
               year: "1987 · 1994",
-              title: "Únicas excepciones: dos loterías estatales",
-              body: "Lotería de Bienestar Social y Lotería Deportiva. No clasificadas como 'juego' sino como mecanismos de financiación pública.",
+              title: "Solo dos loterías estatales",
+              body: "Las únicas excepciones legales. Se justifican como financiación pública, no como entretenimiento.",
               color: "warn",
             },
             {
-              year: "Tradición milenaria",
-              title: "Juego social SÍ, apuesta seria NO",
-              body: "Durante toda la historia china, las apuestas lúdicas sin lucro fueron toleradas. La distinción entre entretenimiento y enriquecimiento es cultural.",
+              year: "Tradición",
+              title: "Jugar por diversión, sí. Por dinero, no.",
+              body: "Durante siglos, China toleró el juego social entre amigos, pero rechazó el lucro. Esa frontera cultural sigue marcando hoy lo que está permitido.",
               color: "primary",
             },
           ].map((item, i) => (

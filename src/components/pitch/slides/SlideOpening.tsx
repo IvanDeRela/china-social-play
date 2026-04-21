@@ -45,9 +45,9 @@ export const SlideOpening = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="max-w-2xl text-lg md:text-xl font-light leading-relaxed text-muted-foreground"
         >
-          Una plataforma de <span className="text-foreground font-normal">Liga Fantasy social</span> de
-          fútbol y eSports para China — diseñada como{" "}
-          <span className="text-primary font-normal">Mini-Programa de WeChat</span>, sin apuestas, 100% legal.
+          Un juego social de fútbol y eSports para China.
+          Se juega <span className="text-foreground font-normal">gratis dentro de WeChat</span>,
+          sin dinero real y <span className="text-primary font-normal">100 % legal</span>.
         </motion.p>
 
         <motion.div

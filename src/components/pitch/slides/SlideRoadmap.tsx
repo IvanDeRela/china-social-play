@@ -5,39 +5,39 @@ import { Eyebrow } from "../Eyebrow";
 const phases = [
   {
     label: "Fase 1",
-    months: "M1 — M6",
-    title: "MVP y validación",
+    months: "Mes 1 — 6",
+    title: "Lanzamiento y prueba",
     items: [
-      "MVP funcional como WeChat Mini-Program",
-      "Target: 15.000 MAU orgánicos",
-      "Torneo piloto: Liga Fantasy LaLiga",
-      "KPI clave: retención D7 > 40%",
+      "Versión inicial dentro de WeChat",
+      "Objetivo: 15.000 usuarios activos al mes",
+      "Torneo piloto con la Liga española",
+      "Comprobar que la gente vuelve cada semana",
     ],
     color: "primary",
     bar: 100,
   },
   {
     label: "Fase 2",
-    months: "M6 — M12",
-    title: "Monetización y escala",
+    months: "Mes 6 — 12",
+    title: "Empezar a ingresar",
     items: [
-      "Lanzamiento VIP Pro Analytics (¥29/mes)",
-      "Target: 3% conversión Freemium → VIP",
-      "Primer patrocinador local (sportswear / F&B)",
-      "Expansión: añadir torneos de eSports",
+      "Activamos la suscripción VIP (¥29/mes)",
+      "Que un 3 % de usuarios pase a pagar",
+      "Primer gran patrocinador firmado",
+      "Añadimos torneos de eSports",
     ],
     color: "info",
     bar: 65,
   },
   {
-    label: "Break-Even",
+    label: "Equilibrio",
     months: "Mes 14",
-    title: "Punto de equilibrio",
+    title: "Cubrimos costes",
     items: [
-      "Equipo lean de 6 personas",
-      "Ingresos proyectados: ¥380K/mes",
-      "Margen operativo positivo, sin deuda",
-      "Preparación Serie A si se supera SOM",
+      "Equipo reducido de 6 personas",
+      "Ingresos previstos: ¥380.000 al mes",
+      "Cuentas en positivo y sin deuda",
+      "Listos para buscar inversión y escalar",
     ],
     color: "gold",
     bar: 30,
@@ -55,9 +55,9 @@ export const SlideRoadmap = () => {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-6 max-w-4xl"
       >
-        Roadmap lean y
+        Plan en 14 meses,
         <br />
-        <span className="text-primary">proyecciones conservadoras</span>.
+        <span className="text-primary">sin promesas infladas</span>.
       </motion.h2>
 
       <motion.p
@@ -66,9 +66,9 @@ export const SlideRoadmap = () => {
         transition={{ duration: 0.7, delay: 0.3 }}
         className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
       >
-        Tres fases secuenciales con métricas de validación claras por etapa.{" "}
-        <strong className="text-foreground font-medium">Break-even proyectado al mes 14</strong> sin
-        necesidad de rondas de financiación agresivas.
+        Tres fases claras, cada una con su objetivo medible.{" "}
+        <strong className="text-foreground font-medium">En el mes 14 cubrimos costes</strong> sin
+        depender de rondas de inversión grandes.
       </motion.p>
 
       {/* Phases */}
@@ -129,10 +129,10 @@ export const SlideRoadmap = () => {
         className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3"
       >
         {[
-          { val: "15K MAU", sub: "Objetivo M6", color: "primary" },
-          { val: "3% CVR", sub: "VIP a M12", color: "info" },
-          { val: "¥380K/m", sub: "Break-even revenue", color: "gold" },
-          { val: "Mes 14", sub: "Break-even fecha", color: "gold" },
+          { val: "15.000", sub: "Usuarios al mes 6", color: "primary" },
+          { val: "3%", sub: "Pasan a VIP en mes 12", color: "info" },
+          { val: "¥380K", sub: "Ingresos al mes 14", color: "gold" },
+          { val: "Mes 14", sub: "Cubrimos costes", color: "gold" },
         ].map((kpi, i) => (
           <div
             key={i}
