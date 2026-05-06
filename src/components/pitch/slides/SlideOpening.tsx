@@ -4,11 +4,9 @@ import { SlideShell } from "../SlideShell";
 export const SlideOpening = () => {
   return (
     <SlideShell className="justify-center">
-      {/* Background ornament */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-gold/5 blur-[100px]" />
-        <div className="absolute inset-0 bg-grid opacity-[0.04]" />
+        <div className="absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/12 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-copper/8 blur-[100px]" />
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center">
@@ -19,7 +17,7 @@ export const SlideOpening = () => {
           className="mb-8 flex items-center gap-3"
         >
           <span className="font-mono text-[11px] uppercase tracking-[0.4em] text-primary/80">
-            Caso de Negocio · 2025
+            Seed Round · 2026
           </span>
         </motion.div>
 
@@ -45,16 +43,16 @@ export const SlideOpening = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="max-w-2xl text-lg md:text-xl font-light leading-relaxed text-muted-foreground"
         >
-          Un juego social de fútbol y eSports para China.
-          Se juega <span className="text-foreground font-normal">gratis dentro de WeChat</span>,
-          sin dinero real y <span className="text-primary font-normal">100 % legal</span>.
+          La <span className="text-foreground font-normal">app de juego fantasy</span> para los aficionados chinos al fútbol europeo y eSports.
+          <br />Distribuida como Mini-Programa de WeChat.
+          <br /><span className="font-serif italic text-foreground">SaaS gamificado · 100 % legal.</span>
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs text-muted-foreground/70"
+          className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs text-muted-foreground"
         >
           <div className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-primary" />
@@ -62,11 +60,11 @@ export const SlideOpening = () => {
           </div>
           <div className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-primary" />
-            <span>Relaciones Internacionales · 4º curso</span>
+            <span>Regiones de Asia · RR.II. 4º</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-primary" />
-            <span>Trabajo Final de Grado</span>
+            <span>Pitch para inversores</span>
           </div>
         </motion.div>
 
@@ -74,9 +72,9 @@ export const SlideOpening = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/40"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/60"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Comenzar presentación</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Comenzar</span>
           <span className="animate-bounce text-lg">↓</span>
         </motion.div>
       </div>

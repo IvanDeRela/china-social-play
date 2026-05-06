@@ -1,99 +1,67 @@
 import { motion } from "framer-motion";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
+import { Money } from "../Money";
 
+/** Mejora 10 — apertura que conecta con HTML 1 (estudio del país). */
 export const SlideContext = () => {
   return (
-    <SlideShell chapter="02" chapterLabel="Contexto">
-      <div className="grid flex-1 grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Left column */}
-        <div className="lg:col-span-5 flex flex-col justify-center">
-          <Eyebrow color="violet">El punto de partida</Eyebrow>
+    <SlideShell chapter="02" chapterLabel="El Nicho">
+      <Eyebrow color="primary">Vienes del estudio del país</Eyebrow>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-6"
-          >
-            Para entender China,
-            <br />
-            hay que <span className="text-violet">olvidarse</span>
-            <br />
-            de Europa.
-          </motion.h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-6 max-w-5xl"
+      >
+        China es un mercado <span className="font-serif italic text-primary">maduro</span>.
+        <br />Hemos detectado <span className="text-copper">un nicho vacío</span>.
+      </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-base md:text-lg leading-relaxed text-muted-foreground"
-          >
-            En China <strong className="text-foreground font-medium">apostar dinero es ilegal</strong>.
-            No es algo nuevo: es una norma con
-            <strong className="text-foreground font-medium"> 75 años de vigencia</strong> y
-            raíces culturales de <strong className="text-foreground font-medium">siglos</strong>.
-            Cualquier negocio que ignore este punto, fracasa.
-          </motion.p>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
+      >
+        Digital, energética y regulatoriamente lista. Pero hay un hueco evidente:
+        <strong className="text-foreground font-medium"> 200 millones de aficionados al fútbol europeo en China sin ningún producto fantasy nativo en WeChat</strong>.
+        Esto es lo que vamos a construir.
+      </motion.p>
 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {[
+          { val: "200", unit: "M", label: "Aficionados al fútbol europeo en China", sub: "iResearch · CNNIC 2024" },
+          { val: "1.300", unit: "M", label: "Usuarios activos en WeChat", sub: "Tencent Investor Relations 2024" },
+          { val: "0", unit: "", label: "Apps fantasy nativas legales en WeChat", sub: "App Annie · Sensor Tower 2024" },
+        ].map((s, i) => (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-8 inline-flex items-center gap-3 rounded-full border border-violet/30 bg-violet/5 px-4 py-2 text-xs"
+            key={s.label}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 + i * 0.12 }}
+            className="rounded-2xl border border-border bg-card p-7 shadow-card"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-violet" />
-            <span className="text-violet/90">Esto cambia toda la lógica del negocio</span>
+            <Money value={s.val} unit={s.unit} size="xl" tone={i === 2 ? "copper" : "primary"} />
+            <div className="mt-4 text-sm font-medium text-foreground">{s.label}</div>
+            <div className="mt-1 text-xs text-muted-foreground font-mono uppercase tracking-wider">{s.sub}</div>
           </motion.div>
-        </div>
-
-        {/* Right column — facts */}
-        <div className="lg:col-span-7 flex flex-col gap-4 justify-center">
-          {[
-            {
-              year: "1949",
-              title: "Apostar queda prohibido",
-              body: "Tras la Revolución, el Estado prohíbe cualquier forma de juego con dinero. La norma sigue intacta hoy.",
-              color: "danger",
-            },
-            {
-              year: "1987 · 1994",
-              title: "Solo dos loterías estatales",
-              body: "Las únicas excepciones legales. Se justifican como financiación pública, no como entretenimiento.",
-              color: "warn",
-            },
-            {
-              year: "Tradición",
-              title: "Jugar por diversión, sí. Por dinero, no.",
-              body: "Durante siglos, China toleró el juego social entre amigos, pero rechazó el lucro. Esa frontera cultural sigue marcando hoy lo que está permitido.",
-              color: "primary",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 + i * 0.15 }}
-              className="group relative rounded-2xl border border-border bg-card/40 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card/60"
-            >
-              <div
-                className="absolute left-0 top-6 h-12 w-1 rounded-r-full"
-                style={{ background: `hsl(var(--${item.color}))` }}
-              />
-              <div className="flex items-baseline justify-between mb-2">
-                <span
-                  className="font-mono text-[10px] uppercase tracking-[0.25em]"
-                  style={{ color: `hsl(var(--${item.color}))` }}
-                >
-                  {item.year}
-                </span>
-              </div>
-              <h3 className="font-serif text-lg md:text-xl text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-            </motion.div>
-          ))}
-        </div>
+        ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 1 }}
+        className="mt-10 rounded-2xl border-l-4 border-primary bg-primary/5 px-6 py-5"
+      >
+        <p className="text-base md:text-lg leading-relaxed text-foreground/90 max-w-4xl">
+          <strong className="text-primary">El que llega primero define las reglas.</strong>{" "}
+          Nadie ha construido todavía un fantasy nativo en chino, dentro de WeChat, alineado con el
+          marco regulatorio de Pekín. Nosotros sí.
+        </p>
+      </motion.div>
     </SlideShell>
   );
 };

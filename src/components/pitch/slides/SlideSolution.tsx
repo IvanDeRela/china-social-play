@@ -1,106 +1,97 @@
 import { motion } from "framer-motion";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
+import { Money } from "../Money";
 
+/** Mejora 3 — un único público objetivo bien definido. */
 export const SlideSolution = () => {
   return (
-    <SlideShell chapter="04" chapterLabel="Solución">
-      <Eyebrow color="primary">Nuestra propuesta</Eyebrow>
+    <SlideShell chapter="04" chapterLabel="Cliente">
+      <Eyebrow color="primary">Público objetivo · una sola persona</Eyebrow>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-6 max-w-4xl"
+        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-10 max-w-4xl"
       >
-        No es un casino. Es una
-        <br />
-        <span className="text-primary">red social competitiva</span>{" "}
-        <span className="text-muted-foreground/40">de deporte.</span>
+        Conoce a <span className="font-serif italic text-primary">Wei Liu</span>.
       </motion.h2>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-        className="max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground mb-12"
-      >
-        El usuario crea su <strong className="text-foreground font-medium">equipo virtual</strong> de
-        fútbol o eSports y compite con amigos dentro de WeChat. Juega gratis y
-        <strong className="text-foreground font-medium"> nunca gana ni pierde dinero</strong>.
-        Nosotros ingresamos por publicidad, marcas patrocinadoras y una suscripción premium con
-        estadísticas avanzadas.
-      </motion.p>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Persona card */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="lg:col-span-5 rounded-3xl border border-border bg-card p-8 shadow-elevated"
+        >
+          <div className="flex items-center gap-5 mb-6">
+            <div className="grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-primary to-primary-glow text-primary-foreground font-serif text-3xl shadow-card">
+              WL
+            </div>
+            <div>
+              <div className="font-serif text-2xl text-foreground">Wei Liu · 刘伟</div>
+              <div className="text-sm text-muted-foreground">28 años · Shanghái</div>
+            </div>
+          </div>
 
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-5">
-        {[
-          {
-            icon: "🎮",
-            title: "Gratis para el usuario",
-            sub: "Sin pagar, sin apostar",
-            body: "Jugar no cuesta nada y no se gana dinero. Solo puntos y prestigio entre amigos, como un Trivial deportivo.",
-            tone: "primary",
-          },
-          {
-            icon: "📡",
-            title: "Dentro de WeChat",
-            sub: "1.300 millones de usuarios",
-            body: "No hay que descargar nada. La app vive dentro de WeChat, la red social que casi todos los chinos usan a diario.",
-            tone: "info",
-          },
-          {
-            icon: "👑",
-            title: "Suscripción VIP",
-            sub: "Estadísticas avanzadas",
-            body: "Quien quiera más datos y predicciones de jugadores con IA paga ¥29 al mes. Vendemos información deportiva, no apuestas.",
-            tone: "gold",
-          },
-        ].map((p, i) => (
-          <motion.div
-            key={p.title}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 + i * 0.15 }}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-7 backdrop-blur-sm transition-all hover:border-primary/40 hover:-translate-y-1"
-          >
-            <div
-              className="absolute inset-x-0 top-0 h-px"
-              style={{ background: `linear-gradient(90deg, transparent, hsl(var(--${p.tone})), transparent)` }}
-            />
-            <div
-              className="grid h-14 w-14 place-items-center rounded-2xl text-3xl mb-5"
-              style={{
-                background: `hsl(var(--${p.tone}) / 0.12)`,
-                border: `1px solid hsl(var(--${p.tone}) / 0.25)`,
-              }}
-            >
-              {p.icon}
+          <ul className="space-y-3 text-sm text-foreground/90">
+            {[
+              ["💼", <>Ingeniero de software · <span className="font-mono text-primary">USD 35.000/año</span></>],
+              ["⚽", "Aficionado al Real Madrid desde 2014"],
+              ["📺", "Ve 2-3 partidos LaLiga/semana en iQIYI Sports"],
+              ["🎮", <>Honor of Kings 1h/día · gasta <span className="font-mono text-copper">USD 30/mes</span> en gemas</>],
+              ["💬", "8 amigos en WeChat con los que quiere competir"],
+            ].map(([icon, text], i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="text-base mt-0.5">{icon}</span>
+                <span className="leading-relaxed">{text}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* Segment stats */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="lg:col-span-7 space-y-5"
+        >
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7">
+            <div className="eyebrow text-primary mb-3">Tamaño del segmento</div>
+            <Money value="25-40" unit="M" size="2xl" />
+            <p className="mt-3 text-sm md:text-base text-foreground/80">
+              Personas como Wei Liu en ciudades <strong className="text-foreground">tier 1 y tier 2</strong> de China:
+              jóvenes profesionales urbanos, aficionados al fútbol europeo, gamers móviles activos.
+            </p>
+            <div className="mt-3 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              Fuentes: CNNIC 2024 · iResearch Mobile Gaming Report
             </div>
-            <div className="eyebrow mb-2" style={{ color: `hsl(var(--${p.tone}))` }}>
-              {p.sub}
-            </div>
-            <h3 className="font-serif text-2xl text-foreground mb-3">{p.title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-          </motion.div>
-        ))}
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { val: "USD 30", label: "Gasto medio mensual en gaming móvil" },
+              { val: "78%", label: "Sigue al menos una liga europea" },
+              { val: "94%", label: "Usa WeChat varias horas al día" },
+            ].map((s) => (
+              <div key={s.label} className="rounded-xl border border-border bg-card p-5">
+                <div className="font-mono text-2xl text-primary font-semibold">{s.val}</div>
+                <div className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-xl border-l-4 border-copper bg-copper/5 px-5 py-4">
+            <p className="text-sm md:text-base text-foreground/90">
+              <strong className="text-copper">Es nuestro Day-One user.</strong> Si convertimos a Wei,
+              él trae a sus 8 amigos. <span className="font-mono text-copper">Coeficiente viral: 2,4×</span>.
+            </p>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Footer note */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 1.1 }}
-        className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-xs text-muted-foreground"
-      >
-        <span className="font-mono uppercase tracking-[0.2em] text-primary/80">Resumen</span>
-        <span>Plataforma social</span>
-        <span className="text-border">·</span>
-        <span>SaaS de datos</span>
-        <span className="text-border">·</span>
-        <span>Sin cash-out</span>
-        <span className="text-border">·</span>
-        <span>Distribución nativa WeChat</span>
-      </motion.div>
     </SlideShell>
   );
 };
