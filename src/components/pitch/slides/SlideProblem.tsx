@@ -1,7 +1,19 @@
-import { motion } from "framer-motion";
-import { Smartphone, X, Check } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Smartphone, X, Check, Users, Trophy, Activity, Crown } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
+import mockupTeam from "@/assets/mockup-team.jpg";
+import mockupLeague from "@/assets/mockup-league.jpg";
+import mockupStats from "@/assets/mockup-stats.jpg";
+import mockupPremium from "@/assets/mockup-premium.jpg";
+
+const modules = [
+  { n: "01", t: "Crea equipo",  Icon: Users,    img: mockupTeam,    desc: "Plantilla estilo La Liga: arrastra jugadores y elige formación 4-3-3." },
+  { n: "02", t: "Liga privada", Icon: Trophy,   img: mockupLeague,  desc: "Invita amigos por WeChat, ranking semanal y premios virtuales." },
+  { n: "03", t: "Live stats",   Icon: Activity, img: mockupStats,   desc: "Datos en directo del partido: xG, asistencias y goles al instante." },
+  { n: "04", t: "Premium VIP",  Icon: Crown,    img: mockupPremium, desc: "AI predicciones, sin ads, insignia VIP y soporte 24/7." },
+];
 
 export const SlideProblem = () => {
   const them = [
