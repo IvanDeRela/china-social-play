@@ -100,23 +100,21 @@ export const SlideProblem = () => {
         </div>
       </div>
 
-      {/* Versus */}
+      {/* Versus chips */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="rounded-2xl border border-border bg-card overflow-hidden shadow-card"
+        className="grid grid-cols-1 md:grid-cols-3 gap-3"
       >
-        <div className="grid grid-cols-3 border-b border-border bg-muted/40 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
-          <div className="px-5 py-2.5">Rival</div>
-          <div className="px-5 py-2.5">Su modelo</div>
-          <div className="px-5 py-2.5 text-primary">FantasyChina</div>
-        </div>
         {versus.map((v) => (
-          <div key={v.rival} className="grid grid-cols-3 border-b border-border last:border-0 text-sm">
-            <div className="px-5 py-3 font-serif text-foreground">{v.rival}</div>
-            <div className="px-5 py-3 text-muted-foreground">{v.them}</div>
-            <div className="px-5 py-3 text-foreground/90"><span className="text-primary mr-2">→</span>{v.us}</div>
+          <div key={v.rival} className="rounded-2xl border border-border bg-card p-4 shadow-card">
+            <div className="font-serif text-lg text-foreground mb-2">{v.rival}</div>
+            <div className="flex items-center gap-2 text-xs">
+              <span className="line-through text-muted-foreground">{v.them}</span>
+              <span className="text-primary">→</span>
+              <span className="text-primary font-semibold">{v.us}</span>
+            </div>
           </div>
         ))}
       </motion.div>
@@ -125,7 +123,7 @@ export const SlideProblem = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
-        className="mt-5 rounded-xl border border-danger/40 bg-danger/5 px-5 py-3 text-center"
+        className="mt-5 inline-flex self-start rounded-full border-2 border-danger bg-danger/5 px-5 py-2"
       >
         <p className="text-base font-bold text-danger tracking-wide">
           NO apuestas · 100 % habilidad
