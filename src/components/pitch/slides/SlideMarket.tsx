@@ -77,7 +77,7 @@ export const SlideMarket = () => {
             return (
               <div key={s.l} className={`rounded-2xl border ${c.border} bg-card p-5 shadow-card`}>
                 <div className={`font-mono font-bold text-6xl ${c.text}`}>{s.v}</div>
-                <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground`}>{s.l}</div>
+                <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
               </div>
             );
           })}
