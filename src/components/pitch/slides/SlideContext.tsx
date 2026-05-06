@@ -37,22 +37,21 @@ export const SlideContext = () => {
         {/* KPIs verticales */}
         <div className="lg:col-span-5 grid grid-cols-1 gap-3">
           {[
-            { val: 200, suf: " M", label: "Fans fútbol europeo · China", sub: "iResearch · CNNIC 2024", tone: "primary" },
-            { val: 1300, suf: " M", label: "Usuarios WeChat", sub: "Tencent IR 2024", tone: "primary" },
+            { val: 200, suf: "M", label: "Fans fútbol europeo · China", sub: "iResearch · CNNIC 2024", tone: "primary" },
+            { val: 1300, suf: "M", label: "Usuarios WeChat", sub: "Tencent IR 2024", tone: "primary" },
             { val: 0, suf: "", label: "Apps fantasy nativas", sub: "Sensor Tower 2024", tone: "copper" },
           ].map((s, i) => (
             <motion.div
               key={s.label}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
-              className="rounded-2xl border border-border bg-card p-5 shadow-card flex items-center gap-5"
+              className="rounded-2xl border border-border bg-card p-5 shadow-card flex items-center gap-4"
             >
-              <CountUp
-                to={s.val}
-                suffix={s.suf}
-                className={`font-mono font-bold text-7xl md:text-8xl leading-none ${s.tone === "primary" ? "text-primary" : "text-copper"}`}
-              />
-              <div className="min-w-0">
-                <div className="text-sm font-medium text-foreground">{s.label}</div>
+              <div className={`flex items-baseline font-mono font-bold leading-none ${s.tone === "primary" ? "text-primary" : "text-copper"}`}>
+                <CountUp to={s.val} className="text-5xl md:text-6xl" />
+                {s.suf && <span className="text-3xl md:text-4xl ml-1 opacity-90">{s.suf}</span>}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-sm font-medium text-foreground leading-tight">{s.label}</div>
                 <div className="mt-1 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">{s.sub}</div>
               </div>
             </motion.div>

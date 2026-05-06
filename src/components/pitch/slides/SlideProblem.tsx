@@ -1,9 +1,23 @@
-import { motion } from "framer-motion";
-import { Smartphone, X, Check } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Smartphone, X, Check, Users, Trophy, Activity, Crown } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
+import mockupTeam from "@/assets/mockup-team.jpg";
+import mockupLeague from "@/assets/mockup-league.jpg";
+import mockupStats from "@/assets/mockup-stats.jpg";
+import mockupPremium from "@/assets/mockup-premium.jpg";
+
+const modules = [
+  { n: "01", t: "Crea equipo",  Icon: Users,    img: mockupTeam,    desc: "Plantilla estilo La Liga: arrastra jugadores y elige formación 4-3-3." },
+  { n: "02", t: "Liga privada", Icon: Trophy,   img: mockupLeague,  desc: "Invita amigos por WeChat, ranking semanal y premios virtuales." },
+  { n: "03", t: "Live stats",   Icon: Activity, img: mockupStats,   desc: "Datos en directo del partido: xG, asistencias y goles al instante." },
+  { n: "04", t: "Premium VIP",  Icon: Crown,    img: mockupPremium, desc: "AI predicciones, sin ads, insignia VIP y soporte 24/7." },
+];
 
 export const SlideProblem = () => {
+  const [activeMod, setActiveMod] = useState(0);
+  const active = modules[activeMod];
   const them = [
     "Apuestas con dinero real",
     "NFTs caros · pay-to-win",
@@ -74,23 +88,75 @@ export const SlideProblem = () => {
         </motion.div>
       </div>
 
-      {/* 4 módulos compactos */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
-        {[
-          { n: "01", t: "Crea equipo" },
-          { n: "02", t: "Liga privada" },
-          { n: "03", t: "Live stats" },
-          { n: "04", t: "Premium VIP" },
-        ].map((m, i) => (
-          <motion.div
-            key={m.n}
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
-            className="rounded-xl border border-border bg-card px-4 py-3 shadow-card"
-          >
-            <div className="font-mono text-[10px] tracking-[0.25em] text-primary">{m.n}</div>
-            <div className="font-serif text-base text-foreground mt-1">{m.t}</div>
-          </motion.div>
-        ))}
+      {/* 4 módulos interactivos con preview */}
+      <div className="rounded-2xl border border-border bg-card shadow-card overflow-hidden mb-5">
+        <div className="grid grid-cols-4 border-b border-border bg-muted/20">
+          {modules.map((m, i) => {
+            const isActive = i === activeMod;
+            return (
+              <button
+                key={m.n}
+                onClick={() => setActiveMod(i)}
+                className={`flex flex-col items-center gap-1 px-3 py-3 text-center transition-all border-b-2 ${
+                  isActive ? "border-primary bg-primary/5" : "border-transparent hover:bg-muted/40"
+                }`}
+              >
+                <m.Icon className={`h-4 w-4 ${isActive ? "text-primary" : "text-muted-foreground"}`} />
+                <div className={`font-mono text-[9px] tracking-[0.2em] ${isActive ? "text-primary" : "text-muted-foreground"}`}>{m.n}</div>
+                <div className={`font-serif text-sm leading-tight ${isActive ? "text-foreground font-semibold" : "text-muted-foreground"}`}>{m.t}</div>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.n}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35 }}
+              className="md:col-span-2 flex justify-center"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 rounded-[28px] bg-primary/15 blur-2xl opacity-60" />
+                <img
+                  src={active.img}
+                  alt={`Mockup ${active.t}`}
+                  loading="lazy"
+                  width={512}
+                  height={1024}
+                  className="relative h-[280px] w-auto rounded-[24px] border border-border shadow-elevated object-cover"
+                />
+              </div>
+            </motion.div>
+            <motion.div
+              key={`text-${active.n}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, delay: 0.05 }}
+              className="md:col-span-3 flex flex-col justify-center"
+            >
+              <div className="eyebrow text-primary mb-2">Módulo {active.n}</div>
+              <h3 className="font-serif text-2xl text-foreground mb-2">{active.t}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{active.desc}</p>
+              <div className="flex gap-2 flex-wrap">
+                {modules.map((m, i) => (
+                  <button
+                    key={m.n}
+                    onClick={() => setActiveMod(i)}
+                    aria-label={`Ver ${m.t}`}
+                    className={`h-2 rounded-full transition-all ${
+                      i === activeMod ? "w-8 bg-primary" : "w-2 bg-border hover:bg-muted-foreground/40"
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       <motion.div
