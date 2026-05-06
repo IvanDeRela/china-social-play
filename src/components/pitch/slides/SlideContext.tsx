@@ -1,58 +1,68 @@
 import { motion } from "framer-motion";
+import { Globe2 } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
-import { Money } from "../Money";
+import { CountUp } from "../CountUp";
+import { ChinaMap } from "../ChinaMap";
 
 export const SlideContext = () => {
   return (
-    <SlideShell chapter="02" chapterLabel="El Nicho">
-      <Eyebrow color="primary">Del estudio del país · al nicho</Eyebrow>
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="mt-5 mb-7 flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground"
-      >
-        <span className="rounded-full border border-border bg-card px-3 py-1">HTML 1 · País maduro</span>
-        <span className="text-primary">→</span>
-        <span className="rounded-full bg-primary/10 text-primary px-3 py-1">HTML 2 · El nicho</span>
-      </motion.div>
+    <SlideShell chapter="02" chapterLabel="El Nicho" watermark="国">
+      <div className="flex items-center gap-3 mb-2">
+        <Globe2 className="h-6 w-6 text-primary" />
+        <Eyebrow color="primary">Del país · al nicho</Eyebrow>
+      </div>
 
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="display-xl text-5xl md:text-6xl lg:text-7xl mb-12 max-w-5xl"
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+        className="display-xl text-5xl md:text-6xl lg:text-7xl mb-8 max-w-5xl"
       >
         200 M fans. <span className="font-serif italic text-copper">0 productos</span>.
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          { val: "200", unit: "M", label: "Fans fútbol europeo · China", sub: "iResearch · CNNIC 2024", tone: "primary" as const },
-          { val: "1.300", unit: "M", label: "Usuarios WeChat", sub: "Tencent IR 2024", tone: "primary" as const },
-          { val: "0", unit: "", label: "Apps fantasy nativas", sub: "Sensor Tower 2024", tone: "copper" as const },
-        ].map((s, i) => (
-          <motion.div
-            key={s.label}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-            className="rounded-2xl border border-border bg-card p-7 shadow-card"
-          >
-            <Money value={s.val} unit={s.unit} size="2xl" tone={s.tone} />
-            <div className="mt-4 text-sm font-medium text-foreground">{s.label}</div>
-            <div className="mt-1 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">{s.sub}</div>
-          </motion.div>
-        ))}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Mapa China */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
+          className="lg:col-span-7 rounded-2xl border border-border bg-card p-4 shadow-card relative"
+        >
+          <div className="absolute top-4 left-5 z-10 flex items-center gap-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Tier 1-2</span>
+            <span className="flex items-center gap-1.5 text-[10px] font-mono text-foreground"><span className="h-2 w-2 rounded-full bg-primary" /> Tier 1</span>
+            <span className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground"><span className="h-2 w-2 rounded-full bg-copper" /> Tier 2</span>
+          </div>
+          <ChinaMap className="w-full h-[380px]" />
+        </motion.div>
+
+        {/* KPIs verticales */}
+        <div className="lg:col-span-5 grid grid-cols-1 gap-3">
+          {[
+            { val: 200, suf: " M", label: "Fans fútbol europeo · China", sub: "iResearch · CNNIC 2024", tone: "primary" },
+            { val: 1300, suf: " M", label: "Usuarios WeChat", sub: "Tencent IR 2024", tone: "primary" },
+            { val: 0, suf: "", label: "Apps fantasy nativas", sub: "Sensor Tower 2024", tone: "copper" },
+          ].map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
+              className="rounded-2xl border border-border bg-card p-5 shadow-card flex items-center gap-5"
+            >
+              <CountUp
+                to={s.val}
+                suffix={s.suf}
+                className={`font-mono font-bold text-7xl md:text-8xl leading-none ${s.tone === "primary" ? "text-primary" : "text-copper"}`}
+              />
+              <div className="min-w-0">
+                <div className="text-sm font-medium text-foreground">{s.label}</div>
+                <div className="mt-1 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">{s.sub}</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.7 }}
-        className="mt-12 flex items-center justify-center gap-6"
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}
+        className="mt-8 flex items-center justify-center gap-6"
       >
         <span className="font-serif text-2xl text-muted-foreground/70 line-through">competidores</span>
         <span className="text-3xl text-primary">→</span>
