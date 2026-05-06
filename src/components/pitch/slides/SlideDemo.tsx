@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import { Users } from "lucide-react";
+import { Users, Mail, Linkedin } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 
 /** Mejora 8 — equipo fundador con 4 roles. */
 const team = [
-  { initials: "IG", name: "Iván García del Toro", role: "CTO", area: "AI · Product",        color: "primary", bullets: ["TypeScript · Python · TF", "WeChat · Tencent Cloud"], duty: "Arquitectura · MVP · IA" },
-  { initials: "AH", name: "Alberto Hernández",    role: "CEO", area: "Strategy · IR",       color: "copper",  bullets: ["Fundraising internacional", "LaLiga · ICEX · Casa Asia"], duty: "Capital · partnerships" },
-  { initials: "RI", name: "Rafael Imbernón",      role: "CMO", area: "Growth · Community",  color: "primary", bullets: ["KOL · WeChat Moments", "Marketing digital Asia"], duty: "Adquisición · branding" },
-  { initials: "PP", name: "Pedro Plaza",          role: "CFO", area: "Finance · Compliance",color: "success", bullets: ["Modelo · unit economics", "PIPL · CSL · ICP"], duty: "Ronda · legal · HK" },
+  { initials: "IG", name: "Iván García del Toro", role: "CTO", area: "AI · Product",        color: "primary", bullets: ["TypeScript · Python · TF", "WeChat · Tencent Cloud"], duty: "Arquitectura · MVP · IA",   email: "ivan.garcia@fantasychina.io",    linkedin: "ivan-garcia-deltoro" },
+  { initials: "AH", name: "Alberto Hernández",    role: "CEO", area: "Strategy · IR",       color: "copper",  bullets: ["Fundraising internacional", "LaLiga · ICEX · Casa Asia"], duty: "Capital · partnerships",     email: "alberto.hernandez@fantasychina.io", linkedin: "alberto-hernandez-fc" },
+  { initials: "RI", name: "Rafael Imbernón",      role: "CMO", area: "Growth · Community",  color: "primary", bullets: ["KOL · WeChat Moments", "Marketing digital Asia"], duty: "Adquisición · branding",            email: "rafael.imbernon@fantasychina.io",  linkedin: "rafael-imbernon-growth" },
+  { initials: "PP", name: "Pedro Plaza",          role: "CFO", area: "Finance · Compliance",color: "success", bullets: ["Modelo · unit economics", "PIPL · CSL · ICP"], duty: "Ronda · legal · HK",                  email: "pedro.plaza@fantasychina.io",      linkedin: "pedro-plaza-cfo" },
 ] as const;
 
 const colorClasses: Record<string, string> = {
