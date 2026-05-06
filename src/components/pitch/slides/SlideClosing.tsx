@@ -129,6 +129,10 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
           </button>
         </motion.div>
 
+        <div className="mt-6">
+          <PartnerLogos label="Target partners · ecosistema" />
+        </div>
+
         <div className="mt-8 flex items-center justify-center gap-3 text-xs text-muted-foreground">
           <span className="font-mono uppercase tracking-[0.3em]">谢谢</span>
           <span className="h-px w-12 bg-border" />
