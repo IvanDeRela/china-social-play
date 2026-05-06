@@ -45,10 +45,25 @@ export const SlideMonetization = () => {
     ],
   }), [d]);
 
-  const opts = useMemo(() => ({
-    ...baseOptions(),
-    scales: { ...baseOptions().scales, y: { ...baseOptions().scales.y, title: { display: true, text: "Millones USD", color: palette.muted(), font: { size: 11 } } } },
-  }), []);
+  const opts = useMemo(() => {
+    const allVals = [...d.revenue, ...d.cost, ...d.ebitda];
+    const minV = Math.min(...allVals);
+    const maxV = Math.max(...allVals);
+    const yMin = minV < 0 ? Math.floor(minV) : 0;
+    const yMax = Math.ceil(maxV / 10) * 10;
+    return {
+      ...baseOptions(),
+      scales: {
+        ...baseOptions().scales,
+        y: {
+          ...baseOptions().scales.y,
+          min: yMin,
+          max: yMax,
+          title: { display: true, text: "Millones USD", color: palette.muted(), font: { size: 11 } },
+        },
+      },
+    };
+  }, [d]);
 
   // Curva exponencial MAU con anotaciones grandes
   const dauData = useMemo(() => ({
