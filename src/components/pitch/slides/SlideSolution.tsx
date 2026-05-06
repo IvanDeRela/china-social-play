@@ -75,11 +75,9 @@ export const SlideSolution = () => {
             ))}
           </div>
 
-          <div className="rounded-xl border-l-4 border-copper bg-copper/5 px-5 py-3.5">
-            <p className="text-sm md:text-base text-foreground/90">
-              <strong className="text-copper">Wei trae a sus 8 amigos.</strong>{" "}
-              <span className="font-mono text-copper">k = 2,4×</span>
-            </p>
+          <div className="rounded-xl border-l-4 border-copper bg-copper/5 px-5 py-4 flex items-center gap-4">
+            <span className="font-mono font-bold text-4xl text-copper">k=2,4×</span>
+            <span className="text-sm text-foreground/85">viralidad WeChat · 8 amigos por usuario</span>
           </div>
         </motion.div>
       </div>

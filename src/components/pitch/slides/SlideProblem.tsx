@@ -125,10 +125,10 @@ export const SlideProblem = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
-        className="mt-5 rounded-xl border border-danger/30 bg-danger/5 px-5 py-3 text-center"
+        className="mt-5 rounded-xl border border-danger/40 bg-danger/5 px-5 py-3 text-center"
       >
-        <p className="text-sm font-medium text-foreground">
-          <span className="text-danger">NO somos casa de apuestas.</span> Competición de habilidad.
+        <p className="text-base font-bold text-danger tracking-wide">
+          NO apuestas · 100 % habilidad
         </p>
       </motion.div>
     </SlideShell>

@@ -23,19 +23,10 @@ export const SlideContext = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mb-8 max-w-5xl"
+        className="display-xl text-5xl md:text-6xl lg:text-7xl mb-12 max-w-5xl"
       >
         200 M fans. <span className="font-serif italic text-copper">0 productos</span>.
       </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="max-w-3xl text-sm md:text-base text-foreground/80 mb-10 leading-relaxed"
-      >
-        Vienes del estudio del país: China es <span className="text-primary font-medium">madura digital, energética y regulatoriamente</span>. Hemos detectado el nicho. Esto es lo que vamos a construir.
-      </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[

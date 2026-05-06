@@ -18,11 +18,11 @@ const toneMap = {
 };
 
 const sizeMap = {
-  sm: "text-2xl",
-  md: "text-3xl md:text-4xl",
-  lg: "text-4xl md:text-5xl",
-  xl: "text-5xl md:text-6xl",
-  "2xl": "text-6xl md:text-7xl lg:text-8xl",
+  sm: "text-3xl",
+  md: "text-4xl md:text-5xl",
+  lg: "text-5xl md:text-6xl",
+  xl: "text-6xl md:text-7xl",
+  "2xl": "text-7xl md:text-8xl lg:text-9xl",
 };
 
 /** Numerical figure styled with mono font + accent color, with small unit label. */

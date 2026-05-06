@@ -4,59 +4,10 @@ import { Eyebrow } from "../Eyebrow";
 
 /** Mejora 8 — equipo fundador con 4 roles. */
 const team = [
-  {
-    initials: "IG",
-    name: "Iván García del Toro",
-    role: "CTO · Co-founder",
-    area: "AI · Product",
-    color: "primary",
-    bullets: [
-      "TypeScript · Python · TensorFlow",
-      "WeChat Mini-Program · Tencent Cloud",
-      "Erasmus Lille · Master Lyon 3",
-      "ES · FR · EN · DE",
-    ],
-    duty: "Arquitectura · MVP · motor IA",
-  },
-  {
-    initials: "AH",
-    name: "Alberto Hernández",
-    role: "CEO · Co-founder",
-    area: "Strategy · IR",
-    color: "copper",
-    bullets: [
-      "Estrategia · fundraising internacional",
-      "Negociación con inversores",
-      "Partnerships LaLiga · ICEX · Casa Asia",
-    ],
-    duty: "Capital · partnerships · dirección",
-  },
-  {
-    initials: "RI",
-    name: "Rafael Imbernón",
-    role: "CMO · Co-founder",
-    area: "Growth · Community",
-    color: "primary",
-    bullets: [
-      "Marketing digital en Asia",
-      "KOL marketing · WeChat Moments",
-      "Content · grupos privados",
-    ],
-    duty: "Adquisición · creadores · branding",
-  },
-  {
-    initials: "PP",
-    name: "Pedro Plaza",
-    role: "CFO · Co-founder",
-    area: "Finance · Compliance",
-    color: "success",
-    bullets: [
-      "Modelo financiero · unit economics",
-      "Due diligence · ronda seed",
-      "PIPL · Cybersecurity Law · ICP",
-    ],
-    duty: "Modelo · ronda · legal · HK",
-  },
+  { initials: "IG", name: "Iván García del Toro", role: "CTO", area: "AI · Product",        color: "primary", bullets: ["TypeScript · Python · TF", "WeChat · Tencent Cloud"], duty: "Arquitectura · MVP · IA" },
+  { initials: "AH", name: "Alberto Hernández",    role: "CEO", area: "Strategy · IR",       color: "copper",  bullets: ["Fundraising internacional", "LaLiga · ICEX · Casa Asia"], duty: "Capital · partnerships" },
+  { initials: "RI", name: "Rafael Imbernón",      role: "CMO", area: "Growth · Community",  color: "primary", bullets: ["KOL · WeChat Moments", "Marketing digital Asia"], duty: "Adquisición · branding" },
+  { initials: "PP", name: "Pedro Plaza",          role: "CFO", area: "Finance · Compliance",color: "success", bullets: ["Modelo · unit economics", "PIPL · CSL · ICP"], duty: "Ronda · legal · HK" },
 ] as const;
 
 const colorClasses: Record<string, string> = {
