@@ -113,7 +113,7 @@ export const SlideRoadmap = () => {
             transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
             className="rounded-2xl border border-border bg-card p-4 shadow-card"
           >
-            <div className="text-xl mb-2">{e.icon}</div>
+            <div className="mb-2">{e.icon}</div>
             <h4 className="font-serif text-base text-foreground mb-1">{e.title}</h4>
             <p className="text-xs leading-relaxed text-muted-foreground">{e.body}</p>
           </motion.div>
