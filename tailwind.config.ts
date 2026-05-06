@@ -13,8 +13,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        serif: ["DM Serif Display", "Georgia", "serif"],
-        display: ["DM Serif Display", "serif"],
+        serif: ["Fraunces", "DM Serif Display", "Georgia", "serif"],
+        display: ["Fraunces", "DM Serif Display", "serif"],
         mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
       colors: {
@@ -59,6 +59,8 @@ export default {
         info: "hsl(var(--info))",
         warn: "hsl(var(--warn))",
         danger: "hsl(var(--danger))",
+        success: "hsl(var(--success))",
+        copper: "hsl(var(--copper))",
         violet: "hsl(var(--violet))",
       },
       borderRadius: {

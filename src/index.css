@@ -3,109 +3,96 @@
 @tailwind utilities;
 
 /* ============================================================
-   FantasyChina · Business Pitch — Design System
-   Estética: Dark editorial · WeChat green · Dorado imperial
+   FantasyChina · Business Pitch — Light Investor Deck
+   Coherente con HTML 1 · #fafaf7 + cian + rojo chino + cobre
    ============================================================ */
 
 @layer base {
   :root {
-    /* Surfaces */
-    --background: 210 60% 4%;
-    --foreground: 210 40% 96%;
+    /* Surfaces — light editorial */
+    --background: 60 20% 97%;            /* #fafaf7 */
+    --foreground: 222 38% 7%;            /* #0a0e1a */
 
-    --card: 215 45% 7%;
-    --card-foreground: 210 40% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 38% 7%;
 
-    --popover: 215 45% 7%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 38% 7%;
 
-    /* Brand — WeChat green */
-    --primary: 145 92% 40%;
-    --primary-foreground: 210 60% 4%;
-    --primary-glow: 145 80% 55%;
+    /* Brand accent — cian eléctrico (KPIs positivos, growth, money in) */
+    --primary: 190 95% 36%;              /* #0891b2 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 190 90% 50%;
 
-    /* Gold accent — premium / VIP */
-    --gold: 46 91% 54%;
-    --gold-foreground: 210 60% 4%;
+    /* Secondary accent — rojo chino (the ask, warnings, CTA) */
+    --gold: 21 88% 36%;                  /* cobre #b45309 (premium) */
+    --gold-foreground: 0 0% 100%;
 
-    /* Neutrals */
-    --secondary: 215 35% 12%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 222 38% 7%;
 
-    --muted: 215 30% 14%;
-    --muted-foreground: 215 16% 65%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 12% 41%;     /* #5a6275 */
 
-    --accent: 215 35% 12%;
-    --accent-foreground: 210 40% 96%;
+    --accent: 220 15% 95%;
+    --accent-foreground: 222 38% 7%;
 
-    --destructive: 0 75% 58%;
-    --destructive-foreground: 210 40% 96%;
+    --destructive: 0 73% 51%;            /* #dc2626 — rojo chino */
+    --destructive-foreground: 0 0% 100%;
 
-    /* Semantic colors used across pitch */
-    --info: 199 89% 48%;
-    --warn: 38 92% 50%;
-    --danger: 0 75% 60%;
-    --violet: 258 90% 70%;
+    /* Semantic */
+    --info: 190 95% 36%;
+    --warn: 30 92% 44%;                  /* #d97706 */
+    --danger: 0 73% 51%;                 /* #dc2626 */
+    --success: 158 89% 31%;              /* #059669 — EBITDA + */
+    --violet: 258 60% 50%;
+    --copper: 21 88% 36%;                /* #b45309 */
 
-    --border: 215 35% 14%;
-    --input: 215 35% 14%;
-    --ring: 145 92% 40%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 190 95% 36%;
 
     --radius: 1rem;
 
     /* Gradients */
-    --gradient-hero: radial-gradient(ellipse at top, hsl(145 80% 30% / 0.25) 0%, hsl(210 60% 4%) 60%);
+    --gradient-hero: radial-gradient(ellipse at top, hsl(190 90% 80% / 0.25) 0%, transparent 60%);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(28 90% 55%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(215 50% 8%) 0%, hsl(210 60% 4%) 100%);
     --gradient-accent-line: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
 
     /* Shadows */
-    --shadow-glow: 0 0 60px hsl(var(--primary) / 0.25);
-    --shadow-gold: 0 0 40px hsl(var(--gold) / 0.3);
-    --shadow-card: 0 20px 60px -20px hsl(210 80% 2% / 0.8);
-    --shadow-elevated: 0 30px 80px -20px hsl(210 80% 2% / 0.95);
+    --shadow-glow: 0 0 60px hsl(var(--primary) / 0.18);
+    --shadow-card: 0 10px 30px -10px hsl(222 38% 7% / 0.10);
+    --shadow-elevated: 0 24px 60px -20px hsl(222 38% 7% / 0.20);
 
     /* Fonts */
-    --font-serif: 'DM Serif Display', 'Cormorant Garamond', Georgia, serif;
+    --font-serif: 'Fraunces', 'DM Serif Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-display: 'DM Serif Display', serif;
+    --font-display: 'Fraunces', 'DM Serif Display', serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-    /* Motion */
     --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--primary) / 0.08), transparent),
-      radial-gradient(ellipse 60% 40% at 80% 100%, hsl(var(--gold) / 0.04), transparent);
+      linear-gradient(hsl(222 38% 7% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(222 38% 7% / 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
     background-attachment: fixed;
   }
 
-  ::selection {
-    background: hsl(var(--primary) / 0.3);
-    color: hsl(var(--foreground));
-  }
+  ::selection { background: hsl(var(--primary) / 0.25); color: hsl(var(--foreground)); }
 
-  /* Scrollbar */
   ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.3);
-    border-radius: 99px;
-  }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--primary) / 0.3); border-radius: 99px; }
   ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.5); }
 }
 
@@ -114,29 +101,26 @@
   .font-display { font-family: var(--font-display); }
   .font-mono { font-family: var(--font-mono); }
 
-  .text-gold { color: hsl(var(--gold)); }
+  .text-gold, .text-copper { color: hsl(var(--copper)); }
   .text-info { color: hsl(var(--info)); }
   .text-warn { color: hsl(var(--warn)); }
   .text-danger { color: hsl(var(--danger)); }
+  .text-success { color: hsl(var(--success)); }
   .text-violet { color: hsl(var(--violet)); }
 
-  .bg-gold { background-color: hsl(var(--gold)); }
-  .border-gold { border-color: hsl(var(--gold)); }
+  .bg-gold, .bg-copper { background-color: hsl(var(--copper)); }
+  .bg-success { background-color: hsl(var(--success)); }
+  .border-gold, .border-copper { border-color: hsl(var(--copper)); }
 
   .gradient-hero { background: var(--gradient-hero); }
   .gradient-primary { background: var(--gradient-primary); }
-  .gradient-gold { background: var(--gradient-gold); }
-  .gradient-dark { background: var(--gradient-dark); }
 
   .glow-primary { box-shadow: var(--shadow-glow); }
-  .glow-gold { box-shadow: var(--shadow-gold); }
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-elevated { box-shadow: var(--shadow-elevated); }
 
-  .text-glow-primary { text-shadow: 0 0 30px hsl(var(--primary) / 0.5); }
-  .text-glow-gold { text-shadow: 0 0 30px hsl(var(--gold) / 0.4); }
+  .text-glow-primary { text-shadow: 0 0 30px hsl(var(--primary) / 0.25); }
 
-  /* Eyebrow label */
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.7rem;
@@ -145,69 +129,40 @@
     text-transform: uppercase;
   }
 
-  /* Display headline */
   .display-xl {
     font-family: var(--font-serif);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.02em;
   }
 
-  /* Subtle grid background */
+  /* Money/figures emphasis */
+  .stat-money {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: hsl(var(--primary));
+  }
+
   .bg-grid {
     background-image:
-      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+      linear-gradient(hsl(222 38% 7% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(222 38% 7% / 0.05) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
-  /* Noise texture for premium feel */
-  .bg-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-  }
-
-  /* Animated gradient border */
-  .border-gradient {
-    position: relative;
-    background: hsl(var(--card));
-    background-clip: padding-box;
-  }
-  .border-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--gold) / 0.3), transparent);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /* Hide scrollbar utility */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { scrollbar-width: none; }
 }
 
-/* Animations */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
-  50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
-}
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 }
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.2), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite;
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.4); }
 }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-.animate-float { animation: float 6s ease-in-out infinite; }
