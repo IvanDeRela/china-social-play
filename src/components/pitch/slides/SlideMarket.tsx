@@ -35,17 +35,28 @@ export const SlideMarket = () => {
             return (
               <motion.div
                 key={f.tag}
-                initial={{ opacity: 0, scaleX: 0.4 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 + i * 0.18, ease: "easeOut" }}
+                initial={{ opacity: 0, scaleX: 0.3, x: -40 }}
+                animate={{ opacity: 1, scaleX: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 + i * 0.6, ease: "easeOut" }}
                 style={{ width: f.width, transformOrigin: "center" }}
-                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between`}
+                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between overflow-hidden`}
               >
-                <div>
-                  <div className="font-mono text-xs uppercase tracking-[0.3em] opacity-80">{f.tag}</div>
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 + i * 0.6 }}
+                >
+                  <div className="font-mono text-sm uppercase tracking-[0.3em] opacity-90 font-bold">{f.tag}</div>
                   <div className="text-xs uppercase tracking-wider opacity-90 mt-1">{f.sub}</div>
-                </div>
-                <div className="font-mono font-bold text-5xl md:text-6xl">{f.value}</div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 + i * 0.6, ease: "backOut" }}
+                  className="font-mono font-bold text-7xl md:text-8xl"
+                >
+                  {f.value}
+                </motion.div>
               </motion.div>
             );
           })}
@@ -53,7 +64,7 @@ export const SlideMarket = () => {
 
         {/* KPIs */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.6 }}
+          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 2.4 }}
           className="lg:col-span-5 grid grid-cols-2 gap-3"
         >
           {[
@@ -65,8 +76,8 @@ export const SlideMarket = () => {
             const c = colorMap[s.tone];
             return (
               <div key={s.l} className={`rounded-2xl border ${c.border} bg-card p-5 shadow-card`}>
-                <div className={`font-mono font-bold text-4xl ${c.text}`}>{s.v}</div>
-                <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
+                <div className={`font-mono font-bold text-6xl ${c.text}`}>{s.v}</div>
+                <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground`}>{s.l}</div>
               </div>
             );
           })}
