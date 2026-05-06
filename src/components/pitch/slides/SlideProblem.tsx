@@ -158,6 +158,8 @@ export const SlideProblem = () => {
           </AnimatePresence>
         </div>
       </div>
+
+      <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}
         className="inline-flex self-start rounded-full border-2 border-danger bg-danger/5 px-5 py-2"
       >
