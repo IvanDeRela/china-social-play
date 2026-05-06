@@ -1,66 +1,77 @@
 import { motion } from "framer-motion";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
-import { Money } from "../Money";
 
+/** Mercado — TAM/SAM/SOM como embudo visual descendente. */
 export const SlideMarket = () => {
+  const funnel = [
+    { tag: "TAM", value: "$45B",  sub: "Gaming China · Niko Partners",  width: "100%", tone: "primary" },
+    { tag: "SAM", value: "$4B",   sub: "Mobile Sports · iResearch",      width: "62%",  tone: "copper" },
+    { tag: "SOM", value: "$200M", sub: "ARR Y5 · Proyección propia",     width: "28%",  tone: "success" },
+  ];
+
+  const colorMap: Record<string, { bg: string; text: string; border: string }> = {
+    primary: { bg: "bg-primary",  text: "text-primary",  border: "border-primary/40" },
+    copper:  { bg: "bg-copper",   text: "text-copper",   border: "border-copper/40" },
+    success: { bg: "bg-success",  text: "text-success",  border: "border-success/40" },
+  };
+
   return (
     <SlideShell chapter="05" chapterLabel="Mercado">
       <Eyebrow color="primary">Tamaño de la oportunidad</Eyebrow>
 
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-12 max-w-4xl"
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+        className="display-xl text-5xl md:text-6xl lg:text-7xl mt-6 mb-12 max-w-4xl"
       >
-        Mercado <span className="font-serif italic text-primary">enorme</span>.
-        Captura <span className="text-copper">creíble</span>.
+        Enorme. <span className="font-serif italic text-copper">Capturable</span>.
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-        {[
-          { tag: "TAM", value: "45.000", unit: "M USD", sub: "Gaming China · 2024", source: "Niko Partners", tone: "primary" as const },
-          { tag: "SAM", value: "4.000", unit: "M USD", sub: "Mobile Sports Gaming", source: "iResearch", tone: "copper" as const },
-          { tag: "SOM Y5", value: "200", unit: "M USD", sub: "ARR objetivo año 5", source: "Proyección propia", tone: "success" as const },
-        ].map((m, i) => (
-          <motion.div
-            key={m.tag}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-            className="rounded-2xl border border-border bg-card p-6 shadow-card relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 px-3 py-1 font-mono text-[10px] tracking-[0.3em] bg-foreground text-background rounded-bl-lg">
-              {m.tag}
-            </div>
-            <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">{m.sub}</div>
-            <Money value={m.value} unit={m.unit} size="xl" tone={m.tone} />
-            <div className="mt-4 text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
-              {m.source}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* Funnel */}
+        <div className="lg:col-span-7 space-y-3">
+          {funnel.map((f, i) => {
+            const c = colorMap[f.tone];
+            return (
+              <motion.div
+                key={f.tag}
+                initial={{ opacity: 0, scaleX: 0.4 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 + i * 0.18, ease: "easeOut" }}
+                style={{ width: f.width, transformOrigin: "center" }}
+                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between`}
+              >
+                <div>
+                  <div className="font-mono text-xs uppercase tracking-[0.3em] opacity-80">{f.tag}</div>
+                  <div className="text-xs uppercase tracking-wider opacity-90 mt-1">{f.sub}</div>
+                </div>
+                <div className="font-mono font-bold text-5xl md:text-6xl">{f.value}</div>
+              </motion.div>
+            );
+          })}
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.6 }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4"
-      >
-        {[
-          { val: "2", unit: "M", label: "MAU Y3", tone: "primary" as const },
-          { val: "10", unit: "M", label: "MAU Y5", tone: "primary" as const },
-          { val: "78", unit: "%", label: "Margen bruto", tone: "success" as const },
-          { val: "+15", unit: "%/año", label: "eSports China", tone: "copper" as const },
-        ].map((s) => (
-          <div key={s.label} className="rounded-xl border border-border bg-card p-5">
-            <Money value={s.val} unit={s.unit} size="md" tone={s.tone} />
-            <div className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.label}</div>
-          </div>
-        ))}
-      </motion.div>
+        {/* KPIs */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.6 }}
+          className="lg:col-span-5 grid grid-cols-2 gap-3"
+        >
+          {[
+            { v: "10M", l: "MAU Y5", tone: "primary" },
+            { v: "2M",  l: "MAU Y3", tone: "primary" },
+            { v: "78%", l: "margen bruto", tone: "success" },
+            { v: "+15%", l: "eSports/año", tone: "copper" },
+          ].map((s) => {
+            const c = colorMap[s.tone];
+            return (
+              <div key={s.l} className={`rounded-2xl border ${c.border} bg-card p-5 shadow-card`}>
+                <div className={`font-mono font-bold text-4xl ${c.text}`}>{s.v}</div>
+                <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
     </SlideShell>
   );
 };
