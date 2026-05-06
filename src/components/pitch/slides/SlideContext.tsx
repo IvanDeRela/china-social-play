@@ -26,12 +26,7 @@ export const SlideContext = () => {
           initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-7 rounded-2xl border border-border bg-card p-4 shadow-card relative"
         >
-          <div className="absolute top-4 left-5 z-10 flex items-center gap-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Tier 1-2</span>
-            <span className="flex items-center gap-1.5 text-[10px] font-mono text-foreground"><span className="h-2 w-2 rounded-full bg-primary" /> Tier 1</span>
-            <span className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground"><span className="h-2 w-2 rounded-full bg-copper" /> Tier 2</span>
-          </div>
-          <ChinaMap className="w-full h-[380px]" />
+          <ChinaMap className="w-full h-[420px]" />
         </motion.div>
 
         {/* KPIs verticales */}
