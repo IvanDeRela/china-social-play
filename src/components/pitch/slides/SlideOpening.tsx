@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideShell } from "../SlideShell";
+import { CountUp } from "../CountUp";
 import phoneHero from "@/assets/phone-hero.png";
 
 export const SlideOpening = () => {
