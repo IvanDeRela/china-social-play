@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 import { Money } from "../Money";
