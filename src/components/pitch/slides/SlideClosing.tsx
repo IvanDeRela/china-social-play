@@ -65,20 +65,20 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
-          {/* Donut */}
+          {/* Donut — más grande */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-6 rounded-2xl border border-border bg-card p-6 shadow-card"
+            className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 shadow-card"
           >
             <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
               Distribución del capital
             </div>
-            <div className="h-[240px]">
+            <div className="h-[400px]">
               <Doughnut data={allocation} options={opts as any} />
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-2 text-xs font-mono">
+            <div className="mt-4 grid grid-cols-2 gap-2 text-sm font-mono">
               <div><span className="text-primary">●</span> 40 % · USD 2,0M</div>
               <div><span className="text-copper">●</span> 30 % · USD 1,5M</div>
               <div><span className="text-success">●</span> 20 % · USD 1,0M</div>
@@ -91,7 +91,7 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="lg:col-span-6 rounded-2xl border border-primary/30 bg-primary/5 p-6"
+            className="lg:col-span-5 rounded-2xl border border-primary/30 bg-primary/5 p-6"
           >
             <div className="eyebrow text-primary mb-4">Hitos comprometidos</div>
             <ul className="space-y-3">
@@ -115,12 +115,8 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
+          className="flex justify-end"
         >
-          <div className="text-sm">
-            <span className="font-mono uppercase tracking-wider text-[10px] text-muted-foreground mr-2">Contacto</span>
-            <span className="font-mono text-foreground">ivan.garcia@um.es</span>
-          </div>
           <button
             onClick={onOpenDeepDive}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
