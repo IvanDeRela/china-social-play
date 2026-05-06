@@ -85,6 +85,20 @@ export const SlideSolution = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Quote testimonial */}
+      <motion.blockquote
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }}
+        className="mt-8 relative rounded-2xl border-l-4 border-primary bg-primary/5 px-6 py-5 max-w-4xl self-center"
+      >
+        <Quote className="absolute -top-3 -left-3 h-8 w-8 text-primary bg-background rounded-full p-1.5 border border-primary/30" />
+        <p className="font-serif italic text-xl md:text-2xl text-foreground leading-relaxed">
+          "Llevo 10 años siguiendo al Madrid. <span className="text-primary not-italic font-semibold">No tengo dónde jugar fantasy</span> en China."
+        </p>
+        <footer className="mt-2 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+          — Wei Liu · entrevista cualitativa · Shanghái 2024
+        </footer>
+      </motion.blockquote>
     </SlideShell>
   );
 };
