@@ -2,17 +2,21 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const slides = [
-  { id: 0, num: "01", label: "Apertura" },
-  { id: 1, num: "02", label: "El Nicho" },
-  { id: 2, num: "03", label: "Producto" },
-  { id: 3, num: "04", label: "Cliente" },
-  { id: 4, num: "05", label: "Mercado" },
-  { id: 5, num: "06", label: "Proyecciones" },
-  { id: 6, num: "07", label: "Escala" },
-  { id: 7, num: "08", label: "Riesgos" },
-  { id: 8, num: "09", label: "Comparables" },
-  { id: 9, num: "10", label: "Equipo" },
-  { id: 10, num: "11", label: "The Ask" },
+  { id: 0,  num: "01", label: "Apertura",     section: "Intro" },
+  { id: 1,  num: "—",  label: "Problema",     section: "div", divider: true },
+  { id: 2,  num: "02", label: "El Nicho",     section: "Problema" },
+  { id: 3,  num: "03", label: "Producto",     section: "Problema" },
+  { id: 4,  num: "—",  label: "Solución",     section: "div", divider: true },
+  { id: 5,  num: "04", label: "Cliente",      section: "Solución" },
+  { id: 6,  num: "05", label: "Mercado",      section: "Solución" },
+  { id: 7,  num: "—",  label: "Negocio",      section: "div", divider: true },
+  { id: 8,  num: "06", label: "Proyecciones", section: "Negocio" },
+  { id: 9,  num: "07", label: "Escala",       section: "Negocio" },
+  { id: 10, num: "08", label: "Riesgos",      section: "Negocio" },
+  { id: 11, num: "09", label: "Comparables",  section: "Negocio" },
+  { id: 12, num: "—",  label: "Cierre",       section: "div", divider: true },
+  { id: 13, num: "10", label: "Equipo",       section: "Cierre" },
+  { id: 14, num: "11", label: "The Ask",      section: "Cierre" },
 ];
 
 interface TopNavProps {
@@ -41,19 +45,19 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
             </div>
           </button>
 
-          <nav className="hidden items-center gap-1 lg:flex">
-            {slides.map((s) => {
+          <nav className="hidden items-center gap-0.5 lg:flex">
+            {slides.filter(s => !s.divider).map((s) => {
               const active = current === s.id;
               return (
                 <button
                   key={s.id}
                   onClick={() => onSelect(s.id)}
                   className={cn(
-                    "group relative rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
+                    "group relative rounded-md px-2.5 py-1.5 text-[11px] font-medium transition-colors",
                     active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                   )}
                 >
-                  <span className="font-mono text-[10px] opacity-60 mr-1">{s.num}</span>
+                  <span className="font-mono text-[9px] opacity-60 mr-1">{s.num}</span>
                   {s.label}
                   {active && (
                     <motion.div
@@ -68,6 +72,10 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
           </nav>
 
           <div className="flex items-center gap-3">
+            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-foreground md:inline">
+              <span className="text-primary font-bold">{String(current + 1).padStart(2, "0")}</span>
+              <span className="text-muted-foreground/60"> / {String(slides.length).padStart(2, "0")}</span>
+            </span>
             <button
               onClick={onOpenDeepDive}
               className="hidden md:inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
@@ -75,9 +83,6 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
               <span>Anexo</span>
               <span className="text-[10px]">↓</span>
             </button>
-            <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 md:inline">
-              UMU · RRII 4º
-            </span>
           </div>
         </div>
 
