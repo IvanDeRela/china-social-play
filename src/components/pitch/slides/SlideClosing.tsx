@@ -39,7 +39,7 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
   };
 
   return (
-    <SlideShell chapter="11" chapterLabel="The Ask">
+    <SlideShell chapter="11" chapterLabel="The Ask" watermark="募">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/8 blur-[100px]" />
       </div>
@@ -51,8 +51,8 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
           transition={{ duration: 0.7 }}
           className="text-center mb-8"
         >
-          <div className="font-mono text-[11px] uppercase tracking-[0.4em] text-primary mb-4">
-            Seed Round
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.4em] text-primary mb-4">
+            <Rocket className="h-4 w-4" /> Seed Round
           </div>
           <h2 className="display-xl text-7xl md:text-8xl lg:text-9xl">
             <Money value="USD 5" unit="M" size="2xl" tone="primary" className="text-primary text-glow-primary" />
