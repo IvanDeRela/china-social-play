@@ -3,17 +3,18 @@ import { cn } from "@/lib/utils";
 
 interface EyebrowProps {
   children: React.ReactNode;
-  color?: "primary" | "gold" | "info" | "warn" | "danger" | "violet";
+  color?: "primary" | "copper" | "info" | "warn" | "danger" | "violet" | "success";
   className?: string;
 }
 
 const colorMap = {
   primary: "text-primary",
-  gold: "text-gold",
+  copper: "text-copper",
   info: "text-info",
   warn: "text-warn",
   danger: "text-danger",
   violet: "text-violet",
+  success: "text-success",
 };
 
 export const Eyebrow = ({ children, color = "primary", className }: EyebrowProps) => (
