@@ -22,8 +22,11 @@ export const SlideSolution = () => {
   };
 
   return (
-    <SlideShell chapter="04" chapterLabel="Cliente">
-      <Eyebrow color="primary">Público objetivo</Eyebrow>
+    <SlideShell chapter="04" chapterLabel="Cliente" watermark="客">
+      <div className="flex items-center gap-3 mb-2">
+        <User className="h-6 w-6 text-primary" />
+        <Eyebrow color="primary">Público objetivo</Eyebrow>
+      </div>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
