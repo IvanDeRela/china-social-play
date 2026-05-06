@@ -97,7 +97,7 @@ export const SlideDemo = () => {
                 <div className={`text-xs font-mono uppercase tracking-wider mt-0.5 text-${p.color}`}>{p.role}</div>
                 <div className="text-xs text-muted-foreground mt-0.5">{p.area}</div>
               </div>
-              <div className={`text-${p.color} opacity-60`}>{p.icon}</div>
+              
             </div>
 
             <ul className="space-y-1.5 text-xs text-muted-foreground mb-3 pl-1">
