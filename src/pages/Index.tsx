@@ -12,6 +12,7 @@ import { SlideMonetization } from "@/components/pitch/slides/SlideMonetization";
 import { SlideRoadmap } from "@/components/pitch/slides/SlideRoadmap";
 import { SlideDemo } from "@/components/pitch/slides/SlideDemo";
 import { SlideClosing } from "@/components/pitch/slides/SlideClosing";
+import { SlideRisks } from "@/components/pitch/slides/SlideRisks";
 import { DeepDive } from "@/components/pitch/DeepDive";
 
 const Index = () => {
