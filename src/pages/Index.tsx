@@ -15,6 +15,7 @@ import { SlideClosing } from "@/components/pitch/slides/SlideClosing";
 import { SlideRisks } from "@/components/pitch/slides/SlideRisks";
 import { SlideDivider } from "@/components/pitch/slides/SlideDivider";
 import { DeepDive } from "@/components/pitch/DeepDive";
+import { ZoomControl } from "@/components/pitch/ZoomControl";
 
 const Index = () => {
   const [current, setCurrent] = useState(0);
