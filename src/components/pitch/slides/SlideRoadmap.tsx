@@ -1,33 +1,35 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Line } from "react-chartjs-2";
+import { Gauge } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 import { palette, baseOptions } from "../ChartTheme";
 
-/** Escala — chart + flecha temporal Y1→Y5 con palancas de coste. */
 export const SlideRoadmap = () => {
   const labels = ["Y1", "Y2", "Y3", "Y4", "Y5"];
 
   const chartData = useMemo(() => ({
     labels,
     datasets: [
-      {
-        label: "Coste por usuario ($)", data: [56, 16, 11, 9, 9],
+      { label: "Coste por usuario ($)", data: [56, 16, 11, 9, 9],
         borderColor: palette.copper(), backgroundColor: palette.copperAlpha(0.1),
-        borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.copper(), fill: true,
-      },
-      {
-        label: "ARPU ($)", data: [5, 7, 12, 16, 20],
+        borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.copper(), fill: true },
+      { label: "ARPU ($)", data: [5, 7, 12, 16, 20],
         borderColor: palette.primary(), backgroundColor: palette.primaryAlpha(0.1),
-        borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.primary(), fill: true,
-      },
+        borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.primary(), fill: true },
     ],
   }), []);
 
   const opts = useMemo(() => baseOptions(), []);
 
-  /** Timeline: Y1 → Y5 with cost-lever annotations. */
+  // Unit economics circular: CAC → LTV → ratio
+  const unit = [
+    { label: "CAC", value: "$2,5", size: 110, tone: "copper", note: "blended Y3" },
+    { label: "LTV", value: "$45",  size: 180, tone: "primary", note: "Y3" },
+    { label: "Ratio", value: "18×", size: 230, tone: "success", note: "LTV/CAC · sano: 3-5×" },
+  ];
+
   const milestones = [
     { y: "Y1", k: "$56",  l: "coste/usuario",     tone: "copper"  },
     { y: "Y2", k: "−30%", l: "Cloud Tencent",     tone: "primary" },
@@ -35,54 +37,73 @@ export const SlideRoadmap = () => {
     { y: "Y4", k: "$1,2", l: "CAC viral k=2,4×",  tone: "primary" },
     { y: "Y5", k: "4%",   l: "Licencias revenue", tone: "copper"  },
   ];
-  const toneBg: Record<string, string> = {
-    primary: "bg-primary",  copper: "bg-copper",  success: "bg-success",
-  };
-  const toneText: Record<string, string> = {
-    primary: "text-primary", copper: "text-copper", success: "text-success",
-  };
-  const toneBorder: Record<string, string> = {
-    primary: "border-primary/40", copper: "border-copper/40", success: "border-success/40",
-  };
+  const toneBg: Record<string, string>      = { primary: "bg-primary", copper: "bg-copper", success: "bg-success" };
+  const toneText: Record<string, string>    = { primary: "text-primary", copper: "text-copper", success: "text-success" };
+  const toneBorder: Record<string, string>  = { primary: "border-primary/40", copper: "border-copper/40", success: "border-success/40" };
+  const toneRing: Record<string, string>    = { primary: "ring-primary", copper: "ring-copper", success: "ring-success" };
 
   return (
-    <SlideShell chapter="07" chapterLabel="Escala">
-      <Eyebrow color="success">Economías de escala</Eyebrow>
+    <SlideShell chapter="07" chapterLabel="Escala" watermark="规">
+      <div className="flex items-center gap-3 mb-2">
+        <Gauge className="h-6 w-6 text-success" />
+        <Eyebrow color="success">Economías de escala</Eyebrow>
+      </div>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-8 max-w-4xl"
+        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-4 mb-6 max-w-4xl"
       >
         Más usuarios = <span className="font-serif italic text-success">más margen</span>.
       </motion.h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+        {/* Unit economics CIRCULAR (concéntrico) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
+          className="lg:col-span-5 rounded-2xl border border-border bg-card p-6 shadow-card flex flex-col items-center"
+        >
+          <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3 self-start">
+            Unit economics · Y3
+          </div>
+          <div className="relative h-[260px] w-[260px] flex items-center justify-center">
+            {unit.map((u, i) => (
+              <motion.div
+                key={u.label}
+                initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.4 + i * 0.25, ease: "backOut" }}
+                style={{ width: u.size, height: u.size }}
+                className={`absolute rounded-full ${i === unit.length - 1 ? toneBg[u.tone] : "bg-card"} ring-2 ${toneRing[u.tone]} flex flex-col items-center justify-center shadow-elevated`}
+              >
+                {i === unit.length - 1 && (
+                  <>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-white/80">{u.label}</span>
+                    <span className="font-mono font-bold text-5xl text-white leading-none">{u.value}</span>
+                  </>
+                )}
+              </motion.div>
+            ))}
+          </div>
+          {/* Leyenda */}
+          <div className="grid grid-cols-3 gap-3 mt-4 w-full">
+            {unit.map((u) => (
+              <div key={u.label} className="text-center">
+                <div className={`font-mono text-[10px] uppercase tracking-wider ${toneText[u.tone]}`}>{u.label}</div>
+                <div className={`font-mono font-bold text-2xl ${toneText[u.tone]}`}>{u.value}</div>
+                <div className="text-[9px] text-muted-foreground mt-0.5">{u.note}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Coste vs ARPU */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
           className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 shadow-card"
         >
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
             Coste vs ARPU · breakeven Y3
           </div>
-          <div className="h-[260px]"><Line data={chartData} options={opts as any} /></div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
-          className="lg:col-span-5 grid grid-cols-2 gap-3"
-        >
-          {[
-            { v: "$2,5",    l: "CAC blended Y3", tone: "copper"  },
-            { v: "$45",     l: "LTV Y3",         tone: "primary" },
-            { v: "18×",     l: "LTV/CAC",        tone: "success", hint: "Sano: 3-5×" },
-            { v: "4 meses", l: "Payback",        tone: "primary" },
-          ].map((s) => (
-            <div key={s.l} className="rounded-2xl border border-border bg-card p-4 shadow-card">
-              <div className={`font-mono font-bold text-5xl md:text-6xl ${toneText[s.tone]}`}>{s.v}</div>
-              <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
-              {s.hint && <div className="mt-1 text-[10px] font-mono uppercase tracking-wider text-success">{s.hint}</div>}
-            </div>
-          ))}
+          <div className="h-[280px]"><Line data={chartData} options={opts as any} /></div>
         </motion.div>
       </div>
 
