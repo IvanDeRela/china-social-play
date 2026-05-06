@@ -42,23 +42,23 @@ export const SlideRoadmap = () => {
   const opts = useMemo(() => baseOptions(), []);
 
   const economies = [
-    { icon: "☁️", title: "Cloud Tencent", body: "−30 % por TB a partir de 1M DAU (descuentos de volumen)." },
-    { icon: "⚽", title: "Licencias deportivas", body: "Coste fijo: pasa del 18 % del revenue (Y1) al 4 % (Y5)." },
-    { icon: "📣", title: "CAC blended", body: <>Cae de <Money value="USD 4" tone="copper" size="sm" /> (Y1) a <Money value="USD 1,2" tone="primary" size="sm" /> (Y5) por viralidad WeChat.</> },
-    { icon: "🤖", title: "Soporte IA", body: "1 agente cada 50.000 usuarios. 10× el ratio sectorial." },
+    { icon: "☁️", title: "Cloud Tencent", body: "−30 % por TB > 1M DAU" },
+    { icon: "⚽", title: "Licencias", body: "18 % → 4 % del revenue (Y1→Y5)" },
+    { icon: "📣", title: "CAC", body: <>USD 4 → <span className="text-primary">USD 1,2</span> · viralidad WeChat</> },
+    { icon: "🤖", title: "Soporte IA", body: "1 agente / 50.000 usuarios · 10× sector" },
   ];
 
   return (
     <SlideShell chapter="07" chapterLabel="Escala">
-      <Eyebrow color="success">Economías de escala · unit economics</Eyebrow>
+      <Eyebrow color="success">Economías de escala</Eyebrow>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
+        transition={{ duration: 0.6 }}
         className="display-xl text-3xl md:text-4xl lg:text-5xl mt-6 mb-8 max-w-4xl"
       >
-        Cuanto más crecemos, <span className="font-serif italic text-success">más rentables somos</span>.
+        Más usuarios = <span className="font-serif italic text-success">más margen</span>.
       </motion.h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">

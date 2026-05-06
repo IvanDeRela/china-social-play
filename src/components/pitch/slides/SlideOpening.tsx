@@ -10,21 +10,19 @@ export const SlideOpening = () => {
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8 flex items-center gap-3"
+          transition={{ duration: 0.7 }}
+          className="font-mono text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-6"
         >
-          <span className="font-mono text-[11px] uppercase tracking-[0.4em] text-primary/80">
-            Seed Round · 2026
-          </span>
-        </motion.div>
+          Seed Round · 2026
+        </motion.span>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 1, delay: 0.15 }}
           className="display-xl text-5xl md:text-7xl lg:text-[110px] mb-6"
         >
           Fantasy<span className="text-primary text-glow-primary">China</span>
@@ -33,45 +31,36 @@ export const SlideOpening = () => {
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          transition={{ duration: 1, delay: 0.5 }}
           className="mx-auto mb-8 h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent"
         />
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="max-w-2xl text-lg md:text-xl font-light leading-relaxed text-muted-foreground"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="text-2xl md:text-3xl font-light text-foreground"
         >
-          La <span className="text-foreground font-normal">app de juego fantasy</span> para los aficionados chinos al fútbol europeo y eSports.
-          <br />Distribuida como Mini-Programa de WeChat.
-          <br /><span className="font-serif italic text-foreground">SaaS gamificado · 100 % legal.</span>
+          Fantasy fútbol · <span className="text-primary">WeChat</span> · <span className="font-serif italic">100 % legal</span>
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs text-muted-foreground"
+          transition={{ duration: 0.8, delay: 1 }}
+          className="mt-14 flex flex-wrap items-center justify-center gap-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-primary" />
-            <span>Universidad de Murcia</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-primary" />
-            <span>Regiones de Asia · RR.II. 4º</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-primary" />
-            <span>Pitch para inversores</span>
-          </div>
+          <span>200 M fans</span>
+          <span className="text-primary">·</span>
+          <span>0 competidores</span>
+          <span className="text-primary">·</span>
+          <span>USD 5 M ask</span>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/60"
         >
           <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Comenzar</span>

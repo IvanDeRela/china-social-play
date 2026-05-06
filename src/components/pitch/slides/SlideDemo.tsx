@@ -8,66 +8,54 @@ const team = [
     initials: "IG",
     name: "Iván García del Toro",
     role: "CTO · Co-founder",
-    area: "AI Engineering · Product",
+    area: "AI · Product",
     color: "primary",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5"><path d="M12 2v3m0 14v3M4.93 4.93l2.12 2.12m9.9 9.9l2.12 2.12M2 12h3m14 0h3M4.93 19.07l2.12-2.12m9.9-9.9l2.12-2.12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2"/></svg>
-    ),
     bullets: [
-      "Ingeniero de IA y dev móvil con perfil técnico-internacional",
-      "Stack: TypeScript, Python, TensorFlow, WeChat Mini-Program SDK, Tencent Cloud",
-      "RR.II. · Erasmus Lille · prácticas Consulado España en Lyon · Master Lyon 3 (2026)",
-      "4 idiomas: ES · FR · EN · DE",
+      "TypeScript · Python · TensorFlow",
+      "WeChat Mini-Program · Tencent Cloud",
+      "Erasmus Lille · Master Lyon 3",
+      "ES · FR · EN · DE",
     ],
-    duty: "Arquitectura técnica, MVP, integración Tencent Cloud, motor IA del módulo Premium, dirección de producto.",
+    duty: "Arquitectura · MVP · motor IA",
   },
   {
     initials: "AH",
     name: "Alberto Hernández",
     role: "CEO · Co-founder",
-    area: "Strategy · International Relations",
+    area: "Strategy · IR",
     color: "copper",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
-    ),
     bullets: [
-      "Especialidad: estrategia, fundraising internacional, relaciones institucionales",
-      "Foco: representación pública y negociación con inversores",
-      "Apertura de mercado y partnerships institucionales (LaLiga, ICEX, Casa Asia)",
+      "Estrategia · fundraising internacional",
+      "Negociación con inversores",
+      "Partnerships LaLiga · ICEX · Casa Asia",
     ],
-    duty: "Captación de capital, partnerships institucionales, dirección general y representación.",
+    duty: "Capital · partnerships · dirección",
   },
   {
     initials: "RI",
     name: "Rafael Imbernón",
     role: "CMO · Co-founder",
-    area: "Marketing · Community Growth",
+    area: "Growth · Community",
     color: "primary",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5"><path d="M3 20V10m6 10V4m6 16v-7m6 7V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
-    ),
     bullets: [
-      "Especialista en marketing digital en mercados asiáticos",
-      "KOL marketing, comunidad, content strategy, crecimiento orgánico",
-      "Adquisición vía WeChat Moments + grupos privados",
+      "Marketing digital en Asia",
+      "KOL marketing · WeChat Moments",
+      "Content · grupos privados",
     ],
-    duty: "Estrategia de adquisición, partnerships con creadores chinos, branding y comunidad.",
+    duty: "Adquisición · creadores · branding",
   },
   {
     initials: "PP",
     name: "Pedro Plaza",
     role: "CFO · Co-founder",
-    area: "Finance · Legal Compliance",
+    area: "Finance · Compliance",
     color: "success",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5"><path d="M12 2v20M17 6H9.5a3 3 0 100 6h5a3 3 0 110 6H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
-    ),
     bullets: [
-      "Experto financiero · modelo de negocio · cumplimiento regulatorio",
-      "Unit economics, captación de capital, due diligence",
-      "Compliance Cybersecurity Law + PIPL + ICP",
+      "Modelo financiero · unit economics",
+      "Due diligence · ronda seed",
+      "PIPL · Cybersecurity Law · ICP",
     ],
-    duty: "Modelo financiero, ronda seed, gestión legal con Tencent y entidad en Hong Kong.",
+    duty: "Modelo · ronda · legal · HK",
   },
 ] as const;
 
@@ -79,17 +67,16 @@ const colorClasses: Record<string, string> = {
 
 export const SlideDemo = () => {
   return (
-    <SlideShell chapter="09" chapterLabel="Equipo">
+    <SlideShell chapter="10" chapterLabel="Equipo">
       <Eyebrow color="primary">El equipo fundador</Eyebrow>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
+        transition={{ duration: 0.6 }}
         className="display-xl text-3xl md:text-4xl lg:text-5xl mt-6 mb-8 max-w-4xl"
       >
-        Cuatro fundadores. <span className="font-serif italic text-primary">Cuatro disciplinas</span>.
-        <br />Un solo objetivo.
+        4 fundadores. <span className="font-serif italic text-primary">4 disciplinas</span>.
       </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -110,7 +97,7 @@ export const SlideDemo = () => {
                 <div className={`text-xs font-mono uppercase tracking-wider mt-0.5 text-${p.color}`}>{p.role}</div>
                 <div className="text-xs text-muted-foreground mt-0.5">{p.area}</div>
               </div>
-              <div className={`text-${p.color} opacity-60`}>{p.icon}</div>
+              
             </div>
 
             <ul className="space-y-1.5 text-xs text-muted-foreground mb-3 pl-1">

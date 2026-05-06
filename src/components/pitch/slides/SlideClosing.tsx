@@ -37,7 +37,7 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
   };
 
   return (
-    <SlideShell chapter="10" chapterLabel="The Ask">
+    <SlideShell chapter="11" chapterLabel="The Ask">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/8 blur-[100px]" />
       </div>

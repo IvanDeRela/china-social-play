@@ -96,16 +96,16 @@ export const SlideMonetization = () => {
     <SlideShell chapter="06" chapterLabel="Proyecciones">
       <div className="flex items-start justify-between gap-6 flex-wrap mb-6">
         <div>
-          <Eyebrow color="primary">Proyecciones financieras · 5 años</Eyebrow>
+          <Eyebrow color="primary">Proyecciones · 5 años</Eyebrow>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="display-xl text-3xl md:text-4xl lg:text-5xl mt-5 max-w-3xl"
           >
-            Breakeven en <span className="text-success">año 3</span>.
-            <span className="text-muted-foreground/60"> EBITDA</span>{" "}
-            <Money value={`+${d.ebitda[4]}`} unit="M USD" tone="success" size="lg" /> en año 5.
+            Breakeven <span className="text-success">Y3</span>.
+            EBITDA{" "}
+            <Money value={`+${d.ebitda[4]}`} unit="M USD" tone="success" size="lg" /> en Y5.
           </motion.h2>
         </div>
 

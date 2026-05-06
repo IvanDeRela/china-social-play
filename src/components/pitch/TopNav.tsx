@@ -9,9 +9,10 @@ const slides = [
   { id: 4, num: "05", label: "Mercado" },
   { id: 5, num: "06", label: "Proyecciones" },
   { id: 6, num: "07", label: "Escala" },
-  { id: 7, num: "08", label: "Comparables" },
-  { id: 8, num: "09", label: "Equipo" },
-  { id: 9, num: "10", label: "The Ask" },
+  { id: 7, num: "08", label: "Riesgos" },
+  { id: 8, num: "09", label: "Comparables" },
+  { id: 9, num: "10", label: "Equipo" },
+  { id: 10, num: "11", label: "The Ask" },
 ];
 
 interface TopNavProps {
