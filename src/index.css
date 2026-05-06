@@ -77,7 +77,7 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; font-size: 18px; }
+  html { scroll-behavior: smooth; font-size: 22px; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
