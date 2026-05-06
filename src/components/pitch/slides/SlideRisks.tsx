@@ -135,7 +135,7 @@ export const SlideRisks = () => {
 
               <div className={`rounded-xl border ${toneBorder[active.tone]} bg-background/60 px-4 py-3 mt-auto`}>
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Métrica</div>
-                <div className={`font-mono text-2xl font-bold ${toneText[active.tone]}`}>{active.metric}</div>
+                <div className={`font-mono text-4xl md:text-5xl font-bold ${toneText[active.tone]}`}>{active.metric}</div>
               </div>
             </motion.div>
           </AnimatePresence>

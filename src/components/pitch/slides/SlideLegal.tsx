@@ -72,7 +72,7 @@ export const SlideLegal = () => {
                 { k: "PIPL", v: "CSL · ICP compliance" },
               ].map((row) => (
                 <div key={row.k} className="flex items-baseline gap-3">
-                  <span className="font-mono font-bold text-2xl text-primary shrink-0">{row.k}</span>
+                  <span className="font-mono font-bold text-3xl md:text-4xl text-primary shrink-0">{row.k}</span>
                   <span className="text-sm text-foreground/85">{row.v}</span>
                 </div>
               ))}

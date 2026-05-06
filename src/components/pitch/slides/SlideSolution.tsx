@@ -62,21 +62,21 @@ export const SlideSolution = () => {
         >
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7">
             <div className="eyebrow text-primary mb-2">Segmento Tier 1-2</div>
-            <div className="font-mono font-bold text-7xl md:text-8xl text-primary leading-none">25-40<span className="text-4xl ml-2 opacity-70">M</span></div>
+            <div className="font-mono font-bold text-8xl md:text-9xl text-primary leading-none">25-40<span className="text-5xl ml-2 opacity-70">M</span></div>
             <div className="mt-3 text-xs font-mono uppercase tracking-wider text-muted-foreground">CNNIC · iResearch 2024</div>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             {kpis.map((k) => (
               <div key={k.l} className="rounded-2xl border border-border bg-card p-5 shadow-card">
-                <div className={`font-mono font-bold text-5xl ${toneText[k.tone]}`}>{k.v}</div>
+                <div className={`font-mono font-bold text-6xl md:text-7xl ${toneText[k.tone]}`}>{k.v}</div>
                 <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground leading-snug">{k.l}</div>
               </div>
             ))}
           </div>
 
           <div className="rounded-xl border-l-4 border-copper bg-copper/5 px-5 py-4 flex items-center gap-4">
-            <span className="font-mono font-bold text-5xl text-copper">k=2,4×</span>
+            <span className="font-mono font-bold text-6xl md:text-7xl text-copper">k=2,4×</span>
             <span className="text-sm text-foreground/85 uppercase tracking-wider">viralidad WeChat</span>
           </div>
         </motion.div>

@@ -78,7 +78,7 @@ export const SlideRoadmap = () => {
             { v: "4 meses", l: "Payback",        tone: "primary" },
           ].map((s) => (
             <div key={s.l} className="rounded-2xl border border-border bg-card p-4 shadow-card">
-              <div className={`font-mono font-bold text-4xl md:text-5xl ${toneText[s.tone]}`}>{s.v}</div>
+              <div className={`font-mono font-bold text-5xl md:text-6xl ${toneText[s.tone]}`}>{s.v}</div>
               <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
               {s.hint && <div className="mt-1 text-[10px] font-mono uppercase tracking-wider text-success">{s.hint}</div>}
             </div>
@@ -102,7 +102,7 @@ export const SlideRoadmap = () => {
                 {m.y}
               </div>
               <div className={`mt-3 rounded-xl border ${toneBorder[m.tone]} bg-card px-3 py-2.5 w-full shadow-card`}>
-                <div className={`font-mono font-bold text-2xl ${toneText[m.tone]}`}>{m.k}</div>
+                <div className={`font-mono font-bold text-3xl md:text-4xl ${toneText[m.tone]}`}>{m.k}</div>
                 <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground leading-tight">{m.l}</div>
               </div>
             </motion.div>

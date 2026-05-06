@@ -52,11 +52,11 @@ export const SlideContext = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.7 }}
-        className="mt-12 rounded-2xl border-l-4 border-primary bg-primary/5 px-7 py-5 max-w-4xl"
+        className="mt-12 flex items-center justify-center gap-6"
       >
-        <p className="font-serif text-xl md:text-2xl text-foreground/90">
-          <span className="text-primary">El que llega primero</span> define las reglas.
-        </p>
+        <span className="font-serif text-2xl text-muted-foreground/70 line-through">competidores</span>
+        <span className="text-3xl text-primary">→</span>
+        <span className="font-serif italic text-3xl md:text-4xl text-primary">first mover</span>
       </motion.div>
     </SlideShell>
   );
