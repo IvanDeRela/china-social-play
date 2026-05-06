@@ -102,7 +102,7 @@ export const SlideRoadmap = () => {
                 {m.y}
               </div>
               <div className={`mt-3 rounded-xl border ${toneBorder[m.tone]} bg-card px-3 py-2.5 w-full shadow-card`}>
-                <div className={`font-mono font-bold text-2xl ${toneText[m.tone]}`}>{m.k}</div>
+                <div className={`font-mono font-bold text-3xl md:text-4xl ${toneText[m.tone]}`}>{m.k}</div>
                 <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground leading-tight">{m.l}</div>
               </div>
             </motion.div>
