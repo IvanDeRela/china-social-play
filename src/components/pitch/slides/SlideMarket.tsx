@@ -43,7 +43,7 @@ export const SlideMarket = () => {
                 animate={{ opacity: 1, scaleX: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.6, ease: "easeOut" }}
                 style={{ width: f.width, transformOrigin: "center" }}
-                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between overflow-hidden`}
+                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between gap-4`}
               >
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
