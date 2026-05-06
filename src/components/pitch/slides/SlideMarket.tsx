@@ -57,7 +57,7 @@ export const SlideMarket = () => {
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.8 + i * 0.6, ease: "backOut" }}
-                  className="font-mono font-bold text-7xl md:text-8xl"
+                  className="font-mono font-bold text-6xl md:text-7xl whitespace-nowrap shrink-0"
                 >
                   {f.value}
                 </motion.div>
