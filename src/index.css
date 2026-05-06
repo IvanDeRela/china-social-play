@@ -77,10 +77,12 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: 18px; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.6;
     background-image:
       linear-gradient(hsl(222 38% 7% / 0.04) 1px, transparent 1px),
       linear-gradient(90deg, hsl(222 38% 7% / 0.04) 1px, transparent 1px);
