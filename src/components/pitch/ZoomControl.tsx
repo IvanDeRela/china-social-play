@@ -19,7 +19,10 @@ export const ZoomControl = () => {
   }, [zoom]);
 
   return (
-    <div className="fixed bottom-24 right-6 z-[60] flex flex-col items-end gap-2">
+    <div
+      className="fixed bottom-24 right-6 z-[60] flex flex-col items-end gap-2"
+      style={{ transform: `scale(${100 / zoom})`, transformOrigin: "bottom right" }}
+    >
       {open && (
         <div className="flex items-center gap-3 rounded-full border border-border bg-card/95 px-4 py-2.5 shadow-elevated backdrop-blur-xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Zoom</span>
