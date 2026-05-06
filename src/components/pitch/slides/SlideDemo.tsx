@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Users } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 
@@ -18,8 +19,11 @@ const colorClasses: Record<string, string> = {
 
 export const SlideDemo = () => {
   return (
-    <SlideShell chapter="10" chapterLabel="Equipo">
-      <Eyebrow color="primary">El equipo fundador</Eyebrow>
+    <SlideShell chapter="10" chapterLabel="Equipo" watermark="队">
+      <div className="flex items-center gap-3 mb-2">
+        <Users className="h-6 w-6 text-primary" />
+        <Eyebrow color="primary">El equipo fundador</Eyebrow>
+      </div>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }}

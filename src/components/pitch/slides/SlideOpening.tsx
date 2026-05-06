@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideShell } from "../SlideShell";
+import { CountUp } from "../CountUp";
 import phoneHero from "@/assets/phone-hero.png";
 
 export const SlideOpening = () => {
@@ -44,12 +45,12 @@ export const SlideOpening = () => {
             className="grid grid-cols-3 gap-4 max-w-xl"
           >
             {[
-              { v: "200M", l: "fans" },
-              { v: "0", l: "competidores" },
-              { v: "$5M", l: "ask" },
+              { to: 200, suf: "M", l: "fans" },
+              { to: 0,   suf: "",  l: "competidores" },
+              { to: 5,   suf: "M", l: "ask", pre: "$" },
             ].map((s) => (
               <div key={s.l} className="rounded-xl border border-border bg-card/60 backdrop-blur p-4 shadow-card">
-                <div className="font-mono font-bold text-3xl md:text-4xl text-primary">{s.v}</div>
+                <CountUp to={s.to} prefix={s.pre || ""} suffix={s.suf} className="font-mono font-bold text-3xl md:text-4xl text-primary" />
                 <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
               </div>
             ))}

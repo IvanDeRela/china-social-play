@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Watermark } from "./Watermark";
 
 interface SlideShellProps {
   children: React.ReactNode;
@@ -8,21 +9,21 @@ interface SlideShellProps {
   chapter?: string;
   /** chapter label, e.g. "CONTEXTO" */
   chapterLabel?: string;
+  /** decorative chinese character watermark */
+  watermark?: string;
 }
 
-/**
- * Wrapper for every slide. Provides consistent padding, max-width
- * and an optional chapter marker fixed in the top-right of the slide canvas.
- */
-export const SlideShell = ({ children, className, chapter, chapterLabel }: SlideShellProps) => (
+export const SlideShell = ({ children, className, chapter, chapterLabel, watermark = "中" }: SlideShellProps) => (
   <section
     className={cn(
-      "relative min-h-screen w-full",
+      "relative min-h-screen w-full overflow-hidden",
       "px-6 pt-28 pb-20 md:px-16 md:pt-32 md:pb-24",
       "flex flex-col",
       className,
     )}
   >
+    <Watermark char={watermark} className="-right-32 top-1/2 -translate-y-1/2" />
+
     {chapter && (
       <motion.div
         initial={{ opacity: 0, x: 20 }}

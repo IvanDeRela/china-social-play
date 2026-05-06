@@ -1,129 +1,101 @@
 import { motion } from "framer-motion";
+import { Smartphone, X, Check } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 
 export const SlideProblem = () => {
-  const modules = [
-    { n: "01", title: "Crea equipo", body: "Fichajes · presupuesto · táctica" },
-    { n: "02", title: "Liga privada", body: "Grupos WeChat · oficina · global" },
-    { n: "03", title: "Live stats", body: "Datos jugada a jugada en directo" },
-    { n: "04", title: "Premium", body: "VIP · análisis IA · tienda" },
+  const them = [
+    "Apuestas con dinero real",
+    "NFTs caros · pay-to-win",
+    "Producto occidental",
+    "Sin integración WeChat",
   ];
-
-  const versus = [
-    { rival: "DraftKings", them: "Apuestas con dinero", us: "Habilidad · 100 % legal" },
-    { rival: "Sorare", them: "NFTs caros", us: "Freemium accesible" },
-    { rival: "Comunio", them: "Producto occidental", us: "Nativo WeChat · chino" },
+  const us = [
+    "100 % skill · legal PRC",
+    "Freemium accesible",
+    "Nativo chino · 微信",
+    "Mini-Program WeChat",
   ];
 
   return (
-    <SlideShell chapter="03" chapterLabel="Producto">
-      <Eyebrow color="primary">El producto</Eyebrow>
+    <SlideShell chapter="03" chapterLabel="Producto" watermark="赢">
+      <div className="flex items-center gap-3 mb-2">
+        <Smartphone className="h-6 w-6 text-primary" />
+        <Eyebrow color="primary">El producto</Eyebrow>
+      </div>
 
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-10 max-w-4xl"
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-4 mb-8 max-w-4xl"
       >
         Fantasy fútbol <span className="font-serif italic text-primary">dentro de WeChat</span>.
       </motion.h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-start">
-        {/* Mockup WeChat Mini-Program */}
+      {/* Split screen ANTES vs DESPUÉS */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border shadow-elevated mb-6">
+        {/* ANTES */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="lg:col-span-4 flex justify-center"
+          initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          className="bg-muted/40 p-7 relative"
         >
-          <div className="relative w-[220px] rounded-[32px] border-[6px] border-foreground/85 bg-foreground p-1 shadow-elevated">
-            <div className="absolute left-1/2 top-1 z-10 h-3.5 w-16 -translate-x-1/2 rounded-b-xl bg-foreground" />
-            <div className="rounded-[24px] bg-background overflow-hidden" style={{ fontFamily: "'Noto Sans SC', 'PingFang SC', sans-serif" }}>
-              {/* Header */}
-              <div className="flex items-center justify-between bg-primary px-3 pt-5 pb-2 text-[10px] text-primary-foreground">
-                <span>‹</span>
-                <span className="font-semibold">FantasyChina</span>
-                <span>⋯</span>
-              </div>
-              {/* Hero */}
-              <div className="px-3 py-3 bg-gradient-to-br from-primary/15 to-copper/10">
-                <div className="text-[9px] font-mono text-muted-foreground">MATCHDAY 24</div>
-                <div className="font-serif text-sm text-foreground leading-tight mt-0.5">Real Madrid <span className="text-muted-foreground/60 mx-1">vs</span> Barça</div>
-                <div className="mt-2 flex items-center justify-between">
-                  <div className="text-[9px] text-muted-foreground">Mi equipo</div>
-                  <div className="font-mono text-xs text-primary font-bold">128 pts</div>
-                </div>
-              </div>
-              {/* Players */}
-              <div className="px-3 py-2 space-y-1.5">
-                {[
-                  { n: "Vinicius Jr.", p: "+24" },
-                  { n: "Bellingham", p: "+18" },
-                  { n: "Lewandowski", p: "−6" },
-                ].map((pl) => (
-                  <div key={pl.n} className="flex items-center justify-between rounded-md bg-muted/50 px-2 py-1.5">
-                    <div className="flex items-center gap-1.5">
-                      <div className="h-4 w-4 rounded-full bg-primary/30" />
-                      <span className="text-[10px] text-foreground">{pl.n}</span>
-                    </div>
-                    <span className={`font-mono text-[10px] font-bold ${pl.p.startsWith("+") ? "text-success" : "text-danger"}`}>{pl.p}</span>
-                  </div>
-                ))}
-              </div>
-              {/* Tab bar */}
-              <div className="grid grid-cols-4 border-t border-border py-1.5 text-center text-[8px] text-muted-foreground">
-                <div className="text-primary font-semibold">Equipo</div>
-                <div>Liga</div>
-                <div>Live</div>
-                <div className="text-copper">VIP</div>
-              </div>
-            </div>
+          <div className="absolute top-4 right-4 grid h-10 w-10 place-items-center rounded-full bg-danger/15 text-danger">
+            <X className="h-5 w-5" />
           </div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-2">Competidores</div>
+          <div className="font-serif text-3xl text-muted-foreground/70 line-through mb-5">DraftKings · Sorare · Comunio</div>
+          <ul className="space-y-2.5">
+            {them.map((t) => (
+              <li key={t} className="flex items-start gap-3 text-base text-muted-foreground line-through">
+                <X className="h-4 w-4 text-danger shrink-0 mt-1 no-underline" />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
         </motion.div>
 
-        {/* 4 modules */}
-        <div className="lg:col-span-8 grid grid-cols-2 gap-3">
-          {modules.map((m, i) => (
-            <motion.div
-              key={m.n}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 + i * 0.08 }}
-              className="rounded-2xl border border-border bg-card p-5 shadow-card hover:border-primary/40 transition-colors"
-            >
-              <div className="font-mono text-[10px] tracking-[0.25em] text-primary mb-3">{m.n}</div>
-              <h3 className="font-serif text-xl text-foreground mb-1.5">{m.title}</h3>
-              <p className="text-xs text-muted-foreground">{m.body}</p>
-            </motion.div>
-          ))}
-        </div>
+        {/* DESPUÉS */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
+          className="bg-gradient-to-br from-primary/10 to-copper/5 p-7 relative border-l border-border"
+        >
+          <div className="absolute top-4 right-4 grid h-10 w-10 place-items-center rounded-full bg-success/15 text-success">
+            <Check className="h-5 w-5" />
+          </div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-primary mb-2">FantasyChina</div>
+          <div className="font-serif italic text-3xl text-primary mb-5">Fantasy nativo · WeChat</div>
+          <ul className="space-y-2.5">
+            {us.map((t) => (
+              <li key={t} className="flex items-start gap-3 text-base text-foreground font-medium">
+                <Check className="h-4 w-4 text-success shrink-0 mt-1" />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </div>
 
-      {/* Versus chips */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-3"
-      >
-        {versus.map((v) => (
-          <div key={v.rival} className="rounded-2xl border border-border bg-card p-4 shadow-card">
-            <div className="font-serif text-lg text-foreground mb-2">{v.rival}</div>
-            <div className="flex items-center gap-2 text-xs">
-              <span className="line-through text-muted-foreground">{v.them}</span>
-              <span className="text-primary">→</span>
-              <span className="text-primary font-semibold">{v.us}</span>
-            </div>
-          </div>
+      {/* 4 módulos compactos */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+        {[
+          { n: "01", t: "Crea equipo" },
+          { n: "02", t: "Liga privada" },
+          { n: "03", t: "Live stats" },
+          { n: "04", t: "Premium VIP" },
+        ].map((m, i) => (
+          <motion.div
+            key={m.n}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
+            className="rounded-xl border border-border bg-card px-4 py-3 shadow-card"
+          >
+            <div className="font-mono text-[10px] tracking-[0.25em] text-primary">{m.n}</div>
+            <div className="font-serif text-base text-foreground mt-1">{m.t}</div>
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="mt-5 inline-flex self-start rounded-full border-2 border-danger bg-danger/5 px-5 py-2"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}
+        className="inline-flex self-start rounded-full border-2 border-danger bg-danger/5 px-5 py-2"
       >
         <p className="text-base font-bold text-danger tracking-wide">
           NO apuestas · 100 % habilidad

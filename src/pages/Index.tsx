@@ -13,6 +13,7 @@ import { SlideRoadmap } from "@/components/pitch/slides/SlideRoadmap";
 import { SlideDemo } from "@/components/pitch/slides/SlideDemo";
 import { SlideClosing } from "@/components/pitch/slides/SlideClosing";
 import { SlideRisks } from "@/components/pitch/slides/SlideRisks";
+import { SlideDivider } from "@/components/pitch/slides/SlideDivider";
 import { DeepDive } from "@/components/pitch/DeepDive";
 
 const Index = () => {
@@ -58,17 +59,21 @@ const Index = () => {
 
   const renderSlide = () => {
     switch (current) {
-      case 0: return <SlideOpening />;
-      case 1: return <SlideContext />;
-      case 2: return <SlideProblem />;
-      case 3: return <SlideSolution />;
-      case 4: return <SlideMarket />;
-      case 5: return <SlideMonetization />;
-      case 6: return <SlideRoadmap />;
-      case 7: return <SlideRisks />;
-      case 8: return <SlideLegal />;
-      case 9: return <SlideDemo />;
-      case 10: return <SlideClosing onOpenDeepDive={openDeepDive} />;
+      case 0:  return <SlideOpening />;
+      case 1:  return <SlideDivider num="I"   kicker="Capítulo 1" title="El Problema."  hanzi="问" tone="copper" />;
+      case 2:  return <SlideContext />;
+      case 3:  return <SlideProblem />;
+      case 4:  return <SlideDivider num="II"  kicker="Capítulo 2" title="La Solución."  hanzi="解" tone="primary" />;
+      case 5:  return <SlideSolution />;
+      case 6:  return <SlideMarket />;
+      case 7:  return <SlideDivider num="III" kicker="Capítulo 3" title="El Negocio."   hanzi="业" tone="success" />;
+      case 8:  return <SlideMonetization />;
+      case 9:  return <SlideRoadmap />;
+      case 10: return <SlideRisks />;
+      case 11: return <SlideLegal />;
+      case 12: return <SlideDivider num="IV"  kicker="Capítulo 4" title="El Cierre."    hanzi="终" tone="primary" />;
+      case 13: return <SlideDemo />;
+      case 14: return <SlideClosing onOpenDeepDive={openDeepDive} />;
       default: return <SlideOpening />;
     }
   };

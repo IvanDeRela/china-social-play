@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Target } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 
@@ -17,8 +18,11 @@ export const SlideMarket = () => {
   };
 
   return (
-    <SlideShell chapter="05" chapterLabel="Mercado">
-      <Eyebrow color="primary">Tamaño de la oportunidad</Eyebrow>
+    <SlideShell chapter="05" chapterLabel="Mercado" watermark="市">
+      <div className="flex items-center gap-3 mb-2">
+        <Target className="h-6 w-6 text-primary" />
+        <Eyebrow color="primary">Tamaño de la oportunidad</Eyebrow>
+      </div>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
