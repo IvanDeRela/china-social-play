@@ -228,9 +228,6 @@ export const SlideMonetization = () => {
         })}
       </motion.div>
 
-      <p className="mt-3 text-[11px] font-mono uppercase tracking-wider text-muted-foreground">
-        Proyecciones del equipo fundador · metodología disponible en el anexo.
-      </p>
     </SlideShell>
   );
 };
