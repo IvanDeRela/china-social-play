@@ -322,9 +322,9 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
 
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  ["¥29 / mes", "月度会员"],
-                  ["¥79 / trimestre", "季度会员 · más popular"],
-                  ["¥199 / año", "年度会员 · -50%"],
+                  ["$4 / mes", "月度会员"],
+                  ["$11 / trimestre", "季度会员 · más popular"],
+                  ["$28 / año", "年度会员 · -50%"],
                   ["IA predictiva", "AI 球员表现预测"],
                 ].map(([title, sub]) => (
                   <div key={title} className="rounded-xl border border-border bg-card p-4 shadow-card">

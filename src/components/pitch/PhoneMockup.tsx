@@ -100,7 +100,7 @@ export const PhoneMockup = ({ className, scale = 1 }: PhoneMockupProps) => {
                 <div className="text-[9px] text-[#555] mt-0.5">AI 预测 · 高级统计 · 无广告</div>
               </div>
               <div className="text-right">
-                <span className="text-[16px] font-extrabold text-slate-200">¥29</span>
+                <span className="text-[16px] font-extrabold text-slate-200">$4</span>
                 <span className="text-[9px] text-[#555]">/月</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ export const PhoneMockup = ({ className, scale = 1 }: PhoneMockupProps) => {
                 <div className="text-[9px] text-[#555] mt-0.5">AI 预测 · 高级统计 · 无广告</div>
               </div>
               <div className="text-right">
-                <span className="text-[16px] font-extrabold text-primary">¥79</span>
+                <span className="text-[16px] font-extrabold text-primary">$11</span>
                 <span className="text-[9px] text-[#555]">/季</span>
               </div>
             </div>
@@ -134,7 +134,7 @@ export const PhoneMockup = ({ className, scale = 1 }: PhoneMockupProps) => {
                 <div className="text-[9px] text-[#555] mt-0.5">AI 预测 · 高级统计 · 无广告</div>
               </div>
               <div className="text-right">
-                <span className="text-[16px] font-extrabold text-slate-200">¥199</span>
+                <span className="text-[16px] font-extrabold text-slate-200">$28</span>
                 <span className="text-[9px] text-[#555]">/年</span>
               </div>
             </div>
