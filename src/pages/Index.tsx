@@ -63,11 +63,12 @@ const Index = () => {
       case 2: return <SlideProblem />;
       case 3: return <SlideSolution />;
       case 4: return <SlideMarket />;
-      case 5: return <SlideLegal />;
-      case 6: return <SlideMonetization />;
-      case 7: return <SlideRoadmap />;
-      case 8: return <SlideDemo />;
-      case 9: return <SlideClosing onOpenDeepDive={openDeepDive} />;
+      case 5: return <SlideMonetization />;
+      case 6: return <SlideRoadmap />;
+      case 7: return <SlideRisks />;
+      case 8: return <SlideLegal />;
+      case 9: return <SlideDemo />;
+      case 10: return <SlideClosing onOpenDeepDive={openDeepDive} />;
       default: return <SlideOpening />;
     }
   };
