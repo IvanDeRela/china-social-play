@@ -7,8 +7,8 @@ import { Eyebrow } from "../Eyebrow";
 export const SlideMarket = () => {
   const funnel = [
     { tag: "TAM", value: "$45B",  sub: "Gaming China · Niko Partners",  width: "100%", tone: "primary" },
-    { tag: "SAM", value: "$4B",   sub: "Mobile Sports · iResearch",      width: "70%",  tone: "copper" },
-    { tag: "SOM", value: "$200M", sub: "ARR Y5 · Proyección propia",     width: "48%",  tone: "success" },
+    { tag: "SAM", value: "$4B",   sub: "Mobile Sports · iResearch",      width: "78%",  tone: "copper" },
+    { tag: "SOM", value: "$200M", sub: "ARR Y5 · Proyección propia",     width: "62%",  tone: "success" },
   ];
 
   const colorMap: Record<string, { bg: string; text: string; border: string }> = {
@@ -43,7 +43,7 @@ export const SlideMarket = () => {
                 animate={{ opacity: 1, scaleX: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.6, ease: "easeOut" }}
                 style={{ width: f.width, transformOrigin: "center" }}
-                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between overflow-hidden`}
+                className={`relative mx-auto rounded-3xl ${c.bg} text-white shadow-elevated px-8 py-7 flex items-center justify-between gap-4`}
               >
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
@@ -57,7 +57,7 @@ export const SlideMarket = () => {
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.8 + i * 0.6, ease: "backOut" }}
-                  className="font-mono font-bold text-7xl md:text-8xl"
+                  className="font-mono font-bold text-6xl md:text-7xl whitespace-nowrap shrink-0"
                 >
                   {f.value}
                 </motion.div>
