@@ -102,6 +102,8 @@ const Index = () => {
 
       {/* Deep dive section */}
       <DeepDive innerRef={deepDiveRef} />
+
+      <ZoomControl />
     </main>
   );
 };
