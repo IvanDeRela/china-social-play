@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Doughnut } from "react-chartjs-2";
+import { Rocket } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Money } from "../Money";
 import { palette, baseOptions } from "../ChartTheme";
+import { PartnerLogos } from "../PartnerLogos";
 
 interface SlideClosingProps {
   onOpenDeepDive: () => void;
