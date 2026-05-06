@@ -36,10 +36,14 @@ export const SlideSolution = () => {
           </div>
 
           <ul className="space-y-2.5 text-sm text-foreground/90">
-            <li className="flex gap-3"><span>💼</span><span>USD 35.000 / año</span></li>
-            <li className="flex gap-3"><span>⚽</span><span>Real Madrid · iQIYI Sports</span></li>
-            <li className="flex gap-3"><span>🎮</span><span>Honor of Kings · USD 30/mes en gemas</span></li>
-            <li className="flex gap-3"><span>💬</span><span>8 amigos en WeChat</span></li>
+            {[
+              { icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>), text: "USD 35.000 / año" },
+              { icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>), text: "Real Madrid · iQIYI Sports" },
+              { icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary"><rect x="2" y="7" width="20" height="11" rx="3"/><path d="M7 12h2M8 11v2M15 12h.01M18 12h.01"/></svg>), text: "Honor of Kings · USD 30/mes en gemas" },
+              { icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>), text: "8 amigos en WeChat" },
+            ].map((row, i) => (
+              <li key={i} className="flex items-center gap-3"><span className="shrink-0">{row.icon}</span><span>{row.text}</span></li>
+            ))}
           </ul>
         </motion.div>
 

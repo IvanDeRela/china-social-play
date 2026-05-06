@@ -6,16 +6,36 @@ import { Money } from "../Money";
 export const SlideContext = () => {
   return (
     <SlideShell chapter="02" chapterLabel="El Nicho">
-      <Eyebrow color="primary">El nicho vacío</Eyebrow>
+      <Eyebrow color="primary">Del estudio del país · al nicho</Eyebrow>
+
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mt-5 mb-7 flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground"
+      >
+        <span className="rounded-full border border-border bg-card px-3 py-1">HTML 1 · País maduro</span>
+        <span className="text-primary">→</span>
+        <span className="rounded-full bg-primary/10 text-primary px-3 py-1">HTML 2 · El nicho</span>
+      </motion.div>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-12 max-w-5xl"
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="display-xl text-4xl md:text-5xl lg:text-6xl mb-8 max-w-5xl"
       >
         200 M fans. <span className="font-serif italic text-copper">0 productos</span>.
       </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="max-w-3xl text-sm md:text-base text-foreground/80 mb-10 leading-relaxed"
+      >
+        Vienes del estudio del país: China es <span className="text-primary font-medium">madura digital, energética y regulatoriamente</span>. Hemos detectado el nicho. Esto es lo que vamos a construir.
+      </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[
