@@ -52,7 +52,6 @@ export const SlideDemo = () => {
                 <div className={`text-xs font-mono uppercase tracking-wider mt-0.5 text-${p.color}`}>{p.role}</div>
                 <div className="text-xs text-muted-foreground mt-0.5">{p.area}</div>
               </div>
-              
             </div>
 
             <ul className="space-y-1.5 text-xs text-muted-foreground mb-3 pl-1">
@@ -61,9 +60,25 @@ export const SlideDemo = () => {
               ))}
             </ul>
 
-            <div className="rounded-lg bg-muted/40 px-3 py-2 text-xs text-foreground/85 leading-relaxed">
+            <div className="rounded-lg bg-muted/40 px-3 py-2 text-xs text-foreground/85 leading-relaxed mb-3">
               <span className={`font-mono uppercase tracking-wider text-[10px] text-${p.color} mr-2`}>Rol</span>
               {p.duty}
+            </div>
+
+            {/* Contacto: email + LinkedIn (decorativo) */}
+            <div className="flex items-center justify-between gap-2 pt-2 border-t border-border/60">
+              <div className="flex items-center gap-1.5 min-w-0 text-xs text-muted-foreground">
+                <Mail className="h-3.5 w-3.5 shrink-0 text-primary" />
+                <span className="font-mono truncate">{p.email}</span>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => e.preventDefault()}
+                aria-label={`LinkedIn de ${p.name}`}
+                className="grid h-7 w-7 place-items-center rounded-md bg-[#0A66C2] text-white transition-transform hover:scale-110 shrink-0"
+              >
+                <Linkedin className="h-4 w-4" fill="currentColor" />
+              </button>
             </div>
           </motion.div>
         ))}
