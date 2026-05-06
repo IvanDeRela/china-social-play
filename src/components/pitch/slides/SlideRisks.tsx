@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ShieldAlert } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 
@@ -36,8 +37,11 @@ export const SlideRisks = () => {
   const [active, setActive] = useState<Risk>(risks[0]);
 
   return (
-    <SlideShell chapter="08" chapterLabel="Riesgos">
-      <Eyebrow color="danger">Mapa de riesgos</Eyebrow>
+    <SlideShell chapter="08" chapterLabel="Riesgos" watermark="险">
+      <div className="flex items-center gap-3 mb-2">
+        <ShieldAlert className="h-6 w-6 text-danger" />
+        <Eyebrow color="danger">Mapa de riesgos</Eyebrow>
+      </div>
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}

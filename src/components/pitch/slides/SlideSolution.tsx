@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { User, Quote } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 import weiLiu from "@/assets/wei-liu.jpg";
