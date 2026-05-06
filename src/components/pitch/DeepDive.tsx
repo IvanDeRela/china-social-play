@@ -8,40 +8,40 @@ interface DeepDiveProps {
 }
 
 const sections = [
-  { id: "history", label: "Historia", icon: "🏯" },
-  { id: "geography", label: "Geografía", icon: "🗺️" },
-  { id: "demography", label: "Demografía", icon: "👥" },
-  { id: "legal", label: "Marco Legal", icon: "⚖️" },
-  { id: "product", label: "Producto", icon: "📱" },
+  { id: "thesis", label: "Tesis de inversión", icon: "◆" },
+  { id: "market", label: "Mercado ampliado", icon: "▲" },
+  { id: "legal", label: "Marco legal", icon: "§" },
+  { id: "unit", label: "Unit economics", icon: "$" },
+  { id: "risks", label: "Riesgos", icon: "!" },
+  { id: "product", label: "Producto", icon: "□" },
 ];
 
 export const DeepDive = ({ innerRef }: DeepDiveProps) => {
-  const [active, setActive] = useState("history");
+  const [active, setActive] = useState("thesis");
 
   return (
-    <div ref={innerRef} className="relative bg-background border-t border-border/50">
+    <div ref={innerRef} className="relative bg-background border-t border-border">
       {/* Hero */}
-      <div className="relative overflow-hidden border-b border-border/50">
-        <div className="absolute inset-0 gradient-hero opacity-50" />
-        <div className="absolute inset-0 bg-grid opacity-[0.03]" />
-        <div className="relative mx-auto max-w-[1280px] px-6 md:px-16 py-24 md:py-32">
-          <div className="font-mono text-[11px] uppercase tracking-[0.4em] text-violet/80 mb-6">
-            Anexo · Análisis ampliado
+      <div className="relative overflow-hidden border-b border-border">
+        <div className="absolute inset-0 gradient-hero opacity-60" />
+        <div className="relative mx-auto max-w-[1280px] px-6 md:px-16 py-20 md:py-28">
+          <div className="font-mono text-[11px] uppercase tracking-[0.4em] text-primary mb-6">
+            Anexo · Due diligence ampliada
           </div>
-          <h2 className="display-xl text-4xl md:text-6xl mb-6 max-w-3xl">
-            China, el juego y nuestro negocio:{" "}
-            <span className="text-violet">contexto para no-expertos</span>.
+          <h2 className="display-xl text-4xl md:text-6xl mb-6 max-w-3xl text-foreground">
+            Material de soporte para el{" "}
+            <span className="text-primary">comité de inversión</span>.
           </h2>
           <p className="max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed">
-            Documento complementario al pitch. Pensado para que cualquier miembro del Consejo,
-            independientemente de su familiaridad con China, pueda formar criterio sobre la
-            viabilidad legal, cultural y de mercado del proyecto.
+            Documento complementario al pitch principal. Profundiza en la tesis, los supuestos
+            financieros, el marco regulatorio y los riesgos clave para facilitar la decisión del
+            comité.
           </p>
         </div>
       </div>
 
       {/* Sticky sub-nav */}
-      <div className="sticky top-16 z-30 border-b border-border/50 bg-background/85 backdrop-blur-xl">
+      <div className="sticky top-16 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto max-w-[1280px] px-6 md:px-16">
           <div className="flex gap-1 overflow-x-auto py-3 no-scrollbar">
             {sections.map((s) => (
@@ -52,11 +52,11 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
                 className={cn(
                   "flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all whitespace-nowrap",
                   active === s.id
-                    ? "bg-violet/15 border border-violet/40 text-violet"
-                    : "border border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/40",
+                    ? "bg-primary/10 border border-primary/40 text-primary"
+                    : "border border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/60",
                 )}
               >
-                <span>{s.icon}</span>
+                <span className="font-mono">{s.icon}</span>
                 {s.label}
               </a>
             ))}
@@ -65,199 +65,103 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
       </div>
 
       <div className="mx-auto max-w-[1280px] px-6 md:px-16 py-20 md:py-28 space-y-28">
-        {/* HISTORY */}
-        <DeepSection id="dd-history" eyebrow="01 · Historia" title="2.000 años de prohibición" color="violet">
+        {/* THESIS */}
+        <DeepSection id="dd-thesis" eyebrow="01 · Tesis" title="Por qué ahora, por qué nosotros" color="primary">
           <DeepBlock
-            tag="Raíz histórica"
-            title="No es una norma comunista, es una tradición milenaria"
+            tag="Timing de mercado"
+            title="Una ventana regulatoria abierta hoy, no garantizada mañana"
             body={
               <>
-                Mucha gente asume que la prohibición del juego en China es una imposición reciente
-                del Partido Comunista. La realidad es mucho más antigua: ya el Emperador{" "}
-                <strong>Qin Shi Huang</strong> (siglo III a.C.) prohibió el juego como vicio social.
-                A lo largo de todas las dinastías, la ley ha oscilado entre tolerar el juego lúdico
-                de bajo riesgo y perseguir duramente la apuesta con fines lucrativos. Esta
-                distinción —<strong className="text-violet">juego social vs. apuesta económica</strong>—
-                es fundamental y está codificada en la cultura china desde hace milenios.
+                China tolera el fantasy gaming sin cash-out porque encaja en la categoría cultural
+                de <em>juego social de habilidad</em>, milenariamente aceptada. Pero el ecosistema
+                Mini-Program de WeChat tiene apenas 6 años de madurez comercial y los grandes
+                actores occidentales (DraftKings, Sorare) están bloqueados estructuralmente. Existe
+                una <strong className="text-primary">ventana de 24-36 meses</strong> antes de que un
+                operador local con respaldo de Tencent o Alibaba ocupe el espacio.
               </>
             }
-            color="violet"
+            color="primary"
           />
           <DeepBlock
-            tag="1949 — Hoy"
-            title="El PCCh prohíbe todo, con dos excepciones controladas"
+            tag="Defensibilidad"
+            title="Tres fosos competitivos acumulables"
             body={
               <>
-                Cuando el PCCh toma el poder en 1949, prohíbe absolutamente cualquier forma de juego
-                en el territorio continental. Desde entonces, esa política no ha cambiado en lo
-                esencial. Las únicas excepciones son dos loterías estatales: la{" "}
-                <strong className="text-danger">Lotería de Bienestar Social (1987)</strong> y la{" "}
-                <strong className="text-danger">Lotería Deportiva (1994)</strong>, cuyos ingresos
-                van a fondos de utilidad pública.
+                <strong>1. Datos propietarios:</strong> cada partido genera señales de comportamiento
+                de fan que entrenan nuestro motor de recomendación.{" "}
+                <strong>2. Acuerdos O2O exclusivos:</strong> los premios en cupones requieren
+                contratos directos con marcas locales que tardan 6-12 meses en negociarse.{" "}
+                <strong>3. Comunidades cerradas:</strong> los grupos de WeChat son virales pero
+                difíciles de migrar; el switching cost crece con cada temporada.
               </>
             }
-            color="danger"
-          />
-          <DeepBlock
-            tag="La paradoja"
-            title="Macau y Hong Kong: lo que China rechaza en casa, lo explota en la frontera"
-            body={
-              <>
-                China continental prohíbe el juego, pero Macau —territorio bajo soberanía china desde
-                1999— es el mayor hub de casinos del mundo, superando a Las Vegas en ingresos.
-                Millones de turistas chinos viajan cada año a Macau para jugar de forma legal. Esta
-                paradoja revela que la prohibición no es solo moral: es también una herramienta de
-                control social y concentración de ingresos en manos del Estado.
-              </>
-            }
-            color="warn"
+            color="copper"
           />
         </DeepSection>
 
-        {/* GEOGRAPHY */}
-        <DeepSection id="dd-geography" eyebrow="02 · Geografía" title="China no es un mercado: son muchos" color="info">
-          <DeepBlock
-            tag="Por qué importa"
-            title="Pensar en 'China' como bloque homogéneo es el error más caro"
-            body={
-              <>
-                Con 1.416 millones de habitantes y un territorio del tamaño de toda Europa, hablar
-                de China como mercado único es un error frecuente. El sistema oficial de{" "}
-                <strong className="text-info">ciudades Tier</strong> es la herramienta clave para
-                ubicar a nuestro usuario.
-              </>
-            }
-            color="info"
-          />
+        {/* MARKET */}
+        <DeepSection id="dd-market" eyebrow="02 · Mercado" title="Segmentación y captura realista" color="info">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               {
-                tier: "Tier 1",
-                badge: "🎯 Foco principal",
-                cities: "Pekín · Shanghái · Shenzhen · Guangzhou",
-                desc: "Máxima renta disponible, mayor penetración digital, comunidades de fans organizadas. Mayor coste de adquisición, pero mayor disposición a pagar por VIP.",
+                tier: "TAM",
+                val: "$1.2B",
+                desc: "200M fans de fútbol europeo + NBA en China continental × ARPU referencia $6/año (mercados maduros: DraftKings $42, Sorare $28).",
                 color: "primary",
               },
               {
-                tier: "Tier 2",
-                badge: "Expansión fase 2",
-                cities: "Chengdu · Hangzhou · Wuhan · Nanjing",
-                desc: "5–15M habitantes, perfil similar al Tier 1 pero con costes operativos más bajos. Ideal para escalar el MVP tras validar.",
+                tier: "SAM",
+                val: "$340M",
+                desc: "Subset urbano Tier 1-2, 18-39 años, con poder adquisitivo y hábito de pago digital recurrente vía WeChat Pay.",
                 color: "info",
               },
               {
-                tier: "Tier 3–4",
-                badge: "Largo plazo",
-                cities: "Resto del país",
-                desc: "Alta penetración WeChat pero menor poder adquisitivo. Potencial de crecimiento a largo plazo.",
-                color: "muted",
+                tier: "SOM (Año 5)",
+                val: "$48M",
+                desc: "Captura realista del 14% del SAM tras 5 años, asumiendo entrada de 1-2 competidores locales en año 3.",
+                color: "copper",
               },
             ].map((t) => (
               <div
                 key={t.tier}
-                className="rounded-2xl border bg-card/40 p-6 backdrop-blur-sm"
-                style={{ borderColor: `hsl(var(--${t.color === "muted" ? "border" : t.color}) / 0.3)` }}
+                className="rounded-2xl border bg-card p-6 shadow-card"
+                style={{ borderColor: `hsl(var(--${t.color}) / 0.3)` }}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <span
-                    className="font-mono text-xs font-bold tracking-[0.2em]"
-                    style={{ color: t.color === "muted" ? "hsl(var(--muted-foreground))" : `hsl(var(--${t.color}))` }}
-                  >
-                    {t.tier}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground/70">{t.badge}</span>
+                <div className="font-mono text-xs font-bold tracking-[0.2em] mb-2" style={{ color: `hsl(var(--${t.color}))` }}>
+                  {t.tier}
                 </div>
-                <div className="text-sm font-semibold text-foreground mb-2">{t.cities}</div>
+                <div className="font-serif text-3xl text-foreground mb-3">{t.val}</div>
                 <div className="text-xs text-muted-foreground leading-relaxed">{t.desc}</div>
               </div>
             ))}
           </div>
           <DeepBlock
-            tag="El factor WeChat"
-            title="WeChat no es una app: es la infraestructura digital del país"
+            tag="Validación cruzada"
+            title="Comparables asiáticos confirman el potencial"
             body={
               <>
-                En China, WeChat es simultáneamente el WhatsApp, el Instagram, el banco, la tienda y
-                el sistema de identificación de cientos de millones de personas. Operar como
-                Mini-Program dentro de WeChat no es "estar en una app popular" — es{" "}
-                <strong className="text-primary">integrarse en el tejido digital cotidiano</strong>.
-                Nuestros usuarios objetivo en Tier 1 y 2 ya pasan más de 82 minutos al día en WeChat
-                y realizan transacciones económicas habituales dentro de la plataforma.
+                Dream11 (India, fantasy cricket) alcanzó <strong>180M usuarios y $1.1B de
+                ingresos</strong> en 7 años con un modelo análogo. Rakuten Sports (Japón) monetiza
+                fantasy con ARPU de $14/año. Ajustando por penetración WeChat y por el gap entre
+                cricket-India y fútbol-China, nuestras proyecciones representan{" "}
+                <strong className="text-primary">el 8% del recorrido de Dream11</strong> en el mismo
+                horizonte temporal.
               </>
             }
-            color="primary"
-          />
-        </DeepSection>
-
-        {/* DEMOGRAPHY */}
-        <DeepSection id="dd-demography" eyebrow="03 · Demografía" title="Quién es nuestro usuario" color="warn">
-          <DeepBlock
-            tag="Generación digital nativa"
-            title="Millennials y Gen Z urbanos, hiper-conectados"
-            body={
-              <>
-                La demanda de deporte global en China —fútbol europeo, NBA, eSports— se concentra en
-                los <strong className="text-warn">millennials y la Generación Z urbanos</strong>.
-                Jóvenes que consumen deporte casi exclusivamente a través del móvil y las redes
-                sociales, que siguen a jugadores europeos con la misma intensidad que en España, y
-                que ya están organizados en comunidades digitales activas dentro de WeChat.
-              </>
-            }
-            color="warn"
-          />
-
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            {[
-              { val: "1.300M", lbl: "Usuarios activos WeChat", color: "primary" },
-              { val: "35%", lbl: "Edad 18-29 años", color: "violet" },
-              { val: "27%", lbl: "Edad 30-39 años", color: "info" },
-              { val: "82 min", lbl: "Tiempo diario WeChat", color: "gold" },
-              { val: "764M", lbl: "DAU Mini-Programs", color: "primary" },
-            ].map((s) => (
-              <div
-                key={s.lbl}
-                className="rounded-xl border bg-card/40 p-5 text-center backdrop-blur-sm"
-                style={{ borderColor: `hsl(var(--${s.color}) / 0.25)` }}
-              >
-                <div className="font-serif text-2xl md:text-3xl mb-1.5" style={{ color: `hsl(var(--${s.color}))` }}>
-                  {s.val}
-                </div>
-                <div className="text-[10px] text-muted-foreground leading-snug">{s.lbl}</div>
-              </div>
-            ))}
-          </div>
-
-          <DeepBlock
-            tag="La pasión deportiva"
-            title="Fans sin canal de expresión competitiva"
-            body={
-              <>
-                El mercado deportivo chino vale casi <strong>1 billón de dólares</strong> proyectado
-                para 2030. LaLiga abrió oficina en Pekín. El fútbol y los eSports dominan entre el
-                público joven.{" "}
-                <strong className="text-primary">
-                  Toda esa energía de fan no tiene ningún canal legal donde expresarse de forma
-                  competitiva con otros aficionados.
-                </strong>{" "}
-                Ese es exactamente el vacío que ocupamos.
-              </>
-            }
-            color="primary"
+            color="info"
           />
         </DeepSection>
 
         {/* LEGAL */}
-        <DeepSection id="dd-legal" eyebrow="04 · Marco Legal" title="El test de los 3 criterios" color="danger">
+        <DeepSection id="dd-legal" eyebrow="03 · Legal" title="Test de los 3 criterios del Art. 303 CP" color="danger">
           <DeepBlock
             tag="La pregunta clave"
             title="«¿Esto no es básicamente apuestas con otro nombre?»"
             body={
               <>
-                Es la pregunta más importante del pitch. El{" "}
-                <strong className="text-danger">Artículo 303 del Código Penal de la RPC</strong>{" "}
-                define el juego ilegal como{" "}
-                <em>"transferencia de valor monetario condicionada al azar"</em>. Nuestro modelo{" "}
-                <strong className="text-foreground">no cumple ninguno de los tres elementos</strong>.
+                El <strong className="text-danger">Artículo 303 del Código Penal de la RPC</strong>{" "}
+                define el juego ilegal como <em>"transferencia de valor monetario condicionada al
+                azar"</em>. Nuestro modelo no cumple ninguno de los tres elementos constitutivos.
               </>
             }
             color="danger"
@@ -267,30 +171,27 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
             {[
               {
                 q: "¿Hay transferencia de valor monetario?",
-                v: "NO APLICA",
-                d: "Los premios son cupones O2O canjeables con marcas patrocinadoras. Nunca dinero en efectivo, nunca transferencia bancaria. Sin cash-out, no hay valor monetario transferido.",
+                v: "NO",
+                d: "Premios = cupones O2O canjeables con marcas patrocinadoras. Sin cash-out, sin transferencia bancaria entre usuarios.",
               },
               {
-                q: "¿El resultado está condicionado al azar?",
-                v: "NO APLICA",
-                d: "En una fantasy league el resultado depende del conocimiento deportivo del usuario: qué jugadores eliges, cómo gestionas tu equipo. Es habilidad analítica, no azar.",
+                q: "¿El resultado depende del azar?",
+                v: "NO",
+                d: "Fantasy league = habilidad analítica (selección de jugadores, gestión de equipo). Jurisprudencia comparada en EE.UU. e India avala la categoría 'game of skill'.",
               },
               {
                 q: "¿Opera fuera del ecosistema regulado?",
-                v: "NO APLICA",
-                d: "Al ser Mini-Program nativo de WeChat, heredamos toda la infraestructura de compliance de Tencent: KYC, límites de gasto para menores, auditorías periódicas.",
+                v: "NO",
+                d: "Mini-Program nativo de WeChat: heredamos KYC, límites de gasto a menores y auditorías periódicas de Tencent.",
               },
             ].map((c) => (
-              <div
-                key={c.q}
-                className="rounded-2xl border border-primary/25 bg-primary/5 p-5 flex items-start gap-4"
-              >
-                <span className="text-xl shrink-0 mt-0.5">✅</span>
+              <div key={c.q} className="rounded-2xl border border-success/30 bg-success/5 p-5 flex items-start gap-4">
+                <span className="font-mono text-success text-lg shrink-0 mt-0.5">✓</span>
                 <div className="flex-1">
                   <div className="flex items-center justify-between gap-3 mb-2 flex-wrap">
                     <span className="font-medium text-sm text-foreground">{c.q}</span>
-                    <span className="rounded-full bg-primary/15 px-3 py-1 font-mono text-[10px] font-bold tracking-[0.15em] text-primary">
-                      {c.v} ✓
+                    <span className="rounded-full bg-success/15 px-3 py-1 font-mono text-[10px] font-bold tracking-[0.15em] text-success">
+                      {c.v}
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{c.d}</p>
@@ -299,37 +200,121 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
             ))}
           </div>
 
-          <div className="rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/10 to-transparent p-6 flex gap-4">
-            <span className="text-2xl">💡</span>
-            <div>
-              <div className="font-serif text-lg text-foreground mb-2">
-                La analogía que lo resume en una frase
+          <DeepBlock
+            tag="Mitigación"
+            title="Counsel local + opinión legal vinculante en mes 2"
+            body={
+              <>
+                Parte del uso de fondos del Seed ($120K en legal &amp; compliance año 1) cubre la
+                contratación de King &amp; Wood Mallesons o Fangda Partners para emitir una opinión
+                legal formal antes del lanzamiento público, junto con el registro ICP/ICP-B
+                obligatorio para operar contenido en RPC.
+              </>
+            }
+            color="copper"
+          />
+        </DeepSection>
+
+        {/* UNIT ECONOMICS */}
+        <DeepSection id="dd-unit" eyebrow="04 · Unit economics" title="Supuestos detrás de las proyecciones" color="copper">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { k: "CAC blended", v: "$3.20", n: "Mix WeChat ads + KOL + viralidad" },
+              { k: "ARPU año 1", v: "$8.40", n: "Suscripción + cosméticos" },
+              { k: "ARPU año 5", v: "$18.60", n: "Up-sell VIP + torneos" },
+              { k: "Gross margin", v: "78%", n: "Costes de hosting + revenue share Tencent 5%" },
+              { k: "Payback CAC", v: "4.6 m", n: "Conservador; mejora a 2.1m año 3" },
+              { k: "LTV / CAC", v: "5.8×", n: "Año 5 base case" },
+              { k: "Churn mensual", v: "6.2%", n: "Estacionalidad ligas europeas" },
+              { k: "Conversión free→paid", v: "11%", n: "Trial 7 días, benchmark sector 8-14%" },
+            ].map((m) => (
+              <div key={m.k} className="rounded-xl border border-border bg-card p-4 shadow-card">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">
+                  {m.k}
+                </div>
+                <div className="font-serif text-2xl text-primary mb-1">{m.v}</div>
+                <div className="text-[11px] text-muted-foreground leading-snug">{m.n}</div>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Nuestro modelo es más parecido a un{" "}
-                <strong className="text-foreground">
-                  Trivial de fútbol con premio en vales de descuento
-                </strong>{" "}
-                que a un casino. La cultura china lleva dos milenios tolerando ese tipo de
-                entretenimiento competitivo. <strong>Y nadie cierra un Trivial.</strong>
-              </p>
-            </div>
+            ))}
+          </div>
+          <DeepBlock
+            tag="Sensibilidad"
+            title="Variables críticas y rango de impacto sobre EBITDA Año 5"
+            body={
+              <>
+                Hemos modelado 3 escenarios moviendo: <strong>(a)</strong> conversión free→paid
+                (8-14%), <strong>(b)</strong> CAC blended ($2.50-$4.80) y <strong>(c)</strong>{" "}
+                churn mensual (4-9%). El rango de EBITDA año 5 oscila entre <strong>$3.2M</strong>{" "}
+                (downside) y <strong>$11.8M</strong> (upside), con caso base en{" "}
+                <strong className="text-primary">$7.4M</strong>.
+              </>
+            }
+            color="primary"
+          />
+        </DeepSection>
+
+        {/* RISKS */}
+        <DeepSection id="dd-risks" eyebrow="05 · Riesgos" title="Mapa honesto de riesgos y mitigaciones" color="danger">
+          <div className="space-y-3">
+            {[
+              {
+                r: "Cambio regulatorio",
+                p: "Medio",
+                i: "Alto",
+                m: "Estructura corporativa VIE + counsel local + cumplimiento proactivo de licencias culturales y de contenido deportivo.",
+              },
+              {
+                r: "Entrada de competidor con respaldo BAT",
+                p: "Alto",
+                i: "Medio",
+                m: "Construir foso de comunidad y datos en años 1-2. Posicionarnos como target de adquisición creíble.",
+              },
+              {
+                r: "Bloqueo de plataforma WeChat",
+                p: "Bajo",
+                i: "Crítico",
+                m: "Diversificación a Douyin Mini-Program en año 3. Acuerdo marco con Tencent como prioridad post-Seed.",
+              },
+              {
+                r: "Estacionalidad ligas",
+                p: "Cierto",
+                i: "Bajo",
+                m: "Cobertura multi-liga (Premier, LaLiga, NBA, eSports) suaviza valles de verano.",
+              },
+            ].map((row) => (
+              <div key={row.r} className="rounded-xl border border-border bg-card p-5 shadow-card">
+                <div className="flex items-center justify-between gap-4 mb-2 flex-wrap">
+                  <div className="font-serif text-lg text-foreground">{row.r}</div>
+                  <div className="flex gap-2">
+                    <span className="rounded-full bg-warn/10 px-3 py-0.5 font-mono text-[10px] font-bold tracking-[0.15em] text-warn">
+                      Prob: {row.p}
+                    </span>
+                    <span className="rounded-full bg-danger/10 px-3 py-0.5 font-mono text-[10px] font-bold tracking-[0.15em] text-danger">
+                      Impacto: {row.i}
+                    </span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Mitigación:</strong> {row.m}
+                </p>
+              </div>
+            ))}
           </div>
         </DeepSection>
 
         {/* PRODUCT */}
-        <DeepSection id="dd-product" eyebrow="05 · Producto" title="El Mini-Program en acción" color="primary">
+        <DeepSection id="dd-product" eyebrow="06 · Producto" title="Mini-Program: la experiencia VIP" color="primary">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <DeepBlock
                 tag="VIP Centre · 会员中心"
-                title="Pantalla premium en chino simplificado"
+                title="El motor de monetización recurrente"
                 body={
                   <>
-                    El usuario llega aquí desde el hub principal del fantasy. La página presenta el
-                    plan <strong className="text-primary">7天免费试用 (trial 7 días)</strong>, los
-                    tres tiers de suscripción (mensual, trimestral con badge "más popular", y anual
-                    con descuento 50%) y el listado de funciones premium.
+                    El usuario llega desde el hub principal del fantasy. Trial de{" "}
+                    <strong className="text-primary">7 días gratuitos</strong>, tres tiers
+                    (mensual, trimestral más popular, anual con 50% de descuento) y funciones
+                    premium con IA predictiva de rendimiento de jugadores.
                   </>
                 }
                 color="primary"
@@ -337,12 +322,12 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
 
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  ["¥29/mes", "月度会员"],
-                  ["¥79/trimestre", "季度会员 · más popular"],
-                  ["¥199/año", "年度会员 · -50%"],
+                  ["¥29 / mes", "月度会员"],
+                  ["¥79 / trimestre", "季度会员 · más popular"],
+                  ["¥199 / año", "年度会员 · -50%"],
                   ["IA predictiva", "AI 球员表现预测"],
                 ].map(([title, sub]) => (
-                  <div key={title} className="rounded-xl border border-border bg-card/40 p-4">
+                  <div key={title} className="rounded-xl border border-border bg-card p-4 shadow-card">
                     <div className="font-serif text-lg text-foreground mb-1">{title}</div>
                     <div className="text-xs text-muted-foreground">{sub}</div>
                   </div>
@@ -356,9 +341,9 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
         </DeepSection>
 
         {/* Footer */}
-        <div className="border-t border-border/50 pt-12 text-center text-xs text-muted-foreground/60">
+        <div className="border-t border-border pt-12 text-center text-xs text-muted-foreground">
           <div className="font-mono uppercase tracking-[0.3em] mb-2">Documento confidencial</div>
-          <div>Universidad de Murcia · Relaciones Internacionales · 4º curso · 2025</div>
+          <div>FantasyChina · Seed Round 2026 · Universidad de Murcia · Relaciones Internacionales 4º</div>
         </div>
       </div>
     </div>
@@ -389,10 +374,7 @@ const DeepSection = ({
     className="scroll-mt-32 space-y-6"
   >
     <div className="border-l-2 pl-5" style={{ borderColor: `hsl(var(--${color}))` }}>
-      <div
-        className="font-mono text-[11px] uppercase tracking-[0.3em] mb-2"
-        style={{ color: `hsl(var(--${color}))` }}
-      >
+      <div className="font-mono text-[11px] uppercase tracking-[0.3em] mb-2" style={{ color: `hsl(var(--${color}))` }}>
         {eyebrow}
       </div>
       <h3 className="display-xl text-3xl md:text-4xl text-foreground">{title}</h3>
@@ -413,13 +395,16 @@ const DeepBlock = ({
   color: string;
 }) => (
   <div
-    className="rounded-2xl border bg-card/40 p-6 md:p-7 backdrop-blur-sm"
-    style={{ borderLeftWidth: "3px", borderLeftColor: `hsl(var(--${color}))`, borderRightColor: "hsl(var(--border))", borderTopColor: "hsl(var(--border))", borderBottomColor: "hsl(var(--border))" }}
+    className="rounded-2xl border bg-card p-6 md:p-7 shadow-card"
+    style={{
+      borderLeftWidth: "3px",
+      borderLeftColor: `hsl(var(--${color}))`,
+      borderRightColor: "hsl(var(--border))",
+      borderTopColor: "hsl(var(--border))",
+      borderBottomColor: "hsl(var(--border))",
+    }}
   >
-    <div
-      className="font-mono text-[10px] uppercase tracking-[0.25em] mb-3"
-      style={{ color: `hsl(var(--${color}))` }}
-    >
+    <div className="font-mono text-[10px] uppercase tracking-[0.25em] mb-3" style={{ color: `hsl(var(--${color}))` }}>
       {tag}
     </div>
     <h4 className="font-serif text-xl md:text-2xl text-foreground mb-3">{title}</h4>
