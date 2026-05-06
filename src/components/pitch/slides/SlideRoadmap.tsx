@@ -78,7 +78,7 @@ export const SlideRoadmap = () => {
             { v: "4 meses", l: "Payback",        tone: "primary" },
           ].map((s) => (
             <div key={s.l} className="rounded-2xl border border-border bg-card p-4 shadow-card">
-              <div className={`font-mono font-bold text-4xl md:text-5xl ${toneText[s.tone]}`}>{s.v}</div>
+              <div className={`font-mono font-bold text-5xl md:text-6xl ${toneText[s.tone]}`}>{s.v}</div>
               <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
               {s.hint && <div className="mt-1 text-[10px] font-mono uppercase tracking-wider text-success">{s.hint}</div>}
             </div>
