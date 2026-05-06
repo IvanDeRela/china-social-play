@@ -53,11 +53,11 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
                   key={s.id}
                   onClick={() => onSelect(s.id)}
                   className={cn(
-                    "group relative rounded-md px-2.5 py-1.5 text-[11px] font-medium transition-colors",
+                    "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                   )}
                 >
-                  <span className="font-mono text-[9px] opacity-60 mr-1">{s.num}</span>
+                  <span className="font-mono text-[11px] opacity-60 mr-1">{s.num}</span>
                   {s.label}
                   {active && (
                     <motion.div
@@ -72,16 +72,16 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-foreground md:inline">
+            <span className="hidden font-mono text-sm uppercase tracking-[0.2em] text-foreground md:inline">
               <span className="text-primary font-bold">{String(current + 1).padStart(2, "0")}</span>
               <span className="text-muted-foreground/60"> / {String(slides.length).padStart(2, "0")}</span>
             </span>
             <button
               onClick={onOpenDeepDive}
-              className="hidden md:inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+              className="hidden md:inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
             >
               <span>Anexo</span>
-              <span className="text-[10px]">↓</span>
+              <span className="text-xs">↓</span>
             </button>
           </div>
         </div>
