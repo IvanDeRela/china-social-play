@@ -107,22 +107,39 @@ export const SlideRoadmap = () => {
         </motion.div>
       </div>
 
-      {/* Timeline arrow Y1→Y5 */}
-      <div className="relative">
-        <div className="absolute left-4 right-4 top-[26px] h-0.5 bg-gradient-to-r from-copper via-primary to-success" />
-        <div className="absolute right-2 top-[18px] h-0 w-0 border-y-[10px] border-y-transparent border-l-[14px] border-l-success" />
+      {/* Timeline arrow Y1→Y5 — interactivo y visual */}
+      <div className="relative pt-2">
+        {/* Línea base con gradiente y glow */}
+        <motion.div
+          initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
+          style={{ transformOrigin: "left center" }}
+          className="absolute left-4 right-4 top-[34px] h-1 rounded-full bg-gradient-to-r from-copper via-primary to-success shadow-[0_0_16px_hsl(var(--primary)/0.45)]"
+        />
+        {/* Punta de flecha animada */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 1.4 }}
+          className="absolute right-1 top-[24px] h-0 w-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
+        />
 
         <div className="relative grid grid-cols-5 gap-2">
           {milestones.map((m, i) => (
             <motion.div
               key={m.y}
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-              className="flex flex-col items-center text-center"
+              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 + i * 0.12 }}
+              whileHover={{ y: -4 }}
+              className="group flex flex-col items-center text-center cursor-pointer"
             >
-              <div className={`grid h-12 w-12 place-items-center rounded-full ${toneBg[m.tone]} text-white font-mono font-bold text-sm shadow-elevated relative z-10`}>
+              <motion.div
+                whileHover={{ scale: 1.15 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className={`grid h-16 w-16 place-items-center rounded-full ${toneBg[m.tone]} text-white font-mono font-bold text-base shadow-elevated relative z-10 ring-4 ring-background`}
+                style={{ boxShadow: `0 0 24px hsl(var(--${m.tone}) / 0.5)` }}
+              >
                 {m.y}
-              </div>
-              <div className={`mt-3 rounded-xl border ${toneBorder[m.tone]} bg-card px-3 py-2.5 w-full shadow-card`}>
+                <span className="absolute -inset-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ boxShadow: `0 0 32px hsl(var(--${m.tone}) / 0.8)` }} />
+              </motion.div>
+              <div className={`mt-3 rounded-xl border ${toneBorder[m.tone]} bg-card px-3 py-2.5 w-full shadow-card transition-all group-hover:shadow-elevated group-hover:scale-[1.03]`}>
                 <div className={`font-mono font-bold text-3xl md:text-4xl ${toneText[m.tone]}`}>{m.k}</div>
                 <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground leading-tight">{m.l}</div>
               </div>
