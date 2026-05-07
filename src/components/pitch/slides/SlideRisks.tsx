@@ -51,41 +51,45 @@ export const SlideRisks = () => {
       </motion.h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Heat matrix */}
+        {/* Heat matrix — más grande y vistoso */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }}
-          className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 shadow-card"
+          className="lg:col-span-8 rounded-3xl border border-border bg-gradient-to-br from-card to-card/60 p-7 shadow-elevated relative overflow-hidden"
         >
-          <div className="grid grid-cols-[28px_1fr] gap-3">
+          <div className="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-danger/10 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-success/10 blur-3xl pointer-events-none" />
+
+          <div className="relative grid grid-cols-[36px_1fr] gap-4">
             <div className="flex items-center justify-center">
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground -rotate-90 whitespace-nowrap">
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground -rotate-90 whitespace-nowrap font-bold">
                 Impacto →
               </span>
             </div>
 
-            <div className="grid grid-cols-3 grid-rows-3 gap-2 h-[340px]">
+            <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[460px]">
               {[3, 2, 1].map((impact) =>
                 [1, 2, 3].map((prob) => {
                   const cell = risks.filter((r) => r.prob === prob && r.impact === impact);
                   const score = prob * impact;
                   const heat =
-                    score >= 6 ? "bg-danger/15 border-danger/40"
-                  : score >= 4 ? "bg-warn/15 border-warn/40"
-                  : score >= 2 ? "bg-copper/10 border-copper/30"
-                              : "bg-success/10 border-success/30";
+                    score >= 6 ? "bg-danger/20 border-danger/50 shadow-[inset_0_0_30px_hsl(var(--danger)/0.15)]"
+                  : score >= 4 ? "bg-warn/20 border-warn/50 shadow-[inset_0_0_30px_hsl(var(--warn)/0.15)]"
+                  : score >= 2 ? "bg-copper/15 border-copper/40"
+                              : "bg-success/15 border-success/40";
                   return (
-                    <div key={`${prob}-${impact}`} className={`relative rounded-xl border ${heat} p-2 flex flex-wrap gap-1.5 items-start content-start`}>
+                    <div key={`${prob}-${impact}`} className={`relative rounded-2xl border-2 ${heat} p-3 flex flex-wrap gap-2 items-start content-start transition-all`}>
+                      <span className="absolute top-1.5 right-2 font-mono text-[9px] font-bold text-muted-foreground/50">{score}</span>
                       {cell.map((r) => (
                         <button
                           key={r.id}
                           onClick={() => setActive(r)}
-                          className={`group inline-flex items-center gap-1.5 rounded-full border ${
+                          className={`group inline-flex items-center gap-1.5 rounded-full border-2 ${
                             active.id === r.id
-                              ? `${toneBg[r.tone]} text-white shadow-elevated scale-105 border-transparent`
-                              : `bg-card ${toneBorder[r.tone]} ${toneText[r.tone]} hover:scale-105`
-                          } px-2.5 py-1 text-xs font-semibold transition-all`}
+                              ? `${toneBg[r.tone]} text-white shadow-elevated scale-110 border-transparent ring-2 ring-offset-2 ring-offset-card ring-${r.tone}`
+                              : `bg-card ${toneBorder[r.tone]} ${toneText[r.tone]} hover:scale-105 hover:shadow-card`
+                          } px-3 py-1.5 text-sm font-bold transition-all`}
                         >
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
                             <path d={r.icon} />
                           </svg>
                           {r.short}
@@ -98,20 +102,20 @@ export const SlideRisks = () => {
             </div>
 
             <div />
-            <div className="grid grid-cols-3 text-center pt-1">
+            <div className="grid grid-cols-3 text-center pt-2">
               {[1, 2, 3].map((p) => (
-                <span key={p} className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{probLabels[p]}</span>
+                <span key={p} className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground font-bold">{probLabels[p]}</span>
               ))}
             </div>
           </div>
 
-          <div className="mt-3 text-center font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          <div className="mt-3 text-center font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">
             Probabilidad →
           </div>
         </motion.div>
 
         {/* Detail */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id}
@@ -130,16 +134,16 @@ export const SlideRisks = () => {
                 </span>
               </div>
 
-              <h3 className="font-serif text-3xl text-foreground mb-5">{active.short}</h3>
+              <h3 className="font-serif text-2xl text-foreground mb-4">{active.short}</h3>
 
               <div className="rounded-xl bg-muted/40 px-4 py-3 mb-3">
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Mitigación</div>
-                <p className="text-base font-medium text-foreground/95">{active.mitigation}</p>
+                <p className="text-sm font-medium text-foreground/95">{active.mitigation}</p>
               </div>
 
               <div className={`rounded-xl border ${toneBorder[active.tone]} bg-background/60 px-4 py-3 mt-auto`}>
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Métrica</div>
-                <div className={`font-mono text-4xl md:text-5xl font-bold ${toneText[active.tone]}`}>{active.metric}</div>
+                <div className={`font-mono text-3xl md:text-4xl font-bold ${toneText[active.tone]}`}>{active.metric}</div>
               </div>
             </motion.div>
           </AnimatePresence>
