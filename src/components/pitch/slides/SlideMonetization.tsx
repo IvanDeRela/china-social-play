@@ -169,12 +169,12 @@ export const SlideMonetization = () => {
           <div className="flex items-baseline justify-between mb-2">
             <div className="text-xs font-mono uppercase tracking-wider text-primary font-bold">Crecimiento MAU · exponencial</div>
           </div>
-          <div className="flex items-baseline gap-2 mb-1">
-            <span className="font-mono font-bold text-6xl text-primary">{d.mau[0]}M</span>
-            <span className="text-2xl text-muted-foreground">→</span>
-            <span className="font-mono font-bold text-7xl text-primary text-glow-primary">{d.mau[4]}M</span>
+          <div className="flex items-center justify-center gap-3 mb-1">
+            <span className="font-mono font-bold text-5xl text-primary">{d.mau[0]}M</span>
+            <span className="text-3xl text-muted-foreground">→</span>
+            <span className="font-mono font-bold text-5xl text-primary text-glow-primary">{d.mau[4]}M</span>
           </div>
-          <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Y1 → Y5 · MAU</div>
+          <div className="text-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Y1 → Y5 · MAU</div>
           <div className="h-[180px]">
             <Line data={dauData} options={opts as any} />
           </div>
