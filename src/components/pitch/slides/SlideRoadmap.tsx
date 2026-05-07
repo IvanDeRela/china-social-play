@@ -103,7 +103,7 @@ export const SlideRoadmap = () => {
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
             Coste vs ARPU · breakeven Y3
           </div>
-          <div className="h-[280px]"><Line data={chartData} options={opts as any} /></div>
+          <div className="h-[360px]"><Line data={chartData} options={opts as any} /></div>
         </motion.div>
       </div>
 
