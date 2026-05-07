@@ -37,7 +37,7 @@ export const SlideRisks = () => {
   const [active, setActive] = useState<Risk>(risks[0]);
 
   return (
-    <SlideShell chapter="08" chapterLabel="Riesgos" watermark="险">
+    <SlideShell chapter="09" chapterLabel="Riesgos" watermark="险">
       <div className="flex items-center gap-3 mb-2">
         <ShieldAlert className="h-6 w-6 text-danger" />
         <Eyebrow color="danger">Mapa de riesgos</Eyebrow>
