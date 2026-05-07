@@ -39,9 +39,6 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
               <span className="font-serif text-base tracking-tight text-foreground">
                 Fantasy<span className="text-primary">China</span>
               </span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70 sm:inline">
-                Seed Pitch · 2026
-              </span>
             </div>
           </button>
 
