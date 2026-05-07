@@ -12,8 +12,8 @@ const slides = [
   { id: 7,  num: "—",  label: "Negocio",      section: "div", divider: true },
   { id: 8,  num: "06", label: "Proyecciones", section: "Negocio" },
   { id: 9,  num: "07", label: "Escala",       section: "Negocio" },
-  { id: 10, num: "08", label: "Riesgos",      section: "Negocio" },
-  { id: 11, num: "09", label: "Comparables",  section: "Negocio" },
+  { id: 10, num: "08", label: "Comparables",  section: "Negocio" },
+  { id: 11, num: "09", label: "Riesgos",      section: "Negocio" },
   { id: 12, num: "—",  label: "Cierre",       section: "div", divider: true },
   { id: 13, num: "10", label: "Equipo",       section: "Cierre" },
   { id: 14, num: "11", label: "Inversión",   section: "Cierre" },
@@ -39,13 +39,10 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
               <span className="font-serif text-base tracking-tight text-foreground">
                 Fantasy<span className="text-primary">China</span>
               </span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70 sm:inline">
-                Seed Pitch · 2026
-              </span>
             </div>
           </button>
 
-          <nav className="hidden items-center gap-0.5 lg:flex">
+          <nav className="hidden lg:flex flex-1 mx-4 min-w-0 items-center gap-0.5 overflow-x-auto scrollbar-thin">
             {slides.filter(s => !s.divider).map((s) => {
               const active = current === s.id;
               return (
@@ -53,7 +50,7 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
                   key={s.id}
                   onClick={() => onSelect(s.id)}
                   className={cn(
-                    "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "group relative shrink-0 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors",
                     active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                   )}
                 >
