@@ -21,6 +21,7 @@ const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ d
 
 const Index = () => {
   const [current, setCurrent] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const deepDiveRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
@@ -39,6 +40,24 @@ const Index = () => {
     deepDiveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  const toggleFullscreen = useCallback(async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (e) {
+      console.warn("Fullscreen no disponible", e);
+    }
+  }, []);
+
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
@@ -52,11 +71,14 @@ const Index = () => {
         goTo(0);
       } else if (e.key === "End") {
         goTo(slides.length - 1);
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        toggleFullscreen();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [prev, next, goTo]);
+  }, [prev, next, goTo, toggleFullscreen]);
 
   const renderSlide = () => {
     switch (current) {
