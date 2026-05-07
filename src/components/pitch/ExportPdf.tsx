@@ -63,7 +63,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
         format: [canvas.width, canvas.height],
         compress: true,
       });
-      addCanvasToPdf(pdf, canvas, true);
+      addCanvasToPdf(pdf, canvas, true, getBgColor());
       pdf.save("FantasyChina-Riesgos.pdf");
     } catch (e) {
       console.error(e);
