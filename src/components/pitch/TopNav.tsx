@@ -42,7 +42,7 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
             </div>
           </button>
 
-          <nav className="hidden items-center gap-0.5 lg:flex">
+          <nav className="hidden lg:flex flex-1 mx-4 min-w-0 items-center gap-0.5 overflow-x-auto scrollbar-thin">
             {slides.filter(s => !s.divider).map((s) => {
               const active = current === s.id;
               return (
@@ -50,7 +50,7 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
                   key={s.id}
                   onClick={() => onSelect(s.id)}
                   className={cn(
-                    "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "group relative shrink-0 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors",
                     active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                   )}
                 >
