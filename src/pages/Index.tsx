@@ -131,6 +131,7 @@ const Index = () => {
       )}
 
       {!isFullscreen && <ZoomControl />}
+      {!isFullscreen && <ExportPdf current={current} goTo={goTo} />}
 
       {/* Botón pantalla completa */}
       <button
