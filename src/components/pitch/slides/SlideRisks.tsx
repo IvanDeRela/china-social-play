@@ -45,10 +45,30 @@ export const SlideRisks = () => {
 
       <motion.h2
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-10 max-w-4xl"
+        className="display-xl text-4xl md:text-5xl lg:text-6xl mt-6 mb-6 max-w-4xl"
       >
         Probabilidad <span className="font-serif italic text-danger">×</span> impacto.
       </motion.h2>
+
+      {/* Leyenda visual — clara para audiencia sin contexto */}
+      <div className="mb-5 flex flex-wrap items-center gap-3 text-sm">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold mr-1">Severidad:</span>
+        <span className="inline-flex items-center gap-2 rounded-full border-2 border-success/60 bg-success/15 px-3 py-1 font-semibold text-success">
+          <span className="h-2.5 w-2.5 rounded-full bg-success" /> Baja (1-2)
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border-2 border-copper/60 bg-copper/15 px-3 py-1 font-semibold text-copper">
+          <span className="h-2.5 w-2.5 rounded-full bg-copper" /> Media (2-3)
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border-2 border-warn/60 bg-warn/20 px-3 py-1 font-semibold text-warn">
+          <span className="h-2.5 w-2.5 rounded-full bg-warn" /> Alta (4-5)
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border-2 border-danger/60 bg-danger/20 px-3 py-1 font-semibold text-danger">
+          <span className="h-2.5 w-2.5 rounded-full bg-danger" /> Crítica (6+)
+        </span>
+        <span className="ml-auto font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+          Eje Y = impacto · Eje X = probabilidad · puntuación = P × I
+        </span>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Heat matrix — más grande y vistoso */}
@@ -59,26 +79,27 @@ export const SlideRisks = () => {
           <div className="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-danger/10 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-success/10 blur-3xl pointer-events-none" />
 
-          <div className="relative grid grid-cols-[36px_1fr] gap-4">
-            <div className="flex items-center justify-center">
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground -rotate-90 whitespace-nowrap font-bold">
-                Impacto →
-              </span>
+          <div className="relative grid grid-cols-[64px_1fr] gap-4">
+            {/* Eje Y con etiquetas por fila */}
+            <div className="flex flex-col justify-between py-2">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground font-bold text-right pr-1">Crítico</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground font-bold text-right pr-1">Medio</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground font-bold text-right pr-1">Bajo</span>
             </div>
 
-            <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[460px]">
+            <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[480px]">
               {[3, 2, 1].map((impact) =>
                 [1, 2, 3].map((prob) => {
                   const cell = risks.filter((r) => r.prob === prob && r.impact === impact);
                   const score = prob * impact;
                   const heat =
-                    score >= 6 ? "bg-danger/20 border-danger/50 shadow-[inset_0_0_30px_hsl(var(--danger)/0.15)]"
-                  : score >= 4 ? "bg-warn/20 border-warn/50 shadow-[inset_0_0_30px_hsl(var(--warn)/0.15)]"
-                  : score >= 2 ? "bg-copper/15 border-copper/40"
-                              : "bg-success/15 border-success/40";
+                    score >= 6 ? "bg-danger/25 border-danger/70 shadow-[inset_0_0_30px_hsl(var(--danger)/0.2)]"
+                  : score >= 4 ? "bg-warn/25 border-warn/70 shadow-[inset_0_0_30px_hsl(var(--warn)/0.18)]"
+                  : score >= 2 ? "bg-copper/20 border-copper/60"
+                              : "bg-success/20 border-success/60";
                   return (
                     <div key={`${prob}-${impact}`} className={`relative rounded-2xl border-2 ${heat} p-3 flex flex-wrap gap-2 items-start content-start transition-all`}>
-                      <span className="absolute top-1.5 right-2 font-mono text-[9px] font-bold text-muted-foreground/50">{score}</span>
+                      <span className="absolute top-1.5 right-2 font-mono text-[11px] font-bold text-foreground/70">{score}</span>
                       {cell.map((r) => (
                         <button
                           key={r.id}
@@ -104,13 +125,14 @@ export const SlideRisks = () => {
             <div />
             <div className="grid grid-cols-3 text-center pt-2">
               {[1, 2, 3].map((p) => (
-                <span key={p} className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground font-bold">{probLabels[p]}</span>
+                <span key={p} className="font-mono text-[11px] uppercase tracking-[0.25em] text-foreground font-bold">{probLabels[p]}</span>
               ))}
             </div>
           </div>
 
-          <div className="mt-3 text-center font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">
-            Probabilidad →
+          <div className="mt-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-bold">
+            <span className="opacity-70">↑ Impacto</span>
+            <span>Probabilidad →</span>
           </div>
         </motion.div>
 
