@@ -21,6 +21,7 @@ const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ d
 
 const Index = () => {
   const [current, setCurrent] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const deepDiveRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
@@ -39,6 +40,24 @@ const Index = () => {
     deepDiveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  const toggleFullscreen = useCallback(async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (e) {
+      console.warn("Fullscreen no disponible", e);
+    }
+  }, []);
+
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
@@ -52,11 +71,14 @@ const Index = () => {
         goTo(0);
       } else if (e.key === "End") {
         goTo(slides.length - 1);
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        toggleFullscreen();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [prev, next, goTo]);
+  }, [prev, next, goTo, toggleFullscreen]);
 
   const renderSlide = () => {
     switch (current) {
@@ -81,7 +103,7 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <TopNav current={current} onSelect={goTo} onOpenDeepDive={openDeepDive} />
+      {!isFullscreen && <TopNav current={current} onSelect={goTo} onOpenDeepDive={openDeepDive} />}
 
       <div className="relative">
         <AnimatePresence mode="wait">
@@ -99,13 +121,51 @@ const Index = () => {
         </AnimatePresence>
       </div>
 
-      <BottomDock current={current} onSelect={goTo} onPrev={prev} onNext={next} />
+      {!isFullscreen && <BottomDock current={current} onSelect={goTo} onPrev={prev} onNext={next} />}
 
-      <Suspense fallback={null}>
-        <DeepDive innerRef={deepDiveRef} />
-      </Suspense>
+      {!isFullscreen && (
+        <Suspense fallback={null}>
+          <DeepDive innerRef={deepDiveRef} />
+        </Suspense>
+      )}
 
-      <ZoomControl />
+      {!isFullscreen && <ZoomControl />}
+
+      {/* Botón pantalla completa */}
+      <button
+        onClick={toggleFullscreen}
+        aria-label={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+        title={isFullscreen ? "Salir (Esc / F)" : "Pantalla completa (F)"}
+        className="fixed top-4 right-4 z-[60] grid h-10 w-10 place-items-center rounded-full border border-border bg-card/90 backdrop-blur shadow-elevated text-foreground hover:text-primary hover:border-primary/40 transition-colors"
+      >
+        {isFullscreen ? (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7V3h4"/><path d="M21 7V3h-4"/><path d="M3 17v4h4"/><path d="M21 17v4h-4"/></svg>
+        )}
+      </button>
+
+      {/* Controles mínimos en pantalla completa */}
+      {isFullscreen && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 rounded-full border border-border bg-card/90 backdrop-blur px-3 py-2 shadow-elevated">
+          <button
+            onClick={prev}
+            disabled={current === 0}
+            aria-label="Anterior"
+            className="grid h-10 w-10 place-items-center rounded-full text-foreground hover:bg-muted disabled:opacity-30"
+          >‹</button>
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground px-2 min-w-[60px] text-center">
+            <span className="text-primary font-bold">{String(current + 1).padStart(2, "0")}</span>
+            <span> / {String(slides.length).padStart(2, "0")}</span>
+          </span>
+          <button
+            onClick={next}
+            disabled={current === slides.length - 1}
+            aria-label="Siguiente"
+            className="grid h-10 w-10 place-items-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 disabled:opacity-30"
+          >›</button>
+        </div>
+      )}
     </main>
   );
 };

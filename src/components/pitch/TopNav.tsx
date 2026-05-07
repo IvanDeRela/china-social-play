@@ -83,13 +83,16 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
           </div>
         </div>
 
-        <div className="h-px bg-border/60">
+        <div className="relative h-1.5 bg-border/40">
           <motion.div
-            className="h-px bg-gradient-to-r from-primary via-primary-glow to-copper"
-            style={{ boxShadow: "0 0 8px hsl(var(--primary))" }}
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary via-primary-glow to-copper"
+            style={{ boxShadow: "0 0 10px hsl(var(--primary))" }}
             animate={{ width: `${((current + 1) / slides.length) * 100}%` }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           />
+          <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 font-mono text-[9px] uppercase tracking-[0.2em] text-foreground/70">
+            {Math.round(((current + 1) / slides.length) * 100)}%
+          </span>
         </div>
       </div>
     </header>
