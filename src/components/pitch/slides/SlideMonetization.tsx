@@ -154,8 +154,8 @@ export const SlideMonetization = () => {
           <div className="relative h-[240px]">
             <Bar data={chartData as any} options={opts as any} />
             {breakevenYear >= 0 && (
-              <div className="pointer-events-none absolute top-2 bottom-8 border-l-2 border-dashed border-success" style={{ left: `${10 + (breakevenYear + 0.5) * (80 / 5)}%` }}>
-                <span className="absolute -top-1 -translate-x-1/2 rounded-full bg-success px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider text-white whitespace-nowrap">Breakeven</span>
+              <div className="pointer-events-none absolute top-10 bottom-8 border-l-2 border-dashed border-success" style={{ left: `${10 + (breakevenYear + 0.5) * (80 / 5)}%` }}>
+                <span className="absolute -top-3 -translate-x-1/2 rounded-full bg-success px-3 py-1 text-[12px] font-mono font-bold uppercase tracking-wider text-white whitespace-nowrap shadow-md">Breakeven</span>
               </div>
             )}
           </div>
@@ -169,12 +169,12 @@ export const SlideMonetization = () => {
           <div className="flex items-baseline justify-between mb-2">
             <div className="text-xs font-mono uppercase tracking-wider text-primary font-bold">Crecimiento MAU · exponencial</div>
           </div>
-          <div className="flex items-baseline gap-2 mb-1">
-            <span className="font-mono font-bold text-6xl text-primary">{d.mau[0]}M</span>
-            <span className="text-2xl text-muted-foreground">→</span>
-            <span className="font-mono font-bold text-7xl text-primary text-glow-primary">{d.mau[4]}M</span>
+          <div className="flex items-center justify-center gap-3 mb-1">
+            <span className="font-mono font-bold text-5xl text-primary">{d.mau[0]}M</span>
+            <span className="text-3xl text-muted-foreground">→</span>
+            <span className="font-mono font-bold text-5xl text-primary text-glow-primary">{d.mau[4]}M</span>
           </div>
-          <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Y1 → Y5 · MAU</div>
+          <div className="text-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Y1 → Y5 · MAU</div>
           <div className="h-[180px]">
             <Line data={dauData} options={opts as any} />
           </div>
