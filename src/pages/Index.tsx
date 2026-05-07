@@ -70,8 +70,8 @@ const Index = () => {
       case 7:  return <SlideDivider num="III" kicker="Capítulo 3" title="El Negocio."   hanzi="业" tone="success" />;
       case 8:  return <SlideMonetization />;
       case 9:  return <SlideRoadmap />;
-      case 10: return <SlideRisks />;
-      case 11: return <SlideLegal />;
+      case 10: return <SlideLegal />;
+      case 11: return <SlideRisks />;
       case 12: return <SlideDivider num="IV"  kicker="Capítulo 4" title="El Cierre."    hanzi="终" tone="primary" />;
       case 13: return <SlideDemo />;
       case 14: return <SlideClosing onOpenDeepDive={openDeepDive} />;
