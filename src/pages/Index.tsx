@@ -4,6 +4,7 @@ import { TopNav, slides } from "@/components/pitch/TopNav";
 import { BottomDock } from "@/components/pitch/BottomDock";
 import { SlideOpening } from "@/components/pitch/slides/SlideOpening";
 import { ZoomControl } from "@/components/pitch/ZoomControl";
+import { ExportPdf } from "@/components/pitch/ExportPdf";
 
 // Lazy-load non-initial slides + heavy DeepDive section to reduce initial JS work
 const SlideContext = lazy(() => import("@/components/pitch/slides/SlideContext").then(m => ({ default: m.SlideContext })));
@@ -130,6 +131,7 @@ const Index = () => {
       )}
 
       {!isFullscreen && <ZoomControl />}
+      {!isFullscreen && <ExportPdf current={current} goTo={goTo} />}
 
       {/* Botón pantalla completa */}
       <button
