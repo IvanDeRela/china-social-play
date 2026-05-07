@@ -107,19 +107,22 @@ export const SlideRoadmap = () => {
         </motion.div>
       </div>
 
-      {/* Timeline arrow Y1→Y5 — interactivo y visual */}
+      {/* Timeline arrow Y1→Y5 — línea centrada verticalmente en los círculos */}
       <div className="relative pt-2">
-        {/* Línea base con gradiente y glow — centrada en los círculos (pt-2=8px + h-16/2=32px → 40px) */}
-        <motion.div
-          initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
-          style={{ transformOrigin: "left center" }}
-          className="absolute left-4 right-6 top-[38px] h-1 rounded-full bg-gradient-to-r from-copper via-primary to-success shadow-[0_0_16px_hsl(var(--primary)/0.45)]"
-        />
-        {/* Punta de flecha animada — centrada con la línea (24px altura → top 28px) */}
-        <motion.div
-          initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 1.4 }}
-          className="absolute right-0 top-[28px] h-0 w-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
-        />
+        {/* Capa de la línea: alineada al centro vertical de los círculos (h-16 → 32px desde el top del grid + pt-2=8px) */}
+        <div className="pointer-events-none absolute inset-x-0 top-2 h-16 grid grid-cols-5 items-center px-[calc((100%/5-4rem)/2)]">
+          <div className="col-span-5 relative h-1">
+            <motion.div
+              initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
+              style={{ transformOrigin: "left center" }}
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-copper via-primary to-success shadow-[0_0_16px_hsl(var(--primary)/0.45)]"
+            />
+            <motion.div
+              initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 1.4 }}
+              className="absolute -right-3 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
+            />
+          </div>
+        </div>
 
         <div className="relative grid grid-cols-5 gap-2">
           {milestones.map((m, i) => (
