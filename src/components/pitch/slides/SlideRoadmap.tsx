@@ -107,11 +107,10 @@ export const SlideRoadmap = () => {
         </motion.div>
       </div>
 
-      {/* Timeline arrow Y1→Y5 — línea horizontal alineada al centro de los círculos
-          Grid de 5 columnas: el centro del primer círculo está al 10% del ancho y el del último al 90%.
-          Vertical: pt-2 (8px) + círculo h-16 → centro a 40px del top del wrapper. */}
+      {/* Timeline arrow Y1→Y5 — flecha centrada en el centro del círculo en cualquier breakpoint.
+          Centro vertical: pt-2 (8px) + (alto círculo / 2). Móvil: h-11 → 8+22=30. Desktop: h-16 → 8+32=40. */}
       <div className="relative pt-2">
-        <div className="pointer-events-none absolute left-[10%] right-[10%] top-[36px] h-1 z-0">
+        <div className="pointer-events-none absolute left-[10%] right-[10%] top-[26px] sm:top-[36px] h-1 z-0">
           <motion.div
             initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
             style={{ transformOrigin: "left center" }}
@@ -119,22 +118,22 @@ export const SlideRoadmap = () => {
           />
           <motion.div
             initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 1.4 }}
-            className="absolute -right-2 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
+            className="absolute -right-1 sm:-right-2 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[7px] sm:border-y-[10px] border-y-transparent border-l-[11px] sm:border-l-[16px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
           />
         </div>
 
-        <div className="relative grid grid-cols-5 gap-2">
+        <div className="relative grid grid-cols-5 gap-1 sm:gap-2">
           {milestones.map((m, i) => (
             <motion.div
               key={m.y}
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 + i * 0.12 }}
               whileHover={{ y: -4 }}
-              className="group flex flex-col items-center text-center cursor-pointer"
+              className="group flex flex-col items-center text-center cursor-pointer min-w-0"
             >
               <motion.div
                 whileHover={{ scale: 1.15 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className={`grid h-16 w-16 place-items-center rounded-full ${toneBg[m.tone]} text-white font-mono font-bold text-base shadow-elevated relative z-10 ring-4 ring-background`}
+                className={`grid h-11 w-11 sm:h-16 sm:w-16 place-items-center rounded-full ${toneBg[m.tone]} text-white font-mono font-bold text-xs sm:text-base shadow-elevated relative z-10 ring-4 ring-background`}
                 style={{ boxShadow: `0 0 24px hsl(var(--${m.tone}) / 0.5)` }}
               >
                 {m.y}
