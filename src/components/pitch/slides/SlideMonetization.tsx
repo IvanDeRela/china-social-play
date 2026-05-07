@@ -154,8 +154,8 @@ export const SlideMonetization = () => {
           <div className="relative h-[240px]">
             <Bar data={chartData as any} options={opts as any} />
             {breakevenYear >= 0 && (
-              <div className="pointer-events-none absolute top-2 bottom-8 border-l-2 border-dashed border-success" style={{ left: `${10 + (breakevenYear + 0.5) * (80 / 5)}%` }}>
-                <span className="absolute -top-1 -translate-x-1/2 rounded-full bg-success px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider text-white whitespace-nowrap">Breakeven</span>
+              <div className="pointer-events-none absolute top-10 bottom-8 border-l-2 border-dashed border-success" style={{ left: `${10 + (breakevenYear + 0.5) * (80 / 5)}%` }}>
+                <span className="absolute -top-3 -translate-x-1/2 rounded-full bg-success px-3 py-1 text-[12px] font-mono font-bold uppercase tracking-wider text-white whitespace-nowrap shadow-md">Breakeven</span>
               </div>
             )}
           </div>
