@@ -89,7 +89,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
         goTo(i);
         await wait(750);
         const canvas = await captureSlide();
-        addCanvasToPdf(pdf, canvas, i === 0);
+        addCanvasToPdf(pdf, canvas, i === 0, getBgColor());
       }
       pdf.save("FantasyChina-Pitch.pdf");
     } catch (e) {
