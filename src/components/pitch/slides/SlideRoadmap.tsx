@@ -109,16 +109,16 @@ export const SlideRoadmap = () => {
 
       {/* Timeline arrow Y1→Y5 — interactivo y visual */}
       <div className="relative pt-2">
-        {/* Línea base con gradiente y glow — centrada en los círculos (h-16 = 64px → centro 32px) */}
+        {/* Línea base con gradiente y glow — centrada en los círculos (pt-2=8px + h-16/2=32px → 40px) */}
         <motion.div
           initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
           style={{ transformOrigin: "left center" }}
-          className="absolute left-4 right-4 top-[30px] h-1 rounded-full bg-gradient-to-r from-copper via-primary to-success shadow-[0_0_16px_hsl(var(--primary)/0.45)]"
+          className="absolute left-4 right-6 top-[38px] h-1 rounded-full bg-gradient-to-r from-copper via-primary to-success shadow-[0_0_16px_hsl(var(--primary)/0.45)]"
         />
-        {/* Punta de flecha animada — centrada con la línea */}
+        {/* Punta de flecha animada — centrada con la línea (24px altura → top 28px) */}
         <motion.div
           initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 1.4 }}
-          className="absolute right-1 top-[20px] h-0 w-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
+          className="absolute right-0 top-[28px] h-0 w-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-success drop-shadow-[0_0_8px_hsl(var(--success)/0.6)]"
         />
 
         <div className="relative grid grid-cols-5 gap-2">
