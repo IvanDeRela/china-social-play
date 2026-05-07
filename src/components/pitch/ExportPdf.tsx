@@ -10,22 +10,28 @@ interface ExportPdfProps {
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+function getBgColor(): string {
+  const bg = getComputedStyle(document.body).backgroundColor;
+  return bg && bg !== "rgba(0, 0, 0, 0)" ? bg : "#fafaf7";
+}
+
 async function captureSlide(): Promise<HTMLCanvasElement> {
   const el =
     (document.querySelector("main > div section") as HTMLElement) ||
-    (document.querySelector("main > div") as HTMLElement);
+    (document.querySelector("main > div > div") as HTMLElement) ||
+    (document.querySelector("main") as HTMLElement);
   if (!el) throw new Error("Slide no encontrada");
   return html2canvas(el, {
-    backgroundColor: "#0b0d12",
-    scale: 1.5,
+    backgroundColor: getBgColor(),
+    scale: 2,
     useCORS: true,
     logging: false,
-    windowWidth: el.scrollWidth,
-    windowHeight: el.scrollHeight,
+    windowWidth: document.documentElement.clientWidth,
+    windowHeight: document.documentElement.clientHeight,
   });
 }
 
-function addCanvasToPdf(pdf: jsPDF, canvas: HTMLCanvasElement, first: boolean) {
+function addCanvasToPdf(pdf: jsPDF, canvas: HTMLCanvasElement, first: boolean, bg: string) {
   const pageW = pdf.internal.pageSize.getWidth();
   const pageH = pdf.internal.pageSize.getHeight();
   const ratio = Math.min(pageW / canvas.width, pageH / canvas.height);
@@ -34,7 +40,7 @@ function addCanvasToPdf(pdf: jsPDF, canvas: HTMLCanvasElement, first: boolean) {
   const x = (pageW - w) / 2;
   const y = (pageH - h) / 2;
   if (!first) pdf.addPage();
-  pdf.setFillColor(11, 13, 18);
+  pdf.setFillColor(bg);
   pdf.rect(0, 0, pageW, pageH, "F");
   pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", x, y, w, h);
 }
@@ -57,7 +63,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
         format: [canvas.width, canvas.height],
         compress: true,
       });
-      addCanvasToPdf(pdf, canvas, true);
+      addCanvasToPdf(pdf, canvas, true, getBgColor());
       pdf.save("FantasyChina-Riesgos.pdf");
     } catch (e) {
       console.error(e);
@@ -83,7 +89,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
         goTo(i);
         await wait(750);
         const canvas = await captureSlide();
-        addCanvasToPdf(pdf, canvas, i === 0);
+        addCanvasToPdf(pdf, canvas, i === 0, getBgColor());
       }
       pdf.save("FantasyChina-Pitch.pdf");
     } catch (e) {
