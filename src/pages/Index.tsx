@@ -95,8 +95,8 @@ const Index = () => {
       case 10: return <SlideLegal />;
       case 11: return <SlideRisks />;
       case 12: return <SlideDivider num="IV"  kicker="Capítulo 4" title="El Cierre."    hanzi="终" tone="primary" />;
-      case 13: return <SlideDemo />;
-      case 14: return <SlideClosing onOpenDeepDive={openDeepDive} />;
+      case 13: return <SlideClosing onOpenDeepDive={openDeepDive} />;
+      case 14: return <SlideDemo />;
       default: return <SlideOpening />;
     }
   };
