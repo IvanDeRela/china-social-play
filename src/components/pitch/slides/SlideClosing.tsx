@@ -129,6 +129,44 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
           <PartnerLogos label="Target partners · ecosistema" />
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.65 }}
+          className="mt-10 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-card to-card p-6 md:p-8 text-center"
+        >
+          <div className="eyebrow text-primary mb-5">El equipo</div>
+          <div className="flex items-center justify-center gap-5 md:gap-8 mb-5 flex-wrap">
+            {[
+              { src: "/team/ivan.jpg",  name: "Iván",    role: "CTO" },
+              { src: "/team/rafa.jpg",  name: "Rafa",    role: "CMO" },
+              { src: "/team/pedro.jpg", name: "Pedro",   role: "CFO" },
+              { src: null,              name: "Alberto", role: "CEO", initials: "AH" },
+            ].map((m) => (
+              <div key={m.name} className="flex flex-col items-center gap-2">
+                {m.src ? (
+                  <img
+                    src={m.src}
+                    alt={m.name}
+                    loading="lazy"
+                    className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover border-2 border-primary/40 shadow-card"
+                  />
+                ) : (
+                  <div className="h-20 w-20 md:h-24 md:w-24 rounded-full grid place-items-center bg-copper/20 text-copper font-serif font-bold text-2xl border-2 border-copper/40 shadow-card">
+                    {m.initials}
+                  </div>
+                )}
+                <div className="font-serif text-base md:text-lg text-foreground leading-tight">{m.name}</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{m.role}</div>
+              </div>
+            ))}
+          </div>
+          <p className="font-serif italic text-lg md:text-2xl text-foreground max-w-2xl mx-auto leading-snug">
+            Somos <span className="text-primary not-italic font-semibold">Iván, Rafa, Pedro y Alberto</span> —<br className="hidden md:block" />
+            y este es nuestro producto.
+          </p>
+        </motion.div>
+
         <div className="mt-8 flex items-center justify-center gap-3 text-xs text-muted-foreground">
           <span className="font-mono uppercase tracking-[0.3em]">谢谢</span>
           <span className="h-px w-12 bg-border" />
