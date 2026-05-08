@@ -95,6 +95,7 @@ const Index = () => {
       case 9:  return <SlideRoadmap />;
       case 10: return <SlideRisks />;
       case 11: return <SlideClosing onOpenDeepDive={openDeepDive} />;
+      case 12: return <SlideTeam />;
       default: return <SlideOpening />;
     }
   };
