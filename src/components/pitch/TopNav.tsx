@@ -14,6 +14,7 @@ const slides = [
   { id: 9,  num: "08", label: "Escala",       section: "Oportunidad" },
   { id: 10, num: "09", label: "Riesgos",      section: "Oportunidad" },
   { id: 11, num: "10", label: "Inversión",    section: "Oportunidad" },
+  { id: 12, num: "11", label: "Equipo",       section: "Oportunidad" },
 ];
 
 interface TopNavProps {
