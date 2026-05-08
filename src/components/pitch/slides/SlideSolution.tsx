@@ -22,7 +22,7 @@ export const SlideSolution = () => {
   };
 
   return (
-    <SlideShell chapter="04" chapterLabel="Cliente" watermark="客">
+    <SlideShell chapter="05" chapterLabel="Cliente" watermark="客">
       <div className="flex items-center gap-3 mb-2">
         <User className="h-6 w-6 text-primary" />
         <Eyebrow color="primary">Público objetivo</Eyebrow>
