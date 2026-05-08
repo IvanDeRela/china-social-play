@@ -1138,16 +1138,12 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   <div class="nav-wrap" role="tablist" aria-label="Secciones del informe">
     <button class="nav-btn active" data-view="portada" role="tab" onclick="showView('portada')"><span class="num">00</span>Portada</button>
     <button class="nav-btn" data-view="contexto" role="tab" onclick="showView('contexto')"><span class="num">01</span>Contexto</button>
-    <button class="nav-btn" data-view="hu" role="tab" onclick="showView('hu')"><span class="num">02</span>Brecha Digital</button>
-    <button class="nav-btn" data-view="mapa" role="tab" onclick="showView('mapa')"><span class="num">03</span>Atlas</button>
-    <button class="nav-btn" data-view="internet" role="tab" onclick="showView('internet')"><span class="num">04</span>Internet & Firewall</button>
-    <button class="nav-btn" data-view="energia" role="tab" onclick="showView('energia')"><span class="num">05</span>Red Eléctrica</button>
-    <button class="nav-btn" data-view="fronteras" role="tab" onclick="showView('fronteras')"><span class="num">06</span>14 Fronteras</button>
-    <button class="nav-btn" data-view="timeline" role="tab" onclick="showView('timeline')"><span class="num">07</span>Cronología</button>
-    <button class="nav-btn" data-view="dsr" role="tab" onclick="showView('dsr')"><span class="num">08</span>Digital Silk Road</button>
-    <button class="nav-btn" data-view="espana" role="tab" onclick="showView('espana')"><span class="num">09</span>Conexión España</button>
-    <button class="nav-btn" data-view="cierre" role="tab" onclick="showView('cierre')"><span class="num">10</span>Del estudio al nicho</button>
-    <button class="nav-btn" data-view="refs" role="tab" onclick="showView('refs')"><span class="num">11</span>Referencias</button>
+    <button class="nav-btn" data-view="mapa" role="tab" onclick="showView('mapa')"><span class="num">02</span>Atlas</button>
+    <button class="nav-btn" data-view="internet" role="tab" onclick="showView('internet')"><span class="num">03</span>Internet & Firewall</button>
+    <button class="nav-btn" data-view="fronteras" role="tab" onclick="showView('fronteras')"><span class="num">04</span>14 Fronteras</button>
+    <button class="nav-btn" data-view="timeline" role="tab" onclick="showView('timeline')"><span class="num">05</span>Cronología</button>
+    <button class="nav-btn" data-view="espana" role="tab" onclick="showView('espana')"><span class="num">06</span>Conexión España</button>
+    <button class="nav-btn" data-view="cierre" role="tab" onclick="showView('cierre')"><span class="num">07</span>Del estudio al nicho</button>
   </div>
   <div class="nav-progress" aria-hidden="true"><div class="nav-progress-fill" id="nav-progress-fill"></div></div>
 </nav>
@@ -1381,114 +1377,6 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   </div>
 </div>
 
-<!-- ═══════════ 02 BRECHA DIGITAL ═══════════ -->
-<div class="view" id="view-hu">
-  <div class="section-header">
-    <div class="kicker"><span class="num-box">01</span> · Línea Hu reformulada</div>
-    <h2 class="section-title">La <em>brecha</em> que separa<br>el 94% del <span class="cyan">6%</span></h2>
-    <p class="section-deck">
-      La diagonal de 1935 hoy separa fibra óptica de cobre, 4K de 3G. Tres datos lo demuestran.
-    </p>
-  </div>
-
-  <!-- 4 stats hero -->
-  <div class="stat-hero-grid">
-    <div class="stat-hero">
-      <div class="stat-hero-val"><span class="accent">94%</span><span class="small"> / 6%</span></div>
-      <div class="stat-hero-lbl">Población al sureste / noroeste de la Línea Hu</div>
-      <div class="stat-hero-source">CNNIC · NBS · 2024</div>
-    </div>
-    <div class="stat-hero">
-      <div class="stat-hero-val"><span class="cyan">87,7%</span></div>
-      <div class="stat-hero-lbl">Penetración internet en Pekín — máximo del país</div>
-      <div class="stat-hero-source">CNNIC · 54th Report · 2024</div>
-    </div>
-    <div class="stat-hero">
-      <div class="stat-hero-val">64,8<span class="small">%</span></div>
-      <div class="stat-hero-lbl">Penetración internet en Tíbet — mínimo</div>
-      <div class="stat-hero-source">CNNIC · 54th Report · 2024</div>
-    </div>
-    <div class="stat-hero">
-      <div class="stat-hero-val"><span class="accent">22,9</span><span class="small"> p.p.</span></div>
-      <div class="stat-hero-lbl">Brecha digital total este — oeste</div>
-      <div class="stat-hero-source">Cálculo propio · CNNIC</div>
-    </div>
-  </div>
-
-  <!-- HBARS por provincia: visual heavy -->
-  <div class="hbars">
-    <div class="hbars-header">
-      <div class="hbars-title">Penetración de internet · provincias seleccionadas</div>
-      <div class="hbars-sub">Fuente · CNNIC 54th Report (2024) · ordenado de mayor a menor</div>
-    </div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/cn.png" alt="">Pekín</div><div class="hbar-track"><div class="hbar-fill red" style="width:87.7%"></div></div><div class="hbar-val">87,7<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Shanghái</div><div class="hbar-track"><div class="hbar-fill red" style="width:87.5%"></div></div><div class="hbar-val">87,5<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Cantón</div><div class="hbar-track"><div class="hbar-fill red" style="width:84.3%"></div></div><div class="hbar-val">84,3<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Zhejiang</div><div class="hbar-track"><div class="hbar-fill" style="width:83.9%"></div></div><div class="hbar-val">83,9<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Tianjin</div><div class="hbar-track"><div class="hbar-fill" style="width:83.2%"></div></div><div class="hbar-val">83,2<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Fujian</div><div class="hbar-track"><div class="hbar-fill" style="width:80.6%"></div></div><div class="hbar-val">80,6<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Hubei</div><div class="hbar-track"><div class="hbar-fill" style="width:76.2%"></div></div><div class="hbar-val">76,2<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Henan</div><div class="hbar-track"><div class="hbar-fill gold" style="width:72.4%"></div></div><div class="hbar-val">72,4<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Sichuan</div><div class="hbar-track"><div class="hbar-fill gold" style="width:71.8%"></div></div><div class="hbar-val">71,8<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Yunnan</div><div class="hbar-track"><div class="hbar-fill gold" style="width:68.9%"></div></div><div class="hbar-val">68,9<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Gansu</div><div class="hbar-track"><div class="hbar-fill muted" style="width:67.2%"></div></div><div class="hbar-val">67,2<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Guizhou</div><div class="hbar-track"><div class="hbar-fill muted" style="width:66.5%"></div></div><div class="hbar-val">66,5<span class="small">%</span></div></div>
-    <div class="hbar"><div class="hbar-label">Tíbet</div><div class="hbar-track"><div class="hbar-fill muted" style="width:64.8%"></div></div><div class="hbar-val">64,8<span class="small">%</span></div></div>
-  </div>
-
-  <!-- Programas estatales -->
-  <div class="grid-2-31">
-    <div class="hbars">
-      <div class="hbars-header">
-        <div class="hbars-title">Tres planes para "romper" la Línea Hu</div>
-        <div class="hbars-sub">Programas de integración digital del oeste</div>
-      </div>
-      <div class="flow-diagram" style="border:none;padding:0;box-shadow:none;margin:0">
-        <div class="flow-step">
-          <div class="flow-num">1</div>
-          <div class="flow-content">
-            <div class="flow-title">Broadband China · 2013</div>
-            <div class="flow-desc">Despliegue masivo de fibra óptica rural · 98% de aldeas conectadas en 2024</div>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num gold">2</div>
-          <div class="flow-content">
-            <div class="flow-title">Digital Village · 2019</div>
-            <div class="flow-desc">E-commerce rural, educación y salud digital · Alibaba + JD como ejecutores</div>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num red">3</div>
-          <div class="flow-content">
-            <div class="flow-title">East Data, West Computing · 2022</div>
-            <div class="flow-desc">8 hubs nacionales · servidores al oeste, datos al este. Infraestructura crítica.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hbars">
-      <div class="hbars-header">
-        <div class="hbars-title">Estado del despliegue rural</div>
-        <div class="hbars-sub">NEA · MIIT · 2024</div>
-      </div>
-      <div class="hbar"><div class="hbar-label">Aldeas con fibra</div><div class="hbar-track"><div class="hbar-fill green" style="width:98%"></div></div><div class="hbar-val">98<span class="small">%</span></div></div>
-      <div class="hbar"><div class="hbar-label">Cobertura 4G rural</div><div class="hbar-track"><div class="hbar-fill green" style="width:99%"></div></div><div class="hbar-val">99<span class="small">%</span></div></div>
-      <div class="hbar"><div class="hbar-label">Cobertura 5G rural</div><div class="hbar-track"><div class="hbar-fill" style="width:78%"></div></div><div class="hbar-val">78<span class="small">%</span></div></div>
-      <div class="hbar"><div class="hbar-label">5G urbana Tier-1</div><div class="hbar-track"><div class="hbar-fill red" style="width:100%"></div></div><div class="hbar-val">100<span class="small">%</span></div></div>
-      <div class="hbar"><div class="hbar-label">Hyperscale al oeste</div><div class="hbar-track"><div class="hbar-fill gold" style="width:11%"></div></div><div class="hbar-val">~1/9</div></div>
-    </div>
-  </div>
-
-  <div class="fc-callout">
-    <div class="fc-callout-label">Por qué importa</div>
-    <div class="fc-callout-title">FantasyChina opera donde están los usuarios — y los usuarios están al este</div>
-    <div class="fc-callout-body">
-      Nuestro mercado direccionable coincide con el este de la Línea Hu: Delta del Yangtsé, Río Perla, Pekín—Tianjin—Hebei. <strong>65% de los usuarios urbanos chinos de 18—35 años</strong> viven en estas tres megalópolis. Foco en Tier 1 y Tier 2 cities no es marketing: es geografía.
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════ 02 ATLAS INTERACTIVO ═══════════ -->
 <div class="view" id="view-mapa">
@@ -1743,113 +1631,6 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   </div>
 </div>
 
-<!-- ═══════════ 04 RED ELÉCTRICA ═══════════ -->
-<div class="view" id="view-energia">
-  <div class="section-header">
-    <div class="kicker"><span class="num-box">04</span> · Sin electricidad no hay servidores</div>
-    <h2 class="section-title">La <em>red eléctrica</em> más<br>grande del <span class="cyan">mundo</span></h2>
-    <p class="section-deck">
-      China generó 9.456 TWh en 2024 — más del doble que EE. UU. Tres consecuencias para FantasyChina: dónde alojar, qué huella comunicar, cuánto cuesta operar.
-    </p>
-  </div>
-
-  <!-- Comparativa internacional con barras grandes -->
-  <div class="hbars">
-    <div class="hbars-header">
-      <div class="hbars-title">Generación eléctrica anual · principales economías</div>
-      <div class="hbars-sub">IEA · 2024 · TWh — China lidera por más del doble</div>
-    </div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/cn.png" alt="">China</div><div class="hbar-track"><div class="hbar-fill red" style="width:100%"></div></div><div class="hbar-val">9.456 <span class="small">TWh</span></div></div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/us.png" alt="">EE. UU.</div><div class="hbar-track"><div class="hbar-fill" style="width:45.5%"></div></div><div class="hbar-val">4.300 <span class="small">TWh</span></div></div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/eu.png" alt="">UE-27</div><div class="hbar-track"><div class="hbar-fill" style="width:28.9%"></div></div><div class="hbar-val">2.730 <span class="small">TWh</span></div></div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/in.png" alt="">India</div><div class="hbar-track"><div class="hbar-fill gold" style="width:21.2%"></div></div><div class="hbar-val">2.000 <span class="small">TWh</span></div></div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/ru.png" alt="">Rusia</div><div class="hbar-track"><div class="hbar-fill muted" style="width:12.4%"></div></div><div class="hbar-val">1.170 <span class="small">TWh</span></div></div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/jp.png" alt="">Japón</div><div class="hbar-track"><div class="hbar-fill muted" style="width:10.3%"></div></div><div class="hbar-val">975 <span class="small">TWh</span></div></div>
-    <div class="hbar"><div class="hbar-label"><img class="flag-inline" src="https://flagcdn.com/w40/br.png" alt="">Brasil</div><div class="hbar-track"><div class="hbar-fill green" style="width:7.0%"></div></div><div class="hbar-val">660 <span class="small">TWh</span></div></div>
-  </div>
-
-  <!-- Mix eléctrico chino: chart + dashboard -->
-  <div class="grid-2">
-    <div class="chart-block">
-      <div class="chart-block-header">
-        <div class="chart-block-title">Mix eléctrico chino · TWh por fuente</div>
-        <div class="chart-block-source">IEA · CEC · 2024</div>
-      </div>
-      <div class="chart-canvas-wrap"><canvas id="chart-mix"></canvas></div>
-    </div>
-
-    <div class="hbars">
-      <div class="hbars-header">
-        <div class="hbars-title">Capacidad instalada · 3.400 GW totales</div>
-        <div class="hbars-sub">NEA · 2024 · GW por fuente</div>
-      </div>
-      <div class="hbar"><div class="hbar-label">Carbón</div><div class="hbar-track"><div class="hbar-fill muted" style="width:100%"></div></div><div class="hbar-val">1.140 <span class="small">GW</span></div></div>
-      <div class="hbar"><div class="hbar-label">Solar PV</div><div class="hbar-track"><div class="hbar-fill gold" style="width:75%"></div></div><div class="hbar-val">860 <span class="small">GW</span></div></div>
-      <div class="hbar"><div class="hbar-label">Eólica</div><div class="hbar-track"><div class="hbar-fill" style="width:51%"></div></div><div class="hbar-val">590 <span class="small">GW</span></div></div>
-      <div class="hbar"><div class="hbar-label">Hidroeléctrica</div><div class="hbar-track"><div class="hbar-fill" style="width:37%"></div></div><div class="hbar-val">430 <span class="small">GW</span></div></div>
-      <div class="hbar"><div class="hbar-label">Gas natural</div><div class="hbar-track"><div class="hbar-fill muted" style="width:11%"></div></div><div class="hbar-val">125 <span class="small">GW</span></div></div>
-      <div class="hbar"><div class="hbar-label">Nuclear</div><div class="hbar-track"><div class="hbar-fill red" style="width:5%"></div></div><div class="hbar-val">58 <span class="small">GW</span></div></div>
-      <div class="hbar"><div class="hbar-label">Otros</div><div class="hbar-track"><div class="hbar-fill muted" style="width:17%"></div></div><div class="hbar-val">197 <span class="small">GW</span></div></div>
-    </div>
-  </div>
-
-  <!-- Coste eléctrico — argumento de viabilidad económica -->
-  <div class="cost-cards">
-    <div class="cost-card winner">
-      <div class="cost-card-flag"><span><img class="flag-inline" src="https://flagcdn.com/w40/cn.png" alt="">China · zona industrial</span><span class="winner-tag">Mejor</span></div>
-      <div class="cost-card-region">Hubs East Data</div>
-      <div class="cost-card-val">0,06 USD</div>
-      <div class="cost-card-unit">/ kWh medio</div>
-      <div class="cost-card-bar"><div class="cost-card-bar-fill" style="width:33%"></div></div>
-    </div>
-    <div class="cost-card">
-      <div class="cost-card-flag"><img class="flag-inline" src="https://flagcdn.com/w40/us.png" alt="">EE. UU.</div>
-      <div class="cost-card-region">Virginia / Oregon</div>
-      <div class="cost-card-val">0,09 USD</div>
-      <div class="cost-card-unit">/ kWh medio</div>
-      <div class="cost-card-bar"><div class="cost-card-bar-fill" style="width:50%"></div></div>
-    </div>
-    <div class="cost-card">
-      <div class="cost-card-flag"><img class="flag-inline" src="https://flagcdn.com/w40/eu.png" alt="">UE</div>
-      <div class="cost-card-region">Frankfurt / Madrid</div>
-      <div class="cost-card-val">0,15 USD</div>
-      <div class="cost-card-unit">/ kWh medio</div>
-      <div class="cost-card-bar"><div class="cost-card-bar-fill" style="width:83%"></div></div>
-    </div>
-  </div>
-
-  <!-- East Data West Computing diagram -->
-  <div class="flow-diagram">
-    <div class="hbars-header" style="margin-bottom:18px">
-      <div class="hbars-title">"East Data, West Computing" · 东数西算 <a href="#view-refs" class="cite-chip" onclick="showView('refs')">NDRC 2022</a></div>
-      <div class="hbars-sub">8 hubs nacionales · 10 clústeres · estrategia explícita de geografía digital</div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-      <div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--cyan-dark);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:10px;font-weight:600">⟶ Latencia crítica · este</div>
-        <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Pekín · Tianjin · Hebei</div><div class="flow-desc">Gobierno, fintech, e-commerce</div></div></div>
-        <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Yangtsé Delta</div><div class="flow-desc">Shanghái, Hangzhou: cloud privado</div></div></div>
-        <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Greater Bay Area</div><div class="flow-desc">Shenzhen, HK: tech, gaming</div></div></div>
-        <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Chengdu—Chongqing</div><div class="flow-desc">Hub interior de balance</div></div></div>
-      </div>
-      <div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:10px;font-weight:600">⟶ Computación lenta · oeste</div>
-        <div class="flow-step"><div class="flow-num gold">5</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Guizhou</div><div class="flow-desc">Apple iCloud · clima fresco</div></div></div>
-        <div class="flow-step"><div class="flow-num gold">6</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Hohhot · M. Interior</div><div class="flow-desc">Eólica masiva</div></div></div>
-        <div class="flow-step"><div class="flow-num gold">7</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Gansu (NW)</div><div class="flow-desc">Solar fotovoltaica</div></div></div>
-        <div class="flow-step"><div class="flow-num gold">8</div><div class="flow-content"><div class="flow-title" style="font-size:14px">Ningxia</div><div class="flow-desc">Entrenamiento IA</div></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="fc-callout">
-    <div class="fc-callout-label">Por qué importa</div>
-    <div class="fc-callout-title">A escala, la diferencia eléctrica determina el margen operativo</div>
-    <div class="fc-callout-body">
-      Picos de tráfico en directo (LaLiga, eSports) requieren servidores 24/7 con SLA del 99,99%. Coste eléctrico China <strong>0,06 USD/kWh</strong> vs. UE 0,15 USD/kWh = <strong>−60% OPEX en cloud</strong>. Sobre cientos de miles de DAU, son millones de USD anuales.
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════ 05 LAS 14 FRONTERAS ═══════════ -->
 <div class="view" id="view-fronteras">
@@ -1987,79 +1768,6 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   </div>
 </div>
 
-<!-- ═══════════ 07 DIGITAL SILK ROAD ═══════════ -->
-<div class="view" id="view-dsr">
-  <div class="section-header">
-    <div class="kicker"><span class="num-box">07</span> · BRI versión digital</div>
-    <h2 class="section-title">La <em>Ruta de la Seda</em><br>por <span class="cyan">fibra óptica</span></h2>
-    <p class="section-deck">
-      Cuatro vectores de exportación tecnológica china. Para FantasyChina: TAM ampliable a 4.000M de internautas asiáticos.
-    </p>
-  </div>
-
-  <!-- 4 pillars con datos -->
-  <div class="pillar-grid">
-    <div class="pillar">
-      <div class="pillar-icon">━</div>
-      <div class="pillar-title">Cables submarinos</div>
-      <div class="pillar-stat">21.500<span class="small"> km</span></div>
-      <div class="pillar-desc">PEACE Cable operativo desde 2022. Pakistán → Yibuti → Egipto → Francia. Salta cables dominados por EE. UU.</div>
-    </div>
-    <div class="pillar red">
-      <div class="pillar-icon">5G</div>
-      <div class="pillar-title">Despliegue 5G chino</div>
-      <div class="pillar-stat">70+<span class="small"> países</span></div>
-      <div class="pillar-desc">Huawei + ZTE en África, Asia Central, SE Asiático y América Latina. Restringido en EE. UU., UK, AU.</div>
-    </div>
-    <div class="pillar gold">
-      <div class="pillar-icon">¥</div>
-      <div class="pillar-title">Pagos digitales</div>
-      <div class="pillar-stat">60+<span class="small"> países</span></div>
-      <div class="pillar-desc">Alipay+ y WeChat Pay aceptados globalmente. Tencent invertido en KakaoPay (KR), Truecaller (IN).</div>
-    </div>
-    <div class="pillar green">
-      <div class="pillar-icon">⊕</div>
-      <div class="pillar-title">BeiDou (satelital)</div>
-      <div class="pillar-stat">35<span class="small"> satélites</span></div>
-      <div class="pillar-desc">Cobertura global desde 2020. Supera GPS en Asia. Integrado en 99% de smartphones chinos.</div>
-    </div>
-  </div>
-
-  <!-- Inversión total -->
-  <div class="grid-2">
-    <div class="hbars">
-      <div class="hbars-header">
-        <div class="hbars-title">DSR · inversión declarada</div>
-        <div class="hbars-sub">SCIO · 2015—2024 (USD)</div>
-      </div>
-      <div class="hbar"><div class="hbar-label">DSR cables</div><div class="hbar-track"><div class="hbar-fill" style="width:35%"></div></div><div class="hbar-val">28<span class="small">B USD</span></div></div>
-      <div class="hbar"><div class="hbar-label">5G internacional</div><div class="hbar-track"><div class="hbar-fill red" style="width:42%"></div></div><div class="hbar-val">33<span class="small">B USD</span></div></div>
-      <div class="hbar"><div class="hbar-label">Pagos / fintech</div><div class="hbar-track"><div class="hbar-fill gold" style="width:18%"></div></div><div class="hbar-val">14<span class="small">B USD</span></div></div>
-      <div class="hbar"><div class="hbar-label">Satélites BeiDou</div><div class="hbar-track"><div class="hbar-fill green" style="width:5%"></div></div><div class="hbar-val">4<span class="small">B USD</span></div></div>
-      <div class="hbar"><div class="hbar-label" style="font-weight:700">Total DSR</div><div class="hbar-track"><div class="hbar-fill muted" style="width:100%"></div></div><div class="hbar-val">79<span class="small">B USD</span></div></div>
-    </div>
-
-    <div class="hbars">
-      <div class="hbars-header">
-        <div class="hbars-title">Modelo superapp · replicación regional</div>
-        <div class="hbars-sub">Apps inspiradas en WeChat · 2024</div>
-      </div>
-      <div class="hbar"><div class="hbar-label">Grab <img class="flag-inline" src="https://flagcdn.com/w40/sg.png" alt=""></div><div class="hbar-track"><div class="hbar-fill" style="width:88%"></div></div><div class="hbar-val">187<span class="small">M MAU</span></div></div>
-      <div class="hbar"><div class="hbar-label">KakaoTalk <img class="flag-inline" src="https://flagcdn.com/w40/kr.png" alt=""></div><div class="hbar-track"><div class="hbar-fill" style="width:23%"></div></div><div class="hbar-val">48<span class="small">M MAU</span></div></div>
-      <div class="hbar"><div class="hbar-label">Gojek <img class="flag-inline" src="https://flagcdn.com/w40/id.png" alt=""></div><div class="hbar-track"><div class="hbar-fill gold" style="width:80%"></div></div><div class="hbar-val">170<span class="small">M MAU</span></div></div>
-      <div class="hbar"><div class="hbar-label">Line <img class="flag-inline" src="https://flagcdn.com/w40/jp.png" alt=""></div><div class="hbar-track"><div class="hbar-fill" style="width:91%"></div></div><div class="hbar-val">194<span class="small">M MAU</span></div></div>
-      <div class="hbar"><div class="hbar-label">Zalo <img class="flag-inline" src="https://flagcdn.com/w40/vn.png" alt=""></div><div class="hbar-track"><div class="hbar-fill green" style="width:35%"></div></div><div class="hbar-val">75<span class="small">M MAU</span></div></div>
-    </div>
-  </div>
-
-  <div class="fc-callout">
-    <div class="fc-callout-label">Por qué importa</div>
-    <div class="fc-callout-title">FantasyChina puede exportarse vía la DSR — TAM × 4</div>
-    <div class="fc-callout-body">
-      Si validamos tracción dentro de WeChat, replicar en Grab, KakaoTalk, Gojek o Line es estratégicamente directo. <strong>El mercado deja de ser 1.092M de internautas chinos: pasa a ser 4.000M de asiáticos.</strong>
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════ 08 CONEXIÓN ESPAÑA ═══════════ -->
 <div class="view" id="view-espana">
@@ -2263,69 +1971,6 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   </div>
 </div>
 
-<!-- ═══════════ 12 REFERENCIAS ═══════════ -->
-<div class="view" id="view-refs">
-  <div class="section-header">
-    <div class="kicker"><span class="num-box">12</span> · Bibliografía</div>
-    <h2 class="section-title">Referencias <em>bibliográficas</em></h2>
-    <p class="section-deck">
-      APA 7.ª edición · fuentes oficiales · fecha de consulta abril 2026.
-    </p>
-  </div>
-
-  <div style="max-width:900px;padding-bottom:60px">
-    <div class="ref-group">
-      <div class="ref-group-title">▸ Internet, usuarios y conectividad</div>
-      <div class="ref-item" data-num="01">China Internet Network Information Center (CNNIC). (2024, agosto). <em>54th Statistical Report on Internet Development in China</em>. CNNIC. <a href="https://www.cnnic.com.cn/IDR/ReportDownloads/" target="_blank">https://www.cnnic.com.cn/IDR/ReportDownloads/</a></div>
-      <div class="ref-item" data-num="02">Ministry of Industry and Information Technology of the People's Republic of China (MIIT). (2024, diciembre). <em>Communications Industry Statistical Report 2024</em>. <a href="https://www.miit.gov.cn/jgsj/yxj/" target="_blank">https://www.miit.gov.cn/jgsj/yxj/</a></div>
-      <div class="ref-item" data-num="03">Tencent Holdings Limited. (2024, noviembre). <em>2024 Q3 Results Announcement</em>. <a href="https://www.tencent.com/en-us/investors/financial-news.html" target="_blank">https://www.tencent.com/en-us/investors/financial-news.html</a></div>
-    </div>
-
-    <div class="ref-group">
-      <div class="ref-group-title">▸ Marco legal y Gran Firewall</div>
-      <div class="ref-item" data-num="04">Standing Committee of the National People's Congress (SCNPC). (2017, junio). <em>Cybersecurity Law of the People's Republic of China</em>. <a href="http://www.npc.gov.cn/zgrdw/englishnpc/Law/2017-06/01/content_2026019.htm" target="_blank">http://www.npc.gov.cn/zgrdw/englishnpc/Law/2017-06/01/content_2026019.htm</a></div>
-      <div class="ref-item" data-num="05">SCNPC. (2021, agosto). <em>Personal Information Protection Law (PIPL)</em>. <a href="https://www.gov.cn/zhengce/content/2021-08/20/content_5632486.htm" target="_blank">https://www.gov.cn/zhengce/content/2021-08/20/content_5632486.htm</a></div>
-      <div class="ref-item" data-num="06">Cyberspace Administration of China (CAC). (2024). <em>Annual Cybersecurity Report</em>. <a href="http://www.cac.gov.cn/" target="_blank">http://www.cac.gov.cn/</a></div>
-    </div>
-
-    <div class="ref-group">
-      <div class="ref-group-title">▸ Energía y red eléctrica</div>
-      <div class="ref-item" data-num="07">International Energy Agency (IEA). (2024). <em>Electricity 2024: Analysis and forecast to 2026</em>. IEA. <a href="https://www.iea.org/reports/electricity-2024" target="_blank">https://www.iea.org/reports/electricity-2024</a></div>
-      <div class="ref-item" data-num="08">National Energy Administration of China (NEA). (2025, enero). <em>2024 National Power Industry Statistics</em>. <a href="http://www.nea.gov.cn/" target="_blank">http://www.nea.gov.cn/</a></div>
-      <div class="ref-item" data-num="09">China Electricity Council (CEC). (2024). <em>Annual Development Report on the Power Industry</em>. <a href="https://english.cec.org.cn/" target="_blank">https://english.cec.org.cn/</a></div>
-    </div>
-
-    <div class="ref-group">
-      <div class="ref-group-title">▸ Centros de datos y "East Data, West Computing"</div>
-      <div class="ref-item" data-num="10">National Development and Reform Commission (NDRC). (2022, febrero). <em>Notice on the implementation of the National Integrated Big Data Center Collaborative Innovation System</em>. <a href="https://english.www.gov.cn/policies/latestreleases/202202/17/content_WS620e6c01c6d09c94e48a5f0c.html" target="_blank">https://english.www.gov.cn/policies/latestreleases/202202/17/content_WS620e6c01c6d09c94e48a5f0c.html</a></div>
-      <div class="ref-item" data-num="11">Synergy Research Group. (2024). <em>Hyperscale Data Center Capacity Worldwide</em>. <a href="https://www.srgresearch.com/" target="_blank">https://www.srgresearch.com/</a></div>
-    </div>
-
-    <div class="ref-group">
-      <div class="ref-group-title">▸ Línea Hu</div>
-      <div class="ref-item" data-num="12">Hu, H. (1935). The distribution of China's population, with statistical tables and density maps. <em>Acta Geographica Sinica</em>, 2(2), 33—74.</div>
-      <div class="ref-item" data-num="13">Jacobs, F. (2022, abril). <em>China's most important border is imaginary: the Hu Line</em>. Big Think. <a href="https://bigthink.com/strange-maps/hu-line/" target="_blank">https://bigthink.com/strange-maps/hu-line/</a></div>
-    </div>
-
-    <div class="ref-group">
-      <div class="ref-group-title">▸ Belt & Road / Digital Silk Road</div>
-      <div class="ref-item" data-num="14">State Council Information Office of the People's Republic of China (SCIO). (2023, octubre). <em>The Belt and Road Initiative: A Key Pillar of the Global Community of Shared Future</em>. <a href="https://english.www.gov.cn/news/202310/10/content_WS6524b3a2c6d0868f4e8e0147.html" target="_blank">https://english.www.gov.cn/news/202310/10/content_WS6524b3a2c6d0868f4e8e0147.html</a></div>
-      <div class="ref-item" data-num="15">BeiDou Navigation Satellite System Office (BDSC). (2024). <em>BeiDou Open Service Performance Standard</em>. <a href="http://en.beidou.gov.cn/" target="_blank">http://en.beidou.gov.cn/</a></div>
-      <div class="ref-item" data-num="16">PEACE Cable International. (2022). <em>PEACE Submarine Cable System</em>. <a href="https://www.peacecable.net/" target="_blank">https://www.peacecable.net/</a></div>
-    </div>
-
-    <div class="ref-group">
-      <div class="ref-group-title">▸ España—China · LaLiga</div>
-      <div class="ref-item" data-num="17">LaLiga. (2024). <em>LaLiga Business in China — Annual Overview</em>. <a href="https://www.laliga.com/en-GB/news/laliga-china-business-overview" target="_blank">https://www.laliga.com/en-GB/news/laliga-china-business-overview</a></div>
-      <div class="ref-item" data-num="18">Casa Asia. (2025). <em>50 aniversario de las relaciones diplomáticas España—China: balance y perspectivas</em>. <a href="https://www.casaasia.es/" target="_blank">https://www.casaasia.es/</a></div>
-      <div class="ref-item" data-num="19">ICEX España Exportación e Inversiones. (2024). <em>Informe económico y comercial: China</em>. <a href="https://www.icex.es/" target="_blank">https://www.icex.es/</a></div>
-    </div>
-
-    <div class="ref-note">
-      <strong>Nota metodológica:</strong> fuentes primarias (CNNIC, MIIT, NEA, NDRC, SCIO, SCNPC, CEC, BDSC; IEA), informes corporativos auditados (Tencent, LaLiga, PEACE Cable) y análisis especializados. Cifras monetarias en USD; las del orden de 10¹² se denominan "billón europeo" para evitar ambigüedad con el "billion" anglosajón (10⁹). Fecha de consulta: abril de 2026.
-    </div>
-  </div>
-</div>
 
 </main>
 
@@ -3339,7 +2984,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   }
 
   // NAVIGATION
-  var VIEWS = ['portada','hu','mapa','internet','energia','fronteras','timeline','dsr','espana','refs'];
+  var VIEWS = ['portada','contexto','mapa','internet','fronteras','timeline','espana','cierre'];
   function showView(name){
     document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active'); b.setAttribute('aria-selected','false');});
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
