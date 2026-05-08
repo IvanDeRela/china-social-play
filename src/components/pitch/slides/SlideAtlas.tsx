@@ -8,7 +8,7 @@ export const SlideAtlas = () => {
   const src = "/china-digital-atlas.html";
 
   return (
-    <SlideShell chapter="06" chapterLabel="Atlas Digital" watermark="图">
+    <SlideShell chapter="02" chapterLabel="Atlas Digital" watermark="图">
       <div className="flex items-center gap-3 mb-2">
         <Globe2 className="h-6 w-6 text-primary" />
         <Eyebrow color="primary">Infraestructura · contexto geoestratégico</Eyebrow>
