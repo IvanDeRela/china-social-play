@@ -11,10 +11,8 @@ const SlideContext = lazy(() => import("@/components/pitch/slides/SlideContext")
 const SlideProblem = lazy(() => import("@/components/pitch/slides/SlideProblem").then(m => ({ default: m.SlideProblem })));
 const SlideSolution = lazy(() => import("@/components/pitch/slides/SlideSolution").then(m => ({ default: m.SlideSolution })));
 const SlideMarket = lazy(() => import("@/components/pitch/slides/SlideMarket").then(m => ({ default: m.SlideMarket })));
-const SlideLegal = lazy(() => import("@/components/pitch/slides/SlideLegal").then(m => ({ default: m.SlideLegal })));
 const SlideMonetization = lazy(() => import("@/components/pitch/slides/SlideMonetization").then(m => ({ default: m.SlideMonetization })));
 const SlideRoadmap = lazy(() => import("@/components/pitch/slides/SlideRoadmap").then(m => ({ default: m.SlideRoadmap })));
-const SlideDemo = lazy(() => import("@/components/pitch/slides/SlideDemo").then(m => ({ default: m.SlideDemo })));
 const SlideClosing = lazy(() => import("@/components/pitch/slides/SlideClosing").then(m => ({ default: m.SlideClosing })));
 const SlideRisks = lazy(() => import("@/components/pitch/slides/SlideRisks").then(m => ({ default: m.SlideRisks })));
 const SlideDivider = lazy(() => import("@/components/pitch/slides/SlideDivider").then(m => ({ default: m.SlideDivider })));
