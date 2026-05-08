@@ -9,14 +9,15 @@ const slides = [
   { id: 4,  num: "—",  label: "Solución",     section: "div", divider: true },
   { id: 5,  num: "04", label: "Cliente",      section: "Solución" },
   { id: 6,  num: "05", label: "Mercado",      section: "Solución" },
-  { id: 7,  num: "—",  label: "Negocio",      section: "div", divider: true },
-  { id: 8,  num: "06", label: "Proyecciones", section: "Negocio" },
-  { id: 9,  num: "07", label: "Escala",       section: "Negocio" },
-  { id: 10, num: "08", label: "Comparables",  section: "Negocio" },
-  { id: 11, num: "09", label: "Riesgos",      section: "Negocio" },
-  { id: 12, num: "—",  label: "Cierre",       section: "div", divider: true },
-  { id: 13, num: "10", label: "Inversión",   section: "Cierre" },
-  { id: 14, num: "11", label: "Equipo",       section: "Cierre" },
+  { id: 7,  num: "06", label: "Atlas",        section: "Solución" },
+  { id: 8,  num: "—",  label: "Negocio",      section: "div", divider: true },
+  { id: 9,  num: "07", label: "Proyecciones", section: "Negocio" },
+  { id: 10, num: "08", label: "Escala",       section: "Negocio" },
+  { id: 11, num: "09", label: "Comparables",  section: "Negocio" },
+  { id: 12, num: "10", label: "Riesgos",      section: "Negocio" },
+  { id: 13, num: "—",  label: "Cierre",       section: "div", divider: true },
+  { id: 14, num: "11", label: "Inversión",    section: "Cierre" },
+  { id: 15, num: "12", label: "Equipo",       section: "Cierre" },
 ];
 
 interface TopNavProps {
