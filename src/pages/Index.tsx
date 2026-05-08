@@ -83,21 +83,17 @@ const Index = () => {
   const renderSlide = () => {
     switch (current) {
       case 0:  return <SlideOpening />;
-      case 1:  return <SlideDivider num="I"   kicker="Capítulo 1" title="El Problema."  hanzi="问" tone="copper" />;
-      case 2:  return <SlideContext />;
-      case 3:  return <SlideProblem />;
-      case 4:  return <SlideDivider num="II"  kicker="Capítulo 2" title="La Solución."  hanzi="解" tone="primary" />;
-      case 5:  return <SlideSolution />;
-      case 6:  return <SlideMarket />;
-      case 7:  return <SlideAtlas />;
-      case 8:  return <SlideDivider num="III" kicker="Capítulo 3" title="El Negocio."   hanzi="业" tone="success" />;
-      case 9:  return <SlideMonetization />;
-      case 10: return <SlideRoadmap />;
-      case 11: return <SlideLegal />;
-      case 12: return <SlideRisks />;
-      case 13: return <SlideDivider num="IV"  kicker="Capítulo 4" title="El Cierre."    hanzi="终" tone="primary" />;
-      case 14: return <SlideClosing onOpenDeepDive={openDeepDive} />;
-      case 15: return <SlideDemo />;
+      case 1:  return <SlideDivider num="I"  kicker="Capítulo 1" title="China."          hanzi="中" tone="copper" />;
+      case 2:  return <SlideAtlas />;
+      case 3:  return <SlideContext />;
+      case 4:  return <SlideDivider num="II" kicker="Capítulo 2" title="La Oportunidad." hanzi="机" tone="primary" />;
+      case 5:  return <SlideProblem />;
+      case 6:  return <SlideSolution />;
+      case 7:  return <SlideMarket />;
+      case 8:  return <SlideMonetization />;
+      case 9:  return <SlideRoadmap />;
+      case 10: return <SlideRisks />;
+      case 11: return <SlideClosing onOpenDeepDive={openDeepDive} />;
       default: return <SlideOpening />;
     }
   };
