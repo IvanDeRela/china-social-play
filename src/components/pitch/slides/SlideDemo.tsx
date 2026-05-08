@@ -19,7 +19,7 @@ const colorClasses: Record<string, string> = {
 
 export const SlideDemo = () => {
   return (
-    <SlideShell chapter="11" chapterLabel="Equipo" watermark="队">
+    <SlideShell chapter="12" chapterLabel="Equipo" watermark="队">
       <div className="flex items-center gap-3 mb-2">
         <Users className="h-6 w-6 text-primary" />
         <Eyebrow color="primary">El equipo fundador</Eyebrow>

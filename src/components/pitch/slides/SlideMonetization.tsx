@@ -86,7 +86,7 @@ export const SlideMonetization = () => {
   const breakevenYear = d.ebitda.findIndex((v) => v > 0);
 
   return (
-    <SlideShell chapter="06" chapterLabel="Proyecciones" watermark="增">
+    <SlideShell chapter="07" chapterLabel="Proyecciones" watermark="增">
       <div className="flex items-start justify-between gap-6 flex-wrap mb-6">
         <div>
           <div className="flex items-center gap-3 mb-2">

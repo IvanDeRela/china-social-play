@@ -18,6 +18,7 @@ const SlideDemo = lazy(() => import("@/components/pitch/slides/SlideDemo").then(
 const SlideClosing = lazy(() => import("@/components/pitch/slides/SlideClosing").then(m => ({ default: m.SlideClosing })));
 const SlideRisks = lazy(() => import("@/components/pitch/slides/SlideRisks").then(m => ({ default: m.SlideRisks })));
 const SlideDivider = lazy(() => import("@/components/pitch/slides/SlideDivider").then(m => ({ default: m.SlideDivider })));
+const SlideAtlas = lazy(() => import("@/components/pitch/slides/SlideAtlas").then(m => ({ default: m.SlideAtlas })));
 const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ default: m.DeepDive })));
 
 const Index = () => {
@@ -90,14 +91,15 @@ const Index = () => {
       case 4:  return <SlideDivider num="II"  kicker="Capítulo 2" title="La Solución."  hanzi="解" tone="primary" />;
       case 5:  return <SlideSolution />;
       case 6:  return <SlideMarket />;
-      case 7:  return <SlideDivider num="III" kicker="Capítulo 3" title="El Negocio."   hanzi="业" tone="success" />;
-      case 8:  return <SlideMonetization />;
-      case 9:  return <SlideRoadmap />;
-      case 10: return <SlideLegal />;
-      case 11: return <SlideRisks />;
-      case 12: return <SlideDivider num="IV"  kicker="Capítulo 4" title="El Cierre."    hanzi="终" tone="primary" />;
-      case 13: return <SlideClosing onOpenDeepDive={openDeepDive} />;
-      case 14: return <SlideDemo />;
+      case 7:  return <SlideAtlas />;
+      case 8:  return <SlideDivider num="III" kicker="Capítulo 3" title="El Negocio."   hanzi="业" tone="success" />;
+      case 9:  return <SlideMonetization />;
+      case 10: return <SlideRoadmap />;
+      case 11: return <SlideLegal />;
+      case 12: return <SlideRisks />;
+      case 13: return <SlideDivider num="IV"  kicker="Capítulo 4" title="El Cierre."    hanzi="终" tone="primary" />;
+      case 14: return <SlideClosing onOpenDeepDive={openDeepDive} />;
+      case 15: return <SlideDemo />;
       default: return <SlideOpening />;
     }
   };
