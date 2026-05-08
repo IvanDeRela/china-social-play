@@ -93,7 +93,7 @@ export const SlideRisks = () => {
   };
 
   return (
-    <SlideShell chapter="09" chapterLabel="Riesgos" watermark="险">
+    <SlideShell chapter="10" chapterLabel="Riesgos" watermark="险">
       <TooltipProvider delayDuration={150}>
         <div className="flex items-center gap-3 mb-2">
           <ShieldAlert className="h-6 w-6 text-danger" />

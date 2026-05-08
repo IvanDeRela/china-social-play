@@ -16,7 +16,7 @@ export const SlideLegal = () => {
   const max = 22000;
 
   return (
-    <SlideShell chapter="08" chapterLabel="Comparables" watermark="估">
+    <SlideShell chapter="09" chapterLabel="Comparables" watermark="估">
       <div className="flex items-center gap-3 mb-2">
         <Trophy className="h-6 w-6 text-copper" />
         <Eyebrow color="copper">Comparables públicos</Eyebrow>

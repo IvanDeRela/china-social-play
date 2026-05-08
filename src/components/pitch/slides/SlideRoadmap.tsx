@@ -43,7 +43,7 @@ export const SlideRoadmap = () => {
   const toneRing: Record<string, string>    = { primary: "ring-primary", copper: "ring-copper", success: "ring-success" };
 
   return (
-    <SlideShell chapter="07" chapterLabel="Escala" watermark="规">
+    <SlideShell chapter="08" chapterLabel="Escala" watermark="规">
       <div className="flex items-center gap-3 mb-2">
         <Gauge className="h-6 w-6 text-success" />
         <Eyebrow color="success">Economías de escala</Eyebrow>
