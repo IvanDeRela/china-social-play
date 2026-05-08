@@ -3,21 +3,17 @@ import { cn } from "@/lib/utils";
 
 const slides = [
   { id: 0,  num: "01", label: "Apertura",     section: "Intro" },
-  { id: 1,  num: "—",  label: "Problema",     section: "div", divider: true },
-  { id: 2,  num: "02", label: "El Nicho",     section: "Problema" },
-  { id: 3,  num: "03", label: "Producto",     section: "Problema" },
-  { id: 4,  num: "—",  label: "Solución",     section: "div", divider: true },
-  { id: 5,  num: "04", label: "Cliente",      section: "Solución" },
-  { id: 6,  num: "05", label: "Mercado",      section: "Solución" },
-  { id: 7,  num: "06", label: "Atlas",        section: "Solución" },
-  { id: 8,  num: "—",  label: "Negocio",      section: "div", divider: true },
-  { id: 9,  num: "07", label: "Proyecciones", section: "Negocio" },
-  { id: 10, num: "08", label: "Escala",       section: "Negocio" },
-  { id: 11, num: "09", label: "Comparables",  section: "Negocio" },
-  { id: 12, num: "10", label: "Riesgos",      section: "Negocio" },
-  { id: 13, num: "—",  label: "Cierre",       section: "div", divider: true },
-  { id: 14, num: "11", label: "Inversión",    section: "Cierre" },
-  { id: 15, num: "12", label: "Equipo",       section: "Cierre" },
+  { id: 1,  num: "—",  label: "China",        section: "div", divider: true },
+  { id: 2,  num: "02", label: "Atlas",        section: "China" },
+  { id: 3,  num: "03", label: "Contexto",     section: "China" },
+  { id: 4,  num: "—",  label: "Oportunidad",  section: "div", divider: true },
+  { id: 5,  num: "04", label: "Producto",     section: "Oportunidad" },
+  { id: 6,  num: "05", label: "Cliente",      section: "Oportunidad" },
+  { id: 7,  num: "06", label: "Mercado",      section: "Oportunidad" },
+  { id: 8,  num: "07", label: "Proyecciones", section: "Oportunidad" },
+  { id: 9,  num: "08", label: "Escala",       section: "Oportunidad" },
+  { id: 10, num: "09", label: "Riesgos",      section: "Oportunidad" },
+  { id: 11, num: "10", label: "Inversión",    section: "Oportunidad" },
 ];
 
 interface TopNavProps {
