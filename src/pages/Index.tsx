@@ -17,6 +17,7 @@ const SlideClosing = lazy(() => import("@/components/pitch/slides/SlideClosing")
 const SlideRisks = lazy(() => import("@/components/pitch/slides/SlideRisks").then(m => ({ default: m.SlideRisks })));
 const SlideDivider = lazy(() => import("@/components/pitch/slides/SlideDivider").then(m => ({ default: m.SlideDivider })));
 const SlideAtlas = lazy(() => import("@/components/pitch/slides/SlideAtlas").then(m => ({ default: m.SlideAtlas })));
+const SlideTeam = lazy(() => import("@/components/pitch/slides/SlideTeam").then(m => ({ default: m.SlideTeam })));
 const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ default: m.DeepDive })));
 
 const Index = () => {
