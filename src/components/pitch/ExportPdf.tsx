@@ -54,7 +54,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
     setOpen(false);
     const previous = current;
     try {
-      goTo(12);
+      goTo(10);
       await wait(900);
       const canvas = await captureSlide();
       const pdf = new jsPDF({
