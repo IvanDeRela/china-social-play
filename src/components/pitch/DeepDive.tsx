@@ -14,7 +14,7 @@ const sections = [
   { id: "unit", label: "Unit economics", icon: "$" },
   { id: "risks", label: "Riesgos", icon: "!" },
   { id: "product", label: "Producto", icon: "□" },
-  { id: "biblio", label: "Bibliografía", icon: "¶" },
+  
 ];
 
 const refGroups: { title: string; items: { n: string; cite: React.ReactNode }[] }[] = [
@@ -395,32 +395,6 @@ export const DeepDive = ({ innerRef }: DeepDiveProps) => {
             <div className="lg:col-span-5 flex justify-center">
               <PhoneMockup scale={1} />
             </div>
-          </div>
-        </DeepSection>
-
-        {/* BIBLIOGRAFÍA */}
-        <DeepSection id="dd-biblio" eyebrow="07 · Bibliografía" title="Referencias APA 7 · fuentes consolidadas" color="info">
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
-            Fuentes primarias (CNNIC, MIIT, NEA, NDRC, SCIO, SCNPC, CEC, BDSC; IEA),
-            informes corporativos auditados (Tencent, LaLiga, PEACE Cable) y análisis especializados.
-            Cifras monetarias en USD. Fecha de consulta: abril de 2026.
-          </p>
-          <div className="space-y-6">
-            {refGroups.map((g) => (
-              <div key={g.title} className="rounded-2xl border border-border bg-card p-6 shadow-card">
-                <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-info mb-4">
-                  ▸ {g.title}
-                </div>
-                <ol className="space-y-3">
-                  {g.items.map((it) => (
-                    <li key={it.n} className="flex gap-3 text-sm text-foreground/85 leading-relaxed">
-                      <span className="font-mono text-[11px] text-muted-foreground shrink-0 mt-1 w-6">{it.n}</span>
-                      <span>{it.cite}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            ))}
           </div>
         </DeepSection>
 
