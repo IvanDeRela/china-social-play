@@ -197,7 +197,7 @@ export const SlideRisks = () => {
                                 <button
                                   key={r.id}
                                   onClick={() => setActive(r)}
-                                  className="group inline-flex items-center gap-1 sm:gap-1.5 rounded-full border-2 px-2 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-sm font-bold transition-all hover:scale-105"
+                                  className="group inline-flex items-center gap-1 sm:gap-1.5 rounded-full border-2 px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-[12px] font-bold transition-all hover:scale-105 max-w-full whitespace-normal text-left leading-tight"
                                   style={
                                     isActive
                                       ? { backgroundColor: `hsl(var(--${tone}))`, color: "white", borderColor: "transparent" }
@@ -207,7 +207,7 @@ export const SlideRisks = () => {
                                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0">
                                     <path d={r.icon} />
                                   </svg>
-                                  <span className="truncate max-w-[80px] sm:max-w-none">{r.short}</span>
+                                  <span className="break-words">{r.short}</span>
                                 </button>
                               );
                             })}

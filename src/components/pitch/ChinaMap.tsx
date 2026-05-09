@@ -3,17 +3,18 @@ import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-l
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-/** Ciudades clave (Tier 1 / 2) con coordenadas reales. */
-const cities = [
-  { name: "Pekín",     lat: 39.9042, lng: 116.4074, tier: 1 },
-  { name: "Shanghái",  lat: 31.2304, lng: 121.4737, tier: 1 },
-  { name: "Shenzhen",  lat: 22.5431, lng: 114.0579, tier: 1 },
-  { name: "Guangzhou", lat: 23.1291, lng: 113.2644, tier: 1 },
-  { name: "Hong Kong", lat: 22.3193, lng: 114.1694, tier: 1 },
-  { name: "Chengdu",   lat: 30.5728, lng: 104.0668, tier: 2 },
-  { name: "Wuhan",     lat: 30.5928, lng: 114.3055, tier: 2 },
-  { name: "Xi'an",     lat: 34.3416, lng: 108.9398, tier: 2 },
-  { name: "Hangzhou",  lat: 30.2741, lng: 120.1551, tier: 2 },
+/** Ciudades clave (Tier 1 / 2) con coordenadas reales y dirección de etiqueta. */
+type Dir = "right" | "left" | "top" | "bottom";
+const cities: { name: string; lat: number; lng: number; tier: 1 | 2; dir: Dir; offset?: [number, number] }[] = [
+  { name: "Pekín",     lat: 39.9042, lng: 116.4074, tier: 1, dir: "top" },
+  { name: "Shanghái",  lat: 31.2304, lng: 121.4737, tier: 1, dir: "right" },
+  { name: "Shenzhen",  lat: 22.5431, lng: 114.0579, tier: 1, dir: "left" },
+  { name: "Guangzhou", lat: 23.1291, lng: 113.2644, tier: 1, dir: "top" },
+  { name: "Hong Kong", lat: 22.3193, lng: 114.1694, tier: 1, dir: "bottom" },
+  { name: "Chengdu",   lat: 30.5728, lng: 104.0668, tier: 2, dir: "left" },
+  { name: "Wuhan",     lat: 30.5928, lng: 114.3055, tier: 2, dir: "bottom" },
+  { name: "Xi'an",     lat: 34.3416, lng: 108.9398, tier: 2, dir: "top" },
+  { name: "Hangzhou",  lat: 30.2741, lng: 120.1551, tier: 2, dir: "right" },
 ];
 
 const tier1Cities = cities.filter((c) => c.tier === 1).map((c) => c.name);
@@ -69,6 +70,12 @@ export const ChinaMap = ({ className }: ChinaMapProps) => {
 
         {cities.map((c) => {
           const color = c.tier === 1 ? "hsl(180, 70%, 40%)" : "hsl(20, 70%, 50%)";
+          const offsetMap: Record<Dir, [number, number]> = {
+            right:  [10, 0],
+            left:   [-10, 0],
+            top:    [0, -10],
+            bottom: [0, 10],
+          };
           return (
             <CircleMarker
               key={c.name}
@@ -78,8 +85,8 @@ export const ChinaMap = ({ className }: ChinaMapProps) => {
             >
               <Tooltip
                 permanent
-                direction="right"
-                offset={[8, 0]}
+                direction={c.dir}
+                offset={offsetMap[c.dir]}
                 className="!bg-transparent !border-0 !shadow-none !text-xs !font-mono !font-bold !text-foreground"
               >
                 {c.name}
