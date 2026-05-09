@@ -24,13 +24,13 @@ export const SlideContext = () => {
         {/* Mapa China */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-7 rounded-2xl border border-border bg-card p-4 shadow-card relative"
+          className="lg:col-span-8 rounded-2xl border border-border bg-card p-4 shadow-card relative"
         >
-          <ChinaMap className="w-full h-[420px]" />
+          <ChinaMap className="w-full h-[560px]" />
         </motion.div>
 
         {/* KPIs verticales */}
-        <div className="lg:col-span-5 grid grid-cols-1 gap-3">
+        <div className="lg:col-span-4 grid grid-cols-1 gap-3">
           {[
             { val: 200, suf: "M", label: "Fans fútbol europeo · China", sub: "iResearch · CNNIC 2024", tone: "primary" },
             { val: 1300, suf: "M", label: "Usuarios WeChat", sub: "Tencent IR 2024", tone: "primary" },

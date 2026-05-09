@@ -39,21 +39,21 @@ export const SlideSolution = () => {
         {/* Persona hero */}
         <motion.div
           initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.15 }}
-          className="lg:col-span-5 rounded-3xl border border-border bg-card overflow-hidden shadow-elevated flex flex-col"
+          className="lg:col-span-4 rounded-3xl border border-border bg-card overflow-hidden shadow-elevated flex flex-col"
         >
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-square overflow-hidden">
             <img src={weiLiu} alt="Wei Liu" loading="lazy" width={512} height={512} className="w-full h-full object-cover object-top" />
             <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
             <div className="absolute bottom-3 left-4 right-4">
-              <div className="font-serif text-3xl text-foreground drop-shadow">Wei Liu · 刘伟</div>
-              <div className="text-sm text-muted-foreground">28 · Shanghái · Ingeniero</div>
+              <div className="font-serif text-2xl text-foreground drop-shadow">Wei Liu · 刘伟</div>
+              <div className="text-xs text-muted-foreground">28 · Shanghái · Ingeniero</div>
             </div>
           </div>
-          <div className="p-5 grid grid-cols-2 gap-2">
+          <div className="p-4 grid grid-cols-2 gap-2">
             {traits.map((t) => (
-              <div key={t.k} className="rounded-lg bg-muted/40 px-3 py-2 flex items-baseline gap-2">
-                <span className="font-mono font-bold text-base text-primary">{t.k}</span>
-                <span className="text-xs text-muted-foreground">{t.v}</span>
+              <div key={t.k} className="rounded-lg bg-muted/40 px-2.5 py-2 flex items-baseline gap-2">
+                <span className="font-mono font-bold text-sm text-primary">{t.k}</span>
+                <span className="text-[11px] text-muted-foreground">{t.v}</span>
               </div>
             ))}
           </div>
@@ -62,7 +62,7 @@ export const SlideSolution = () => {
         {/* Right: segment + 3 huge KPIs */}
         <motion.div
           initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
-          className="lg:col-span-7 flex flex-col gap-5"
+          className="lg:col-span-8 flex flex-col gap-5"
         >
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7">
             <div className="eyebrow text-primary mb-2">Segmento Tier 1-2</div>
