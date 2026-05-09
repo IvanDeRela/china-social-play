@@ -18,6 +18,7 @@ const SlideRisks = lazy(() => import("@/components/pitch/slides/SlideRisks").the
 const SlideDivider = lazy(() => import("@/components/pitch/slides/SlideDivider").then(m => ({ default: m.SlideDivider })));
 const SlideAtlas = lazy(() => import("@/components/pitch/slides/SlideAtlas").then(m => ({ default: m.SlideAtlas })));
 const SlideTeam = lazy(() => import("@/components/pitch/slides/SlideTeam").then(m => ({ default: m.SlideTeam })));
+const SlideReferences = lazy(() => import("@/components/pitch/slides/SlideReferences").then(m => ({ default: m.SlideReferences })));
 const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ default: m.DeepDive })));
 
 const Index = () => {
@@ -96,6 +97,7 @@ const Index = () => {
       case 10: return <SlideRisks />;
       case 11: return <SlideClosing onOpenDeepDive={openDeepDive} />;
       case 12: return <SlideTeam />;
+      case 13: return <SlideReferences />;
       default: return <SlideOpening />;
     }
   };
