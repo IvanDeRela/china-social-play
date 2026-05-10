@@ -1631,17 +1631,51 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   </div>
 
   <style>
-    .cov-leg-row:focus-visible, .cov-btn:focus-visible, #cov-compare-toggle:focus-visible { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .cov-leg-row:focus-visible, .cov-btn:focus-visible, #cov-compare-toggle:focus-visible, .cov-reset-btn:focus-visible { outline: 3px solid #0369a1; outline-offset: 2px; }
     .cov-leg-row[aria-selected="true"] { background:#e0f2fe !important; outline:2px solid #0369a1; }
     .cov-delta.pos { background:#dcfce7; color:#14532d; border:1px solid #15803d; }
     .cov-delta.neg { background:#fee2e2; color:#7f1d1d; border:1px solid #b91c1c; }
     .cov-delta.neu { background:#f1f5f9; color:#334155; border:1px solid #94a3b8; }
+    .cov-shell{position:relative;height:660px;border:1px solid var(--rule-strong);background:#eef2f7;overflow:hidden}
+    .cov-card{position:absolute;z-index:1000;background:rgba(255,255,255,0.97);border:1px solid var(--rule-strong);box-shadow:var(--shadow-md);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+    .cov-controls{top:14px;left:14px;padding:14px 16px;font-family:var(--mono);font-size:11px;min-width:220px;color:#0f172a}
+    .cov-panel{top:14px;right:14px;width:300px;padding:16px 18px;color:var(--ink)}
+    .cov-legend{bottom:14px;left:14px;padding:14px 16px;color:#0f172a;font-family:var(--mono);font-size:10.5px;width:300px;max-width:calc(100vw - 28px)}
+    .cov-reset-btn{background:#fff;border:1px solid #0e7490;color:#0e7490;font-family:var(--mono);font-size:10px;cursor:pointer;padding:3px 8px;font-weight:700}
+    @media (max-width: 980px){
+      .cov-shell{height:820px}
+      .cov-controls,.cov-panel,.cov-legend{position:static;width:auto;max-width:none}
+      .cov-overlay-stack{position:absolute;left:12px;right:12px;bottom:12px;z-index:1000;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;pointer-events:none}
+      .cov-overlay-stack > *{pointer-events:auto}
+      .cov-controls{min-width:0}
+      .cov-panel{order:2}
+      .cov-legend{order:3}
+      #map-coverage{inset:0}
+    }
+    @media (max-width: 700px){
+      .cov-shell{height:980px}
+      .cov-overlay-stack{left:10px;right:10px;bottom:10px;gap:8px}
+      .cov-card{background:rgba(255,255,255,0.985)}
+      .cov-controls{padding:12px 12px;font-size:10px}
+      .cov-panel{padding:12px 12px;width:auto}
+      .cov-legend{padding:12px 12px;width:auto;font-size:10px}
+    }
+    @media (max-width: 520px){
+      .cov-shell{height:1060px}
+      .cov-controls [role="radiogroup"]{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px !important}
+      .cov-btn{font-size:11px !important;padding:8px 0 !important}
+      .cov-legend ul{max-height:188px;overflow:auto}
+      .cov-legend li{font-size:9.5px}
+      .cov-panel [style*="justify-content:space-between"]{gap:8px}
+      .cov-panel [id^="cov-v-"]{white-space:nowrap}
+    }
   </style>
-  <div class="map-shell" style="position:relative; height:660px; border:1px solid var(--rule-strong); background:#eef2f7;">
+  <div class="map-shell cov-shell">
     <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de calor de cobertura 3G/4G/5G en China" style="background:#eef2f7 !important;"></div>
 
+    <div class="cov-overlay-stack" aria-hidden="false">
     <!-- Selector tecnología -->
-    <div id="cov-controls" style="position:absolute; top:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.98); border:1px solid var(--rule-strong); padding:14px 16px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:11px; min-width:220px; color:#0f172a; backdrop-filter:blur(6px);">
+    <div id="cov-controls" class="cov-card cov-controls">
       <div id="cov-tech-label-aria" style="text-transform:uppercase; letter-spacing:0.18em; color:#475569; margin-bottom:8px;">Tecnología (resaltada en mapa)</div>
       <div role="radiogroup" aria-labelledby="cov-tech-label-aria" style="display:flex; gap:6px;">
         <button type="button" class="cov-btn" role="radio" aria-checked="false" data-tech="3G" onclick="setCoverageTech('3G')" style="flex:1; padding:7px 0; border:1px solid #475569; background:#fff; color:#0f172a; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">3G</button>
@@ -1657,7 +1691,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     </div>
 
     <!-- Panel barómetro -->
-    <div id="cov-panel" style="position:absolute; top:14px; right:14px; z-index:1000; width:300px; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:16px 18px; box-shadow:var(--shadow-md); color:var(--ink); backdrop-filter:blur(6px);">
+    <div id="cov-panel" class="cov-card cov-panel">
       <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan-dark);">Barómetro</div>
       <div id="cov-prov-name" style="font-family:var(--serif); font-weight:700; font-size:18px; margin-top:4px; line-height:1.2;">Selecciona una provincia</div>
       <div id="cov-prov-zh" style="font-family:var(--serif); font-size:12px; color:var(--ink-mute); margin-bottom:14px;">·</div>
@@ -1690,10 +1724,10 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     </div>
 
     <!-- Leyenda heatmap completa, accesible e interactiva -->
-    <div role="region" aria-label="Leyenda de cobertura interactiva" style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.98); border:1px solid var(--rule-strong); padding:14px 16px; color:#0f172a; font-family:var(--mono); font-size:10.5px; width:300px; max-width:calc(100vw - 28px); box-shadow:var(--shadow-md);">
+    <div role="region" aria-label="Leyenda de cobertura interactiva" class="cov-card cov-legend">
       <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
         <div style="text-transform:uppercase; letter-spacing:0.18em; color:#334155;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
-        <button type="button" onclick="setCoverageFilter(-1)" aria-label="Quitar filtro de rango y mostrar todas las provincias" style="background:#fff; border:1px solid #0e7490; color:#0e7490; font-family:var(--mono); font-size:10px; cursor:pointer; padding:3px 8px; font-weight:700;">Reset</button>
+        <button type="button" class="cov-reset-btn" onclick="setCoverageFilter(-1)" aria-label="Quitar filtro de rango y mostrar todas las provincias">Reset</button>
       </div>
 
       <div style="position:relative; width:100%;" aria-hidden="true">
@@ -1725,6 +1759,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:9.5px; color:#334155; line-height:1.55; font-family:var(--sans);">
         Cada provincia se colorea por el % estimado de población con cobertura de la tecnología seleccionada. Click o <kbd>Enter</kbd> en una fila para resaltar solo las provincias de ese rango; click en una provincia para abrir su barómetro.
       </div>
+    </div>
     </div>
   </div>
 
