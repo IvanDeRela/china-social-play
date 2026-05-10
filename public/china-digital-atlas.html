@@ -3274,10 +3274,6 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
       'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
     ];
-    var sources = [
-      'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
-      'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
-    ];
     function loadGeo(i){
       if(i>=sources.length){ el.classList.remove('loading'); el.setAttribute('data-pending','1'); return; }
       fetch(sources[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
