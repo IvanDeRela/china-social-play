@@ -3269,7 +3269,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     }
     updateBaroAvg();
   }
-  function setCoverageCompare(on){ covCompare = !!on; updateBaroFor(covSelected); }
+  function setCoverageCompare(on){ covCompare = !!on; updateBaroFor(covSelected); try{ saveCovState(); }catch(e){} }
   window.setCoverageCompare = setCoverageCompare;
 
   function onLegendKey(ev, i){
