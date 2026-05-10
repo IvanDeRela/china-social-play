@@ -6,9 +6,9 @@ import { Eyebrow } from "../Eyebrow";
 /** Mercado — TAM/SAM/SOM como embudo visual descendente. */
 export const SlideMarket = () => {
   const funnel = [
-    { tag: "TAM", value: "$45B",  sub: "Gaming China · Niko Partners",  width: "100%", tone: "primary" },
-    { tag: "SAM", value: "$4B",   sub: "Mobile Sports · iResearch",      width: "92%",  tone: "copper" },
-    { tag: "SOM", value: "$200M", sub: "ARR Y5 · Proyección propia",     width: "84%",  tone: "success" },
+    { tag: "Mercado total",      value: "$45B",  sub: "Gaming en China · Niko Partners",     width: "100%", tone: "primary" },
+    { tag: "Mercado abordable",  value: "$4B",   sub: "Apps de deporte móvil · iResearch",   width: "92%",  tone: "copper" },
+    { tag: "Nuestro objetivo",   value: "$200M", sub: "Ingresos en el año 5 · estimación",    width: "84%",  tone: "success" },
   ];
 
   const colorMap: Record<string, { bg: string; text: string; border: string }> = {
