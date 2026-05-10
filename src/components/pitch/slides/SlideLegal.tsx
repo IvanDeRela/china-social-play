@@ -72,12 +72,12 @@ export const SlideLegal = () => {
           className="lg:col-span-4 space-y-3"
         >
           <div className="rounded-2xl border-l-4 border-primary bg-primary/5 p-5">
-            <div className="eyebrow text-primary mb-3">Foso</div>
+            <div className="eyebrow text-primary mb-3">Nuestra ventaja defendible</div>
             <div className="space-y-2.5">
               {[
-                { k: "Único", v: "fantasy nativo WeChat" },
+                { k: "Únicos", v: "fantasy fútbol nativo en WeChat" },
                 { k: "78 %",  v: "margen bruto" },
-                { k: "PIPL",  v: "CSL · ICP compliance" },
+                { k: "Legal", v: "cumplimiento normativo en China" },
               ].map((row) => (
                 <div key={row.k} className="flex items-baseline gap-3">
                   <span className="font-mono font-bold text-3xl md:text-4xl text-primary shrink-0">{row.k}</span>
