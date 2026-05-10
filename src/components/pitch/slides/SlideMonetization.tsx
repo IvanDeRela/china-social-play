@@ -97,8 +97,8 @@ export const SlideMonetization = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             className="display-xl text-3xl md:text-4xl lg:text-5xl mt-4 max-w-3xl"
           >
-            Breakeven <span className="text-success">Y3</span>. EBITDA{" "}
-            <Money value={`+${d.ebitda[4]}`} unit="M USD" tone="success" size="lg" /> en Y5.
+            Punto de equilibrio en el <span className="text-success">año 3</span>. Beneficio{" "}
+            <Money value={`+${d.ebitda[4]}`} unit="M USD" tone="success" size="lg" /> en el año 5.
           </motion.h2>
         </div>
 
