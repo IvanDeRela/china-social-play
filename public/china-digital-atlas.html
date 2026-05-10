@@ -3104,13 +3104,13 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     {name:"Taiwán",nameZh:"台湾",cov:{"3G":99,"4G":99,"5G":92}}
   ];
   function covColor(v){
-    if(v<=0)  return '#1f2937';
+    if(v<=0)  return '#cbd5e1';
     if(v<=30) return '#7f1d1d';
-    if(v<=50) return '#dc2626';
-    if(v<=65) return '#f59e0b';
-    if(v<=80) return '#eab308';
-    if(v<=92) return '#84cc16';
-    return '#16a34a';
+    if(v<=50) return '#b91c1c';
+    if(v<=65) return '#ea580c';
+    if(v<=80) return '#f59e0b';
+    if(v<=92) return '#eab308';
+    return '#15803d';
   }
   function findCov(name){
     if(!name) return null;
@@ -3120,7 +3120,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     }
     return null;
   }
-  var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G', covSelected = null;
+  var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G', covSelected = null, covActiveLayer = null;
 
   function updateBaroAvg(){
     var sum=0, n=0;
@@ -3151,24 +3151,26 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   function renderCovLayer(){
     if(!covMap || !covGeo) return;
     if(covLayer){ covMap.removeLayer(covLayer); covLayer = null; }
+    covActiveLayer = null;
     covLayer = L.geoJSON(covGeo, {
       style: function(f){
         var p = findCov(f.properties && f.properties.name);
         var v = p ? p.cov[covTech] : 0;
-        return { fillColor: covColor(v), weight: 0.6, color: 'rgba(255,255,255,0.25)', opacity: 1, fillOpacity: p ? 0.85 : 0.2 };
+        return { fillColor: covColor(v), weight: 0.7, color: '#475569', opacity: 0.8, fillOpacity: p ? 0.82 : 0.35 };
       },
       onEachFeature: function(f, layer){
         var name = (f.properties && f.properties.name) || '';
         var p = findCov(name);
         layer.on({
-          mouseover: function(e){ e.target.setStyle({ weight: 2.2, color: '#00b8d9' }); e.target.bringToFront(); if(covBorder) covBorder.bringToFront(); },
-          mouseout:  function(e){ covLayer.resetStyle(e.target); if(covBorder) covBorder.bringToFront(); },
-          click: function(){ if(p) updateBaroFor(p); }
+          click: function(){
+            if(covActiveLayer && covActiveLayer !== layer){ covLayer.resetStyle(covActiveLayer); }
+            layer.setStyle({ weight: 2.6, color: '#0891b2', fillOpacity: 0.92 });
+            layer.bringToFront();
+            if(covBorder) covBorder.bringToFront();
+            covActiveLayer = layer;
+            if(p) updateBaroFor(p);
+          }
         });
-        if(p){
-          var html = '<div style="font-family:Inter,system-ui;font-size:12px;line-height:1.5;color:#fff;background:#0f172a;padding:6px 10px;border-left:3px solid #00b8d9"><b style="font-family:Fraunces,serif;font-size:13px;color:#00b8d9">'+p.name+' · '+p.nameZh+'</b><br>'+covTech+': <b>'+p.cov[covTech]+'%</b> · click para barómetro</div>';
-          layer.bindTooltip(html, {sticky:true, direction:'top', opacity:1, className:'cov-tip'});
-        }
       }
     }).addTo(covMap);
     if(covBorder) covBorder.bringToFront();
@@ -3178,9 +3180,9 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     covTech = t;
     document.querySelectorAll('.cov-btn').forEach(function(b){
       var on = b.getAttribute('data-tech') === t;
-      b.style.background = on ? '#00b8d9' : 'transparent';
-      b.style.color = on ? '#0b1220' : '#cfe0ee';
-      b.style.borderColor = on ? '#00b8d9' : 'rgba(0,184,217,0.4)';
+      b.style.background = on ? '#0f172a' : '#fff';
+      b.style.color = on ? '#fff' : '#0f172a';
+      b.style.borderColor = on ? '#0f172a' : '#cbd5e1';
       b.classList.toggle('active', on);
     });
     renderCovLayer();
@@ -3198,12 +3200,19 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       fetch(sources[i]).then(function(r){ return r.json(); }).then(function(data){
         var china = (data.features||[]).find(function(f){ var p=f.properties||{}; return p.ADM0_A3==='CHN' || p.ISO_A3==='CHN' || p.SOVEREIGNT==='China'; });
         if(!china) return tryNext(i+1);
-        covBorder = L.geoJSON(china, { style:{ color:'#00b8d9', weight:2.5, opacity:0.95, fill:false, dashArray:'6 4' }, interactive:false }).addTo(covMap);
+        covBorder = L.geoJSON(china, { style:{ color:'#0891b2', weight:2.5, opacity:0.95, fill:false, dashArray:'6 4' }, interactive:false }).addTo(covMap);
         covBorder.bringToFront();
       }).catch(function(){ tryNext(i+1); });
     }
     tryNext(0);
   }
+
+  function initMapCoverage(){
+    var el = document.getElementById('map-coverage');
+    if(!el) return;
+    if(covMap){ covMap.invalidateSize(); return; }
+    covMap = L.map('map-coverage', { center:[35.8,104], zoom:4, minZoom:3, maxZoom:8, scrollWheelZoom:true, attributionControl:true, zoomControl:true });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(covMap);
 
   function initMapCoverage(){
     var el = document.getElementById('map-coverage');
