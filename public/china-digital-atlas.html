@@ -3391,11 +3391,37 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     var el = document.getElementById('map-coverage');
     if(!el) return;
     if(covMap){ covMap.invalidateSize(); return; }
+
+    // Restaurar estado guardado ANTES de pintar la primera vez
+    var saved = loadCovState();
+    if(saved){
+      if(saved.tech === '3G' || saved.tech === '4G' || saved.tech === '5G') covTech = saved.tech;
+      if(typeof saved.filter === 'number') covFilter = saved.filter;
+      if(saved.province){
+        for(var k=0;k<COVERAGE_DATA.length;k++){ if(COVERAGE_DATA[k].nameZh === saved.province){ covSelected = COVERAGE_DATA[k]; break; } }
+      }
+      if(saved.compare){ covCompare = true; var chk = document.getElementById('cov-compare-toggle'); if(chk) chk.checked = true; }
+      // Reflejar en UI: botones de tecnología y filas de leyenda
+      document.querySelectorAll('.cov-btn').forEach(function(b){
+        var on = b.getAttribute('data-tech') === covTech;
+        b.style.background = on ? '#0f172a' : '#fff';
+        b.style.color = on ? '#fff' : '#0f172a';
+        b.style.borderColor = on ? '#0f172a' : '#475569';
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+      document.querySelectorAll('.cov-leg-row').forEach(function(r){
+        var idx = parseInt(r.getAttribute('data-bucket'),10);
+        r.setAttribute('aria-selected', covFilter === idx ? 'true' : 'false');
+      });
+    }
+
     covMap = L.map('map-coverage', {
       center:[35.8,104], zoom:4, minZoom:3, maxZoom:8,
       scrollWheelZoom:true, attributionControl:true, zoomControl:true,
       preferCanvas:true, renderer: L.canvas({ padding: 0.2 }),
-      zoomSnap:0.5, wheelDebounceTime:60, wheelPxPerZoomLevel:80
+      zoomSnap:0.5, wheelDebounceTime:60, wheelPxPerZoomLevel:80,
+      tap:true, tapTolerance:20
     });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19, updateWhenZooming:false, keepBuffer:2 }).addTo(covMap);
     var sources = [
