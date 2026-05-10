@@ -1677,32 +1677,43 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       </div>
     </div>
 
-    <!-- Leyenda heatmap completa -->
-    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:12px 14px; color:var(--ink); font-family:var(--mono); font-size:10px; min-width:280px;">
-      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:8px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
-      <div style="display:flex; height:12px; width:280px; overflow:hidden; border:1px solid var(--rule);">
-        <div style="flex:1; background:#7f1d1d"></div>
-        <div style="flex:1; background:#b91c1c"></div>
-        <div style="flex:1; background:#ea580c"></div>
-        <div style="flex:1; background:#f59e0b"></div>
-        <div style="flex:1; background:#eab308"></div>
-        <div style="flex:1; background:#65a30d"></div>
-        <div style="flex:1; background:#15803d"></div>
+    <!-- Leyenda heatmap completa e interactiva -->
+    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.97); border:1px solid var(--rule-strong); padding:14px 16px; color:var(--ink); font-family:var(--mono); font-size:10.5px; width:300px; max-width:calc(100vw - 28px); box-shadow:var(--shadow-md);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute);">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
+        <button type="button" onclick="setCoverageFilter(-1)" style="background:none; border:none; color:#0e7490; font-family:var(--mono); font-size:10px; cursor:pointer; text-decoration:underline; padding:0;">Reset</button>
       </div>
-      <div style="display:flex; justify-content:space-between; width:280px; margin-top:4px; color:var(--ink-mute);"><span>0</span><span>30</span><span>50</span><span>65</span><span>80</span><span>92</span><span>100</span></div>
 
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:grid; grid-template-columns:1fr 1fr; gap:6px 12px;">
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#7f1d1d;"></span><span>0—30 · muy baja</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#b91c1c;"></span><span>30—50 · baja</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#ea580c;"></span><span>50—65 · media-baja</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#f59e0b;"></span><span>65—80 · media</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#eab308;"></span><span>80—92 · alta</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#15803d;"></span><span>92—100 · muy alta</span></div>
+      <!-- Barra continua con marcas -->
+      <div style="position:relative; width:100%;">
+        <div style="display:flex; height:12px; overflow:hidden; border:1px solid var(--rule);">
+          <div style="flex:30; background:#7f1d1d"></div>
+          <div style="flex:20; background:#b91c1c"></div>
+          <div style="flex:15; background:#ea580c"></div>
+          <div style="flex:15; background:#f59e0b"></div>
+          <div style="flex:12; background:#84cc16"></div>
+          <div style="flex:8;  background:#15803d"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:3px; color:var(--ink-mute); font-size:9.5px;"><span>0</span><span>30</span><span>50</span><span>65</span><span>80</span><span>92</span><span>100</span></div>
+      </div>
+
+      <!-- Filas interactivas: click para filtrar provincias -->
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:3px;">
+        <div class="cov-leg-row" data-bucket="0" onclick="setCoverageFilter(0)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#7f1d1d; flex-shrink:0;"></span><span style="flex:1;">0—30 % · Muy baja</span><span id="cov-leg-count-0" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="1" onclick="setCoverageFilter(1)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#b91c1c; flex-shrink:0;"></span><span style="flex:1;">30—50 % · Baja</span><span id="cov-leg-count-1" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="2" onclick="setCoverageFilter(2)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#ea580c; flex-shrink:0;"></span><span style="flex:1;">50—65 % · Media-baja</span><span id="cov-leg-count-2" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="3" onclick="setCoverageFilter(3)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#f59e0b; flex-shrink:0;"></span><span style="flex:1;">65—80 % · Media</span><span id="cov-leg-count-3" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="4" onclick="setCoverageFilter(4)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#84cc16; flex-shrink:0;"></span><span style="flex:1;">80—92 % · Alta</span><span id="cov-leg-count-4" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="5" onclick="setCoverageFilter(5)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#15803d; flex-shrink:0;"></span><span style="flex:1;">92—100 % · Muy alta</span><span id="cov-leg-count-5" style="color:var(--ink-mute);">0</span></div>
       </div>
 
       <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:5px;">
-        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:24px; height:0; border-top:2.5px dashed #0891b2;"></span><span>Frontera nacional China</span></div>
-        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:14px; height:10px; background:#cbd5e1; border:1px solid #94a3b8;"></span><span>Sin datos</span></div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:24px; height:0; border-top:2.5px solid #0e7490;"></span><span>Frontera nacional de China</span></div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:14px; height:11px; background:#cbd5e1; border:1px solid #94a3b8;"></span><span>Sin datos disponibles</span></div>
+      </div>
+
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:9.5px; color:var(--ink-mute); line-height:1.5; font-family:var(--sans);">
+        Cada provincia se colorea por el % estimado de población con cobertura de la tecnología seleccionada. Click en una fila para resaltar solo las provincias de ese rango; click en una provincia para abrir su barómetro 3G/4G/5G a la derecha.
       </div>
     </div>
   </div>
