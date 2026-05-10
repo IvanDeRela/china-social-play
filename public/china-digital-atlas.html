@@ -3258,8 +3258,9 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       var on = b.getAttribute('data-tech') === t;
       b.style.background = on ? '#0f172a' : '#fff';
       b.style.color = on ? '#fff' : '#0f172a';
-      b.style.borderColor = on ? '#0f172a' : '#cbd5e1';
+      b.style.borderColor = on ? '#0f172a' : '#475569';
       b.classList.toggle('active', on);
+      b.setAttribute('aria-checked', on ? 'true' : 'false');
     });
     renderCovLayer();
   }
@@ -3269,8 +3270,10 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     covFilter = (covFilter === i) ? -1 : i;
     document.querySelectorAll('.cov-leg-row').forEach(function(r){
       var idx = parseInt(r.getAttribute('data-bucket'),10);
-      r.style.background = (covFilter === idx) ? '#f1f5f9' : 'transparent';
-      r.style.outline = (covFilter === idx) ? '1px solid #0e7490' : 'none';
+      var sel = covFilter === idx;
+      r.setAttribute('aria-selected', sel ? 'true' : 'false');
+      r.style.background = sel ? '#e0f2fe' : 'transparent';
+      r.style.outline = sel ? '2px solid #0369a1' : 'none';
     });
     if(covLayer){ covLayer.setStyle(styleFor); if(covActiveLayer){ covActiveLayer.setStyle({ weight: 2.6, color:'#0e7490', fillOpacity:0.95, opacity:1 }); covActiveLayer.bringToFront(); } if(covBorder) covBorder.bringToFront(); }
   }
@@ -3291,17 +3294,30 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
 
   function drawChinaBorder(){
     if(!covMap) return;
+    // Prioridad 1-2: cartografía oficial PRC (DataV.GeoAtlas — basada en MNR Bou. nº GS(2019)1822)
+    // Fallback: Natural Earth ne_10m
     var sources = [
+      'https://geo.datav.aliyun.com/areas_v3/bound/100000.json',
+      'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
       'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_10m_admin_0_countries.geojson',
-      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson',
-      'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson'
+      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson'
     ];
     function tryNext(i){
       if(i>=sources.length) return;
-      fetch(sources[i]).then(function(r){ return r.json(); }).then(function(data){
-        var china = (data.features||[]).find(function(f){ var p=f.properties||{}; return p.ADM0_A3==='CHN' || p.ISO_A3==='CHN' || p.SOVEREIGNT==='China'; });
-        if(!china) return tryNext(i+1);
-        covBorder = L.geoJSON(china, { renderer: covMap.options.renderer, style:{ color:'#0e7490', weight:2.4, opacity:0.95, fill:false }, interactive:false }).addTo(covMap);
+      fetch(sources[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); }).then(function(data){
+        var feat = null;
+        if(data && data.type === 'FeatureCollection'){
+          // DataV: la frontera nacional viene como una feature con adcode=100000; o todas las features cuyo adcode sea provincial — disolveremos visualmente con stroke común
+          var fs = data.features || [];
+          var natl = fs.find(function(f){ var p=f.properties||{}; return p.adcode===100000 || p.name==='中华人民共和国' || p.ADM0_A3==='CHN' || p.ISO_A3==='CHN' || p.SOVEREIGNT==='China'; });
+          feat = natl || (fs.length ? data : null);
+        }
+        if(!feat) return tryNext(i+1);
+        covBorder = L.geoJSON(feat, {
+          renderer: covMap.options.renderer,
+          style:{ color:'#155e75', weight:2.6, opacity:1, fill:false, lineJoin:'round' },
+          interactive:false
+        }).addTo(covMap);
         covBorder.bringToFront();
       }).catch(function(){ tryNext(i+1); });
     }
