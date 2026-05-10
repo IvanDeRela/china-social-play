@@ -3311,7 +3311,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       r.style.background = sel ? '#e0f2fe' : 'transparent';
       r.style.outline = sel ? '2px solid #0369a1' : 'none';
     });
-    if(covLayer){ covLayer.setStyle(styleFor); if(covActiveLayer){ covActiveLayer.setStyle({ weight: 2.6, color:'#0e7490', fillOpacity:0.95, opacity:1 }); covActiveLayer.bringToFront(); } if(covBorder) covBorder.bringToFront(); }
+    if(covLayer){ covLayer.setStyle(styleFor); if(covActiveLayer){ covActiveLayer.setStyle({ fillOpacity:0.95 }); covActiveLayer.bringToFront(); } if(covBorder) covBorder.bringToFront(); }
   }
   window.setCoverageFilter = setCoverageFilter;
 
