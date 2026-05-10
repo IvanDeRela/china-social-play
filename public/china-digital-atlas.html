@@ -1227,7 +1227,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       <!-- ALBERTO -->
       <article class="founder founder--ah">
         <div class="founder-top">
-          <div class="founder-avatar" aria-hidden="true">AH</div>
+          <div class="founder-avatar" aria-hidden="true" style="background:url('/team/alberto.png') center/cover no-repeat;color:transparent;border:1px solid var(--rule-strong)">AH</div>
           <div class="founder-id">
             <div class="founder-name">Alberto Hernández</div>
             <div class="founder-role">CEO</div>
@@ -3257,8 +3257,9 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     var dim = covFilter >= 0 && (v==null || covBucket(v) !== covFilter);
     return {
       fillColor: col,
-      weight: 0,
-      opacity: 0,
+      weight: 0.6,
+      color: '#475569',
+      opacity: dim ? 0.25 : 0.7,
       fillOpacity: v==null ? 0.25 : (dim ? 0.15 : 0.85),
       smoothFactor: 1.2
     };
@@ -3329,36 +3330,9 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   }
 
   function drawChinaBorder(){
-    if(!covMap) return;
-    if(covBorder){ try{ covMap.removeLayer(covBorder); }catch(e){} covBorder = null; }
-    // Prioridad 1-2: cartografía oficial PRC (DataV.GeoAtlas — basada en MNR Bou. nº GS(2019)1822)
-    // Fallback: Natural Earth ne_10m
-    var sources = [
-      'https://geo.datav.aliyun.com/areas_v3/bound/100000.json',
-      'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
-      'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_10m_admin_0_countries.geojson',
-      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson'
-    ];
-    function tryNext(i){
-      if(i>=sources.length) return;
-      fetch(sources[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); }).then(function(data){
-        var feat = null;
-        if(data && data.type === 'FeatureCollection'){
-          // DataV: la frontera nacional viene como una feature con adcode=100000; o todas las features cuyo adcode sea provincial — disolveremos visualmente con stroke común
-          var fs = data.features || [];
-          var natl = fs.find(function(f){ var p=f.properties||{}; return p.adcode===100000 || p.name==='中华人民共和国' || p.ADM0_A3==='CHN' || p.ISO_A3==='CHN' || p.SOVEREIGNT==='China'; });
-          feat = natl || (fs.length ? data : null);
-        }
-        if(!feat) return tryNext(i+1);
-        covBorder = L.geoJSON(feat, {
-          renderer: covMap.options.renderer,
-          style:{ color:'#155e75', weight:3.1, opacity:1, fill:false, lineJoin:'round', lineCap:'round' },
-          interactive:false
-        }).addTo(covMap);
-        covBorder.bringToFront();
-      }).catch(function(){ tryNext(i+1); });
-    }
-    tryNext(0);
+    // Línea nacional desactivada por petición del usuario: el contorno
+    // queda definido únicamente por el relleno coloreado de las provincias.
+    if(covMap && covBorder){ try{ covMap.removeLayer(covBorder); }catch(e){} covBorder = null; }
   }
 
   function initMapCoverage(){
