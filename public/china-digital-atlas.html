@@ -3270,13 +3270,10 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       zoomSnap:0.5, wheelDebounceTime:60, wheelPxPerZoomLevel:80
     });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19, updateWhenZooming:false, keepBuffer:2 }).addTo(covMap);
-
-  function initMapCoverage(){
-    var el = document.getElementById('map-coverage');
-    if(!el) return;
-    if(covMap){ covMap.invalidateSize(); return; }
-    covMap = L.map('map-coverage', { center:[35.8,104], zoom:4, minZoom:3, maxZoom:8, scrollWheelZoom:true, attributionControl:true, zoomControl:true });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(covMap);
+    var sources = [
+      'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
+      'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
+    ];
     var sources = [
       'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
       'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
