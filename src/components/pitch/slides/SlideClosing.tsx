@@ -96,11 +96,11 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
             <div className="eyebrow text-primary mb-4">Hitos comprometidos</div>
             <ul className="space-y-3">
               {[
-                { m: "M3", t: "Compliance PIPL · CSL · ICP" },
-                { m: "M6", t: "MVP WeChat live" },
-                { m: "M9", t: "LaLiga Tech firmado" },
-                { m: "M12", t: "100k DAU" },
-                { m: "M18", t: "Serie A" },
+                { m: "Mes 3", t: "Cumplimiento legal completo" },
+                { m: "Mes 6", t: "Primera versión en WeChat" },
+                { m: "Mes 9", t: "LaLiga Tech firmado" },
+                { m: "Mes 12", t: "100 000 usuarios diarios" },
+                { m: "Mes 18", t: "Siguiente ronda de inversión" },
               ].map((h) => (
                 <li key={h.m} className="flex items-center gap-3 text-base text-foreground/95">
                   <span className="font-mono text-sm font-bold text-primary bg-primary/10 rounded px-2.5 py-0.5 shrink-0">{h.m}</span>
