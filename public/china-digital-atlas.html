@@ -1630,22 +1630,57 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     </p>
   </div>
 
-  <div class="map-shell" style="position:relative; height:640px; border:1px solid var(--rule-strong); background:#e9e7df;">
-    <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de cobertura 3G/4G/5G en China"></div>
+  <div class="map-shell" style="position:relative; height:660px; border:1px solid var(--rule-strong); background:#0b1220;">
+    <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de calor de cobertura 3G/4G/5G en China" style="background:#0b1220 !important;"></div>
 
-    <div id="cov-controls" style="position:absolute; top:14px; right:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:14px 16px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:11px; min-width:180px;">
-      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:8px;">Tecnología</div>
-      <div style="display:flex; gap:6px; margin-bottom:10px;">
-        <button type="button" class="cov-btn" data-tech="3G" onclick="setCoverageTech('3G')" style="flex:1; padding:6px 0; border:1px solid var(--rule-strong); background:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">3G</button>
-        <button type="button" class="cov-btn" data-tech="4G" onclick="setCoverageTech('4G')" style="flex:1; padding:6px 0; border:1px solid var(--rule-strong); background:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">4G</button>
-        <button type="button" class="cov-btn active" data-tech="5G" onclick="setCoverageTech('5G')" style="flex:1; padding:6px 0; border:1px solid var(--rule-strong); background:var(--ink); color:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">5G</button>
+    <!-- Selector tecnología -->
+    <div id="cov-controls" style="position:absolute; top:14px; left:14px; z-index:1000; background:rgba(15,23,42,0.92); border:1px solid rgba(0,184,217,0.35); padding:14px 16px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:11px; min-width:180px; color:#e6eef6; backdrop-filter:blur(6px);">
+      <div style="text-transform:uppercase; letter-spacing:0.18em; color:#9fb0c4; margin-bottom:8px;">Tecnología</div>
+      <div style="display:flex; gap:6px;">
+        <button type="button" class="cov-btn" data-tech="3G" onclick="setCoverageTech('3G')" style="flex:1; padding:7px 0; border:1px solid rgba(0,184,217,0.4); background:transparent; color:#cfe0ee; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">3G</button>
+        <button type="button" class="cov-btn" data-tech="4G" onclick="setCoverageTech('4G')" style="flex:1; padding:7px 0; border:1px solid rgba(0,184,217,0.4); background:transparent; color:#cfe0ee; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">4G</button>
+        <button type="button" class="cov-btn active" data-tech="5G" onclick="setCoverageTech('5G')" style="flex:1; padding:7px 0; border:1px solid #00b8d9; background:#00b8d9; color:#0b1220; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">5G</button>
       </div>
-      <div id="cov-stat" style="font-family:var(--serif); font-size:13px; color:var(--ink); line-height:1.4;"></div>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08); font-size:10.5px; color:#9fb0c4;">Click en una provincia para ver su barómetro</div>
     </div>
 
-    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:10px 14px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:10px;">
-      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:6px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
-      <div style="display:flex; height:8px; width:220px; overflow:hidden;">
+    <!-- Panel barómetro -->
+    <div id="cov-panel" style="position:absolute; top:14px; right:14px; z-index:1000; width:300px; background:rgba(15,23,42,0.92); border:1px solid rgba(0,184,217,0.35); padding:16px 18px; box-shadow:var(--shadow-md); color:#e6eef6; backdrop-filter:blur(6px);">
+      <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#00b8d9;">Barómetro</div>
+      <div id="cov-prov-name" style="font-family:var(--serif); font-weight:700; font-size:18px; margin-top:4px; line-height:1.2;">Selecciona una provincia</div>
+      <div id="cov-prov-zh" style="font-family:var(--serif); font-size:12px; color:#9fb0c4; margin-bottom:14px;">·</div>
+
+      <div id="cov-bars">
+        <div style="margin-bottom:10px;">
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4; margin-bottom:4px;"><span>3G</span><span id="cov-v-3G">— %</span></div>
+          <div style="height:8px; background:rgba(255,255,255,0.08); position:relative; overflow:hidden;">
+            <div id="cov-bar-3G" style="height:100%; width:0%; background:linear-gradient(90deg,#dc2626,#f59e0b,#84cc16,#16a34a); transition:width .5s var(--ease-out);"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4; margin-bottom:4px;"><span>4G</span><span id="cov-v-4G">— %</span></div>
+          <div style="height:8px; background:rgba(255,255,255,0.08); position:relative; overflow:hidden;">
+            <div id="cov-bar-4G" style="height:100%; width:0%; background:linear-gradient(90deg,#dc2626,#f59e0b,#84cc16,#16a34a); transition:width .5s var(--ease-out);"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4; margin-bottom:4px;"><span>5G</span><span id="cov-v-5G">— %</span></div>
+          <div style="height:8px; background:rgba(255,255,255,0.08); position:relative; overflow:hidden;">
+            <div id="cov-bar-5G" style="height:100%; width:0%; background:linear-gradient(90deg,#dc2626,#f59e0b,#84cc16,#16a34a); transition:width .5s var(--ease-out);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4;">
+        <span>Media nacional <span id="cov-tech-label">5G</span></span>
+        <span id="cov-avg" style="color:#00b8d9; font-weight:700;">—</span>
+      </div>
+    </div>
+
+    <!-- Leyenda heatmap -->
+    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(15,23,42,0.92); border:1px solid rgba(0,184,217,0.35); padding:12px 14px; color:#e6eef6; font-family:var(--mono); font-size:10px;">
+      <div style="text-transform:uppercase; letter-spacing:0.18em; color:#9fb0c4; margin-bottom:6px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
+      <div style="display:flex; height:10px; width:240px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
         <div style="flex:1; background:#7f1d1d"></div>
         <div style="flex:1; background:#dc2626"></div>
         <div style="flex:1; background:#f59e0b"></div>
@@ -1654,12 +1689,12 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
         <div style="flex:1; background:#16a34a"></div>
         <div style="flex:1; background:#065f46"></div>
       </div>
-      <div style="display:flex; justify-content:space-between; width:220px; margin-top:4px; color:var(--ink-mute);"><span>0</span><span>50</span><span>100</span></div>
+      <div style="display:flex; justify-content:space-between; width:240px; margin-top:4px; color:#9fb0c4;"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
     </div>
   </div>
 
   <p class="map-caption" style="margin-top:14px;">
-    Geometría: <a href="https://geo.datav.aliyun.com/" target="_blank" rel="noopener">DataV.GeoAtlas (Alibaba)</a> · GeoJSON oficial de provincias chinas. Cartografía base: Esri ArcGIS (Light Gray Canvas).
+    Geometría provincial: <a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="noopener">longwosion/geojson-map-china</a> · Frontera nacional: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth Vector v5.1.2</a> · Cartografía base: CARTO Dark Matter.
   </p>
 
   <div class="fc-callout" style="margin-top:24px;">
