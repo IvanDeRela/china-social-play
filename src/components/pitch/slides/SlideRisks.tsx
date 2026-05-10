@@ -19,12 +19,12 @@ interface Risk {
 }
 
 const risks: Risk[] = [
-  { id: "reg",    short: "Regulación PRC",  prob: 2, impact: 3, tone: "danger",  mitigation: "King & Wood Mallesons · VIE · ICP M3", metric: "$120K legal Y1", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
-  { id: "bat",    short: "BAT copia",       prob: 3, impact: 2, tone: "warn",    mitigation: "Foso WeChat · datos propietarios · 24-36 m", metric: "First mover", icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },
-  { id: "wechat", short: "Bloqueo WeChat",  prob: 1, impact: 3, tone: "danger",  mitigation: "Plan B Douyin Y3 · acuerdo Tencent",        metric: "Multi-canal", icon: "M3 3l18 18M21 3L3 21" },
-  { id: "cac",    short: "CAC sube",        prob: 2, impact: 2, tone: "copper",  mitigation: "Viralidad k=2,4× · KOL · grupos privados",  metric: "$3,2 → $1,2", icon: "M3 17l6-6 4 4 8-8M14 7h7v7" },
-  { id: "season", short: "Estacionalidad",  prob: 3, impact: 1, tone: "primary", mitigation: "Premier · LaLiga · NBA · eSports todo año", metric: "4 ligas",    icon: "M12 2v20M2 12h20M5 5l14 14M19 5L5 19" },
-  { id: "team",   short: "Talento senior",  prob: 2, impact: 1, tone: "primary", mitigation: "HK + remoto LATAM/EU · ESOP 12 %",          metric: "12 % equity", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM3 21v-2a6 6 0 0112 0v2" },
+  { id: "reg",    short: "Regulación China",  prob: 2, impact: 3, tone: "danger",  mitigation: "Bufete local + cumplimiento legal en mes 3", metric: "$120K legal año 1", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+  { id: "bat",    short: "Que un gigante chino copie",       prob: 3, impact: 2, tone: "warn",    mitigation: "Ventaja de WeChat + datos propios + 24-36 meses de adelanto", metric: "Llegar primero", icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },
+  { id: "wechat", short: "Bloqueo en WeChat",  prob: 1, impact: 3, tone: "danger",  mitigation: "Plan B en Douyin desde año 3 + acuerdo con Tencent",        metric: "Varios canales", icon: "M3 3l18 18M21 3L3 21" },
+  { id: "cac",    short: "Sube el coste de captar usuarios",        prob: 2, impact: 2, tone: "copper",  mitigation: "Viralidad ×2,4 · influencers · grupos privados",  metric: "$3,2 → $1,2", icon: "M3 17l6-6 4 4 8-8M14 7h7v7" },
+  { id: "season", short: "Estacionalidad del fútbol",  prob: 3, impact: 1, tone: "primary", mitigation: "Premier · LaLiga · NBA · eSports todo el año", metric: "4 ligas",    icon: "M12 2v20M2 12h20M5 5l14 14M19 5L5 19" },
+  { id: "team",   short: "Captar talento sénior",  prob: 2, impact: 1, tone: "primary", mitigation: "Hong Kong + remoto LATAM/Europa · 12 % en acciones para el equipo",          metric: "12 % acciones", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM3 21v-2a6 6 0 0112 0v2" },
 ];
 
 const probLabels   = ["", "Baja", "Media", "Alta"];
