@@ -41,7 +41,7 @@ export const SlideMonetization = () => {
     datasets: [
       { type: "bar" as const, label: "Ingresos (M USD)", data: d.revenue, backgroundColor: palette.primaryAlpha(0.85), borderRadius: 6, order: 2 },
       { type: "bar" as const, label: "Gastos (M USD)",   data: d.cost,    backgroundColor: palette.copperAlpha(0.65), borderRadius: 6, order: 2 },
-      { type: "line" as const, label: "EBITDA (M USD)",  data: d.ebitda,  borderColor: palette.success(), backgroundColor: palette.successAlpha(0.15), borderWidth: 3, tension: 0.35, pointRadius: 5, pointBackgroundColor: palette.success(), fill: false, order: 1 },
+      { type: "line" as const, label: "Beneficio operativo (M USD)",  data: d.ebitda,  borderColor: palette.success(), backgroundColor: palette.successAlpha(0.15), borderWidth: 3, tension: 0.35, pointRadius: 5, pointBackgroundColor: palette.success(), fill: false, order: 1 },
     ],
   }), [d]);
 
