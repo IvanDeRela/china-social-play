@@ -1630,6 +1630,13 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     </p>
   </div>
 
+  <style>
+    .cov-leg-row:focus-visible, .cov-btn:focus-visible, #cov-compare-toggle:focus-visible { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .cov-leg-row[aria-selected="true"] { background:#e0f2fe !important; outline:2px solid #0369a1; }
+    .cov-delta.pos { background:#dcfce7; color:#14532d; border:1px solid #15803d; }
+    .cov-delta.neg { background:#fee2e2; color:#7f1d1d; border:1px solid #b91c1c; }
+    .cov-delta.neu { background:#f1f5f9; color:#334155; border:1px solid #94a3b8; }
+  </style>
   <div class="map-shell" style="position:relative; height:660px; border:1px solid var(--rule-strong); background:#eef2f7;">
     <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de calor de cobertura 3G/4G/5G en China" style="background:#eef2f7 !important;"></div>
 
