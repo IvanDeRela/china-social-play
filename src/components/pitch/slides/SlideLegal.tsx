@@ -88,13 +88,13 @@ export const SlideLegal = () => {
           </div>
 
           <div className="rounded-2xl border border-copper/30 bg-card p-5 shadow-card">
-            <div className="eyebrow text-copper mb-3">Hitos ronda</div>
+            <div className="eyebrow text-copper mb-3">Hitos de la ronda</div>
             <ul className="space-y-1.5 text-sm">
               {[
-                ["M3", "Compliance"],
-                ["M6", "MVP WeChat"],
-                ["M9", "LaLiga Tech"],
-                ["M12", "100k DAU"],
+                ["Mes 3", "Cumplimiento legal"],
+                ["Mes 6", "Primera versión en WeChat"],
+                ["Mes 9", "Acuerdo con LaLiga Tech"],
+                ["Mes 12", "100 000 usuarios diarios"],
               ].map(([m, t]) => (
                 <li key={m} className="flex items-center gap-3">
                   <span className="font-mono text-xs text-copper bg-copper/10 rounded px-2 py-0.5 shrink-0">{m}</span>
