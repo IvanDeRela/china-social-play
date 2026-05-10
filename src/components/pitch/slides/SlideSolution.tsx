@@ -12,10 +12,10 @@ export const SlideSolution = () => {
     { v: "94%",  l: "WeChat diario",     tone: "success" },
   ];
   const traits = [
-    { k: "$35K", v: "salario / año" },
-    { k: "RMA",  v: "fan Real Madrid" },
-    { k: "HoK",  v: "Honor of Kings · gemas" },
-    { k: "8",    v: "amigos WeChat" },
+    { k: "$35K", v: "Salario al año" },
+    { k: "Madrid",  v: "Aficionado del Real Madrid" },
+    { k: "Gamer",   v: "Juega a Honor of Kings" },
+    { k: "8",    v: "Amigos en WeChat" },
   ];
   const toneText: Record<string, string> = {
     primary: "text-primary", copper: "text-copper", success: "text-success",
