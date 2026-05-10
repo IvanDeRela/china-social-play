@@ -3329,6 +3329,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
 
   function drawChinaBorder(){
     if(!covMap) return;
+    if(covBorder){ try{ covMap.removeLayer(covBorder); }catch(e){} covBorder = null; }
     // Prioridad 1-2: cartografía oficial PRC (DataV.GeoAtlas — basada en MNR Bou. nº GS(2019)1822)
     // Fallback: Natural Earth ne_10m
     var sources = [
@@ -3350,7 +3351,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
         if(!feat) return tryNext(i+1);
         covBorder = L.geoJSON(feat, {
           renderer: covMap.options.renderer,
-          style:{ color:'#155e75', weight:2.6, opacity:1, fill:false, lineJoin:'round' },
+          style:{ color:'#155e75', weight:3.1, opacity:1, fill:false, lineJoin:'round', lineCap:'round' },
           interactive:false
         }).addTo(covMap);
         covBorder.bringToFront();
@@ -3371,8 +3372,8 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19, updateWhenZooming:false, keepBuffer:2 }).addTo(covMap);
     var sources = [
-      'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
-      'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
+      'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
+      'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json'
     ];
     function loadGeo(i){
       if(i>=sources.length){ el.classList.remove('loading'); el.setAttribute('data-pending','1'); return; }
@@ -3434,6 +3435,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       rid = setTimeout(function(){
         try{ if(map) map.invalidateSize(); }catch(e){}
         try{ if(mapBorders) mapBorders.invalidateSize(); }catch(e){}
+        try{ if(covMap) covMap.invalidateSize(); }catch(e){}
       }, 150);
     });
 
