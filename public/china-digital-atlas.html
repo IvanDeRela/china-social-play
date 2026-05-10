@@ -2993,7 +2993,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   }
 
   // NAVIGATION
-  var VIEWS = ['portada','contexto','mapa','internet','fronteras','timeline','espana','cierre'];
+  var VIEWS = ['portada','contexto','mapa','internet','cobertura','fronteras','espana','cierre'];
   function showView(name){
     document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active'); b.setAttribute('aria-selected','false');});
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
@@ -3008,6 +3008,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     if(history && history.replaceState){try{ history.replaceState(null,'','#'+name); }catch(e){}}
     if(name === 'mapa') setTimeout(initMap, 60);
     if(name === 'fronteras') setTimeout(initMapBorders, 60);
+    if(name === 'cobertura') setTimeout(initMapCoverage, 60);
     if(name === 'internet' || name === 'energia') setTimeout(initCharts, 80);
   }
   window.showView = showView;
