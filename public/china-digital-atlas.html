@@ -3157,14 +3157,16 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     return null;
   }
   var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G',
-      covSelected = null, covActiveLayer = null, covFilter = -1;
+      covSelected = null, covActiveLayer = null, covFilter = -1, covCompare = false;
 
-  function updateBaroAvg(){
+  function nationalAvg(t){
     var sum=0, n=0;
-    for(var i=0;i<COVERAGE_DATA.length;i++){ sum += COVERAGE_DATA[i].cov[covTech]; n++; }
-    var avg = (sum/n).toFixed(1);
+    for(var i=0;i<COVERAGE_DATA.length;i++){ sum += COVERAGE_DATA[i].cov[t]; n++; }
+    return n? sum/n : 0;
+  }
+  function updateBaroAvg(){
     var av = document.getElementById('cov-avg');
-    if(av) av.textContent = avg + '%';
+    if(av) av.textContent = nationalAvg(covTech).toFixed(1) + '%';
     var lt = document.getElementById('cov-legend-tech'); if(lt) lt.textContent = covTech;
     var tl = document.getElementById('cov-tech-label'); if(tl) tl.textContent = covTech;
   }
@@ -3178,12 +3180,38 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       ['3G','4G','5G'].forEach(function(t){
         var bar = document.getElementById('cov-bar-'+t);
         var val = document.getElementById('cov-v-'+t);
-        if(bar) bar.style.width = p.cov[t] + '%';
-        if(val) val.textContent = p.cov[t] + ' %';
+        var pb  = document.getElementById('cov-pb-'+t);
+        var dl  = document.getElementById('cov-d-'+t);
+        var v = p.cov[t];
+        if(bar) bar.style.width = v + '%';
+        if(val) val.textContent = v + ' %';
+        if(pb)  pb.setAttribute('aria-valuenow', v);
+        if(dl){
+          if(covCompare){
+            var d = v - nationalAvg(t);
+            var sign = d>0?'+':(d<0?'':'±');
+            dl.textContent = 'Δ '+sign+d.toFixed(1)+' pp';
+            dl.className = 'cov-delta ' + (Math.abs(d)<0.5?'neu':(d>0?'pos':'neg'));
+            dl.style.display = 'inline-block';
+            dl.setAttribute('aria-label','Diferencia frente a la media nacional de '+t+': '+sign+d.toFixed(1)+' puntos porcentuales');
+          } else {
+            dl.style.display = 'none';
+          }
+        }
       });
     }
     updateBaroAvg();
   }
+  function setCoverageCompare(on){ covCompare = !!on; updateBaroFor(covSelected); }
+  window.setCoverageCompare = setCoverageCompare;
+
+  function onLegendKey(ev, i){
+    if(ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar'){ ev.preventDefault(); setCoverageFilter(i); }
+    else if(ev.key === 'ArrowDown' || ev.key === 'ArrowRight'){ ev.preventDefault(); var rows = document.querySelectorAll('.cov-leg-row'); if(rows[i+1]) rows[i+1].focus(); }
+    else if(ev.key === 'ArrowUp' || ev.key === 'ArrowLeft'){ ev.preventDefault(); var rows = document.querySelectorAll('.cov-leg-row'); if(rows[i-1]) rows[i-1].focus(); }
+    else if(ev.key === 'Escape'){ ev.preventDefault(); setCoverageFilter(-1); }
+  }
+  window.onLegendKey = onLegendKey;
 
   function styleFor(feature){
     var p = findCov(feature.properties && feature.properties.name);
