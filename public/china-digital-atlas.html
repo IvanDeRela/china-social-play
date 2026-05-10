@@ -1655,23 +1655,23 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       <div id="cov-prov-name" style="font-family:var(--serif); font-weight:700; font-size:18px; margin-top:4px; line-height:1.2;">Selecciona una provincia</div>
       <div id="cov-prov-zh" style="font-family:var(--serif); font-size:12px; color:var(--ink-mute); margin-bottom:14px;">·</div>
 
-      <div id="cov-bars">
+      <div id="cov-bars" role="group" aria-label="Barómetro de cobertura por tecnología">
         <div style="margin-bottom:10px;">
-          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute); margin-bottom:4px;"><span>3G</span><span id="cov-v-3G">— %</span></div>
-          <div style="height:8px; background:#e5e9ef; position:relative; overflow:hidden;">
-            <div id="cov-bar-3G" style="height:100%; width:0%; background:linear-gradient(90deg,#b91c1c,#f59e0b,#65a30d,#15803d); transition:width .5s var(--ease-out);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--mono); font-size:10px; color:#334155; margin-bottom:4px;"><span><strong>3G</strong> <span id="cov-d-3G" class="cov-delta" style="display:none; margin-left:6px; padding:1px 5px; font-size:9.5px; font-weight:700;"></span></span><span id="cov-v-3G" style="color:#0f172a; font-weight:700;">— %</span></div>
+          <div role="progressbar" aria-label="Cobertura 3G" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cov-pb-3G" style="height:10px; background:#e5e9ef; position:relative; overflow:hidden; border:1px solid #cbd5e1;">
+            <div id="cov-bar-3G" style="height:100%; width:0%; background:linear-gradient(90deg,#7f1d1d,#ea580c,#84cc16,#15803d); transition:width .5s var(--ease-out);"></div>
           </div>
         </div>
         <div style="margin-bottom:10px;">
-          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute); margin-bottom:4px;"><span>4G</span><span id="cov-v-4G">— %</span></div>
-          <div style="height:8px; background:#e5e9ef; position:relative; overflow:hidden;">
-            <div id="cov-bar-4G" style="height:100%; width:0%; background:linear-gradient(90deg,#b91c1c,#f59e0b,#65a30d,#15803d); transition:width .5s var(--ease-out);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--mono); font-size:10px; color:#334155; margin-bottom:4px;"><span><strong>4G</strong> <span id="cov-d-4G" class="cov-delta" style="display:none; margin-left:6px; padding:1px 5px; font-size:9.5px; font-weight:700;"></span></span><span id="cov-v-4G" style="color:#0f172a; font-weight:700;">— %</span></div>
+          <div role="progressbar" aria-label="Cobertura 4G" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cov-pb-4G" style="height:10px; background:#e5e9ef; position:relative; overflow:hidden; border:1px solid #cbd5e1;">
+            <div id="cov-bar-4G" style="height:100%; width:0%; background:linear-gradient(90deg,#7f1d1d,#ea580c,#84cc16,#15803d); transition:width .5s var(--ease-out);"></div>
           </div>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute); margin-bottom:4px;"><span>5G</span><span id="cov-v-5G">— %</span></div>
-          <div style="height:8px; background:#e5e9ef; position:relative; overflow:hidden;">
-            <div id="cov-bar-5G" style="height:100%; width:0%; background:linear-gradient(90deg,#b91c1c,#f59e0b,#65a30d,#15803d); transition:width .5s var(--ease-out);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--mono); font-size:10px; color:#334155; margin-bottom:4px;"><span><strong>5G</strong> <span id="cov-d-5G" class="cov-delta" style="display:none; margin-left:6px; padding:1px 5px; font-size:9.5px; font-weight:700;"></span></span><span id="cov-v-5G" style="color:#0f172a; font-weight:700;">— %</span></div>
+          <div role="progressbar" aria-label="Cobertura 5G" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cov-pb-5G" style="height:10px; background:#e5e9ef; position:relative; overflow:hidden; border:1px solid #cbd5e1;">
+            <div id="cov-bar-5G" style="height:100%; width:0%; background:linear-gradient(90deg,#7f1d1d,#ea580c,#84cc16,#15803d); transition:width .5s var(--ease-out);"></div>
           </div>
         </div>
       </div>
