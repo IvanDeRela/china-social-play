@@ -65,9 +65,9 @@ export const SlideSolution = () => {
           className="lg:col-span-8 flex flex-col gap-5"
         >
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7">
-            <div className="eyebrow text-primary mb-2">Segmento Tier 1-2</div>
+            <div className="eyebrow text-primary mb-2">Personas como Wei en grandes ciudades</div>
             <div className="font-mono font-bold text-8xl md:text-9xl text-primary leading-none">25-40<span className="text-5xl ml-2 opacity-70">M</span></div>
-            <div className="mt-3 text-xs font-mono uppercase tracking-wider text-muted-foreground">CNNIC · iResearch 2024</div>
+            <div className="mt-3 text-xs font-mono uppercase tracking-wider text-muted-foreground">Fuentes oficiales 2024</div>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
