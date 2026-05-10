@@ -1677,32 +1677,43 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       </div>
     </div>
 
-    <!-- Leyenda heatmap completa -->
-    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:12px 14px; color:var(--ink); font-family:var(--mono); font-size:10px; min-width:280px;">
-      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:8px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
-      <div style="display:flex; height:12px; width:280px; overflow:hidden; border:1px solid var(--rule);">
-        <div style="flex:1; background:#7f1d1d"></div>
-        <div style="flex:1; background:#b91c1c"></div>
-        <div style="flex:1; background:#ea580c"></div>
-        <div style="flex:1; background:#f59e0b"></div>
-        <div style="flex:1; background:#eab308"></div>
-        <div style="flex:1; background:#65a30d"></div>
-        <div style="flex:1; background:#15803d"></div>
+    <!-- Leyenda heatmap completa e interactiva -->
+    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.97); border:1px solid var(--rule-strong); padding:14px 16px; color:var(--ink); font-family:var(--mono); font-size:10.5px; width:300px; max-width:calc(100vw - 28px); box-shadow:var(--shadow-md);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute);">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
+        <button type="button" onclick="setCoverageFilter(-1)" style="background:none; border:none; color:#0e7490; font-family:var(--mono); font-size:10px; cursor:pointer; text-decoration:underline; padding:0;">Reset</button>
       </div>
-      <div style="display:flex; justify-content:space-between; width:280px; margin-top:4px; color:var(--ink-mute);"><span>0</span><span>30</span><span>50</span><span>65</span><span>80</span><span>92</span><span>100</span></div>
 
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:grid; grid-template-columns:1fr 1fr; gap:6px 12px;">
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#7f1d1d;"></span><span>0—30 · muy baja</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#b91c1c;"></span><span>30—50 · baja</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#ea580c;"></span><span>50—65 · media-baja</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#f59e0b;"></span><span>65—80 · media</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#eab308;"></span><span>80—92 · alta</span></div>
-        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#15803d;"></span><span>92—100 · muy alta</span></div>
+      <!-- Barra continua con marcas -->
+      <div style="position:relative; width:100%;">
+        <div style="display:flex; height:12px; overflow:hidden; border:1px solid var(--rule);">
+          <div style="flex:30; background:#7f1d1d"></div>
+          <div style="flex:20; background:#b91c1c"></div>
+          <div style="flex:15; background:#ea580c"></div>
+          <div style="flex:15; background:#f59e0b"></div>
+          <div style="flex:12; background:#84cc16"></div>
+          <div style="flex:8;  background:#15803d"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:3px; color:var(--ink-mute); font-size:9.5px;"><span>0</span><span>30</span><span>50</span><span>65</span><span>80</span><span>92</span><span>100</span></div>
+      </div>
+
+      <!-- Filas interactivas: click para filtrar provincias -->
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:3px;">
+        <div class="cov-leg-row" data-bucket="0" onclick="setCoverageFilter(0)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#7f1d1d; flex-shrink:0;"></span><span style="flex:1;">0—30 % · Muy baja</span><span id="cov-leg-count-0" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="1" onclick="setCoverageFilter(1)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#b91c1c; flex-shrink:0;"></span><span style="flex:1;">30—50 % · Baja</span><span id="cov-leg-count-1" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="2" onclick="setCoverageFilter(2)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#ea580c; flex-shrink:0;"></span><span style="flex:1;">50—65 % · Media-baja</span><span id="cov-leg-count-2" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="3" onclick="setCoverageFilter(3)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#f59e0b; flex-shrink:0;"></span><span style="flex:1;">65—80 % · Media</span><span id="cov-leg-count-3" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="4" onclick="setCoverageFilter(4)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#84cc16; flex-shrink:0;"></span><span style="flex:1;">80—92 % · Alta</span><span id="cov-leg-count-4" style="color:var(--ink-mute);">0</span></div>
+        <div class="cov-leg-row" data-bucket="5" onclick="setCoverageFilter(5)" style="display:flex; align-items:center; gap:8px; padding:4px 6px; cursor:pointer; border-radius:2px;"><span style="width:14px; height:11px; background:#15803d; flex-shrink:0;"></span><span style="flex:1;">92—100 % · Muy alta</span><span id="cov-leg-count-5" style="color:var(--ink-mute);">0</span></div>
       </div>
 
       <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:5px;">
-        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:24px; height:0; border-top:2.5px dashed #0891b2;"></span><span>Frontera nacional China</span></div>
-        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:14px; height:10px; background:#cbd5e1; border:1px solid #94a3b8;"></span><span>Sin datos</span></div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:24px; height:0; border-top:2.5px solid #0e7490;"></span><span>Frontera nacional de China</span></div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:14px; height:11px; background:#cbd5e1; border:1px solid #94a3b8;"></span><span>Sin datos disponibles</span></div>
+      </div>
+
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:9.5px; color:var(--ink-mute); line-height:1.5; font-family:var(--sans);">
+        Cada provincia se colorea por el % estimado de población con cobertura de la tecnología seleccionada. Click en una fila para resaltar solo las provincias de ese rango; click en una provincia para abrir su barómetro 3G/4G/5G a la derecha.
       </div>
     </div>
   </div>
@@ -3103,15 +3114,30 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     {name:"Macao",nameZh:"澳门",cov:{"3G":100,"4G":100,"5G":98}},
     {name:"Taiwán",nameZh:"台湾",cov:{"3G":99,"4G":99,"5G":92}}
   ];
-  function covColor(v){
-    if(v<=0)  return '#cbd5e1';
-    if(v<=30) return '#7f1d1d';
-    if(v<=50) return '#b91c1c';
-    if(v<=65) return '#ea580c';
-    if(v<=80) return '#f59e0b';
-    if(v<=92) return '#eab308';
-    return '#15803d';
+  // Rangos calibrados a los datos disponibles (5G mín 25 — Tíbet, máx 99 — Hong Kong).
+  // Fuentes agregadas: MIIT (2024), CNNIC 50º Informe (2023), GSMA Intelligence China Mobile Economy 2024.
+  var COV_BUCKETS = [
+    {min:0,  max:30, color:'#7f1d1d', label:'0—30 %',   tag:'Muy baja'},
+    {min:30, max:50, color:'#b91c1c', label:'30—50 %',  tag:'Baja'},
+    {min:50, max:65, color:'#ea580c', label:'50—65 %',  tag:'Media-baja'},
+    {min:65, max:80, color:'#f59e0b', label:'65—80 %',  tag:'Media'},
+    {min:80, max:92, color:'#84cc16', label:'80—92 %',  tag:'Alta'},
+    {min:92, max:100,color:'#15803d', label:'92—100 %', tag:'Muy alta'}
+  ];
+  var COV_NODATA = '#cbd5e1';
+
+  function covBucket(v){
+    for(var i=0;i<COV_BUCKETS.length;i++){
+      var b = COV_BUCKETS[i];
+      if(v >= b.min && (v < b.max || (i===COV_BUCKETS.length-1 && v<=b.max))) return i;
+    }
+    return -1;
   }
+  function covColor(v){
+    var i = covBucket(v);
+    return i<0 ? COV_NODATA : COV_BUCKETS[i].color;
+  }
+
   function findCov(name){
     if(!name) return null;
     for(var i=0;i<COVERAGE_DATA.length;i++){
@@ -3120,7 +3146,8 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     }
     return null;
   }
-  var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G', covSelected = null, covActiveLayer = null;
+  var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G',
+      covSelected = null, covActiveLayer = null, covFilter = -1;
 
   function updateBaroAvg(){
     var sum=0, n=0;
@@ -3148,34 +3175,45 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     updateBaroAvg();
   }
 
+  function styleFor(feature){
+    var p = findCov(feature.properties && feature.properties.name);
+    var v = p ? p.cov[covTech] : null;
+    var col = v==null ? COV_NODATA : covColor(v);
+    var dim = covFilter >= 0 && (v==null || covBucket(v) !== covFilter);
+    return {
+      fillColor: col,
+      weight: 0.8,
+      color: '#1e293b',
+      opacity: dim ? 0.25 : 0.9,
+      fillOpacity: v==null ? 0.25 : (dim ? 0.15 : 0.85),
+      smoothFactor: 1.2
+    };
+  }
+
   function renderCovLayer(){
     if(!covMap || !covGeo) return;
     if(covLayer){ covMap.removeLayer(covLayer); covLayer = null; }
     covActiveLayer = null;
     covLayer = L.geoJSON(covGeo, {
-      style: function(f){
-        var p = findCov(f.properties && f.properties.name);
-        var v = p ? p.cov[covTech] : 0;
-        return { fillColor: covColor(v), weight: 0.7, color: '#475569', opacity: 0.8, fillOpacity: p ? 0.82 : 0.35 };
-      },
+      renderer: covMap.options.renderer,
+      style: styleFor,
       onEachFeature: function(f, layer){
-        var name = (f.properties && f.properties.name) || '';
-        var p = findCov(name);
-        layer.on({
-          click: function(){
-            if(covActiveLayer && covActiveLayer !== layer){ covLayer.resetStyle(covActiveLayer); }
-            layer.setStyle({ weight: 2.6, color: '#0891b2', fillOpacity: 0.92 });
-            layer.bringToFront();
-            if(covBorder) covBorder.bringToFront();
-            covActiveLayer = layer;
-            if(p) updateBaroFor(p);
-          }
+        var p = findCov(f.properties && f.properties.name);
+        layer.on('click', function(){
+          if(covActiveLayer && covActiveLayer !== layer){ covLayer.resetStyle(covActiveLayer); }
+          layer.setStyle({ weight: 2.6, color: '#0e7490', fillOpacity: 0.95, opacity: 1 });
+          layer.bringToFront();
+          if(covBorder) covBorder.bringToFront();
+          covActiveLayer = layer;
+          if(p) updateBaroFor(p);
         });
       }
     }).addTo(covMap);
     if(covBorder) covBorder.bringToFront();
     updateBaroFor(covSelected);
+    renderLegendStats();
   }
+
   function setCoverageTech(t){
     covTech = t;
     document.querySelectorAll('.cov-btn').forEach(function(b){
@@ -3189,18 +3227,43 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   }
   window.setCoverageTech = setCoverageTech;
 
+  function setCoverageFilter(i){
+    covFilter = (covFilter === i) ? -1 : i;
+    document.querySelectorAll('.cov-leg-row').forEach(function(r){
+      var idx = parseInt(r.getAttribute('data-bucket'),10);
+      r.style.background = (covFilter === idx) ? '#f1f5f9' : 'transparent';
+      r.style.outline = (covFilter === idx) ? '1px solid #0e7490' : 'none';
+    });
+    if(covLayer){ covLayer.setStyle(styleFor); if(covActiveLayer){ covActiveLayer.setStyle({ weight: 2.6, color:'#0e7490', fillOpacity:0.95, opacity:1 }); covActiveLayer.bringToFront(); } if(covBorder) covBorder.bringToFront(); }
+  }
+  window.setCoverageFilter = setCoverageFilter;
+
+  function renderLegendStats(){
+    var counts = COV_BUCKETS.map(function(){ return 0; });
+    for(var i=0;i<COVERAGE_DATA.length;i++){
+      var v = COVERAGE_DATA[i].cov[covTech];
+      var b = covBucket(v);
+      if(b>=0) counts[b]++;
+    }
+    counts.forEach(function(c,i){
+      var el = document.getElementById('cov-leg-count-'+i);
+      if(el) el.textContent = c;
+    });
+  }
+
   function drawChinaBorder(){
     if(!covMap) return;
     var sources = [
-      'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson',
-      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson'
+      'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_10m_admin_0_countries.geojson',
+      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson',
+      'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson'
     ];
     function tryNext(i){
       if(i>=sources.length) return;
       fetch(sources[i]).then(function(r){ return r.json(); }).then(function(data){
         var china = (data.features||[]).find(function(f){ var p=f.properties||{}; return p.ADM0_A3==='CHN' || p.ISO_A3==='CHN' || p.SOVEREIGNT==='China'; });
         if(!china) return tryNext(i+1);
-        covBorder = L.geoJSON(china, { style:{ color:'#0891b2', weight:2.5, opacity:0.95, fill:false, dashArray:'6 4' }, interactive:false }).addTo(covMap);
+        covBorder = L.geoJSON(china, { renderer: covMap.options.renderer, style:{ color:'#0e7490', weight:2.4, opacity:0.95, fill:false }, interactive:false }).addTo(covMap);
         covBorder.bringToFront();
       }).catch(function(){ tryNext(i+1); });
     }
@@ -3211,8 +3274,13 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     var el = document.getElementById('map-coverage');
     if(!el) return;
     if(covMap){ covMap.invalidateSize(); return; }
-    covMap = L.map('map-coverage', { center:[35.8,104], zoom:4, minZoom:3, maxZoom:8, scrollWheelZoom:true, attributionControl:true, zoomControl:true });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(covMap);
+    covMap = L.map('map-coverage', {
+      center:[35.8,104], zoom:4, minZoom:3, maxZoom:8,
+      scrollWheelZoom:true, attributionControl:true, zoomControl:true,
+      preferCanvas:true, renderer: L.canvas({ padding: 0.2 }),
+      zoomSnap:0.5, wheelDebounceTime:60, wheelPxPerZoomLevel:80
+    });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19, updateWhenZooming:false, keepBuffer:2 }).addTo(covMap);
     var sources = [
       'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
       'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
