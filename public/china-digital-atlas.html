@@ -1631,17 +1631,24 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   </div>
 
   <style>
-    .cov-leg-row:focus-visible, .cov-btn:focus-visible, #cov-compare-toggle:focus-visible, .cov-reset-btn:focus-visible { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .cov-leg-row[aria-selected="true"] { background:#e0f2fe !important; outline:2px solid #0369a1; }
+    .cov-leg-row:focus-visible, .cov-btn:focus-visible, #cov-compare-toggle:focus-visible, .cov-reset-btn:focus-visible { outline: none; box-shadow: inset 0 0 0 2px #0369a1; background:#dbeafe !important; color:#0c4a6e !important; }
+    .cov-leg-row{ -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background .15s ease, color .15s ease; }
+    .cov-leg-row[aria-selected="true"] { background:#cffafe !important; color:#083344 !important; box-shadow: inset 4px 0 0 #0e7490; }
+    .cov-leg-row:hover{ background:#f1f5f9; }
     .cov-delta.pos { background:#dcfce7; color:#14532d; border:1px solid #15803d; }
     .cov-delta.neg { background:#fee2e2; color:#7f1d1d; border:1px solid #b91c1c; }
     .cov-delta.neu { background:#f1f5f9; color:#334155; border:1px solid #94a3b8; }
     .cov-shell{position:relative;height:660px;border:1px solid var(--rule-strong);background:#eef2f7;overflow:hidden}
-    .cov-card{position:absolute;z-index:1000;background:rgba(255,255,255,0.97);border:1px solid var(--rule-strong);box-shadow:var(--shadow-md);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+    /* Tarjetas flotantes con cristal: menos intrusivas, más translúcidas */
+    .cov-card{position:absolute;z-index:1000;background:rgba(255,255,255,0.72);border:1px solid rgba(15,23,42,0.10);box-shadow:0 6px 18px -10px rgba(15,23,42,0.18);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);transition:background .2s ease, box-shadow .2s ease}
+    .cov-card:hover, .cov-card:focus-within{background:rgba(255,255,255,0.94);box-shadow:0 10px 24px -10px rgba(15,23,42,0.28)}
     .cov-controls{top:14px;left:14px;padding:14px 16px;font-family:var(--mono);font-size:11px;min-width:220px;color:#0f172a}
     .cov-panel{top:14px;right:14px;width:300px;padding:16px 18px;color:var(--ink)}
     .cov-legend{bottom:14px;left:14px;padding:14px 16px;color:#0f172a;font-family:var(--mono);font-size:10.5px;width:300px;max-width:calc(100vw - 28px)}
-    .cov-reset-btn{background:#fff;border:1px solid #0e7490;color:#0e7490;font-family:var(--mono);font-size:10px;cursor:pointer;padding:3px 8px;font-weight:700}
+    .cov-reset-btn{background:rgba(255,255,255,0.85);border:1px solid #0e7490;color:#0e7490;font-family:var(--mono);font-size:10px;cursor:pointer;padding:3px 8px;font-weight:700;touch-action:manipulation}
+    /* Modo "solo color": ningún path tiene trazo visible, ni siquiera al hover/focus */
+    #map-coverage .leaflet-interactive{stroke-width:0 !important;stroke:none !important;outline:none !important}
+    #map-coverage .leaflet-interactive:focus, #map-coverage .leaflet-interactive:focus-visible{outline:none !important}
     @media (max-width: 980px){
       .cov-shell{display:grid;grid-template-rows:minmax(420px,48vh) auto;height:auto;gap:10px;padding-bottom:12px}
       #map-coverage{position:relative !important;inset:auto !important;height:100% !important;min-height:420px}
@@ -1651,23 +1658,26 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       .cov-controls{min-width:0}
       .cov-panel{order:2}
       .cov-legend{order:3}
+      .cov-card{background:rgba(255,255,255,0.96);backdrop-filter:none;-webkit-backdrop-filter:none}
     }
     @media (max-width: 700px){
-      .cov-shell{grid-template-rows:minmax(360px,44vh) auto;gap:8px;padding-bottom:10px}
-      #map-coverage{min-height:360px}
+      .cov-shell{grid-template-rows:minmax(340px,42vh) auto;gap:8px;padding-bottom:10px}
+      #map-coverage{min-height:340px}
       .cov-overlay-stack{padding:0 10px;gap:8px}
-      .cov-card{background:rgba(255,255,255,0.985)}
-      .cov-controls{padding:12px 12px;font-size:10px}
-      .cov-panel{padding:12px 12px;width:auto}
-      .cov-legend{padding:12px 12px;width:auto;font-size:10px}
+      .cov-controls{padding:10px 11px;font-size:10px}
+      .cov-panel{padding:10px 11px;width:auto}
+      .cov-legend{padding:10px 11px;width:auto;font-size:10px}
+      .cov-leg-row{padding:7px 6px !important;min-height:34px}
+      .cov-btn{font-size:11px !important;padding:9px 0 !important;min-height:36px}
+      .cov-reset-btn{padding:5px 10px;min-height:30px}
     }
     @media (max-width: 520px){
-      .cov-shell{grid-template-rows:minmax(330px,40vh) auto}
-      #map-coverage{min-height:330px}
+      .cov-shell{grid-template-rows:minmax(300px,38vh) auto}
+      #map-coverage{min-height:300px}
       .cov-controls [role="radiogroup"]{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px !important}
-      .cov-btn{font-size:11px !important;padding:8px 0 !important}
-      .cov-legend ul{max-height:188px;overflow:auto}
-      .cov-legend li{font-size:9.5px}
+      .cov-btn{font-size:11px !important;padding:9px 0 !important}
+      .cov-legend ul{max-height:none;overflow:visible}
+      .cov-legend li{font-size:10px}
       .cov-panel [style*="justify-content:space-between"]{gap:8px}
       .cov-panel [id^="cov-v-"]{white-space:nowrap}
     }
@@ -1754,7 +1764,6 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       </ul>
 
       <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:5px; color:#0f172a;">
-        <div style="display:flex; align-items:center; gap:8px;"><span aria-hidden="true" style="display:inline-block; width:24px; height:0; border-top:2.5px solid #155e75;"></span><span>Frontera nacional de China (oficial PRC)</span></div>
         <div style="display:flex; align-items:center; gap:8px;"><span aria-hidden="true" style="display:inline-block; width:14px; height:11px; background:#cbd5e1; border:1px solid #475569;"></span><span>Sin datos disponibles</span></div>
       </div>
 
@@ -1765,8 +1774,29 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     </div>
   </div>
 
+  <!-- Descripción textual accesible debajo del mapa -->
+  <section aria-label="Guía de colores y filtros del mapa de cobertura" style="margin-top:18px; padding:18px 20px; border:1px solid var(--rule-strong); background:var(--surface);">
+    <h3 style="font-family:var(--serif); font-weight:800; font-size:18px; margin-bottom:10px; color:var(--ink);">Cómo leer este mapa</h3>
+    <p style="font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:14px;">
+      El mapa muestra el <strong>% estimado de población con cobertura</strong> de la tecnología seleccionada (3G, 4G o 5G) por provincia. La intensidad del color codifica el rango: tonos rojizos representan cobertura baja y tonos verdes cobertura alta. Haz click en una provincia para abrir el barómetro con sus tres tecnologías; haz click (o <kbd>Enter</kbd>) en una fila de la leyenda para aislar solo las provincias de ese rango.
+    </p>
+    <ul style="list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px 14px; padding:0; font-size:13px; color:var(--ink);">
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#7f1d1d; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>0—30 % · Muy baja.</strong> Provincias remotas con red mínima, mayoritariamente 3G.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#b91c1c; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>30—50 % · Baja.</strong> Despliegue parcial; 5G casi inexistente fuera de capitales.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#ea580c; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>50—65 % · Media-baja.</strong> Cobertura urbana sólida, rural en transición.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#f59e0b; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>65—80 % · Media.</strong> Mayoría de núcleos cubiertos en 4G; 5G en ciudades clave.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#84cc16; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>80—92 % · Alta.</strong> Despliegue 5G consolidado en zonas costeras y polos industriales.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#15803d; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>92—100 % · Muy alta.</strong> Megalópolis tier-1: 5G prácticamente universal.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#cbd5e1; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>Sin datos.</strong> Provincias sin cifra pública verificable; se muestran atenuadas.</span></li>
+      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#cffafe; border:1px solid #0e7490; flex-shrink:0; margin-top:2px; box-shadow:inset 4px 0 0 #0e7490;"></span><span><strong>Filtro activo.</strong> Cuando un rango está seleccionado, las provincias fuera de ese rango se oscurecen para destacar la franja elegida.</span></li>
+    </ul>
+    <p style="font-size:12px; color:var(--ink-mute); margin-top:12px; line-height:1.55;">
+      Tu última provincia seleccionada y el filtro de rango se guardan automáticamente y se restauran al recargar la página.
+    </p>
+  </section>
+
   <p class="map-caption" style="margin-top:14px;">
-    Geometría provincial y frontera nacional (fuente principal): <a href="https://datav.aliyun.com/portal/school/atlas/area_selector" target="_blank" rel="noopener">DataV.GeoAtlas (MNR · Bou. nº GS(2019)1822)</a> · fallback cartográfico: <a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="noopener">longwosion/geojson-map-china</a> y <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth ne_10m</a> · Base: CARTO Positron.
+    Geometría provincial: <a href="https://datav.aliyun.com/portal/school/atlas/area_selector" target="_blank" rel="noopener">DataV.GeoAtlas (MNR · Bou. nº GS(2019)1822)</a> · fallback: <a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="noopener">longwosion/geojson-map-china</a> · Base: CARTO Positron.
   </p>
 
   <div class="fc-callout" style="margin-top:24px;">
@@ -3239,7 +3269,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     }
     updateBaroAvg();
   }
-  function setCoverageCompare(on){ covCompare = !!on; updateBaroFor(covSelected); }
+  function setCoverageCompare(on){ covCompare = !!on; updateBaroFor(covSelected); try{ saveCovState(); }catch(e){} }
   window.setCoverageCompare = setCoverageCompare;
 
   function onLegendKey(ev, i){
@@ -3250,18 +3280,38 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   }
   window.onLegendKey = onLegendKey;
 
+  // ── Persistencia ligera (provincia + filtro + tecnología) ──
+  var COV_LS_KEY = 'fc.coverage.state.v1';
+  function saveCovState(){
+    try{
+      localStorage.setItem(COV_LS_KEY, JSON.stringify({
+        tech: covTech,
+        filter: covFilter,
+        province: covSelected ? covSelected.nameZh : null,
+        compare: !!covCompare
+      }));
+    }catch(e){}
+  }
+  function loadCovState(){
+    try{ return JSON.parse(localStorage.getItem(COV_LS_KEY) || 'null'); }catch(e){ return null; }
+  }
+
   function styleFor(feature){
     var p = findCov(feature.properties && feature.properties.name);
     var v = p ? p.cov[covTech] : null;
     var col = v==null ? COV_NODATA : covColor(v);
     var dim = covFilter >= 0 && (v==null || covBucket(v) !== covFilter);
+    var isSelected = !!(covSelected && p && p.nameZh === covSelected.nameZh);
+    // Modo solo-color: ningún trazo (weight 0). El estado seleccionado se
+    // expresa con un fillColor más vivo y opacidad máxima — nada de outline.
     return {
-      fillColor: col,
-      weight: 0.6,
-      color: '#475569',
-      opacity: dim ? 0.25 : 0.7,
-      fillOpacity: v==null ? 0.25 : (dim ? 0.15 : 0.85),
-      smoothFactor: 1.2
+      fillColor: isSelected ? '#0e7490' : col,
+      weight: 0,
+      stroke: false,
+      opacity: 0,
+      fillOpacity: v==null ? 0.22 : (dim && !isSelected ? 0.18 : (isSelected ? 1 : 0.88)),
+      smoothFactor: 1.2,
+      interactive: true
     };
   }
 
@@ -3274,17 +3324,18 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       style: styleFor,
       onEachFeature: function(f, layer){
         var p = findCov(f.properties && f.properties.name);
+        if(p && covSelected && p.nameZh === covSelected.nameZh){ covActiveLayer = layer; }
         layer.on('click', function(){
-          if(covActiveLayer && covActiveLayer !== layer){ covLayer.resetStyle(covActiveLayer); }
-          layer.setStyle({ fillOpacity: 0.95 });
-          layer.bringToFront();
-          if(covBorder) covBorder.bringToFront();
+          if(p) covSelected = p;
+          // Re-style sólo las features afectadas: evita el "salto" global.
+          if(covActiveLayer && covActiveLayer !== layer){ try{ covLayer.resetStyle(covActiveLayer); }catch(e){} }
           covActiveLayer = layer;
+          layer.setStyle(styleFor(f));
           if(p) updateBaroFor(p);
+          saveCovState();
         });
       }
     }).addTo(covMap);
-    if(covBorder) covBorder.bringToFront();
     updateBaroFor(covSelected);
     renderLegendStats();
   }
@@ -3300,6 +3351,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       b.setAttribute('aria-checked', on ? 'true' : 'false');
     });
     renderCovLayer();
+    saveCovState();
   }
   window.setCoverageTech = setCoverageTech;
 
@@ -3309,10 +3361,10 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       var idx = parseInt(r.getAttribute('data-bucket'),10);
       var sel = covFilter === idx;
       r.setAttribute('aria-selected', sel ? 'true' : 'false');
-      r.style.background = sel ? '#e0f2fe' : 'transparent';
-      r.style.outline = sel ? '2px solid #0369a1' : 'none';
     });
-    if(covLayer){ covLayer.setStyle(styleFor); if(covActiveLayer){ covActiveLayer.setStyle({ fillOpacity:0.95 }); covActiveLayer.bringToFront(); } if(covBorder) covBorder.bringToFront(); }
+    // setStyle in-place: no removeLayer ⇒ sin salto de render.
+    if(covLayer){ covLayer.setStyle(styleFor); }
+    saveCovState();
   }
   window.setCoverageFilter = setCoverageFilter;
 
@@ -3339,11 +3391,37 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     var el = document.getElementById('map-coverage');
     if(!el) return;
     if(covMap){ covMap.invalidateSize(); return; }
+
+    // Restaurar estado guardado ANTES de pintar la primera vez
+    var saved = loadCovState();
+    if(saved){
+      if(saved.tech === '3G' || saved.tech === '4G' || saved.tech === '5G') covTech = saved.tech;
+      if(typeof saved.filter === 'number') covFilter = saved.filter;
+      if(saved.province){
+        for(var k=0;k<COVERAGE_DATA.length;k++){ if(COVERAGE_DATA[k].nameZh === saved.province){ covSelected = COVERAGE_DATA[k]; break; } }
+      }
+      if(saved.compare){ covCompare = true; var chk = document.getElementById('cov-compare-toggle'); if(chk) chk.checked = true; }
+      // Reflejar en UI: botones de tecnología y filas de leyenda
+      document.querySelectorAll('.cov-btn').forEach(function(b){
+        var on = b.getAttribute('data-tech') === covTech;
+        b.style.background = on ? '#0f172a' : '#fff';
+        b.style.color = on ? '#fff' : '#0f172a';
+        b.style.borderColor = on ? '#0f172a' : '#475569';
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+      document.querySelectorAll('.cov-leg-row').forEach(function(r){
+        var idx = parseInt(r.getAttribute('data-bucket'),10);
+        r.setAttribute('aria-selected', covFilter === idx ? 'true' : 'false');
+      });
+    }
+
     covMap = L.map('map-coverage', {
       center:[35.8,104], zoom:4, minZoom:3, maxZoom:8,
       scrollWheelZoom:true, attributionControl:true, zoomControl:true,
       preferCanvas:true, renderer: L.canvas({ padding: 0.2 }),
-      zoomSnap:0.5, wheelDebounceTime:60, wheelPxPerZoomLevel:80
+      zoomSnap:0.5, wheelDebounceTime:60, wheelPxPerZoomLevel:80,
+      tap:true, tapTolerance:20
     });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19, updateWhenZooming:false, keepBuffer:2 }).addTo(covMap);
     var sources = [
