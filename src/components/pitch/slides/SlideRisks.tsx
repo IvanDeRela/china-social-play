@@ -107,17 +107,20 @@ export const SlideRisks = () => {
           Probabilidad <span className="font-serif italic text-danger">×</span> impacto.
         </motion.h2>
 
-        {/* Microexplicación + toggles de accesibilidad */}
+        {/* Esquema 3 pasos + toggles de accesibilidad */}
         <div className="mb-4 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-          <p className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground max-w-2xl">
-            <Info className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-            <span>
-              <strong className="text-foreground">Cómo leerlo:</strong> el eje <strong>X</strong> indica
-              la <em>probabilidad</em> (qué tan probable es que ocurra) y el <strong>Y</strong> el{" "}
-              <em>impacto</em> (qué tan grave sería). El color de cada celda sale de multiplicar ambos
-              (P × I): a más oscuro y rojizo, más severo. Pulsa una etiqueta para ver mitigación y métrica.
-            </span>
-          </p>
+          <ol className="flex flex-col sm:flex-row gap-2 sm:gap-3 text-xs sm:text-sm text-foreground/90 max-w-3xl">
+            {[
+              { n: "1", t: "Mira la posición", d: "Eje horizontal: probabilidad. Eje vertical: gravedad." },
+              { n: "2", t: "Lee el color", d: "Cuanto más rojo, más urgente." },
+              { n: "3", t: "Pulsa una etiqueta", d: "Verás cómo lo mitigamos." },
+            ].map((s) => (
+              <li key={s.n} className="flex items-start gap-2 flex-1 rounded-lg border border-border bg-card/60 px-3 py-2">
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-mono font-bold text-xs">{s.n}</span>
+                <span><strong className="text-foreground">{s.t}.</strong> <span className="text-muted-foreground">{s.d}</span></span>
+              </li>
+            ))}
+          </ol>
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => setMode(mode === "contrast" ? "default" : "contrast")}
@@ -135,7 +138,7 @@ export const SlideRisks = () => {
                 mode === "cb" ? "bg-primary text-primary-foreground border-primary" : "border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"
               }`}
               aria-pressed={mode === "cb"}
-              title="Paleta apta para daltonismo (Okabe-Ito)"
+              title="Paleta apta para personas con daltonismo"
             >
               <Eye className="h-3.5 w-3.5" /> Paleta daltónica
             </button>
