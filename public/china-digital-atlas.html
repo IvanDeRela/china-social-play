@@ -1620,6 +1620,68 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
 </div>
 
 
+<!-- ═══════════ 04 COBERTURA 3G/4G/5G ═══════════ -->
+<div class="view" id="view-cobertura">
+  <div class="section-header">
+    <div class="kicker"><span class="num-box">04</span> · Cobertura móvil</div>
+    <h2 class="section-title">A qué red <em>nos enfrentamos</em></h2>
+    <p class="section-deck">
+      Mapa interactivo del despliegue 3G/4G/5G por provincia. Datos del MIIT (2024) y operadores. Cambia la tecnología para ver el contraste entre 3G casi universal y 5G concentrado en costa este.
+    </p>
+  </div>
+
+  <div class="map-shell" style="position:relative; height:640px; border:1px solid var(--rule-strong); background:#e9e7df;">
+    <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de cobertura 3G/4G/5G en China"></div>
+
+    <div id="cov-controls" style="position:absolute; top:14px; right:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:14px 16px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:11px; min-width:180px;">
+      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:8px;">Tecnología</div>
+      <div style="display:flex; gap:6px; margin-bottom:10px;">
+        <button type="button" class="cov-btn" data-tech="3G" onclick="setCoverageTech('3G')" style="flex:1; padding:6px 0; border:1px solid var(--rule-strong); background:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">3G</button>
+        <button type="button" class="cov-btn" data-tech="4G" onclick="setCoverageTech('4G')" style="flex:1; padding:6px 0; border:1px solid var(--rule-strong); background:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">4G</button>
+        <button type="button" class="cov-btn active" data-tech="5G" onclick="setCoverageTech('5G')" style="flex:1; padding:6px 0; border:1px solid var(--rule-strong); background:var(--ink); color:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">5G</button>
+      </div>
+      <div id="cov-stat" style="font-family:var(--serif); font-size:13px; color:var(--ink); line-height:1.4;"></div>
+    </div>
+
+    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:10px 14px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:10px;">
+      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:6px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
+      <div style="display:flex; height:8px; width:220px; overflow:hidden;">
+        <div style="flex:1; background:#7f1d1d"></div>
+        <div style="flex:1; background:#dc2626"></div>
+        <div style="flex:1; background:#f59e0b"></div>
+        <div style="flex:1; background:#eab308"></div>
+        <div style="flex:1; background:#84cc16"></div>
+        <div style="flex:1; background:#16a34a"></div>
+        <div style="flex:1; background:#065f46"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; width:220px; margin-top:4px; color:var(--ink-mute);"><span>0</span><span>50</span><span>100</span></div>
+    </div>
+  </div>
+
+  <p class="map-caption" style="margin-top:14px;">
+    Geometría: <a href="https://geo.datav.aliyun.com/" target="_blank" rel="noopener">DataV.GeoAtlas (Alibaba)</a> · GeoJSON oficial de provincias chinas. Cartografía base: Esri ArcGIS (Light Gray Canvas).
+  </p>
+
+  <div class="fc-callout" style="margin-top:24px;">
+    <div class="fc-callout-title">¿Por qué importa para FantasyChina?</div>
+    <div class="fc-callout-body">
+      4G es prácticamente universal (&gt;90% en cada provincia): nuestro MVP de vídeo en directo funciona en todo el país. 5G concentra despliegue en Tier 1—2 (Pekín, Shanghái, Guangdong, Zhejiang) — donde están nuestros 200 M de fans del fútbol europeo. La estrategia de lanzamiento sigue al 5G.
+    </div>
+  </div>
+
+  <div style="margin-top:28px; padding:18px 22px; border:1px solid var(--rule-strong); background:#fafaf7;">
+    <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan); margin-bottom:10px;">Fuentes · APA 7</div>
+    <ol style="margin:0; padding-left:20px; font-size:12.5px; line-height:1.7; color:var(--ink);">
+      <li>Ministry of Industry and Information Technology of the People's Republic of China (MIIT). (2024, diciembre). <em>Communications Industry Statistical Report 2024</em>. <a href="https://www.miit.gov.cn/jgsj/yxj/" target="_blank" rel="noopener">miit.gov.cn</a></li>
+      <li>China Internet Network Information Center (CNNIC). (2024, agosto). <em>54th Statistical Report on Internet Development in China</em>. <a href="https://www.cnnic.com.cn/IDR/ReportDownloads/" target="_blank" rel="noopener">cnnic.com.cn</a></li>
+      <li>GSMA Intelligence. (2024). <em>The Mobile Economy China 2024</em>. GSMA. <a href="https://www.gsma.com/mobileeconomy/china/" target="_blank" rel="noopener">gsma.com</a></li>
+      <li>China Academy of Information and Communications Technology (CAICT). (2024). <em>White Paper on 5G Application Development in China</em>.</li>
+      <li>DataV.GeoAtlas (Alibaba Cloud). (2024). <em>China administrative boundaries GeoJSON (100000_full)</em>. <a href="https://geo.datav.aliyun.com/" target="_blank" rel="noopener">geo.datav.aliyun.com</a></li>
+    </ol>
+  </div>
+</div>
+
+
 <!-- ═══════════ 05 LAS 14 FRONTERAS ═══════════ -->
 <div class="view" id="view-fronteras">
   <div class="section-header">
