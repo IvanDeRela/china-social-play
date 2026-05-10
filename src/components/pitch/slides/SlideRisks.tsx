@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldAlert, Info, Contrast, Eye } from "lucide-react";
+import { ShieldAlert, Contrast, Eye } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
