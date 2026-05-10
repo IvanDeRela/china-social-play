@@ -69,7 +69,7 @@ export const SlideMonetization = () => {
   const dauData = useMemo(() => ({
     labels,
     datasets: [{
-      label: "MAU (millones)",
+      label: "Usuarios al mes (millones)",
       data: d.mau,
       borderColor: palette.primary(),
       backgroundColor: (ctx: any) => {
