@@ -153,7 +153,7 @@ export const SlideRisks = () => {
           {sevChip("high", "Alta",     "4-5", "Alta exposición. Plan de mitigación activo y métrica de seguimiento.")}
           {sevChip("crit", "Crítica",  "6+",  "Puede comprometer el negocio. Mitigación prioritaria con presupuesto asignado.")}
           <span className="ml-auto hidden md:inline font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-            puntuación = P × I
+            color = probabilidad × gravedad
           </span>
         </div>
 
