@@ -80,8 +80,8 @@ export const SlideSolution = () => {
           </div>
 
           <div className="rounded-xl border-l-4 border-copper bg-copper/5 px-5 py-4 flex items-center gap-4">
-            <span className="font-mono font-bold text-6xl md:text-7xl text-copper">k=2,4×</span>
-            <span className="text-sm text-foreground/85 uppercase tracking-wider">viralidad WeChat</span>
+            <span className="font-mono font-bold text-6xl md:text-7xl text-copper">×2,4</span>
+            <span className="text-sm text-foreground/85 uppercase tracking-wider">Cada usuario invita a 2,4 amigos por WeChat</span>
           </div>
         </motion.div>
       </div>
