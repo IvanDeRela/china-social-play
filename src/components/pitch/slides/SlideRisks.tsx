@@ -255,7 +255,7 @@ export const SlideRisks = () => {
                     </svg>
                   </div>
                   <span className="rounded-full px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-white" style={{ backgroundColor: `hsl(var(--${remapTone(active.tone)}))` }}>
-                    P:{probLabels[active.prob]} · I:{impactLabels[active.impact]}
+                    Probabilidad: {probLabels[active.prob]} · Gravedad: {impactLabels[active.impact]}
                   </span>
                 </div>
 
