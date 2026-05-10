@@ -3257,8 +3257,9 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     var dim = covFilter >= 0 && (v==null || covBucket(v) !== covFilter);
     return {
       fillColor: col,
-      weight: 0,
-      opacity: 0,
+      weight: 0.6,
+      color: '#475569',
+      opacity: dim ? 0.25 : 0.7,
       fillOpacity: v==null ? 0.25 : (dim ? 0.15 : 0.85),
       smoothFactor: 1.2
     };
