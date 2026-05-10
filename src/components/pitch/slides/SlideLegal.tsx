@@ -7,11 +7,11 @@ import { PartnerLogos } from "../PartnerLogos";
 
 export const SlideLegal = () => {
   const comps = [
-    { name: "FanDuel",       value: 22000, label: "$22B",  note: "Flutter sub.",         tone: "primary" as const, isUs: false },
-    { name: "DraftKings",    value: 18000, label: "$18B",  note: "NASDAQ DKNG",          tone: "primary" as const, isUs: false },
-    { name: "Sorare",        value: 4300,  label: "$4,3B", note: "SoftBank Series B",    tone: "copper" as const,  isUs: false },
-    { name: "Genius Sports", value: 1500,  label: "$1,5B", note: "NYSE GENI",            tone: "copper" as const,  isUs: false },
-    { name: "FantasyChina",  value: 200,   label: "$200M", note: "Objetivo Y5 · ARR",    tone: "success" as const, isUs: true },
+    { name: "FanDuel",       value: 22000, label: "$22B",  note: "Filial de Flutter (cotiza en Londres)", tone: "primary" as const, isUs: false },
+    { name: "DraftKings",    value: 18000, label: "$18B",  note: "Cotiza en NASDAQ",                       tone: "primary" as const, isUs: false },
+    { name: "Sorare",        value: 4300,  label: "$4,3B", note: "Ronda liderada por SoftBank",            tone: "copper" as const,  isUs: false },
+    { name: "Genius Sports", value: 1500,  label: "$1,5B", note: "Cotiza en NYSE",                         tone: "copper" as const,  isUs: false },
+    { name: "FantasyChina",  value: 200,   label: "$200M", note: "Nuestro objetivo de ingresos · año 5",   tone: "success" as const, isUs: true },
   ];
   const max = 22000;
 
@@ -72,12 +72,12 @@ export const SlideLegal = () => {
           className="lg:col-span-4 space-y-3"
         >
           <div className="rounded-2xl border-l-4 border-primary bg-primary/5 p-5">
-            <div className="eyebrow text-primary mb-3">Foso</div>
+            <div className="eyebrow text-primary mb-3">Nuestra ventaja defendible</div>
             <div className="space-y-2.5">
               {[
-                { k: "Único", v: "fantasy nativo WeChat" },
+                { k: "Únicos", v: "fantasy fútbol nativo en WeChat" },
                 { k: "78 %",  v: "margen bruto" },
-                { k: "PIPL",  v: "CSL · ICP compliance" },
+                { k: "Legal", v: "cumplimiento normativo en China" },
               ].map((row) => (
                 <div key={row.k} className="flex items-baseline gap-3">
                   <span className="font-mono font-bold text-3xl md:text-4xl text-primary shrink-0">{row.k}</span>
@@ -88,13 +88,13 @@ export const SlideLegal = () => {
           </div>
 
           <div className="rounded-2xl border border-copper/30 bg-card p-5 shadow-card">
-            <div className="eyebrow text-copper mb-3">Hitos ronda</div>
+            <div className="eyebrow text-copper mb-3">Hitos de la ronda</div>
             <ul className="space-y-1.5 text-sm">
               {[
-                ["M3", "Compliance"],
-                ["M6", "MVP WeChat"],
-                ["M9", "LaLiga Tech"],
-                ["M12", "100k DAU"],
+                ["Mes 3", "Cumplimiento legal"],
+                ["Mes 6", "Primera versión en WeChat"],
+                ["Mes 9", "Acuerdo con LaLiga Tech"],
+                ["Mes 12", "100 000 usuarios diarios"],
               ].map(([m, t]) => (
                 <li key={m} className="flex items-center gap-3">
                   <span className="font-mono text-xs text-copper bg-copper/10 rounded px-2 py-0.5 shrink-0">{m}</span>
@@ -106,7 +106,7 @@ export const SlideLegal = () => {
         </motion.div>
       </div>
 
-      <PartnerLogos label="Target partners · ecosistema" />
+      <PartnerLogos label="Socios objetivo · ecosistema" />
     </SlideShell>
   );
 };

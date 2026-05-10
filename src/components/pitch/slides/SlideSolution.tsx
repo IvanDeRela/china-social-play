@@ -7,15 +7,15 @@ import weiLiu from "@/assets/wei-liu.jpg";
 /** Cliente — persona-card con foto + 3 KPIs gigantes. */
 export const SlideSolution = () => {
   const kpis = [
-    { v: "$30",  l: "gasto gaming/mes",  tone: "primary" },
-    { v: "78%",  l: "sigue liga europea", tone: "copper" },
-    { v: "94%",  l: "WeChat diario",     tone: "success" },
+    { v: "$30",  l: "Gasta al mes en juegos",  tone: "primary" },
+    { v: "78%",  l: "Sigue alguna liga europea", tone: "copper" },
+    { v: "94%",  l: "Usa WeChat a diario",     tone: "success" },
   ];
   const traits = [
-    { k: "$35K", v: "salario / año" },
-    { k: "RMA",  v: "fan Real Madrid" },
-    { k: "HoK",  v: "Honor of Kings · gemas" },
-    { k: "8",    v: "amigos WeChat" },
+    { k: "$35K", v: "Salario al año" },
+    { k: "Madrid",  v: "Aficionado del Real Madrid" },
+    { k: "Gamer",   v: "Juega a Honor of Kings" },
+    { k: "8",    v: "Amigos en WeChat" },
   ];
   const toneText: Record<string, string> = {
     primary: "text-primary", copper: "text-copper", success: "text-success",
@@ -65,9 +65,9 @@ export const SlideSolution = () => {
           className="lg:col-span-8 flex flex-col gap-5"
         >
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7">
-            <div className="eyebrow text-primary mb-2">Segmento Tier 1-2</div>
+            <div className="eyebrow text-primary mb-2">Personas como Wei en grandes ciudades</div>
             <div className="font-mono font-bold text-8xl md:text-9xl text-primary leading-none">25-40<span className="text-5xl ml-2 opacity-70">M</span></div>
-            <div className="mt-3 text-xs font-mono uppercase tracking-wider text-muted-foreground">CNNIC · iResearch 2024</div>
+            <div className="mt-3 text-xs font-mono uppercase tracking-wider text-muted-foreground">Fuentes oficiales 2024</div>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
@@ -80,8 +80,8 @@ export const SlideSolution = () => {
           </div>
 
           <div className="rounded-xl border-l-4 border-copper bg-copper/5 px-5 py-4 flex items-center gap-4">
-            <span className="font-mono font-bold text-6xl md:text-7xl text-copper">k=2,4×</span>
-            <span className="text-sm text-foreground/85 uppercase tracking-wider">viralidad WeChat</span>
+            <span className="font-mono font-bold text-6xl md:text-7xl text-copper">×2,4</span>
+            <span className="text-sm text-foreground/85 uppercase tracking-wider">Cada usuario invita a 2,4 amigos por WeChat</span>
           </div>
         </motion.div>
       </div>

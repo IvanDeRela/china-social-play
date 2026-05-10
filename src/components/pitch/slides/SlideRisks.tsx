@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldAlert, Info, Contrast, Eye } from "lucide-react";
+import { ShieldAlert, Contrast, Eye } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { Eyebrow } from "../Eyebrow";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -19,12 +19,12 @@ interface Risk {
 }
 
 const risks: Risk[] = [
-  { id: "reg",    short: "Regulación PRC",  prob: 2, impact: 3, tone: "danger",  mitigation: "King & Wood Mallesons · VIE · ICP M3", metric: "$120K legal Y1", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
-  { id: "bat",    short: "BAT copia",       prob: 3, impact: 2, tone: "warn",    mitigation: "Foso WeChat · datos propietarios · 24-36 m", metric: "First mover", icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },
-  { id: "wechat", short: "Bloqueo WeChat",  prob: 1, impact: 3, tone: "danger",  mitigation: "Plan B Douyin Y3 · acuerdo Tencent",        metric: "Multi-canal", icon: "M3 3l18 18M21 3L3 21" },
-  { id: "cac",    short: "CAC sube",        prob: 2, impact: 2, tone: "copper",  mitigation: "Viralidad k=2,4× · KOL · grupos privados",  metric: "$3,2 → $1,2", icon: "M3 17l6-6 4 4 8-8M14 7h7v7" },
-  { id: "season", short: "Estacionalidad",  prob: 3, impact: 1, tone: "primary", mitigation: "Premier · LaLiga · NBA · eSports todo año", metric: "4 ligas",    icon: "M12 2v20M2 12h20M5 5l14 14M19 5L5 19" },
-  { id: "team",   short: "Talento senior",  prob: 2, impact: 1, tone: "primary", mitigation: "HK + remoto LATAM/EU · ESOP 12 %",          metric: "12 % equity", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM3 21v-2a6 6 0 0112 0v2" },
+  { id: "reg",    short: "Regulación China",  prob: 2, impact: 3, tone: "danger",  mitigation: "Bufete local + cumplimiento legal en mes 3", metric: "$120K legal año 1", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+  { id: "bat",    short: "Que un gigante chino copie",       prob: 3, impact: 2, tone: "warn",    mitigation: "Ventaja de WeChat + datos propios + 24-36 meses de adelanto", metric: "Llegar primero", icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },
+  { id: "wechat", short: "Bloqueo en WeChat",  prob: 1, impact: 3, tone: "danger",  mitigation: "Plan B en Douyin desde año 3 + acuerdo con Tencent",        metric: "Varios canales", icon: "M3 3l18 18M21 3L3 21" },
+  { id: "cac",    short: "Sube el coste de captar usuarios",        prob: 2, impact: 2, tone: "copper",  mitigation: "Viralidad ×2,4 · influencers · grupos privados",  metric: "$3,2 → $1,2", icon: "M3 17l6-6 4 4 8-8M14 7h7v7" },
+  { id: "season", short: "Estacionalidad del fútbol",  prob: 3, impact: 1, tone: "primary", mitigation: "Premier · LaLiga · NBA · eSports todo el año", metric: "4 ligas",    icon: "M12 2v20M2 12h20M5 5l14 14M19 5L5 19" },
+  { id: "team",   short: "Captar talento sénior",  prob: 2, impact: 1, tone: "primary", mitigation: "Hong Kong + remoto LATAM/Europa · 12 % en acciones para el equipo",          metric: "12 % acciones", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM3 21v-2a6 6 0 0112 0v2" },
 ];
 
 const probLabels   = ["", "Baja", "Media", "Alta"];
@@ -107,17 +107,20 @@ export const SlideRisks = () => {
           Probabilidad <span className="font-serif italic text-danger">×</span> impacto.
         </motion.h2>
 
-        {/* Microexplicación + toggles de accesibilidad */}
+        {/* Esquema 3 pasos + toggles de accesibilidad */}
         <div className="mb-4 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-          <p className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground max-w-2xl">
-            <Info className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-            <span>
-              <strong className="text-foreground">Cómo leerlo:</strong> el eje <strong>X</strong> indica
-              la <em>probabilidad</em> (qué tan probable es que ocurra) y el <strong>Y</strong> el{" "}
-              <em>impacto</em> (qué tan grave sería). El color de cada celda sale de multiplicar ambos
-              (P × I): a más oscuro y rojizo, más severo. Pulsa una etiqueta para ver mitigación y métrica.
-            </span>
-          </p>
+          <ol className="flex flex-col sm:flex-row gap-2 sm:gap-3 text-xs sm:text-sm text-foreground/90 max-w-3xl">
+            {[
+              { n: "1", t: "Mira la posición", d: "Eje horizontal: probabilidad. Eje vertical: gravedad." },
+              { n: "2", t: "Lee el color", d: "Cuanto más rojo, más urgente." },
+              { n: "3", t: "Pulsa una etiqueta", d: "Verás cómo lo mitigamos." },
+            ].map((s) => (
+              <li key={s.n} className="flex items-start gap-2 flex-1 rounded-lg border border-border bg-card/60 px-3 py-2">
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-mono font-bold text-xs">{s.n}</span>
+                <span><strong className="text-foreground">{s.t}.</strong> <span className="text-muted-foreground">{s.d}</span></span>
+              </li>
+            ))}
+          </ol>
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => setMode(mode === "contrast" ? "default" : "contrast")}
@@ -135,7 +138,7 @@ export const SlideRisks = () => {
                 mode === "cb" ? "bg-primary text-primary-foreground border-primary" : "border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"
               }`}
               aria-pressed={mode === "cb"}
-              title="Paleta apta para daltonismo (Okabe-Ito)"
+              title="Paleta apta para personas con daltonismo"
             >
               <Eye className="h-3.5 w-3.5" /> Paleta daltónica
             </button>
@@ -150,7 +153,7 @@ export const SlideRisks = () => {
           {sevChip("high", "Alta",     "4-5", "Alta exposición. Plan de mitigación activo y métrica de seguimiento.")}
           {sevChip("crit", "Crítica",  "6+",  "Puede comprometer el negocio. Mitigación prioritaria con presupuesto asignado.")}
           <span className="ml-auto hidden md:inline font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-            puntuación = P × I
+            color = probabilidad × gravedad
           </span>
         </div>
 
@@ -214,7 +217,7 @@ export const SlideRisks = () => {
                           </div>
                         </TooltipTrigger>
                         <TooltipContent className="text-xs">
-                          P:{probLabels[prob]} · I:{impactLabels[impact]} · score <strong>{score}</strong>
+                          Probabilidad: {probLabels[prob]} · Gravedad: {impactLabels[impact]} · puntuación <strong>{score}</strong>
                         </TooltipContent>
                       </Tooltip>
                     );
@@ -252,7 +255,7 @@ export const SlideRisks = () => {
                     </svg>
                   </div>
                   <span className="rounded-full px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-white" style={{ backgroundColor: `hsl(var(--${remapTone(active.tone)}))` }}>
-                    P:{probLabels[active.prob]} · I:{impactLabels[active.impact]}
+                    Probabilidad: {probLabels[active.prob]} · Gravedad: {impactLabels[active.impact]}
                   </span>
                 </div>
 

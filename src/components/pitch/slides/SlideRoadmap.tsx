@@ -15,7 +15,7 @@ export const SlideRoadmap = () => {
       { label: "Coste por usuario ($)", data: [56, 16, 11, 9, 9],
         borderColor: palette.copper(), backgroundColor: palette.copperAlpha(0.1),
         borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.copper(), fill: true },
-      { label: "ARPU ($)", data: [5, 7, 12, 16, 20],
+      { label: "Ingreso por usuario ($)", data: [5, 7, 12, 16, 20],
         borderColor: palette.primary(), backgroundColor: palette.primaryAlpha(0.1),
         borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.primary(), fill: true },
     ],
@@ -23,19 +23,19 @@ export const SlideRoadmap = () => {
 
   const opts = useMemo(() => baseOptions(), []);
 
-  // Unit economics circular: CAC → LTV → ratio
+  // Cuánto cuesta captar un usuario vs cuánto ingresa a lo largo de su vida
   const unit = [
-    { label: "CAC", value: "$2,5", size: 110, tone: "copper", note: "blended Y3" },
-    { label: "LTV", value: "$45",  size: 180, tone: "primary", note: "Y3" },
-    { label: "Ratio", value: "18×", size: 230, tone: "success", note: "LTV/CAC · sano: 3-5×" },
+    { label: "Coste de captar", value: "$2,5", size: 110, tone: "copper", note: "media año 3" },
+    { label: "Valor que aporta", value: "$45",  size: 180, tone: "primary", note: "a lo largo de su vida" },
+    { label: "Multiplicador",    value: "18×", size: 230, tone: "success", note: "saludable: 3-5×" },
   ];
 
   const milestones = [
-    { y: "Y1", k: "$56",  l: "coste/usuario",     tone: "copper"  },
-    { y: "Y2", k: "−30%", l: "Cloud Tencent",     tone: "primary" },
-    { y: "Y3", k: "1×",   l: "Breakeven",         tone: "success" },
-    { y: "Y4", k: "$1,2", l: "CAC viral k=2,4×",  tone: "primary" },
-    { y: "Y5", k: "4%",   l: "Licencias revenue", tone: "copper"  },
+    { y: "Año 1", k: "$56",  l: "Coste por usuario inicial",  tone: "copper"  },
+    { y: "Año 2", k: "−30%", l: "Ahorro con la nube de Tencent", tone: "primary" },
+    { y: "Año 3", k: "1×",   l: "Punto de equilibrio",         tone: "success" },
+    { y: "Año 4", k: "$1,2", l: "Cada usuario invita a 2,4 amigos", tone: "primary" },
+    { y: "Año 5", k: "4%",   l: "Ingresos por licencias deportivas", tone: "copper"  },
   ];
   const toneBg: Record<string, string>      = { primary: "bg-primary", copper: "bg-copper", success: "bg-success" };
   const toneText: Record<string, string>    = { primary: "text-primary", copper: "text-copper", success: "text-success" };
@@ -63,7 +63,7 @@ export const SlideRoadmap = () => {
           className="lg:col-span-5 rounded-2xl border border-border bg-card p-6 shadow-card flex flex-col items-center"
         >
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3 self-start">
-            Unit economics · Y3
+            Coste vs valor del usuario · año 3
           </div>
           <div className="relative h-[260px] w-[260px] flex items-center justify-center">
             {unit.map((u, i) => (
@@ -101,7 +101,7 @@ export const SlideRoadmap = () => {
           className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 shadow-card"
         >
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
-            Coste vs ARPU · breakeven Y3
+            Coste vs ingreso por usuario · equilibrio en el año 3
           </div>
           <div className="h-[360px]"><Line data={chartData} options={opts as any} /></div>
         </motion.div>

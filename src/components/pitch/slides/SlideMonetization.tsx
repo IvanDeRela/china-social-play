@@ -27,9 +27,9 @@ const data = {
 const labels = ["Y1", "Y2", "Y3", "Y4", "Y5"];
 
 const tiers = [
-  { name: "Free", price: "$0", per: "siempre", features: ["Crear equipo", "Liga pública", "Stats básicas"], tone: "muted" as const },
-  { name: "Premium", price: "$11", per: "/trim", features: ["Liga privada", "AI predicciones", "Sin ads", "Live stats"], tone: "primary" as const, highlight: true, badge: "Más popular" },
-  { name: "VIP", price: "$28", per: "/año", features: ["Todo Premium", "−50 % anual", "Insignia VIP", "Soporte 24/7"], tone: "copper" as const },
+  { name: "Gratis", price: "$0", per: "siempre", features: ["Crear equipo", "Liga pública", "Estadísticas básicas"], tone: "muted" as const },
+  { name: "Premium", price: "$11", per: "/trimestre", features: ["Liga privada", "Predicciones inteligentes", "Sin anuncios", "Estadísticas en directo"], tone: "primary" as const, highlight: true, badge: "El más popular" },
+  { name: "VIP", price: "$28", per: "/año", features: ["Todo lo de Premium", "−50 % al pagar año completo", "Insignia VIP", "Soporte 24/7"], tone: "copper" as const },
 ];
 
 export const SlideMonetization = () => {
@@ -41,7 +41,7 @@ export const SlideMonetization = () => {
     datasets: [
       { type: "bar" as const, label: "Ingresos (M USD)", data: d.revenue, backgroundColor: palette.primaryAlpha(0.85), borderRadius: 6, order: 2 },
       { type: "bar" as const, label: "Gastos (M USD)",   data: d.cost,    backgroundColor: palette.copperAlpha(0.65), borderRadius: 6, order: 2 },
-      { type: "line" as const, label: "EBITDA (M USD)",  data: d.ebitda,  borderColor: palette.success(), backgroundColor: palette.successAlpha(0.15), borderWidth: 3, tension: 0.35, pointRadius: 5, pointBackgroundColor: palette.success(), fill: false, order: 1 },
+      { type: "line" as const, label: "Beneficio operativo (M USD)",  data: d.ebitda,  borderColor: palette.success(), backgroundColor: palette.successAlpha(0.15), borderWidth: 3, tension: 0.35, pointRadius: 5, pointBackgroundColor: palette.success(), fill: false, order: 1 },
     ],
   }), [d]);
 
@@ -69,7 +69,7 @@ export const SlideMonetization = () => {
   const dauData = useMemo(() => ({
     labels,
     datasets: [{
-      label: "MAU (millones)",
+      label: "Usuarios al mes (millones)",
       data: d.mau,
       borderColor: palette.primary(),
       backgroundColor: (ctx: any) => {
@@ -97,8 +97,8 @@ export const SlideMonetization = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             className="display-xl text-3xl md:text-4xl lg:text-5xl mt-4 max-w-3xl"
           >
-            Breakeven <span className="text-success">Y3</span>. EBITDA{" "}
-            <Money value={`+${d.ebitda[4]}`} unit="M USD" tone="success" size="lg" /> en Y5.
+            Punto de equilibrio en el <span className="text-success">año 3</span>. Beneficio{" "}
+            <Money value={`+${d.ebitda[4]}`} unit="M USD" tone="success" size="lg" /> en el año 5.
           </motion.h2>
         </div>
 
@@ -149,13 +149,13 @@ export const SlideMonetization = () => {
           className="lg:col-span-7 relative rounded-2xl border border-border bg-card p-6 shadow-card"
         >
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
-            Ingresos · Gastos · EBITDA (M USD)
+            Ingresos · Gastos · Beneficio operativo (millones de USD)
           </div>
           <div className="relative h-[240px]">
             <Bar data={chartData as any} options={opts as any} />
             {breakevenYear >= 0 && (
               <div className="pointer-events-none absolute top-10 bottom-8 border-l-2 border-dashed border-success" style={{ left: `${10 + (breakevenYear + 0.5) * (80 / 5)}%` }}>
-                <span className="absolute -top-3 -translate-x-1/2 rounded-full bg-success px-3 py-1 text-[12px] font-mono font-bold uppercase tracking-wider text-white whitespace-nowrap shadow-md">Breakeven</span>
+                <span className="absolute -top-3 -translate-x-1/2 rounded-full bg-success px-3 py-1 text-[12px] font-mono font-bold uppercase tracking-wider text-white whitespace-nowrap shadow-md">Punto de equilibrio</span>
               </div>
             )}
           </div>
@@ -167,14 +167,14 @@ export const SlideMonetization = () => {
           className="lg:col-span-5 rounded-2xl border border-primary/30 bg-card p-6 shadow-card relative overflow-hidden"
         >
           <div className="flex items-baseline justify-between mb-2">
-            <div className="text-xs font-mono uppercase tracking-wider text-primary font-bold">Crecimiento MAU · exponencial</div>
+            <div className="text-xs font-mono uppercase tracking-wider text-primary font-bold">Usuarios al mes · crecimiento exponencial</div>
           </div>
           <div className="flex items-center justify-center gap-3 mb-1">
             <span className="font-mono font-bold text-5xl text-primary">{d.mau[0]}M</span>
             <span className="text-3xl text-muted-foreground">→</span>
             <span className="font-mono font-bold text-5xl text-primary text-glow-primary">{d.mau[4]}M</span>
           </div>
-          <div className="text-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Y1 → Y5 · MAU</div>
+          <div className="text-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Año 1 → Año 5 · usuarios al mes</div>
           <div className="h-[180px]">
             <Line data={dauData} options={opts as any} />
           </div>

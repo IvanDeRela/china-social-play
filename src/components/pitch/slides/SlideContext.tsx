@@ -32,9 +32,9 @@ export const SlideContext = () => {
         {/* KPIs verticales */}
         <div className="lg:col-span-4 grid grid-cols-1 gap-3">
           {[
-            { val: 200, suf: "M", label: "Fans fútbol europeo · China", sub: "iResearch · CNNIC 2024", tone: "primary" },
-            { val: 1300, suf: "M", label: "Usuarios WeChat", sub: "Tencent IR 2024", tone: "primary" },
-            { val: 0, suf: "", label: "Apps fantasy nativas", sub: "Sensor Tower 2024", tone: "copper" },
+            { val: 200, suf: "M", label: "Aficionados al fútbol europeo en China", sub: "Fuentes oficiales 2024", tone: "primary" },
+            { val: 1300, suf: "M", label: "Usuarios de WeChat", sub: "Tencent · informe anual 2024", tone: "primary" },
+            { val: 0, suf: "", label: "Apps de fantasy fútbol propias", sub: "Sensor Tower 2024", tone: "copper" },
           ].map((s, i) => (
             <motion.div
               key={s.label}
@@ -60,7 +60,7 @@ export const SlideContext = () => {
       >
         <span className="font-serif text-2xl text-muted-foreground/70 line-through">competidores</span>
         <span className="text-3xl text-primary">→</span>
-        <span className="font-serif italic text-3xl md:text-4xl text-primary">first mover</span>
+        <span className="font-serif italic text-3xl md:text-4xl text-primary">los primeros en llegar</span>
       </motion.div>
     </SlideShell>
   );

@@ -9,10 +9,10 @@ import mockupStats from "@/assets/mockup-stats.jpg";
 import mockupPremium from "@/assets/mockup-premium.jpg";
 
 const modules = [
-  { n: "01", t: "Crea equipo",  Icon: Users,    img: mockupTeam,    desc: "Plantilla estilo La Liga: arrastra jugadores y elige formación 4-3-3." },
-  { n: "02", t: "Liga privada", Icon: Trophy,   img: mockupLeague,  desc: "Invita amigos por WeChat, ranking semanal y premios virtuales." },
-  { n: "03", t: "Live stats",   Icon: Activity, img: mockupStats,   desc: "Datos en directo del partido: xG, asistencias y goles al instante." },
-  { n: "04", t: "Premium VIP",  Icon: Crown,    img: mockupPremium, desc: "AI predicciones, sin ads, insignia VIP y soporte 24/7." },
+  { n: "01", t: "Crea tu equipo",  Icon: Users,    img: mockupTeam,    desc: "Plantilla estilo La Liga: arrastra jugadores y elige formación 4-3-3." },
+  { n: "02", t: "Liga privada", Icon: Trophy,   img: mockupLeague,  desc: "Invita a tus amigos por WeChat, ranking semanal y premios virtuales." },
+  { n: "03", t: "Estadísticas en directo",   Icon: Activity, img: mockupStats,   desc: "Datos del partido en tiempo real: ocasiones, asistencias y goles al instante." },
+  { n: "04", t: "Plan Premium",  Icon: Crown,    img: mockupPremium, desc: "Predicciones inteligentes, sin anuncios, insignia VIP y soporte 24/7." },
 ];
 
 export const SlideProblem = () => {
@@ -20,15 +20,15 @@ export const SlideProblem = () => {
   const active = modules[activeMod];
   const them = [
     "Apuestas con dinero real",
-    "NFTs caros · pay-to-win",
-    "Producto occidental",
-    "Sin integración WeChat",
+    "Coleccionables digitales caros · pagar para ganar",
+    "Producto pensado para Occidente",
+    "Sin integración con WeChat",
   ];
   const us = [
-    "100 % skill · legal PRC",
-    "Freemium accesible",
-    "Nativo chino · 微信",
-    "Mini-Program WeChat",
+    "100 % habilidad · legal en China",
+    "Gratis con plan opcional de pago",
+    "Pensado para China · 微信",
+    "Mini-app dentro de WeChat",
   ];
 
   return (

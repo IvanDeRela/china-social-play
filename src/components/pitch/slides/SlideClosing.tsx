@@ -52,15 +52,15 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.4em] text-primary mb-4">
-            <Rocket className="h-4 w-4" /> Seed Round
+            <Rocket className="h-4 w-4" /> Ronda inicial
           </div>
           <h2 className="display-xl text-7xl md:text-8xl lg:text-9xl">
             <Money value="USD 5" unit="M" size="2xl" tone="primary" className="text-primary text-glow-primary" />
           </h2>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground">
-            Valoración pre-money <span className="font-mono text-foreground">USD 20M</span>
+            Valoración antes de la inversión <span className="font-mono text-foreground">USD 20M</span>
             <span className="mx-3 text-muted-foreground/40">·</span>
-            Runway <span className="font-mono text-foreground">18 meses</span> hasta Serie A
+            Reserva para <span className="font-mono text-foreground">18 meses</span> hasta la siguiente ronda
           </p>
         </motion.div>
 
@@ -96,11 +96,11 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
             <div className="eyebrow text-primary mb-4">Hitos comprometidos</div>
             <ul className="space-y-3">
               {[
-                { m: "M3", t: "Compliance PIPL · CSL · ICP" },
-                { m: "M6", t: "MVP WeChat live" },
-                { m: "M9", t: "LaLiga Tech firmado" },
-                { m: "M12", t: "100k DAU" },
-                { m: "M18", t: "Serie A" },
+                { m: "Mes 3", t: "Cumplimiento legal completo" },
+                { m: "Mes 6", t: "Primera versión en WeChat" },
+                { m: "Mes 9", t: "LaLiga Tech firmado" },
+                { m: "Mes 12", t: "100 000 usuarios diarios" },
+                { m: "Mes 18", t: "Siguiente ronda de inversión" },
               ].map((h) => (
                 <li key={h.m} className="flex items-center gap-3 text-base text-foreground/95">
                   <span className="font-mono text-sm font-bold text-primary bg-primary/10 rounded px-2.5 py-0.5 shrink-0">{h.m}</span>
