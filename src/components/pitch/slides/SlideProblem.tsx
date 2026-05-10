@@ -20,15 +20,15 @@ export const SlideProblem = () => {
   const active = modules[activeMod];
   const them = [
     "Apuestas con dinero real",
-    "NFTs caros · pay-to-win",
-    "Producto occidental",
-    "Sin integración WeChat",
+    "Coleccionables digitales caros · pagar para ganar",
+    "Producto pensado para Occidente",
+    "Sin integración con WeChat",
   ];
   const us = [
-    "100 % skill · legal PRC",
-    "Freemium accesible",
-    "Nativo chino · 微信",
-    "Mini-Program WeChat",
+    "100 % habilidad · legal en China",
+    "Gratis con plan opcional de pago",
+    "Pensado para China · 微信",
+    "Mini-app dentro de WeChat",
   ];
 
   return (
