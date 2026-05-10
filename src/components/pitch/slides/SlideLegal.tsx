@@ -106,7 +106,7 @@ export const SlideLegal = () => {
         </motion.div>
       </div>
 
-      <PartnerLogos label="Target partners · ecosistema" />
+      <PartnerLogos label="Socios objetivo · ecosistema" />
     </SlideShell>
   );
 };
