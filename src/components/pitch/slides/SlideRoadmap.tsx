@@ -63,7 +63,7 @@ export const SlideRoadmap = () => {
           className="lg:col-span-5 rounded-2xl border border-border bg-card p-6 shadow-card flex flex-col items-center"
         >
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3 self-start">
-            Unit economics · Y3
+            Coste vs valor del usuario · año 3
           </div>
           <div className="relative h-[260px] w-[260px] flex items-center justify-center">
             {unit.map((u, i) => (
