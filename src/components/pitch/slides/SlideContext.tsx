@@ -60,7 +60,7 @@ export const SlideContext = () => {
       >
         <span className="font-serif text-2xl text-muted-foreground/70 line-through">competidores</span>
         <span className="text-3xl text-primary">→</span>
-        <span className="font-serif italic text-3xl md:text-4xl text-primary">first mover</span>
+        <span className="font-serif italic text-3xl md:text-4xl text-primary">los primeros en llegar</span>
       </motion.div>
     </SlideShell>
   );
