@@ -167,14 +167,14 @@ export const SlideMonetization = () => {
           className="lg:col-span-5 rounded-2xl border border-primary/30 bg-card p-6 shadow-card relative overflow-hidden"
         >
           <div className="flex items-baseline justify-between mb-2">
-            <div className="text-xs font-mono uppercase tracking-wider text-primary font-bold">Crecimiento MAU · exponencial</div>
+            <div className="text-xs font-mono uppercase tracking-wider text-primary font-bold">Usuarios al mes · crecimiento exponencial</div>
           </div>
           <div className="flex items-center justify-center gap-3 mb-1">
             <span className="font-mono font-bold text-5xl text-primary">{d.mau[0]}M</span>
             <span className="text-3xl text-muted-foreground">→</span>
             <span className="font-mono font-bold text-5xl text-primary text-glow-primary">{d.mau[4]}M</span>
           </div>
-          <div className="text-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Y1 → Y5 · MAU</div>
+          <div className="text-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-2">Año 1 → Año 5 · usuarios al mes</div>
           <div className="h-[180px]">
             <Line data={dauData} options={opts as any} />
           </div>
