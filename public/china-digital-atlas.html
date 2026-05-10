@@ -3280,18 +3280,38 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   }
   window.onLegendKey = onLegendKey;
 
+  // ── Persistencia ligera (provincia + filtro + tecnología) ──
+  var COV_LS_KEY = 'fc.coverage.state.v1';
+  function saveCovState(){
+    try{
+      localStorage.setItem(COV_LS_KEY, JSON.stringify({
+        tech: covTech,
+        filter: covFilter,
+        province: covSelected ? covSelected.nameZh : null,
+        compare: !!covCompare
+      }));
+    }catch(e){}
+  }
+  function loadCovState(){
+    try{ return JSON.parse(localStorage.getItem(COV_LS_KEY) || 'null'); }catch(e){ return null; }
+  }
+
   function styleFor(feature){
     var p = findCov(feature.properties && feature.properties.name);
     var v = p ? p.cov[covTech] : null;
     var col = v==null ? COV_NODATA : covColor(v);
     var dim = covFilter >= 0 && (v==null || covBucket(v) !== covFilter);
+    var isSelected = !!(covSelected && p && p.nameZh === covSelected.nameZh);
+    // Modo solo-color: ningún trazo (weight 0). El estado seleccionado se
+    // expresa con un fillColor más vivo y opacidad máxima — nada de outline.
     return {
-      fillColor: col,
-      weight: 0.6,
-      color: '#475569',
-      opacity: dim ? 0.25 : 0.7,
-      fillOpacity: v==null ? 0.25 : (dim ? 0.15 : 0.85),
-      smoothFactor: 1.2
+      fillColor: isSelected ? '#0e7490' : col,
+      weight: 0,
+      stroke: false,
+      opacity: 0,
+      fillOpacity: v==null ? 0.22 : (dim && !isSelected ? 0.18 : (isSelected ? 1 : 0.88)),
+      smoothFactor: 1.2,
+      interactive: true
     };
   }
 
@@ -3304,17 +3324,18 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       style: styleFor,
       onEachFeature: function(f, layer){
         var p = findCov(f.properties && f.properties.name);
+        if(p && covSelected && p.nameZh === covSelected.nameZh){ covActiveLayer = layer; }
         layer.on('click', function(){
-          if(covActiveLayer && covActiveLayer !== layer){ covLayer.resetStyle(covActiveLayer); }
-          layer.setStyle({ fillOpacity: 0.95 });
-          layer.bringToFront();
-          if(covBorder) covBorder.bringToFront();
+          if(p) covSelected = p;
+          // Re-style sólo las features afectadas: evita el "salto" global.
+          if(covActiveLayer && covActiveLayer !== layer){ try{ covLayer.resetStyle(covActiveLayer); }catch(e){} }
           covActiveLayer = layer;
+          layer.setStyle(styleFor(f));
           if(p) updateBaroFor(p);
+          saveCovState();
         });
       }
     }).addTo(covMap);
-    if(covBorder) covBorder.bringToFront();
     updateBaroFor(covSelected);
     renderLegendStats();
   }
@@ -3330,6 +3351,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       b.setAttribute('aria-checked', on ? 'true' : 'false');
     });
     renderCovLayer();
+    saveCovState();
   }
   window.setCoverageTech = setCoverageTech;
 
@@ -3339,10 +3361,10 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       var idx = parseInt(r.getAttribute('data-bucket'),10);
       var sel = covFilter === idx;
       r.setAttribute('aria-selected', sel ? 'true' : 'false');
-      r.style.background = sel ? '#e0f2fe' : 'transparent';
-      r.style.outline = sel ? '2px solid #0369a1' : 'none';
     });
-    if(covLayer){ covLayer.setStyle(styleFor); if(covActiveLayer){ covActiveLayer.setStyle({ fillOpacity:0.95 }); covActiveLayer.bringToFront(); } if(covBorder) covBorder.bringToFront(); }
+    // setStyle in-place: no removeLayer ⇒ sin salto de render.
+    if(covLayer){ covLayer.setStyle(styleFor); }
+    saveCovState();
   }
   window.setCoverageFilter = setCoverageFilter;
 
