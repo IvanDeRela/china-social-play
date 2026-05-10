@@ -1643,25 +1643,27 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     .cov-legend{bottom:14px;left:14px;padding:14px 16px;color:#0f172a;font-family:var(--mono);font-size:10.5px;width:300px;max-width:calc(100vw - 28px)}
     .cov-reset-btn{background:#fff;border:1px solid #0e7490;color:#0e7490;font-family:var(--mono);font-size:10px;cursor:pointer;padding:3px 8px;font-weight:700}
     @media (max-width: 980px){
-      .cov-shell{height:820px}
+      .cov-shell{display:grid;grid-template-rows:minmax(420px,48vh) auto;height:auto;gap:10px;padding-bottom:12px}
+      #map-coverage{position:relative !important;inset:auto !important;height:100% !important;min-height:420px}
       .cov-controls,.cov-panel,.cov-legend{position:static;width:auto;max-width:none}
-      .cov-overlay-stack{position:absolute;left:12px;right:12px;bottom:12px;z-index:1000;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;pointer-events:none}
+      .cov-overlay-stack{position:static;left:auto;right:auto;bottom:auto;z-index:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:0 12px;pointer-events:auto}
       .cov-overlay-stack > *{pointer-events:auto}
       .cov-controls{min-width:0}
       .cov-panel{order:2}
       .cov-legend{order:3}
-      #map-coverage{inset:0}
     }
     @media (max-width: 700px){
-      .cov-shell{height:980px}
-      .cov-overlay-stack{left:10px;right:10px;bottom:10px;gap:8px}
+      .cov-shell{grid-template-rows:minmax(360px,44vh) auto;gap:8px;padding-bottom:10px}
+      #map-coverage{min-height:360px}
+      .cov-overlay-stack{padding:0 10px;gap:8px}
       .cov-card{background:rgba(255,255,255,0.985)}
       .cov-controls{padding:12px 12px;font-size:10px}
       .cov-panel{padding:12px 12px;width:auto}
       .cov-legend{padding:12px 12px;width:auto;font-size:10px}
     }
     @media (max-width: 520px){
-      .cov-shell{height:1060px}
+      .cov-shell{grid-template-rows:minmax(330px,40vh) auto}
+      #map-coverage{min-height:330px}
       .cov-controls [role="radiogroup"]{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px !important}
       .cov-btn{font-size:11px !important;padding:8px 0 !important}
       .cov-legend ul{max-height:188px;overflow:auto}
