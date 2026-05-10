@@ -37,18 +37,12 @@ export const SlideTeam = () => {
         >
           {team.map((m) => (
             <div key={m.name} className="flex flex-col items-center gap-2">
-              {m.src ? (
-                <img
-                  src={m.src}
-                  alt={m.name}
-                  loading="lazy"
-                  className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-[3px] border-primary/40 shadow-elevated"
-                />
-              ) : (
-                <div className="h-24 w-24 md:h-32 md:w-32 rounded-full grid place-items-center bg-copper/15 text-copper font-serif font-bold text-4xl md:text-5xl border-[3px] border-copper/40 shadow-elevated">
-                  {m.initials}
-                </div>
-              )}
+              <img
+                src={m.src}
+                alt={m.name}
+                loading="lazy"
+                className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-[3px] border-primary/40 shadow-elevated"
+              />
               <div className="font-serif text-base md:text-lg text-foreground leading-tight">{m.name}</div>
               <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
                 {m.role}
