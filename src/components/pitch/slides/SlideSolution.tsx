@@ -7,9 +7,9 @@ import weiLiu from "@/assets/wei-liu.jpg";
 /** Cliente — persona-card con foto + 3 KPIs gigantes. */
 export const SlideSolution = () => {
   const kpis = [
-    { v: "$30",  l: "gasto gaming/mes",  tone: "primary" },
-    { v: "78%",  l: "sigue liga europea", tone: "copper" },
-    { v: "94%",  l: "WeChat diario",     tone: "success" },
+    { v: "$30",  l: "Gasta al mes en juegos",  tone: "primary" },
+    { v: "78%",  l: "Sigue alguna liga europea", tone: "copper" },
+    { v: "94%",  l: "Usa WeChat a diario",     tone: "success" },
   ];
   const traits = [
     { k: "$35K", v: "Salario al año" },
