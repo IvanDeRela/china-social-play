@@ -72,10 +72,10 @@ export const SlideMarket = () => {
           className="lg:col-span-5 grid grid-cols-2 gap-3"
         >
           {[
-            { v: "10M", l: "MAU Y5", tone: "primary" },
-            { v: "2M",  l: "MAU Y3", tone: "primary" },
-            { v: "78%", l: "margen bruto", tone: "success" },
-            { v: "+15%", l: "eSports/año", tone: "copper" },
+            { v: "10M", l: "Usuarios al mes (año 5)", tone: "primary" },
+            { v: "2M",  l: "Usuarios al mes (año 3)", tone: "primary" },
+            { v: "78%", l: "Margen bruto", tone: "success" },
+            { v: "+15%", l: "Crecimiento eSports / año", tone: "copper" },
           ].map((s) => {
             const c = colorMap[s.tone];
             return (
