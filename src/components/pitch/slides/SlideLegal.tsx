@@ -7,11 +7,11 @@ import { PartnerLogos } from "../PartnerLogos";
 
 export const SlideLegal = () => {
   const comps = [
-    { name: "FanDuel",       value: 22000, label: "$22B",  note: "Flutter sub.",         tone: "primary" as const, isUs: false },
-    { name: "DraftKings",    value: 18000, label: "$18B",  note: "NASDAQ DKNG",          tone: "primary" as const, isUs: false },
-    { name: "Sorare",        value: 4300,  label: "$4,3B", note: "SoftBank Series B",    tone: "copper" as const,  isUs: false },
-    { name: "Genius Sports", value: 1500,  label: "$1,5B", note: "NYSE GENI",            tone: "copper" as const,  isUs: false },
-    { name: "FantasyChina",  value: 200,   label: "$200M", note: "Objetivo Y5 · ARR",    tone: "success" as const, isUs: true },
+    { name: "FanDuel",       value: 22000, label: "$22B",  note: "Filial de Flutter (cotiza en Londres)", tone: "primary" as const, isUs: false },
+    { name: "DraftKings",    value: 18000, label: "$18B",  note: "Cotiza en NASDAQ",                       tone: "primary" as const, isUs: false },
+    { name: "Sorare",        value: 4300,  label: "$4,3B", note: "Ronda liderada por SoftBank",            tone: "copper" as const,  isUs: false },
+    { name: "Genius Sports", value: 1500,  label: "$1,5B", note: "Cotiza en NYSE",                         tone: "copper" as const,  isUs: false },
+    { name: "FantasyChina",  value: 200,   label: "$200M", note: "Nuestro objetivo de ingresos · año 5",   tone: "success" as const, isUs: true },
   ];
   const max = 22000;
 
