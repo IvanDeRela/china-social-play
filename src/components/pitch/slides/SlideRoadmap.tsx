@@ -15,7 +15,7 @@ export const SlideRoadmap = () => {
       { label: "Coste por usuario ($)", data: [56, 16, 11, 9, 9],
         borderColor: palette.copper(), backgroundColor: palette.copperAlpha(0.1),
         borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.copper(), fill: true },
-      { label: "ARPU ($)", data: [5, 7, 12, 16, 20],
+      { label: "Ingreso por usuario ($)", data: [5, 7, 12, 16, 20],
         borderColor: palette.primary(), backgroundColor: palette.primaryAlpha(0.1),
         borderWidth: 3, tension: 0.35, pointRadius: 4, pointBackgroundColor: palette.primary(), fill: true },
     ],
@@ -23,11 +23,11 @@ export const SlideRoadmap = () => {
 
   const opts = useMemo(() => baseOptions(), []);
 
-  // Unit economics circular: CAC → LTV → ratio
+  // Cuánto cuesta captar un usuario vs cuánto ingresa a lo largo de su vida
   const unit = [
-    { label: "CAC", value: "$2,5", size: 110, tone: "copper", note: "blended Y3" },
-    { label: "LTV", value: "$45",  size: 180, tone: "primary", note: "Y3" },
-    { label: "Ratio", value: "18×", size: 230, tone: "success", note: "LTV/CAC · sano: 3-5×" },
+    { label: "Coste de captar", value: "$2,5", size: 110, tone: "copper", note: "media año 3" },
+    { label: "Valor que aporta", value: "$45",  size: 180, tone: "primary", note: "a lo largo de su vida" },
+    { label: "Multiplicador",    value: "18×", size: 230, tone: "success", note: "saludable: 3-5×" },
   ];
 
   const milestones = [
