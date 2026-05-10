@@ -71,27 +71,24 @@ export const SlideReferences = () => {
         De dónde sale <span className="font-serif italic text-primary">cada dato</span>.
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-h-[60vh] overflow-y-auto pr-2">
-        {refGroups.map((g, gi) => (
-          <motion.div
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[62vh] overflow-y-auto pr-2">
+        {refGroups.map((g) => (
+          <div
             key={g.title}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 + gi * 0.05 }}
-            className="rounded-2xl border border-border bg-card p-5 shadow-card"
+            className="rounded-2xl border border-border bg-card p-4"
           >
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-3">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
               {g.title}
             </div>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {g.items.map((it) => (
-                <li key={it.n} className="flex gap-3 text-[12.5px] leading-relaxed text-foreground/90">
+                <li key={it.n} className="flex gap-2.5 text-[12px] leading-relaxed text-foreground/90">
                   <span className="font-mono text-[11px] font-bold text-primary shrink-0 mt-0.5">{it.n}</span>
                   <span>{it.cite}</span>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
     </SlideShell>
