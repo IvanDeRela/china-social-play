@@ -217,7 +217,7 @@ export const SlideRisks = () => {
                           </div>
                         </TooltipTrigger>
                         <TooltipContent className="text-xs">
-                          P:{probLabels[prob]} · I:{impactLabels[impact]} · score <strong>{score}</strong>
+                          Probabilidad: {probLabels[prob]} · Gravedad: {impactLabels[impact]} · puntuación <strong>{score}</strong>
                         </TooltipContent>
                       </Tooltip>
                     );
