@@ -27,9 +27,9 @@ const data = {
 const labels = ["Y1", "Y2", "Y3", "Y4", "Y5"];
 
 const tiers = [
-  { name: "Free", price: "$0", per: "siempre", features: ["Crear equipo", "Liga pública", "Stats básicas"], tone: "muted" as const },
-  { name: "Premium", price: "$11", per: "/trim", features: ["Liga privada", "AI predicciones", "Sin ads", "Live stats"], tone: "primary" as const, highlight: true, badge: "Más popular" },
-  { name: "VIP", price: "$28", per: "/año", features: ["Todo Premium", "−50 % anual", "Insignia VIP", "Soporte 24/7"], tone: "copper" as const },
+  { name: "Gratis", price: "$0", per: "siempre", features: ["Crear equipo", "Liga pública", "Estadísticas básicas"], tone: "muted" as const },
+  { name: "Premium", price: "$11", per: "/trimestre", features: ["Liga privada", "Predicciones inteligentes", "Sin anuncios", "Estadísticas en directo"], tone: "primary" as const, highlight: true, badge: "El más popular" },
+  { name: "VIP", price: "$28", per: "/año", features: ["Todo lo de Premium", "−50 % al pagar año completo", "Insignia VIP", "Soporte 24/7"], tone: "copper" as const },
 ];
 
 export const SlideMonetization = () => {
