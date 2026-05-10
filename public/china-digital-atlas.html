@@ -1630,71 +1630,85 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     </p>
   </div>
 
-  <div class="map-shell" style="position:relative; height:660px; border:1px solid var(--rule-strong); background:#0b1220;">
-    <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de calor de cobertura 3G/4G/5G en China" style="background:#0b1220 !important;"></div>
+  <div class="map-shell" style="position:relative; height:660px; border:1px solid var(--rule-strong); background:#eef2f7;">
+    <div id="map-coverage" class="leaflet-map loading" role="application" aria-label="Mapa de calor de cobertura 3G/4G/5G en China" style="background:#eef2f7 !important;"></div>
 
     <!-- Selector tecnología -->
-    <div id="cov-controls" style="position:absolute; top:14px; left:14px; z-index:1000; background:rgba(15,23,42,0.92); border:1px solid rgba(0,184,217,0.35); padding:14px 16px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:11px; min-width:180px; color:#e6eef6; backdrop-filter:blur(6px);">
-      <div style="text-transform:uppercase; letter-spacing:0.18em; color:#9fb0c4; margin-bottom:8px;">Tecnología</div>
+    <div id="cov-controls" style="position:absolute; top:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:14px 16px; box-shadow:var(--shadow-md); font-family:var(--mono); font-size:11px; min-width:200px; color:var(--ink); backdrop-filter:blur(6px);">
+      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:8px;">Tecnología</div>
       <div style="display:flex; gap:6px;">
-        <button type="button" class="cov-btn" data-tech="3G" onclick="setCoverageTech('3G')" style="flex:1; padding:7px 0; border:1px solid rgba(0,184,217,0.4); background:transparent; color:#cfe0ee; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">3G</button>
-        <button type="button" class="cov-btn" data-tech="4G" onclick="setCoverageTech('4G')" style="flex:1; padding:7px 0; border:1px solid rgba(0,184,217,0.4); background:transparent; color:#cfe0ee; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">4G</button>
-        <button type="button" class="cov-btn active" data-tech="5G" onclick="setCoverageTech('5G')" style="flex:1; padding:7px 0; border:1px solid #00b8d9; background:#00b8d9; color:#0b1220; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">5G</button>
+        <button type="button" class="cov-btn" data-tech="3G" onclick="setCoverageTech('3G')" style="flex:1; padding:7px 0; border:1px solid var(--rule-strong); background:#fff; color:var(--ink); cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">3G</button>
+        <button type="button" class="cov-btn" data-tech="4G" onclick="setCoverageTech('4G')" style="flex:1; padding:7px 0; border:1px solid var(--rule-strong); background:#fff; color:var(--ink); cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">4G</button>
+        <button type="button" class="cov-btn active" data-tech="5G" onclick="setCoverageTech('5G')" style="flex:1; padding:7px 0; border:1px solid var(--ink); background:var(--ink); color:#fff; cursor:pointer; font-family:var(--mono); font-size:12px; font-weight:700;">5G</button>
       </div>
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08); font-size:10.5px; color:#9fb0c4;">Click en una provincia para ver su barómetro</div>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:10.5px; color:var(--ink-mute);">Click en una provincia para ver su barómetro</div>
     </div>
 
     <!-- Panel barómetro -->
-    <div id="cov-panel" style="position:absolute; top:14px; right:14px; z-index:1000; width:300px; background:rgba(15,23,42,0.92); border:1px solid rgba(0,184,217,0.35); padding:16px 18px; box-shadow:var(--shadow-md); color:#e6eef6; backdrop-filter:blur(6px);">
-      <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#00b8d9;">Barómetro</div>
+    <div id="cov-panel" style="position:absolute; top:14px; right:14px; z-index:1000; width:300px; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:16px 18px; box-shadow:var(--shadow-md); color:var(--ink); backdrop-filter:blur(6px);">
+      <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan-dark);">Barómetro</div>
       <div id="cov-prov-name" style="font-family:var(--serif); font-weight:700; font-size:18px; margin-top:4px; line-height:1.2;">Selecciona una provincia</div>
-      <div id="cov-prov-zh" style="font-family:var(--serif); font-size:12px; color:#9fb0c4; margin-bottom:14px;">·</div>
+      <div id="cov-prov-zh" style="font-family:var(--serif); font-size:12px; color:var(--ink-mute); margin-bottom:14px;">·</div>
 
       <div id="cov-bars">
         <div style="margin-bottom:10px;">
-          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4; margin-bottom:4px;"><span>3G</span><span id="cov-v-3G">— %</span></div>
-          <div style="height:8px; background:rgba(255,255,255,0.08); position:relative; overflow:hidden;">
-            <div id="cov-bar-3G" style="height:100%; width:0%; background:linear-gradient(90deg,#dc2626,#f59e0b,#84cc16,#16a34a); transition:width .5s var(--ease-out);"></div>
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute); margin-bottom:4px;"><span>3G</span><span id="cov-v-3G">— %</span></div>
+          <div style="height:8px; background:#e5e9ef; position:relative; overflow:hidden;">
+            <div id="cov-bar-3G" style="height:100%; width:0%; background:linear-gradient(90deg,#b91c1c,#f59e0b,#65a30d,#15803d); transition:width .5s var(--ease-out);"></div>
           </div>
         </div>
         <div style="margin-bottom:10px;">
-          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4; margin-bottom:4px;"><span>4G</span><span id="cov-v-4G">— %</span></div>
-          <div style="height:8px; background:rgba(255,255,255,0.08); position:relative; overflow:hidden;">
-            <div id="cov-bar-4G" style="height:100%; width:0%; background:linear-gradient(90deg,#dc2626,#f59e0b,#84cc16,#16a34a); transition:width .5s var(--ease-out);"></div>
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute); margin-bottom:4px;"><span>4G</span><span id="cov-v-4G">— %</span></div>
+          <div style="height:8px; background:#e5e9ef; position:relative; overflow:hidden;">
+            <div id="cov-bar-4G" style="height:100%; width:0%; background:linear-gradient(90deg,#b91c1c,#f59e0b,#65a30d,#15803d); transition:width .5s var(--ease-out);"></div>
           </div>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4; margin-bottom:4px;"><span>5G</span><span id="cov-v-5G">— %</span></div>
-          <div style="height:8px; background:rgba(255,255,255,0.08); position:relative; overflow:hidden;">
-            <div id="cov-bar-5G" style="height:100%; width:0%; background:linear-gradient(90deg,#dc2626,#f59e0b,#84cc16,#16a34a); transition:width .5s var(--ease-out);"></div>
+          <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute); margin-bottom:4px;"><span>5G</span><span id="cov-v-5G">— %</span></div>
+          <div style="height:8px; background:#e5e9ef; position:relative; overflow:hidden;">
+            <div id="cov-bar-5G" style="height:100%; width:0%; background:linear-gradient(90deg,#b91c1c,#f59e0b,#65a30d,#15803d); transition:width .5s var(--ease-out);"></div>
           </div>
         </div>
       </div>
 
-      <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:#9fb0c4;">
+      <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--rule); display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--ink-mute);">
         <span>Media nacional <span id="cov-tech-label">5G</span></span>
-        <span id="cov-avg" style="color:#00b8d9; font-weight:700;">—</span>
+        <span id="cov-avg" style="color:var(--cyan-dark); font-weight:700;">—</span>
       </div>
     </div>
 
-    <!-- Leyenda heatmap -->
-    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(15,23,42,0.92); border:1px solid rgba(0,184,217,0.35); padding:12px 14px; color:#e6eef6; font-family:var(--mono); font-size:10px;">
-      <div style="text-transform:uppercase; letter-spacing:0.18em; color:#9fb0c4; margin-bottom:6px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
-      <div style="display:flex; height:10px; width:240px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+    <!-- Leyenda heatmap completa -->
+    <div style="position:absolute; bottom:14px; left:14px; z-index:1000; background:rgba(255,255,255,0.96); border:1px solid var(--rule-strong); padding:12px 14px; color:var(--ink); font-family:var(--mono); font-size:10px; min-width:280px;">
+      <div style="text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:8px;">Cobertura <span id="cov-legend-tech">5G</span> (%)</div>
+      <div style="display:flex; height:12px; width:280px; overflow:hidden; border:1px solid var(--rule);">
         <div style="flex:1; background:#7f1d1d"></div>
-        <div style="flex:1; background:#dc2626"></div>
+        <div style="flex:1; background:#b91c1c"></div>
+        <div style="flex:1; background:#ea580c"></div>
         <div style="flex:1; background:#f59e0b"></div>
         <div style="flex:1; background:#eab308"></div>
-        <div style="flex:1; background:#84cc16"></div>
-        <div style="flex:1; background:#16a34a"></div>
-        <div style="flex:1; background:#065f46"></div>
+        <div style="flex:1; background:#65a30d"></div>
+        <div style="flex:1; background:#15803d"></div>
       </div>
-      <div style="display:flex; justify-content:space-between; width:240px; margin-top:4px; color:#9fb0c4;"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+      <div style="display:flex; justify-content:space-between; width:280px; margin-top:4px; color:var(--ink-mute);"><span>0</span><span>30</span><span>50</span><span>65</span><span>80</span><span>92</span><span>100</span></div>
+
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:grid; grid-template-columns:1fr 1fr; gap:6px 12px;">
+        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#7f1d1d;"></span><span>0—30 · muy baja</span></div>
+        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#b91c1c;"></span><span>30—50 · baja</span></div>
+        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#ea580c;"></span><span>50—65 · media-baja</span></div>
+        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#f59e0b;"></span><span>65—80 · media</span></div>
+        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#eab308;"></span><span>80—92 · alta</span></div>
+        <div style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:10px; background:#15803d;"></span><span>92—100 · muy alta</span></div>
+      </div>
+
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:5px;">
+        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:24px; height:0; border-top:2.5px dashed #0891b2;"></span><span>Frontera nacional China</span></div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="display:inline-block; width:14px; height:10px; background:#cbd5e1; border:1px solid #94a3b8;"></span><span>Sin datos</span></div>
+      </div>
     </div>
   </div>
 
   <p class="map-caption" style="margin-top:14px;">
-    Geometría provincial: <a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="noopener">longwosion/geojson-map-china</a> · Frontera nacional: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth Vector v5.1.2</a> · Cartografía base: CARTO Dark Matter.
+    Geometría provincial: <a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="noopener">longwosion/geojson-map-china</a> · Frontera nacional: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth Vector v5.1.2</a> · Cartografía base: CARTO Positron (claro).
   </p>
 
   <div class="fc-callout" style="margin-top:24px;">
@@ -3090,13 +3104,13 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     {name:"Taiwán",nameZh:"台湾",cov:{"3G":99,"4G":99,"5G":92}}
   ];
   function covColor(v){
-    if(v<=0)  return '#1f2937';
+    if(v<=0)  return '#cbd5e1';
     if(v<=30) return '#7f1d1d';
-    if(v<=50) return '#dc2626';
-    if(v<=65) return '#f59e0b';
-    if(v<=80) return '#eab308';
-    if(v<=92) return '#84cc16';
-    return '#16a34a';
+    if(v<=50) return '#b91c1c';
+    if(v<=65) return '#ea580c';
+    if(v<=80) return '#f59e0b';
+    if(v<=92) return '#eab308';
+    return '#15803d';
   }
   function findCov(name){
     if(!name) return null;
@@ -3106,7 +3120,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     }
     return null;
   }
-  var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G', covSelected = null;
+  var covMap = null, covLayer = null, covBorder = null, covGeo = null, covTech = '5G', covSelected = null, covActiveLayer = null;
 
   function updateBaroAvg(){
     var sum=0, n=0;
@@ -3137,24 +3151,26 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
   function renderCovLayer(){
     if(!covMap || !covGeo) return;
     if(covLayer){ covMap.removeLayer(covLayer); covLayer = null; }
+    covActiveLayer = null;
     covLayer = L.geoJSON(covGeo, {
       style: function(f){
         var p = findCov(f.properties && f.properties.name);
         var v = p ? p.cov[covTech] : 0;
-        return { fillColor: covColor(v), weight: 0.6, color: 'rgba(255,255,255,0.25)', opacity: 1, fillOpacity: p ? 0.85 : 0.2 };
+        return { fillColor: covColor(v), weight: 0.7, color: '#475569', opacity: 0.8, fillOpacity: p ? 0.82 : 0.35 };
       },
       onEachFeature: function(f, layer){
         var name = (f.properties && f.properties.name) || '';
         var p = findCov(name);
         layer.on({
-          mouseover: function(e){ e.target.setStyle({ weight: 2.2, color: '#00b8d9' }); e.target.bringToFront(); if(covBorder) covBorder.bringToFront(); },
-          mouseout:  function(e){ covLayer.resetStyle(e.target); if(covBorder) covBorder.bringToFront(); },
-          click: function(){ if(p) updateBaroFor(p); }
+          click: function(){
+            if(covActiveLayer && covActiveLayer !== layer){ covLayer.resetStyle(covActiveLayer); }
+            layer.setStyle({ weight: 2.6, color: '#0891b2', fillOpacity: 0.92 });
+            layer.bringToFront();
+            if(covBorder) covBorder.bringToFront();
+            covActiveLayer = layer;
+            if(p) updateBaroFor(p);
+          }
         });
-        if(p){
-          var html = '<div style="font-family:Inter,system-ui;font-size:12px;line-height:1.5;color:#fff;background:#0f172a;padding:6px 10px;border-left:3px solid #00b8d9"><b style="font-family:Fraunces,serif;font-size:13px;color:#00b8d9">'+p.name+' · '+p.nameZh+'</b><br>'+covTech+': <b>'+p.cov[covTech]+'%</b> · click para barómetro</div>';
-          layer.bindTooltip(html, {sticky:true, direction:'top', opacity:1, className:'cov-tip'});
-        }
       }
     }).addTo(covMap);
     if(covBorder) covBorder.bringToFront();
@@ -3164,9 +3180,9 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     covTech = t;
     document.querySelectorAll('.cov-btn').forEach(function(b){
       var on = b.getAttribute('data-tech') === t;
-      b.style.background = on ? '#00b8d9' : 'transparent';
-      b.style.color = on ? '#0b1220' : '#cfe0ee';
-      b.style.borderColor = on ? '#00b8d9' : 'rgba(0,184,217,0.4)';
+      b.style.background = on ? '#0f172a' : '#fff';
+      b.style.color = on ? '#fff' : '#0f172a';
+      b.style.borderColor = on ? '#0f172a' : '#cbd5e1';
       b.classList.toggle('active', on);
     });
     renderCovLayer();
@@ -3184,7 +3200,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       fetch(sources[i]).then(function(r){ return r.json(); }).then(function(data){
         var china = (data.features||[]).find(function(f){ var p=f.properties||{}; return p.ADM0_A3==='CHN' || p.ISO_A3==='CHN' || p.SOVEREIGNT==='China'; });
         if(!china) return tryNext(i+1);
-        covBorder = L.geoJSON(china, { style:{ color:'#00b8d9', weight:2.5, opacity:0.95, fill:false, dashArray:'6 4' }, interactive:false }).addTo(covMap);
+        covBorder = L.geoJSON(china, { style:{ color:'#0891b2', weight:2.5, opacity:0.95, fill:false, dashArray:'6 4' }, interactive:false }).addTo(covMap);
         covBorder.bringToFront();
       }).catch(function(){ tryNext(i+1); });
     }
@@ -3196,7 +3212,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     if(!el) return;
     if(covMap){ covMap.invalidateSize(); return; }
     covMap = L.map('map-coverage', { center:[35.8,104], zoom:4, minZoom:3, maxZoom:8, scrollWheelZoom:true, attributionControl:true, zoomControl:true });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(covMap);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(covMap);
     var sources = [
       'https://raw.githubusercontent.com/longwosion/geojson-map-china/master/china.json',
       'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json'
