@@ -31,11 +31,11 @@ export const SlideRoadmap = () => {
   ];
 
   const milestones = [
-    { y: "Y1", k: "$56",  l: "coste/usuario",     tone: "copper"  },
-    { y: "Y2", k: "−30%", l: "Cloud Tencent",     tone: "primary" },
-    { y: "Y3", k: "1×",   l: "Breakeven",         tone: "success" },
-    { y: "Y4", k: "$1,2", l: "CAC viral k=2,4×",  tone: "primary" },
-    { y: "Y5", k: "4%",   l: "Licencias revenue", tone: "copper"  },
+    { y: "Año 1", k: "$56",  l: "Coste por usuario inicial",  tone: "copper"  },
+    { y: "Año 2", k: "−30%", l: "Ahorro con la nube de Tencent", tone: "primary" },
+    { y: "Año 3", k: "1×",   l: "Punto de equilibrio",         tone: "success" },
+    { y: "Año 4", k: "$1,2", l: "Cada usuario invita a 2,4 amigos", tone: "primary" },
+    { y: "Año 5", k: "4%",   l: "Ingresos por licencias deportivas", tone: "copper"  },
   ];
   const toneBg: Record<string, string>      = { primary: "bg-primary", copper: "bg-copper", success: "bg-success" };
   const toneText: Record<string, string>    = { primary: "text-primary", copper: "text-copper", success: "text-success" };
