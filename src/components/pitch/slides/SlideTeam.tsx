@@ -7,7 +7,7 @@ export const SlideTeam = () => {
     { src: "/team/ivan.jpg",  name: "Iván García",       role: "CTO · AI · Product" },
     { src: "/team/rafa.jpg",  name: "Rafael Imbernón",   role: "CMO · Growth · Community" },
     { src: "/team/pedro.jpg", name: "Pedro Plaza",       role: "CFO · Finance · Compliance" },
-    { src: null,              name: "Alberto Hernández", role: "CEO · Strategy · IR", initials: "AH" },
+    { src: "/team/alberto.png", name: "Alberto Hernández", role: "CEO · Strategy · IR" },
   ];
 
   return (
