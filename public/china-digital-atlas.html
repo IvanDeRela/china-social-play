@@ -1626,7 +1626,7 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     <div class="kicker"><span class="num-box">04</span> · Cobertura móvil</div>
     <h2 class="section-title">A qué red <em>nos enfrentamos</em></h2>
     <p class="section-deck">
-      Mapa interactivo del despliegue 3G/4G/5G por provincia. Datos del MIIT (2024) y operadores. Cambia la tecnología para ver el contraste entre 3G casi universal y 5G concentrado en costa este.
+      Mapa interactivo del despliegue 3G, 4G y 5G por provincia. Cambia la tecnología arriba a la izquierda para ver el contraste entre el 3G casi universal y el 5G concentrado en la costa este.
     </p>
   </div>
 
@@ -1698,17 +1698,17 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
         <input type="checkbox" id="cov-compare-toggle" onchange="setCoverageCompare(this.checked)" aria-describedby="cov-compare-help" style="margin:0; cursor:pointer;">
         <span style="font-weight:700;">Comparar 3G / 4G / 5G</span>
       </label>
-      <div id="cov-compare-help" style="margin-top:6px; font-size:10.5px; color:#475569; line-height:1.45;">Muestra el delta (Δ pp) de la provincia frente a la media nacional de cada tecnología.</div>
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:10.5px; color:#334155;">Click en una provincia para abrir su barómetro.</div>
+      <div id="cov-compare-help" style="margin-top:6px; font-size:10.5px; color:#475569; line-height:1.45;">Muestra cuánto sube o baja cada tecnología frente a la media del país.</div>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:10.5px; color:#334155;">Haz clic en una provincia para ver su ficha.</div>
     </div>
 
-    <!-- Panel barómetro -->
+    <!-- Panel ficha provincia -->
     <div id="cov-panel" class="cov-card cov-panel">
-      <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan-dark);">Barómetro</div>
+      <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan-dark);">Ficha de la provincia</div>
       <div id="cov-prov-name" style="font-family:var(--serif); font-weight:700; font-size:18px; margin-top:4px; line-height:1.2;">Selecciona una provincia</div>
       <div id="cov-prov-zh" style="font-family:var(--serif); font-size:12px; color:var(--ink-mute); margin-bottom:14px;">·</div>
 
-      <div id="cov-bars" role="group" aria-label="Barómetro de cobertura por tecnología">
+      <div id="cov-bars" role="group" aria-label="Cobertura por tecnología en la provincia seleccionada">
         <div style="margin-bottom:10px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--mono); font-size:10px; color:#334155; margin-bottom:4px;"><span><strong>3G</strong> <span id="cov-d-3G" class="cov-delta" style="display:none; margin-left:6px; padding:1px 5px; font-size:9.5px; font-weight:700;"></span></span><span id="cov-v-3G" style="color:#0f172a; font-weight:700;">— %</span></div>
           <div role="progressbar" aria-label="Cobertura 3G" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cov-pb-3G" style="height:10px; background:#e5e9ef; position:relative; overflow:hidden; border:1px solid #cbd5e1;">
@@ -1768,41 +1768,20 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       </div>
 
       <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:9.5px; color:#334155; line-height:1.55; font-family:var(--sans);">
-        Cada provincia se colorea por el % estimado de población con cobertura de la tecnología seleccionada. Click o <kbd>Enter</kbd> en una fila para resaltar solo las provincias de ese rango; click en una provincia para abrir su barómetro.
+        Cada provincia se colorea según el porcentaje de personas que tienen cobertura de la red elegida. Haz clic en una fila para resaltar solo las provincias de ese rango, o en una provincia para ver su ficha.
       </div>
     </div>
     </div>
   </div>
 
-  <!-- Descripción textual accesible debajo del mapa -->
-  <section aria-label="Guía de colores y filtros del mapa de cobertura" style="margin-top:18px; padding:18px 20px; border:1px solid var(--rule-strong); background:var(--surface);">
-    <h3 style="font-family:var(--serif); font-weight:800; font-size:18px; margin-bottom:10px; color:var(--ink);">Cómo leer este mapa</h3>
-    <p style="font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:14px;">
-      El mapa muestra el <strong>% estimado de población con cobertura</strong> de la tecnología seleccionada (3G, 4G o 5G) por provincia. La intensidad del color codifica el rango: tonos rojizos representan cobertura baja y tonos verdes cobertura alta. Haz click en una provincia para abrir el barómetro con sus tres tecnologías; haz click (o <kbd>Enter</kbd>) en una fila de la leyenda para aislar solo las provincias de ese rango.
-    </p>
-    <ul style="list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px 14px; padding:0; font-size:13px; color:var(--ink);">
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#7f1d1d; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>0—30 % · Muy baja.</strong> Provincias remotas con red mínima, mayoritariamente 3G.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#b91c1c; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>30—50 % · Baja.</strong> Despliegue parcial; 5G casi inexistente fuera de capitales.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#ea580c; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>50—65 % · Media-baja.</strong> Cobertura urbana sólida, rural en transición.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#f59e0b; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>65—80 % · Media.</strong> Mayoría de núcleos cubiertos en 4G; 5G en ciudades clave.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#84cc16; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>80—92 % · Alta.</strong> Despliegue 5G consolidado en zonas costeras y polos industriales.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#15803d; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>92—100 % · Muy alta.</strong> Megalópolis tier-1: 5G prácticamente universal.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#cbd5e1; border:1px solid #475569; flex-shrink:0; margin-top:2px;"></span><span><strong>Sin datos.</strong> Provincias sin cifra pública verificable; se muestran atenuadas.</span></li>
-      <li style="display:flex; gap:10px; align-items:flex-start;"><span aria-hidden="true" style="width:16px; height:16px; background:#cffafe; border:1px solid #0e7490; flex-shrink:0; margin-top:2px; box-shadow:inset 4px 0 0 #0e7490;"></span><span><strong>Filtro activo.</strong> Cuando un rango está seleccionado, las provincias fuera de ese rango se oscurecen para destacar la franja elegida.</span></li>
-    </ul>
-    <p style="font-size:12px; color:var(--ink-mute); margin-top:12px; line-height:1.55;">
-      Tu última provincia seleccionada y el filtro de rango se guardan automáticamente y se restauran al recargar la página.
-    </p>
-  </section>
-
   <p class="map-caption" style="margin-top:14px;">
-    Geometría provincial: <a href="https://datav.aliyun.com/portal/school/atlas/area_selector" target="_blank" rel="noopener">DataV.GeoAtlas (MNR · Bou. nº GS(2019)1822)</a> · fallback: <a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="noopener">longwosion/geojson-map-china</a> · Base: CARTO Positron.
+    Tu última provincia y filtro se guardan automáticamente al recargar la página. Geometría provincial: <a href="https://datav.aliyun.com/portal/school/atlas/area_selector" target="_blank" rel="noopener">DataV.GeoAtlas</a> · Base: CARTO Positron.
   </p>
 
   <div class="fc-callout" style="margin-top:24px;">
     <div class="fc-callout-title">¿Por qué importa para FantasyChina?</div>
     <div class="fc-callout-body">
-      4G es prácticamente universal (&gt;90% en cada provincia): nuestro MVP de vídeo en directo funciona en todo el país. 5G concentra despliegue en Tier 1—2 (Pekín, Shanghái, Guangdong, Zhejiang) — donde están nuestros 200 M de fans del fútbol europeo. La estrategia de lanzamiento sigue al 5G.
+      El 4G llega a casi todas las provincias (más del 90%): la app funcionará bien en todo el país desde el primer día. El 5G, en cambio, está concentrado en las grandes ciudades de la costa (Pekín, Shanghái, Guangdong, Zhejiang) — justo donde viven la mayoría de nuestros 200 M de aficionados al fútbol europeo. Por eso lanzaremos primero allí.
     </div>
   </div>
 
