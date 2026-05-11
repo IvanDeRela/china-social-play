@@ -2684,9 +2684,12 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
       });
       if(!chinaFeature){ showBordersError(); return; }
 
-      // 1) China outline (subtle wash)
+      // 1) China outline — silueta del país remarcada (halo blanco + trazo oscuro)
       L.geoJSON(chinaFeature, {
-        style:{ color:'#0a0e1a', weight:1.4, fillColor:'#0891b2', fillOpacity:0.05, opacity:0.55, lineJoin:'round' }
+        style:{ color:'#ffffff', weight:6, fillColor:'#0891b2', fillOpacity:0.05, opacity:0.85, lineJoin:'round', interactive:false }
+      }).addTo(mapBorders);
+      L.geoJSON(chinaFeature, {
+        style:{ color:'#0a0e1a', weight:2.6, fillColor:'#0891b2', fillOpacity:0.05, opacity:0.95, lineJoin:'round' }
       }).addTo(mapBorders);
 
       // 2) Disputed territories with hatched fill (de facto vs claimed)
