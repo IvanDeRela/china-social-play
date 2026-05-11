@@ -4,10 +4,10 @@ import { SlideShell } from "../SlideShell";
 /** Slide final · equipo fundador + nombre de empresa en grande para el cierre del pitch. */
 export const SlideTeam = () => {
   const team = [
-    { src: "/team/ivan.jpg",  name: "Iván García",       role: "CTO · AI · Product" },
-    { src: "/team/rafa.jpg",  name: "Rafael Imbernón",   role: "CMO · Growth · Community" },
-    { src: "/team/pedro.jpg", name: "Pedro Plaza",       role: "CFO · Finance · Compliance" },
-    { src: "/team/alberto.png", name: "Alberto Hernández", role: "CEO · Strategy · IR" },
+    { src: "/team/ivan.jpg",  name: "Iván García",       role: "Tecnología y producto" },
+    { src: "/team/rafa.jpg",  name: "Rafael Imbernón",   role: "Marketing y comunidad" },
+    { src: "/team/pedro.jpg", name: "Pedro Plaza",       role: "Finanzas y aspectos legales" },
+    { src: "/team/alberto.png", name: "Alberto Hernández", role: "Dirección y relación con inversores" },
   ];
 
   return (

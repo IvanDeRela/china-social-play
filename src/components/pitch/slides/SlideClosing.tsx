@@ -13,7 +13,7 @@ interface SlideClosingProps {
 /** Mejora 9 — "The Ask" clarísimo al cierre. */
 export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
   const allocation = {
-    labels: ["Equipo y salarios", "Marketing y adquisición", "Licencias deportivas", "Legal · compliance · HK"],
+    labels: ["Equipo y salarios", "Marketing y captación", "Licencias deportivas", "Legal y oficina en Hong Kong"],
     datasets: [{
       data: [40, 30, 20, 10],
       backgroundColor: [palette.primary(), palette.copper(), palette.success(), palette.warn()],
@@ -126,7 +126,7 @@ export const SlideClosing = ({ onOpenDeepDive }: SlideClosingProps) => {
         </motion.div>
 
         <div className="mt-6">
-          <PartnerLogos label="Target partners · ecosistema" />
+          <PartnerLogos label="Socios objetivo del ecosistema" />
         </div>
 
         <div className="mt-8 flex items-center justify-center gap-3 text-xs text-muted-foreground">
