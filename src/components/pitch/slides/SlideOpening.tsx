@@ -42,15 +42,14 @@ export const SlideOpening = () => {
 
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 1 }}
-            className="grid grid-cols-3 gap-4 max-w-xl"
+            className="grid grid-cols-2 gap-4 max-w-md"
           >
             {[
               { to: 200, suf: "M", l: "fans" },
               { to: 0,   suf: "",  l: "competidores" },
-              { to: 5,   suf: "M", l: "ronda buscada", pre: "$" },
             ].map((s) => (
               <div key={s.l} className="rounded-xl border border-border bg-card/60 backdrop-blur p-4 shadow-card">
-                <CountUp to={s.to} prefix={s.pre || ""} suffix={s.suf} className="font-mono font-bold text-3xl md:text-4xl text-primary" />
+                <CountUp to={s.to} suffix={s.suf} className="font-mono font-bold text-3xl md:text-4xl text-primary" />
                 <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
               </div>
             ))}

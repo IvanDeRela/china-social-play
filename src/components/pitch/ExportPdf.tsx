@@ -16,6 +16,23 @@ function getBgColor(): string {
 }
 
 async function captureSlide(): Promise<HTMLCanvasElement> {
+  // Try to capture the atlas iframe content if present
+  const iframe = document.querySelector("main iframe") as HTMLIFrameElement | null;
+  if (iframe && iframe.contentDocument?.body) {
+    try {
+      const body = iframe.contentDocument.body;
+      return await html2canvas(body, {
+        backgroundColor: getBgColor(),
+        scale: 1.5,
+        useCORS: true,
+        logging: false,
+        windowWidth: iframe.clientWidth,
+        windowHeight: iframe.clientHeight,
+      });
+    } catch (e) {
+      console.warn("No se pudo capturar el iframe del atlas, fallback", e);
+    }
+  }
   const el =
     (document.querySelector("main > div section") as HTMLElement) ||
     (document.querySelector("main > div > div") as HTMLElement) ||
@@ -55,7 +72,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
     const previous = current;
     try {
       goTo(10);
-      await wait(900);
+      await wait(2200);
       const canvas = await captureSlide();
       const pdf = new jsPDF({
         orientation: "landscape",
@@ -87,7 +104,8 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
       for (let i = 0; i < slides.length; i++) {
         setBusy(`Exportando ${i + 1}/${slides.length}…`);
         goTo(i);
-        await wait(750);
+        // Atlas slide (index 2) needs more time for the iframe map to load
+        await wait(i === 2 ? 4500 : 2200);
         const canvas = await captureSlide();
         addCanvasToPdf(pdf, canvas, i === 0, getBgColor());
       }
