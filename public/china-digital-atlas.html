@@ -2692,6 +2692,39 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
         style:{ color:'#0a0e1a', weight:2.6, fillColor:'#0891b2', fillOpacity:0.05, opacity:0.95, lineJoin:'round' }
       }).addTo(mapBorders);
 
+      // 1bis) Silueta de China también en el atlas interactivo principal (#map)
+      if(typeof map !== 'undefined' && map){
+        try{
+          if(!map.createPane('chinaSilhouettePane').__init){
+            map.getPane('chinaSilhouettePane').style.zIndex = 250;
+            map.getPane('chinaSilhouettePane').style.pointerEvents = 'none';
+            map.getPane('chinaSilhouettePane').__init = true;
+          }
+        }catch(e){
+          if(!map.getPane('chinaSilhouettePane')){
+            map.createPane('chinaSilhouettePane');
+            map.getPane('chinaSilhouettePane').style.zIndex = 250;
+            map.getPane('chinaSilhouettePane').style.pointerEvents = 'none';
+          }
+        }
+        // Halo blanco grueso para destacar la silueta sobre el mapa base
+        L.geoJSON(chinaFeature, {
+          pane:'chinaSilhouettePane',
+          style:{ color:'#ffffff', weight:7, opacity:0.85, fill:false, lineJoin:'round', interactive:false }
+        }).addTo(map);
+        // Relleno cian translúcido del territorio chino
+        L.geoJSON(chinaFeature, {
+          pane:'chinaSilhouettePane',
+          style:{ color:'transparent', weight:0, fillColor:'#0891b2', fillOpacity:0.10, interactive:false }
+        }).addTo(map);
+        // Trazo principal del contorno
+        L.geoJSON(chinaFeature, {
+          pane:'chinaSilhouettePane',
+          style:{ color:'#0a0e1a', weight:2.4, opacity:0.95, fill:false, lineJoin:'round', interactive:false }
+        }).addTo(map);
+      }
+
+
       // 2) Disputed territories with hatched fill (de facto vs claimed)
       disputedTerritories.forEach(function(t){
         L.polygon(t.coords, {
