@@ -49,7 +49,7 @@ export const SlideOpening = () => {
               { to: 0,   suf: "",  l: "competidores" },
             ].map((s) => (
               <div key={s.l} className="rounded-xl border border-border bg-card/60 backdrop-blur p-4 shadow-card">
-                <CountUp to={s.to} prefix={s.pre || ""} suffix={s.suf} className="font-mono font-bold text-3xl md:text-4xl text-primary" />
+                <CountUp to={s.to} suffix={s.suf} className="font-mono font-bold text-3xl md:text-4xl text-primary" />
                 <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
               </div>
             ))}
