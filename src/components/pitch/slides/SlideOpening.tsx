@@ -18,7 +18,7 @@ export const SlideOpening = () => {
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
             className="font-mono text-xs uppercase tracking-[0.4em] text-primary/80 mb-5"
           >
-            Seed Round · 2026
+            Ronda inicial · 2026
           </motion.span>
 
           <motion.h1
@@ -47,7 +47,7 @@ export const SlideOpening = () => {
             {[
               { to: 200, suf: "M", l: "fans" },
               { to: 0,   suf: "",  l: "competidores" },
-              { to: 5,   suf: "M", l: "ask", pre: "$" },
+              { to: 5,   suf: "M", l: "ronda buscada", pre: "$" },
             ].map((s) => (
               <div key={s.l} className="rounded-xl border border-border bg-card/60 backdrop-blur p-4 shadow-card">
                 <CountUp to={s.to} prefix={s.pre || ""} suffix={s.suf} className="font-mono font-bold text-3xl md:text-4xl text-primary" />

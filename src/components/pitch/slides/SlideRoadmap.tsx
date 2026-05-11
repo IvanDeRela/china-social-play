@@ -95,13 +95,13 @@ export const SlideRoadmap = () => {
           </div>
         </motion.div>
 
-        {/* Coste vs ARPU */}
+        {/* Coste vs ingreso por usuario */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
           className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 shadow-card"
         >
           <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
-            Coste vs ingreso por usuario · equilibrio en el año 3
+            Lo que cuesta vs lo que ingresa cada usuario · equilibrio en el año 3
           </div>
           <div className="h-[360px]"><Line data={chartData} options={opts as any} /></div>
         </motion.div>
