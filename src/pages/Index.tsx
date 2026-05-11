@@ -106,7 +106,7 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {!isFullscreen && <TopNav current={current} onSelect={goTo} onOpenDeepDive={openDeepDive} />}
+      {!hideChrome && <TopNav current={current} onSelect={goTo} onOpenDeepDive={openDeepDive} />}
 
       <div className="relative">
         <AnimatePresence mode="wait">
@@ -124,16 +124,30 @@ const Index = () => {
         </AnimatePresence>
       </div>
 
-      {!isFullscreen && <BottomDock current={current} onSelect={goTo} onPrev={prev} onNext={next} />}
+      {!hideChrome && <BottomDock current={current} onSelect={goTo} onPrev={prev} onNext={next} />}
 
-      {!isFullscreen && (
+      {!hideChrome && (
         <Suspense fallback={null}>
           <DeepDive innerRef={deepDiveRef} />
         </Suspense>
       )}
 
-      {!isFullscreen && <ZoomControl />}
-      {!isFullscreen && <ExportPdf current={current} goTo={goTo} />}
+      {!hideChrome && <ZoomControl />}
+      {!hideChrome && <ExportPdf current={current} goTo={goTo} />}
+
+      {/* Botón ocultar/mostrar interfaz (clean view) */}
+      <button
+        onClick={() => setCleanView((v) => !v)}
+        aria-label={cleanView ? "Mostrar interfaz" : "Ocultar interfaz"}
+        title={cleanView ? "Mostrar interfaz" : "Ocultar interfaz"}
+        className="fixed top-4 right-28 z-[60] grid h-10 w-10 place-items-center rounded-full border border-border bg-card/90 backdrop-blur shadow-elevated text-foreground hover:text-primary hover:border-primary/40 transition-colors"
+      >
+        {cleanView ? (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4"/><path d="M21 9V5a2 2 0 0 0-2-2h-4"/><path d="M3 15v4a2 2 0 0 0 2 2h4"/><path d="M15 21h4a2 2 0 0 0 2-2v-4"/></svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+        )}
+      </button>
 
       {/* Botón pantalla completa */}
       <button
@@ -149,8 +163,8 @@ const Index = () => {
         )}
       </button>
 
-      {/* Controles mínimos en pantalla completa */}
-      {isFullscreen && (
+      {/* Controles mínimos cuando se oculta la interfaz (fullscreen o clean view) */}
+      {hideChrome && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 rounded-full border border-border bg-card/90 backdrop-blur px-3 py-2 shadow-elevated">
           <button
             onClick={prev}
