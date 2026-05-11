@@ -104,7 +104,8 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
       for (let i = 0; i < slides.length; i++) {
         setBusy(`Exportando ${i + 1}/${slides.length}…`);
         goTo(i);
-        await wait(750);
+        // Atlas slide (index 2) needs more time for the iframe map to load
+        await wait(i === 2 ? 4500 : 2200);
         const canvas = await captureSlide();
         addCanvasToPdf(pdf, canvas, i === 0, getBgColor());
       }
