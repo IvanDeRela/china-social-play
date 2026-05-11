@@ -2394,6 +2394,42 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     buildTileLayer().addTo(map);
     buildLabelsLayer().addTo(map);
 
+    // ────── SILUETA DE CHINA ─ contorno y relleno del territorio nacional ──────
+    (function loadChinaSilhouette(){
+      if(!map.getPane('chinaSilhouettePane')){
+        map.createPane('chinaSilhouettePane');
+        map.getPane('chinaSilhouettePane').style.zIndex = 250;
+        map.getPane('chinaSilhouettePane').style.pointerEvents = 'none';
+      }
+      var srcs = [
+        './geo/ne_50m_admin_0_countries.geojson',
+        'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson',
+        'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson'
+      ];
+      function draw(f){
+        L.geoJSON(f, { pane:'chinaSilhouettePane',
+          style:{ color:'#ffffff', weight:7, opacity:0.85, fill:false, lineJoin:'round', interactive:false } }).addTo(map);
+        L.geoJSON(f, { pane:'chinaSilhouettePane',
+          style:{ color:'transparent', weight:0, fillColor:'#0891b2', fillOpacity:0.10, interactive:false } }).addTo(map);
+        L.geoJSON(f, { pane:'chinaSilhouettePane',
+          style:{ color:'#0a0e1a', weight:2.4, opacity:0.95, fill:false, lineJoin:'round', interactive:false } }).addTo(map);
+      }
+      function tryNext(i){
+        if(i >= srcs.length) return;
+        fetch(srcs[i]).then(function(r){ if(!r.ok) throw 0; return r.json(); })
+          .then(function(geo){
+            var f = (geo.features||[]).find(function(x){
+              var iso = x.properties && (x.properties.ISO_A3 || x.properties.ADM0_A3 || x.properties.iso_a3);
+              return iso === 'CHN';
+            });
+            if(f) draw(f); else tryNext(i+1);
+          })
+          .catch(function(){ tryNext(i+1); });
+      }
+      tryNext(0);
+    })();
+
+
     // ────── DATA CENTERS ─ circles, cyan, with halo on hyperscale ──────
     layerGroups.datacenters = L.layerGroup();
     dataCenters.forEach(function(d){
