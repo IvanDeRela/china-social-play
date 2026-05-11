@@ -16,6 +16,23 @@ function getBgColor(): string {
 }
 
 async function captureSlide(): Promise<HTMLCanvasElement> {
+  // Try to capture the atlas iframe content if present
+  const iframe = document.querySelector("main iframe") as HTMLIFrameElement | null;
+  if (iframe && iframe.contentDocument?.body) {
+    try {
+      const body = iframe.contentDocument.body;
+      return await html2canvas(body, {
+        backgroundColor: getBgColor(),
+        scale: 1.5,
+        useCORS: true,
+        logging: false,
+        windowWidth: iframe.clientWidth,
+        windowHeight: iframe.clientHeight,
+      });
+    } catch (e) {
+      console.warn("No se pudo capturar el iframe del atlas, fallback", e);
+    }
+  }
   const el =
     (document.querySelector("main > div section") as HTMLElement) ||
     (document.querySelector("main > div > div") as HTMLElement) ||
