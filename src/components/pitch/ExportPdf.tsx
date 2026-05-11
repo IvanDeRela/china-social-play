@@ -72,7 +72,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
     const previous = current;
     try {
       goTo(10);
-      await wait(2200);
+      await wait(4500);
       const canvas = await captureSlide();
       const pdf = new jsPDF({
         orientation: "landscape",
@@ -104,8 +104,8 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
       for (let i = 0; i < slides.length; i++) {
         setBusy(`Exportando ${i + 1}/${slides.length}…`);
         goTo(i);
-        // Atlas slide (index 2) needs more time for the iframe map to load
-        await wait(i === 2 ? 4500 : 2200);
+        // Atlas slide (index 2) needs much more time for the iframe map (Leaflet + tiles + GeoJSON) to load
+        await wait(i === 2 ? 9000 : 4500);
         const canvas = await captureSlide();
         addCanvasToPdf(pdf, canvas, i === 0, getBgColor());
       }
