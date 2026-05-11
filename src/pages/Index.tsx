@@ -24,6 +24,8 @@ const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ d
 const Index = () => {
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [cleanView, setCleanView] = useState(false);
+  const hideChrome = isFullscreen || cleanView;
   const deepDiveRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
