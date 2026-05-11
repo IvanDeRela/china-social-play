@@ -72,7 +72,7 @@ export const ExportPdf = ({ current, goTo }: ExportPdfProps) => {
     const previous = current;
     try {
       goTo(10);
-      await wait(900);
+      await wait(2200);
       const canvas = await captureSlide();
       const pdf = new jsPDF({
         orientation: "landscape",
