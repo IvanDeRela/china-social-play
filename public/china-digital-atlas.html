@@ -1646,8 +1646,8 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     .cov-panel{top:14px;right:14px;width:300px;padding:16px 18px;color:var(--ink)}
     .cov-legend{bottom:14px;left:14px;padding:14px 16px;color:#0f172a;font-family:var(--mono);font-size:10.5px;width:300px;max-width:calc(100vw - 28px)}
     .cov-reset-btn{background:rgba(255,255,255,0.85);border:1px solid #0e7490;color:#0e7490;font-family:var(--mono);font-size:10px;cursor:pointer;padding:3px 8px;font-weight:700;touch-action:manipulation}
-    /* Modo "solo color": ningún path tiene trazo visible, ni siquiera al hover/focus */
-    #map-coverage .leaflet-interactive{stroke-width:0 !important;stroke:none !important;outline:none !important}
+    /* Líneas internas de provincias visibles, sin contorno de enfoque */
+    #map-coverage .leaflet-interactive{outline:none !important}
     #map-coverage .leaflet-interactive:focus, #map-coverage .leaflet-interactive:focus-visible{outline:none !important}
     @media (max-width: 980px){
       .cov-shell{display:grid;grid-template-rows:minmax(420px,48vh) auto;height:auto;gap:10px;padding-bottom:12px}
@@ -3285,9 +3285,10 @@ html.low-fx .leaflet-map.loading::before{animation:none;background:var(--bg-2)}
     // expresa con un fillColor más vivo y opacidad máxima — nada de outline.
     return {
       fillColor: isSelected ? '#0e7490' : col,
-      weight: 0,
-      stroke: false,
-      opacity: 0,
+      color: '#475569',
+      weight: 0.6,
+      stroke: true,
+      opacity: 0.55,
       fillOpacity: v==null ? 0.22 : (dim && !isSelected ? 0.18 : (isSelected ? 1 : 0.88)),
       smoothFactor: 1.2,
       interactive: true
