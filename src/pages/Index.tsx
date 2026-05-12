@@ -65,8 +65,10 @@ const Index = () => {
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cleanView, setCleanView] = useState(false);
+  const [deepDiveMounted, setDeepDiveMounted] = useState(false);
   const hideChrome = isFullscreen || cleanView;
   const deepDiveRef = useRef<HTMLDivElement>(null);
+  const deepDiveSentinelRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
     (idx: number) => {
