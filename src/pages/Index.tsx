@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, lazy, Suspense } from "react";
+import { useEffect, useRef, useState, useCallback, lazy, Suspense, memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { TopNav, slides } from "@/components/pitch/TopNav";
 import { BottomDock } from "@/components/pitch/BottomDock";
