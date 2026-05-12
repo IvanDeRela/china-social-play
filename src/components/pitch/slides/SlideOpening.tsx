@@ -66,6 +66,8 @@ export const SlideOpening = () => {
             alt="FantasyChina app mockup en smartphone"
             width={1024}
             height={1536}
+            decoding="async"
+            {...({ fetchpriority: "high" } as Record<string, string>)}
             className="w-full max-w-[380px] drop-shadow-[0_30px_60px_hsl(var(--primary)/0.3)]"
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
