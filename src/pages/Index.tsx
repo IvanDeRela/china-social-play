@@ -202,9 +202,14 @@ const Index = () => {
       {!hideChrome && <BottomDock current={current} onSelect={goTo} onPrev={prev} onNext={next} />}
 
       {!hideChrome && (
-        <Suspense fallback={null}>
-          <DeepDive innerRef={deepDiveRef} />
-        </Suspense>
+        <>
+          <div ref={deepDiveSentinelRef} aria-hidden className="h-px w-full" />
+          {deepDiveMounted && (
+            <Suspense fallback={null}>
+              <DeepDive innerRef={deepDiveRef} />
+            </Suspense>
+          )}
+        </>
       )}
 
       {!hideChrome && <ZoomControl />}
