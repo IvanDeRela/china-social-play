@@ -99,4 +99,5 @@ const TopNavBase = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
   );
 };
 
+export const TopNav = memo(TopNavBase);
 export { slides };
