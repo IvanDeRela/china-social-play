@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, lazy, Suspense } from "react";
+import { useEffect, useRef, useState, useCallback, lazy, Suspense, memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { TopNav, slides } from "@/components/pitch/TopNav";
 import { BottomDock } from "@/components/pitch/BottomDock";
@@ -7,26 +7,68 @@ import { ZoomControl } from "@/components/pitch/ZoomControl";
 import { ExportPdf } from "@/components/pitch/ExportPdf";
 
 // Lazy-load non-initial slides + heavy DeepDive section to reduce initial JS work
-const SlideContext = lazy(() => import("@/components/pitch/slides/SlideContext").then(m => ({ default: m.SlideContext })));
-const SlideProblem = lazy(() => import("@/components/pitch/slides/SlideProblem").then(m => ({ default: m.SlideProblem })));
-const SlideSolution = lazy(() => import("@/components/pitch/slides/SlideSolution").then(m => ({ default: m.SlideSolution })));
-const SlideMarket = lazy(() => import("@/components/pitch/slides/SlideMarket").then(m => ({ default: m.SlideMarket })));
-const SlideMonetization = lazy(() => import("@/components/pitch/slides/SlideMonetization").then(m => ({ default: m.SlideMonetization })));
-const SlideRoadmap = lazy(() => import("@/components/pitch/slides/SlideRoadmap").then(m => ({ default: m.SlideRoadmap })));
-const SlideClosing = lazy(() => import("@/components/pitch/slides/SlideClosing").then(m => ({ default: m.SlideClosing })));
-const SlideRisks = lazy(() => import("@/components/pitch/slides/SlideRisks").then(m => ({ default: m.SlideRisks })));
-const SlideDivider = lazy(() => import("@/components/pitch/slides/SlideDivider").then(m => ({ default: m.SlideDivider })));
-const SlideAtlas = lazy(() => import("@/components/pitch/slides/SlideAtlas").then(m => ({ default: m.SlideAtlas })));
-const SlideTeam = lazy(() => import("@/components/pitch/slides/SlideTeam").then(m => ({ default: m.SlideTeam })));
-const SlideReferences = lazy(() => import("@/components/pitch/slides/SlideReferences").then(m => ({ default: m.SlideReferences })));
+const slideLoaders = {
+  SlideContext: () => import("@/components/pitch/slides/SlideContext").then(m => ({ default: m.SlideContext })),
+  SlideProblem: () => import("@/components/pitch/slides/SlideProblem").then(m => ({ default: m.SlideProblem })),
+  SlideSolution: () => import("@/components/pitch/slides/SlideSolution").then(m => ({ default: m.SlideSolution })),
+  SlideMarket: () => import("@/components/pitch/slides/SlideMarket").then(m => ({ default: m.SlideMarket })),
+  SlideMonetization: () => import("@/components/pitch/slides/SlideMonetization").then(m => ({ default: m.SlideMonetization })),
+  SlideRoadmap: () => import("@/components/pitch/slides/SlideRoadmap").then(m => ({ default: m.SlideRoadmap })),
+  SlideClosing: () => import("@/components/pitch/slides/SlideClosing").then(m => ({ default: m.SlideClosing })),
+  SlideRisks: () => import("@/components/pitch/slides/SlideRisks").then(m => ({ default: m.SlideRisks })),
+  SlideDivider: () => import("@/components/pitch/slides/SlideDivider").then(m => ({ default: m.SlideDivider })),
+  SlideAtlas: () => import("@/components/pitch/slides/SlideAtlas").then(m => ({ default: m.SlideAtlas })),
+  SlideTeam: () => import("@/components/pitch/slides/SlideTeam").then(m => ({ default: m.SlideTeam })),
+  SlideReferences: () => import("@/components/pitch/slides/SlideReferences").then(m => ({ default: m.SlideReferences })),
+} as const;
+
+const SlideContext = lazy(slideLoaders.SlideContext);
+const SlideProblem = lazy(slideLoaders.SlideProblem);
+const SlideSolution = lazy(slideLoaders.SlideSolution);
+const SlideMarket = lazy(slideLoaders.SlideMarket);
+const SlideMonetization = lazy(slideLoaders.SlideMonetization);
+const SlideRoadmap = lazy(slideLoaders.SlideRoadmap);
+const SlideClosing = lazy(slideLoaders.SlideClosing);
+const SlideRisks = lazy(slideLoaders.SlideRisks);
+const SlideDivider = lazy(slideLoaders.SlideDivider);
+const SlideAtlas = lazy(slideLoaders.SlideAtlas);
+const SlideTeam = lazy(slideLoaders.SlideTeam);
+const SlideReferences = lazy(slideLoaders.SlideReferences);
 const DeepDive = lazy(() => import("@/components/pitch/DeepDive").then(m => ({ default: m.DeepDive })));
+
+// Prefetch de slides adyacentes para que la navegación sea instantánea
+const slidePrefetchMap: Record<number, (keyof typeof slideLoaders)[]> = {
+  0:  ["SlideDivider", "SlideAtlas"],
+  1:  ["SlideAtlas", "SlideContext"],
+  2:  ["SlideContext", "SlideDivider"],
+  3:  ["SlideDivider", "SlideProblem"],
+  4:  ["SlideProblem", "SlideSolution"],
+  5:  ["SlideSolution", "SlideMarket"],
+  6:  ["SlideMarket", "SlideMonetization"],
+  7:  ["SlideMonetization", "SlideRoadmap"],
+  8:  ["SlideRoadmap", "SlideRisks"],
+  9:  ["SlideRisks", "SlideClosing"],
+  10: ["SlideClosing", "SlideTeam"],
+  11: ["SlideTeam", "SlideReferences"],
+  12: ["SlideReferences"],
+  13: [],
+};
+
+const idle = (cb: () => void) => {
+  if (typeof window === "undefined") return;
+  const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
+  if (w.requestIdleCallback) w.requestIdleCallback(cb);
+  else setTimeout(cb, 200);
+};
 
 const Index = () => {
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cleanView, setCleanView] = useState(false);
+  const [deepDiveMounted, setDeepDiveMounted] = useState(false);
   const hideChrome = isFullscreen || cleanView;
   const deepDiveRef = useRef<HTMLDivElement>(null);
+  const deepDiveSentinelRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
     (idx: number) => {
@@ -41,7 +83,13 @@ const Index = () => {
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
 
   const openDeepDive = useCallback(() => {
-    deepDiveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setDeepDiveMounted(true);
+    // Esperar un frame a que el DeepDive se monte antes de hacer scroll
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        deepDiveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   }, []);
 
   const toggleFullscreen = useCallback(async () => {
@@ -83,6 +131,33 @@ const Index = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [prev, next, goTo, toggleFullscreen]);
+
+  // Prefetch en idle de los chunks de las slides adyacentes para que la navegación sea instantánea
+  useEffect(() => {
+    const names = slidePrefetchMap[current] ?? [];
+    if (names.length === 0) return;
+    idle(() => {
+      names.forEach((n) => { void slideLoaders[n](); });
+    });
+  }, [current]);
+
+  // Montar el DeepDive cuando el usuario se acerque al final del scroll
+  useEffect(() => {
+    if (deepDiveMounted) return;
+    const sentinel = deepDiveSentinelRef.current;
+    if (!sentinel || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setDeepDiveMounted(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(sentinel);
+    return () => io.disconnect();
+  }, [deepDiveMounted, hideChrome]);
 
   const renderSlide = () => {
     switch (current) {
@@ -127,9 +202,14 @@ const Index = () => {
       {!hideChrome && <BottomDock current={current} onSelect={goTo} onPrev={prev} onNext={next} />}
 
       {!hideChrome && (
-        <Suspense fallback={null}>
-          <DeepDive innerRef={deepDiveRef} />
-        </Suspense>
+        <>
+          <div ref={deepDiveSentinelRef} aria-hidden className="h-px w-full" />
+          {deepDiveMounted && (
+            <Suspense fallback={null}>
+              <DeepDive innerRef={deepDiveRef} />
+            </Suspense>
+          )}
+        </>
       )}
 
       {!hideChrome && <ZoomControl />}
