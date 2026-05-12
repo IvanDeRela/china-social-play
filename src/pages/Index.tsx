@@ -79,8 +79,13 @@ const Index = () => {
     [],
   );
 
-  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
-  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  // Mantenemos `current` en una ref para que `prev`/`next` sean estables
+  // y los componentes memoizados (TopNav, BottomDock) no se re-rendericen
+  // en cada cambio de slide solo por recibir nuevos callbacks.
+  const currentRef = useRef(current);
+  currentRef.current = current;
+  const prev = useCallback(() => goTo(currentRef.current - 1), [goTo]);
+  const next = useCallback(() => goTo(currentRef.current + 1), [goTo]);
 
   const openDeepDive = useCallback(() => {
     setDeepDiveMounted(true);
