@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +25,7 @@ interface TopNavProps {
   onOpenDeepDive: () => void;
 }
 
-export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
+const TopNavBase = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="border-b border-border/60 bg-background/85 backdrop-blur-xl">
@@ -98,4 +99,5 @@ export const TopNav = ({ current, onSelect, onOpenDeepDive }: TopNavProps) => {
   );
 };
 
+export const TopNav = memo(TopNavBase);
 export { slides };

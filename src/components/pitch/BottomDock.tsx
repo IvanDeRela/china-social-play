@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { slides } from "./TopNav";
@@ -9,7 +10,7 @@ interface BottomDockProps {
   onNext: () => void;
 }
 
-export const BottomDock = ({ current, onSelect, onPrev, onNext }: BottomDockProps) => {
+const BottomDockBase = ({ current, onSelect, onPrev, onNext }: BottomDockProps) => {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 pointer-events-none">
       <div className="mx-auto max-w-[1600px] px-6 pb-5">
@@ -60,3 +61,5 @@ export const BottomDock = ({ current, onSelect, onPrev, onNext }: BottomDockProp
     </div>
   );
 };
+
+export const BottomDock = memo(BottomDockBase);
