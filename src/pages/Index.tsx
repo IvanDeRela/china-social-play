@@ -164,7 +164,7 @@ const Index = () => {
       </button>
 
       {/* Controles mínimos cuando se oculta la interfaz (fullscreen o clean view) */}
-      {hideChrome && (
+      {hideChrome && !cleanView && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 rounded-full border border-border bg-card/90 backdrop-blur px-3 py-2 shadow-elevated">
           <button
             onClick={prev}
