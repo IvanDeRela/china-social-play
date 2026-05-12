@@ -31,6 +31,7 @@ export const SlideAtlas = () => {
       <iframe
         src={src}
         title="China Digital Atlas"
+        loading="eager"
         className="absolute inset-0 h-full w-full"
         style={{ border: "none", display: "block" }}
       />
