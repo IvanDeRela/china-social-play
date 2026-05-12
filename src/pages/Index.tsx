@@ -83,7 +83,13 @@ const Index = () => {
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
 
   const openDeepDive = useCallback(() => {
-    deepDiveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setDeepDiveMounted(true);
+    // Esperar un frame a que el DeepDive se monte antes de hacer scroll
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        deepDiveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   }, []);
 
   const toggleFullscreen = useCallback(async () => {
