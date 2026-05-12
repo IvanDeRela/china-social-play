@@ -132,6 +132,33 @@ const Index = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, [prev, next, goTo, toggleFullscreen]);
 
+  // Prefetch en idle de los chunks de las slides adyacentes para que la navegación sea instantánea
+  useEffect(() => {
+    const names = slidePrefetchMap[current] ?? [];
+    if (names.length === 0) return;
+    idle(() => {
+      names.forEach((n) => { void slideLoaders[n](); });
+    });
+  }, [current]);
+
+  // Montar el DeepDive cuando el usuario se acerque al final del scroll
+  useEffect(() => {
+    if (deepDiveMounted) return;
+    const sentinel = deepDiveSentinelRef.current;
+    if (!sentinel || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setDeepDiveMounted(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(sentinel);
+    return () => io.disconnect();
+  }, [deepDiveMounted, hideChrome]);
+
   const renderSlide = () => {
     switch (current) {
       case 0:  return <SlideOpening />;
