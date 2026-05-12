@@ -13,10 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet" /></noscript>
 
-    <!-- Preload imagen LCP de la portada -->
-    <link rel="preload" as="image" href="/src/assets/phone-hero.png" fetchpriority="high" />
     <!-- Prefetch del atlas (slide 02) para que esté en caché cuando se abra -->
     <link rel="prefetch" href="/china-digital-atlas.html" as="document" />
+    <!-- Preconnect al CDN de tiles del atlas -->
+    <link rel="dns-prefetch" href="https://tile.openstreetmap.org" />
 
     
     
