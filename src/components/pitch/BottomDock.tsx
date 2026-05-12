@@ -61,3 +61,5 @@ const BottomDockBase = ({ current, onSelect, onPrev, onNext }: BottomDockProps) 
     </div>
   );
 };
+
+export const BottomDock = memo(BottomDockBase);
